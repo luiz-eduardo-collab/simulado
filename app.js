@@ -1,1177 +1,218 @@
-/* =========================================
-   VARIÁVEIS DO SISTEMA
-========================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const areaSelect = document.getElementById("areaSelect");
+    const difficultySelect = document.getElementById("difficultySelect");
+    const startBtn = document.getElementById("startBtn");
+    const shuffleBtn = document.getElementById("Embaralhar") || document.getElementById("shuffleBtn");
+    const resetStatsBtn = document.getElementById("Zerar Estatísticas") || document.querySelector("button[onclick*='Zerar']") || document.getElementById("resetBtn") || document.querySelector(".btn-danger, .danger, [id*='zerar' i]");
+    const quiz = document.getElementById("quiz");
 
-let currentQuestions = [];
+    const totalQuestionsEl = document.getElementById("totalQuestions");
+    const answeredEl = document.getElementById("answered");
+    const correctEl = document.getElementById("correct");
+    const wrongEl = document.getElementById("wrong");
+    const accuracyEl = document.getElementById("accuracy");
 
-let currentIndex = 0;
-
-let selectedAnswer = null;
-
-let answeredQuestion = false;
-
-
-/* =========================================
-   ESTATÍSTICAS
-========================================= */
-
-let stats =
-    JSON.parse(
-        localStorage.getItem("stats")
-    )
-    ||
-    {
-        answered: 0,
-        correct: 0,
-        wrong: 0
-    };
-
-
-/* =========================================
-   ELEMENTOS
-========================================= */
-
-const areaSelect =
-    document.getElementById(
-        "areaSelect"
-    );
-
-
-const difficultySelect =
-    document.getElementById(
-        "difficultySelect"
-    );
-
-
-const modeSelect =
-    document.getElementById(
-        "modeSelect"
-    );
-
-
-/* =========================================
-   CARREGAR ÁREAS
-========================================= */
-
-function loadAreas() {
-
-    const areas =
-        [
-            ...new Set(
-                questions.map(
-                    question =>
-                        question.area
-                )
-            )
-        ];
-
-
-    areas.forEach(area => {
-
-        const option =
-            document.createElement(
-                "option"
-            );
-
-
-        option.value = area;
-
-        option.textContent = area;
-
-
-        areaSelect.appendChild(
-            option
-        );
-
-    });
-
-}
-
-
-/* =========================================
-   ATUALIZAR ESTATÍSTICAS
-========================================= */
-
-function updateStats() {
-
-    document
-        .getElementById(
-            "totalQuestions"
-        )
-        .textContent =
-            questions.length;
-
-
-    document
-        .getElementById(
-            "answered"
-        )
-        .textContent =
-            stats.answered;
-
-
-    document
-        .getElementById(
-            "correct"
-        )
-        .textContent =
-            stats.correct;
-
-
-    document
-        .getElementById(
-            "wrong"
-        )
-        .textContent =
-            stats.wrong;
-
-
-    const accuracy =
-        stats.answered === 0
-            ? 0
-            :
-            (
-                stats.correct /
-                stats.answered *
-                100
-            ).toFixed(1);
-
-
-    document
-        .getElementById(
-            "accuracy"
-        )
-        .textContent =
-            accuracy + "%";
-
-
-    localStorage.setItem(
-        "stats",
-        JSON.stringify(stats)
-    );
-
-}
-
-
-/* =========================================
-   EMBARALHAR
-========================================= */
-
-function shuffle(array) {
-
-    for (
-        let i = array.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const j =
-            Math.floor(
-                Math.random() *
-                (i + 1)
-            );
-
-
-        [
-            array[i],
-            array[j]
-        ] =
-        [
-            array[j],
-            array[i]
-        ];
-
+    // 1. Popula o select de áreas
+    if (areaSelect && typeof questions !== 'undefined' && Array.isArray(questions)) {
+        const areasUnicas = [...new Set(questions.map(q => q.area))];
+        areaSelect.innerHTML = '<option value="Todas">Todas</option>';
+        areasUnicas.forEach(area => {
+            if (area) {
+                const option = document.createElement("option");
+                option.value = area;
+                option.textContent = area;
+                areaSelect.appendChild(option);
+            }
+        });
     }
 
-
-    return array;
-}
-
-
-/* =========================================
-   INICIAR
-========================================= */
-
-function startQuiz() {
-
-    let filtered =
-        [...questions];
-
-
-    /*
-        FILTRO POR ÁREA
-    */
-
-    if (
-        areaSelect.value !==
-        "Todas"
-    ) {
-
-        filtered =
-            filtered.filter(
-                question =>
-                    question.area ===
-                    areaSelect.value
-            );
-
-    }
-
-
-    /*
-        FILTRO POR DIFICULDADE
-    */
-
-    if (
-        difficultySelect.value !==
-        "Todas"
-    ) {
-
-        filtered =
-            filtered.filter(
-                question =>
-                    question.difficulty ===
-                    difficultySelect.value
-            );
-
-    }
-
-
-    /*
-        EMBARALHAR
-    */
-
-    shuffle(filtered);
-
-
-    /*
-        MODO SIMULADO 20
-    */
-
-    if (
-        modeSelect.value ===
-        "simulado20"
-    ) {
-
-        filtered =
-            filtered.slice(0, 20);
-
-    }
-
-
-    /*
-        MODO SIMULADO 40
-    */
-
-    if (
-        modeSelect.value ===
-        "simulado40"
-    ) {
-
-        filtered =
-            filtered.slice(0, 40);
-
-    }
-
-
-    currentQuestions =
-        filtered;
-
-
-    currentIndex = 0;
-
-
-    renderQuestion();
-
-}
-
-
-/* =========================================
-   MOSTRAR QUESTÃO
-========================================= */
-
-function renderQuestion() {
-
-    /*
-        Limpa resposta anterior
-    */
-
-    selectedAnswer = null;
-
-    answeredQuestion = false;
-
-
-    /*
-        Verifica se existem questões
-    */
-
-    if (
-        currentQuestions.length === 0
-    ) {
-
-        document
-            .getElementById("quiz")
-            .innerHTML = `
-
-                <div class="welcome">
-
-                    <h2>
-                        Nenhuma questão encontrada.
-                    </h2>
-
-                    <p>
-                        Tente selecionar
-                        outros filtros.
-                    </p>
-
-                </div>
-
-            `;
-
-        return;
-    }
-
-
-    const question =
-        currentQuestions[
-            currentIndex
-        ];
-
-
-    const quiz =
-        document.getElementById(
-            "quiz"
-        );
-
-
-    /*
-        GERA A QUESTÃO
-    */
-
-    quiz.innerHTML = `
-
-        <div class="progress">
-
-            Questão
-            ${currentIndex + 1}
-            de
-            ${currentQuestions.length}
-
-        </div>
-
-
-        <span class="area">
-
-            ${question.area}
-
-        </span>
-
-
-        <span class="difficulty">
-
-            ${question.difficulty}
-
-        </span>
-
-
-        <div class="question">
-
-            ${question.question}
-
-        </div>
-
-
-        ${
-            question.code
-                ?
-                `
-                    <pre>
-${escapeHtml(question.code)}
-                    </pre>
-                `
-                :
-                ""
+    // Função auxiliar para embaralhar (Fisher-Yates)
+    function embaralharArray(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
         }
+        return arr;
+    }
 
+    // 2. Ação do botão Iniciar
+    if (startBtn && quiz && typeof questions !== 'undefined') {
+        startBtn.addEventListener("click", () => {
+            const selectedArea = areaSelect ? areaSelect.value : "Todas";
+            const selectedDiff = difficultySelect ? difficultySelect.value : "Todas";
 
-        <div class="options">
+            // Filtra as questões pelo tópico e dificuldade selecionados
+            let filtradas = questions.filter(q => {
+                const matchArea = selectedArea === "Todas" || q.area === selectedArea;
+                const matchDiff = selectedDiff === "Todas" || q.difficulty === selectedDiff;
+                return matchArea && matchDiff;
+            });
 
-            ${
-
-
-                question.options
-                    .map(
-                        (
-                            option,
-                            index
-                        ) => `
-
-                            <div
-                                class="option"
-                                data-letter="${String.fromCharCode(
-                                    65 + index
-                                )}"
-                            >
-
-                                ${option}
-
-                            </div>
-
-                        `
-                    )
-                    .join("")
-
-
+            if (filtradas.length === 0) {
+                quiz.innerHTML = `<div class="welcome"><h3>Nenhuma questão encontrada</h3><p>Tente mudar o filtro.</p></div>`;
+                return;
             }
 
-        </div>
+            // Embaralha todas as do tópico primeiro
+            filtradas = embaralharArray(filtradas);
 
+            // Garante o lote de até 40 questões por tópico/sessão
+            const LIMITE_QUESTOES = 40;
+            if (filtradas.length > LIMITE_QUESTOES) {
+                filtradas = filtradas.slice(0, LIMITE_QUESTOES);
+            }
 
-        <div class="correction-area">
+            let currentIndex = 0;
+            let acertos = 0;
+            let erros = 0;
 
-            <button
-                id="correctBtn"
-                class="correct-btn"
-                disabled
-            >
-
-                ✓ Corrigir questão
-
-            </button>
-
-        </div>
-
-
-        <div
-            id="feedback"
-            class="feedback"
-        >
-
-            <h3
-                id="feedbackTitle"
-            ></h3>
-
-
-            <div
-                id="feedbackText"
-                class="explanation"
-            ></div>
-
-        </div>
-
-
-        <div class="navigation">
-
-            <button
-                id="previousBtn"
-            >
-
-                ◀ Anterior
-
-            </button>
-
-
-            <button
-                id="nextBtn"
-                disabled
-            >
-
-                Próxima ▶
-
-            </button>
-
-        </div>
-
-    `;
-
-
-    /*
-        CONFIGURA AS ALTERNATIVAS
-    */
-
-    document
-        .querySelectorAll(
-            ".option"
-        )
-        .forEach(option => {
-
-            option.addEventListener(
-                "click",
-                function() {
-
-                    selectOption(
-                        this
-                    );
-
+            function atualizarPlacar() {
+                if (totalQuestionsEl) totalQuestionsEl.textContent = filtradas.length;
+                if (answeredEl) answeredEl.textContent = currentIndex;
+                if (correctEl) correctEl.textContent = acertos;
+                if (wrongEl) wrongEl.textContent = erros;
+                if (accuracyEl) {
+                    const totalRespondidas = acertos + erros;
+                    const taxa = totalRespondidas > 0 ? Math.round((acertos / totalRespondidas) * 100) : 0;
+                    accuracyEl.textContent = taxa + "%";
                 }
-            );
-
-        });
-
-
-    /*
-        BOTÃO CORRIGIR
-    */
-
-    document
-        .getElementById(
-            "correctBtn"
-        )
-        .addEventListener(
-            "click",
-            function() {
-
-                correctQuestion(
-                    question
-                );
-
-            }
-        );
-
-
-    /*
-        BOTÃO PRÓXIMA
-    */
-
-    document
-        .getElementById(
-            "nextBtn"
-        )
-        .addEventListener(
-            "click",
-            nextQuestion
-        );
-
-
-    /*
-        BOTÃO ANTERIOR
-    */
-
-    document
-        .getElementById(
-            "previousBtn"
-        )
-        .addEventListener(
-            "click",
-            previousQuestion
-        );
-
-}
-
-
-/* =========================================
-   SELECIONAR ALTERNATIVA
-========================================= */
-
-function selectOption(element) {
-
-    /*
-        Se já corrigiu,
-        não permite alterar.
-    */
-
-    if (answeredQuestion) {
-
-        return;
-
-    }
-
-
-    /*
-        Remove seleção anterior
-    */
-
-    document
-        .querySelectorAll(
-            ".option"
-        )
-        .forEach(option => {
-
-            option.classList.remove(
-                "selected"
-            );
-
-        });
-
-
-    /*
-        Destaca a alternativa
-    */
-
-    element.classList.add(
-        "selected"
-    );
-
-
-    /*
-        Guarda a resposta
-    */
-
-    selectedAnswer =
-        element.dataset.letter;
-
-
-    /*
-        Habilita CORRIGIR
-    */
-
-    const correctButton =
-        document.getElementById(
-            "correctBtn"
-        );
-
-
-    if (correctButton) {
-
-        correctButton.disabled =
-            false;
-
-    }
-
-}
-
-
-/* =========================================
-   CORRIGIR
-========================================= */
-
-function correctQuestion(
-    question
-) {
-
-    /*
-        Impede segunda correção
-    */
-
-    if (answeredQuestion) {
-
-        return;
-
-    }
-
-
-    /*
-        Verifica seleção
-    */
-
-    if (!selectedAnswer) {
-
-        alert(
-            "Selecione uma alternativa antes de corrigir."
-        );
-
-        return;
-
-    }
-
-
-    /*
-        Marca como corrigida
-    */
-
-    answeredQuestion = true;
-
-
-    /*
-        Pega alternativas
-    */
-
-    const options =
-        document.querySelectorAll(
-            ".option"
-        );
-
-
-    /*
-        Mostra correta
-        e errada
-    */
-
-    options.forEach(option => {
-
-        const letter =
-            option.dataset.letter;
-
-
-        /*
-            Resposta correta
-        */
-
-        if (
-            letter ===
-            question.answer
-        ) {
-
-            option.classList.add(
-                "correct"
-            );
-
-        }
-
-
-        /*
-            Resposta escolhida
-            mas incorreta
-        */
-
-        if (
-            letter ===
-                selectedAnswer
-            &&
-            selectedAnswer !==
-                question.answer
-        ) {
-
-            option.classList.add(
-                "wrong"
-            );
-
-        }
-
-    });
-
-
-    /*
-        Atualiza estatísticas
-    */
-
-    stats.answered++;
-
-
-    /*
-        Verifica acerto
-    */
-
-    const feedback =
-        document.getElementById(
-            "feedback"
-        );
-
-
-    const feedbackTitle =
-        document.getElementById(
-            "feedbackTitle"
-        );
-
-
-    const feedbackText =
-        document.getElementById(
-            "feedbackText"
-        );
-
-
-    if (
-        selectedAnswer ===
-        question.answer
-    ) {
-
-        stats.correct++;
-
-
-        feedback.className =
-            "feedback ok";
-
-
-        feedbackTitle.textContent =
-            "✓ Resposta correta!";
-
-    }
-
-    else {
-
-        stats.wrong++;
-
-
-        feedback.className =
-            "feedback error";
-
-
-        feedbackTitle.textContent =
-            "✗ Resposta incorreta";
-
-    }
-
-
-    /*
-        Explicação
-    */
-
-    feedbackText.innerHTML = `
-
-        <strong>
-            Gabarito:
-        </strong>
-
-        ${question.answer}
-
-        <br><br>
-
-
-        <strong>
-            Explicação:
-        </strong>
-
-        <br>
-
-        ${question.explanation}
-
-        <br><br>
-
-
-        <strong>
-            ⚠ Pegadinha da questão:
-        </strong>
-
-        <br>
-
-        ${question.trap}
-
-    `;
-
-
-    /*
-        Desabilita corrigir
-    */
-
-    document
-        .getElementById(
-            "correctBtn"
-        )
-        .disabled = true;
-
-
-    /*
-        Libera próxima
-    */
-
-    document
-        .getElementById(
-            "nextBtn"
-        )
-        .disabled = false;
-
-
-    /*
-        Atualiza painel
-    */
-
-    updateStats();
-
-}
-
-
-/* =========================================
-   PRÓXIMA QUESTÃO
-========================================= */
-
-function nextQuestion() {
-
-    /*
-        Não deixa avançar sem corrigir
-    */
-
-    if (!answeredQuestion) {
-
-        alert(
-            "Selecione uma alternativa e clique em 'Corrigir questão' antes de continuar."
-        );
-
-        return;
-
-    }
-
-
-    /*
-        Ainda existem questões
-    */
-
-    if (
-        currentIndex <
-        currentQuestions.length - 1
-    ) {
-
-        currentIndex++;
-
-        renderQuestion();
-
-    }
-
-    else {
-
-        showFinished();
-
-    }
-
-}
-
-
-/* =========================================
-   QUESTÃO ANTERIOR
-========================================= */
-
-function previousQuestion() {
-
-    if (
-        currentIndex > 0
-    ) {
-
-        currentIndex--;
-
-        renderQuestion();
-
-    }
-
-}
-
-
-/* =========================================
-   FINAL DO SIMULADO
-========================================= */
-
-function showFinished() {
-
-    const total =
-        currentQuestions.length;
-
-
-    /*
-        Calcula apenas o resultado
-        deste simulado
-    */
-
-    let simulationCorrect = 0;
-
-
-    /*
-        Não temos histórico individual
-        nesta versão, então mostramos
-        o painel geral.
-    */
-
-    const quiz =
-        document.getElementById(
-            "quiz"
-        );
-
-
-    quiz.innerHTML = `
-
-        <div class="welcome">
-
-            <h2>
-                🎯 Simulado concluído!
-            </h2>
-
-
-            <p>
-                Você concluiu
-                ${total}
-                questões.
-            </p>
-
-
-            <div class="resultado-final">
-
-                <h3>
-                    Resultado geral
-                </h3>
-
-
-                <p>
-                    Questões respondidas:
-                    <strong>
-                        ${stats.answered}
-                    </strong>
-                </p>
-
-
-                <p>
-                    Acertos:
-                    <strong>
-                        ${stats.correct}
-                    </strong>
-                </p>
-
-
-                <p>
-                    Erros:
-                    <strong>
-                        ${stats.wrong}
-                    </strong>
-                </p>
-
-
-                <p>
-                    Aproveitamento:
-                    <strong>
-                        ${
-                            stats.answered === 0
-                                ? 0
-                                :
-                                (
-                                    stats.correct /
-                                    stats.answered *
-                                    100
-                                ).toFixed(1)
-                        }%
-                    </strong>
-                </p>
-
-            </div>
-
-
-            <button
-                id="restartButton"
-                class="btn-primary"
-            >
-
-                Fazer novamente
-
-            </button>
-
-        </div>
-
-    `;
-
-
-    document
-        .getElementById(
-            "restartButton"
-        )
-        .addEventListener(
-            "click",
-            startQuiz
-        );
-
-}
-
-
-/* =========================================
-   ESCAPAR HTML
-========================================= */
-
-function escapeHtml(text) {
-
-    if (!text) {
-
-        return "";
-
-    }
-
-
-    return text
-
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-
-        .replaceAll(
-            ">",
-            "&gt;"
-        );
-
-}
-
-
-/* =========================================
-   EMBARALHAR BANCO
-========================================= */
-
-document
-    .getElementById(
-        "shuffleBtn"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            shuffle(
-                questions
-            );
-
-
-            alert(
-                "Banco de questões embaralhado com sucesso!"
-            );
-
-        }
-    );
-
-
-/* =========================================
-   INICIAR
-========================================= */
-
-document
-    .getElementById(
-        "startBtn"
-    )
-    .addEventListener(
-        "click",
-        startQuiz
-    );
-
-
-document
-    .getElementById(
-        "welcomeStart"
-    )
-    .addEventListener(
-        "click",
-        startQuiz
-    );
-
-
-/* =========================================
-   ZERAR ESTATÍSTICAS
-========================================= */
-
-document
-    .getElementById(
-        "resetBtn"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            const confirmReset =
-                confirm(
-                    "Deseja realmente zerar todas as estatísticas?"
-                );
-
-
-            if (
-                confirmReset
-            ) {
-
-                stats = {
-
-                    answered: 0,
-
-                    correct: 0,
-
-                    wrong: 0
-
-                };
-
-
-                updateStats();
-
             }
 
-        }
-    );
+            function mostrarQuestao() {
+                if (currentIndex >= filtradas.length) {
+                    quiz.innerHTML = `
+                        <div class="welcome" style="padding: 20px; background: #fff; border-radius: 8px; text-align: center;">
+                            <h2>Quiz Finalizado! 🎉</h2>
+                            <p>Você acertou ${acertos} de ${filtradas.length} questões deste tópico.</p>
+                            <button id="reiniciarBtn" class="start-btn" style="margin-top: 15px; padding: 10px 20px; cursor: pointer; background-color: #0056b3; color: white; border: none; border-radius: 4px;">Tentar Novamente</button>
+                        </div>
+                    `;
+                    document.getElementById("reiniciarBtn").addEventListener("click", () => {
+                        quiz.innerHTML = "";
+                        acertos = 0;
+                        erros = 0;
+                        currentIndex = 0;
+                        atualizarPlacar();
+                    });
+                    return;
+                }
 
+                const q = filtradas[currentIndex];
+                const opcoes = Array.isArray(q.options) ? q.options : [];
+                let respostaSelecionada = null;
 
-/* =========================================
-   INICIALIZAÇÃO
-========================================= */
+                quiz.innerHTML = `
+                    <div class="question-card" style="padding: 25px; background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <span style="font-size: 0.85rem; color: #555;">Questão ${currentIndex + 1} de ${filtradas.length} | Tópico: <strong>${q.area}</strong> | Nível: <strong>${q.difficulty}</strong></span>
+                        
+                        <p style="font-size: 1.2rem; margin: 18px 0; font-weight: 600; color: #111; line-height: 1.5;"><strong>${q.question}</strong></p>
+                        
+                        ${q.code ? `<pre style="background: #ffffff; padding: 15px; border-radius: 6px; overflow-x: auto; border: 2px solid #cbd5e1; font-family: monospace; font-size: 1.1rem; color: #0f172a; font-weight: 600; line-height: 1.6;"><code>${q.code}</code></pre>` : ''}
+                        
+                        <div class="options-container" style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+                            ${opcoes.map((op) => {
+                                const letra = String(op).trim().charAt(0);
+                                return `<button class="opt-btn" data-letra="${letra}" style="padding: 12px 18px; text-align: left; cursor: pointer; border: 1px solid #ccc; border-radius: 6px; background: #f9f9f9; color: #212529; font-size: 1rem; font-weight: 500;">${op}</button>`;
+                            }).join('')}
+                        </div>
 
-loadAreas();
+                        <div style="margin-top: 20px; display: flex; gap: 10px;">
+                            <button id="corrigirBtn" style="padding: 10px 20px; display: none; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600;">Corrigir</button>
+                            <button id="nextBtn" style="padding: 10px 20px; display: none; cursor: pointer; background-color: #28a745; color: white; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600;">Próxima Questão</button>
+                        </div>
 
-updateStats();
+                        <div id="feedback" style="margin-top: 20px; font-weight: 600; font-size: 1.1rem;"></div>
+                    </div>
+                `;
+
+                atualizarPlacar();
+
+                const optButtons = quiz.querySelectorAll(".opt-btn");
+                const corrigirBtn = document.getElementById("corrigirBtn");
+                const feedbackEl = document.getElementById("feedback");
+                const nextBtn = document.getElementById("nextBtn");
+
+                optButtons.forEach(btn => {
+                    btn.addEventListener("click", (e) => {
+                        optButtons.forEach(b => {
+                            b.style.background = "#f9f9f9";
+                            b.style.borderColor = "#ccc";
+                        });
+                        e.target.style.background = "#e2e6ea";
+                        e.target.style.borderColor = "#007bff";
+                        respostaSelecionada = e.target.getAttribute("data-letra");
+                        corrigirBtn.style.display = "inline-block";
+                    });
+                });
+
+                corrigirBtn.addEventListener("click", () => {
+                    if (!respostaSelecionada) return;
+
+                    optButtons.forEach(b => b.disabled = true);
+                    corrigirBtn.style.display = "none";
+
+                    const correta = q.answer ? q.answer.trim() : "";
+
+                    if (respostaSelecionada === correta) {
+                        acertos++;
+                        feedbackEl.innerHTML = `<span style="color: #155724;">Correto! 🎉 ${q.explanation || ""}</span>`;
+                        optButtons.forEach(b => {
+                            if (b.getAttribute("data-letra") === correta) {
+                                b.style.background = "#d4edda";
+                                b.style.borderColor = "#c3e6cb";
+                                b.style.color = "#155724";
+                            }
+                        });
+                    } else {
+                        erros++;
+                        feedbackEl.innerHTML = `<span style="color: #721c24;">Incorreto. ❌ A resposta certa era a letra ${correta}. ${q.explanation || ""}</span>`;
+                        optButtons.forEach(b => {
+                            if (b.getAttribute("data-letra") === correta) {
+                                b.style.background = "#d4edda";
+                                b.style.borderColor = "#c3e6cb";
+                                b.style.color = "#155724";
+                            } else if (b.getAttribute("data-letra") === respostaSelecionada) {
+                                b.style.background = "#f8d7da";
+                                b.style.borderColor = "#f5c6cb";
+                                b.style.color = "#721c24";
+                            }
+                        });
+                    }
+
+                    atualizarPlacar();
+                    nextBtn.style.display = "inline-block";
+                });
+
+                if (shuffleBtn) {
+                    shuffleBtn.onclick = () => {
+                        filtradas = embaralharArray(filtradas);
+                        currentIndex = 0;
+                        acertos = 0;
+                        erros = 0;
+                        alert("Questões deste tópico foram re-embaralhadas e reiniciadas!");
+                        mostrarQuestao();
+                    };
+                }
+
+                if (resetStatsBtn) {
+                    resetStatsBtn.onclick = () => {
+                        acertos = 0;
+                        erros = 0;
+                        currentIndex = 0;
+                        atualizarPlacar();
+                        mostrarQuestao();
+                        alert("Estatísticas zeradas e tópico reiniciado do início!");
+                    };
+                }
+
+                nextBtn.addEventListener("click", () => {
+                    currentIndex++;
+                    mostrarQuestao();
+                });
+            }
+
+            mostrarQuestao();
+        });
+    }
+});
