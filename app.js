@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const areaSelect = document.getElementById("areaSelect");
     const difficultySelect = document.getElementById("difficultySelect");
+    const modeSelect = document.getElementById("modeSelect");
     const startBtn = document.getElementById("startBtn");
-    const shuffleBtn = document.getElementById("Embaralhar") || document.getElementById("shuffleBtn");
-    const resetStatsBtn = document.getElementById("Zerar Estatísticas") || document.querySelector("button[onclick*='Zerar']") || document.getElementById("resetBtn") || document.querySelector(".btn-danger, .danger, [id*='zerar' i]");
+    const shuffleBtn = document.getElementById("shuffleBtn");
+    const resetStatsBtn = document.getElementById("resetBtn");
     const quiz = document.getElementById("quiz");
 
     const totalQuestionsEl = document.getElementById("totalQuestions");
@@ -41,6 +42,23 @@ document.addEventListener("DOMContentLoaded", () => {
         startBtn.addEventListener("click", () => {
             const selectedArea = areaSelect ? areaSelect.value : "Todas";
             const selectedDiff = difficultySelect ? difficultySelect.value : "Todas";
+            
+            // Pega o texto ou o valor selecionado no modo e extrai números (ex: "simulado20" ou "Simulado - 20 questões" vira 20)
+            let limiteDesejado = null;
+            if (modeSelect) {
+                const textoModo = modeSelect.options[modeSelect.selectedIndex].text;
+                const valorModo = modeSelect.value;
+                
+                // Tenta achar números no value ou no texto da opção selecionada
+                const matchValor = valorModo.match(/\d+/);
+                const matchTexto = textoModo.match(/\d+/);
+                
+                if (matchValor) {
+                    limiteDesejado = parseInt(matchValor[0]);
+                } else if (matchTexto) {
+                    limiteDesejado = parseInt(matchTexto[0]);
+                }
+            }
 
             // Filtra as questões pelo tópico e dificuldade selecionados
             let filtradas = questions.filter(q => {
@@ -54,13 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Embaralha todas as do tópico primeiro
+            // Embaralha e aplica o limite se houver um número válido identificado
             filtradas = embaralharArray(filtradas);
-
-            // Garante o lote de até 40 questões por tópico/sessão
-            const LIMITE_QUESTOES = 40;
-            if (filtradas.length > LIMITE_QUESTOES) {
-                filtradas = filtradas.slice(0, LIMITE_QUESTOES);
+            if (limiteDesejado && !isNaN(limiteDesejado) && filtradas.length > limiteDesejado) {
+                filtradas = filtradas.slice(0, limiteDesejado);
             }
 
             let currentIndex = 0;
@@ -83,8 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (currentIndex >= filtradas.length) {
                     quiz.innerHTML = `
                         <div class="welcome" style="padding: 20px; background: #fff; border-radius: 8px; text-align: center;">
-                            <h2>Quiz Finalizado! 🎉</h2>
-                            <p>Você acertou ${acertos} de ${filtradas.length} questões deste tópico.</p>
+                            <h2>Simulado Finalizado! 🎉</h2>
+                            <p>Você acertou ${acertos} de ${filtradas.length} questões.</p>
                             <button id="reiniciarBtn" class="start-btn" style="margin-top: 15px; padding: 10px 20px; cursor: pointer; background-color: #0056b3; color: white; border: none; border-radius: 4px;">Tentar Novamente</button>
                         </div>
                     `;
@@ -190,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         currentIndex = 0;
                         acertos = 0;
                         erros = 0;
-                        alert("Questões deste tópico foram re-embaralhadas e reiniciadas!");
+                        alert("Questões embaralhadas e reiniciadas!");
                         mostrarQuestao();
                     };
                 }
@@ -202,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         currentIndex = 0;
                         atualizarPlacar();
                         mostrarQuestao();
-                        alert("Estatísticas zeradas e tópico reiniciado do início!");
+                        alert("Estatísticas zeradas e teste reiniciado do início!");
                     };
                 }
 
