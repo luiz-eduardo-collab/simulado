@@ -1920,6 +1920,97 @@ const dartFlutter = [
         a: "B",
         e: "O Flutter utiliza uma abordagem de renderização própria (cross-platform non-native components), desenhando os elementos usando seu próprio motor gráfico, o que garante alta performance e consistência visual entre diferentes plataformas.",
         t: "Isso explica por que um botão no Flutter se parece exatamente igual no iOS e no Android por padrão."
+    },
+    {
+        q: "Qual método é obrigatório em qualquer classe que herda de StatelessWidget ou StatefulWidget em Flutter?",
+        c: "",
+        o: [
+            "A) initState()",
+            "B) render()",
+            "C) build()",
+            "D) create()"
+        ],
+        a: "C",
+        e: "O método build(BuildContext context) é obrigatório e descreve a parte da interface do usuário representada por este widget.",
+        t: "O método build é chamado sempre que o widget precisa ser renderizado novamente."
+    },
+    {
+        q: "O que o operador de segurança contra nulos (null-safety) '??' faz em Dart?",
+        c: "",
+        o: [
+            "A) Lança uma exceção se a variável for nula.",
+            "B) Retorna o operando à esquerda se ele não for nulo; caso contrário, retorna o operando à direita.",
+            "C) Força o compilador a ignorar erros de nulidade.",
+            "D) Converte um tipo inteiro para string de forma segura."
+        ],
+        a: "B",
+        e: "O operador de coalescência nula (??) retorna a expressão à esquerda se ela não for nula; se for, avalia e retorna a expressão à direita.",
+        t: "É ideal para definir valores padrão de forma concisa."
+    },
+    {
+        q: "Qual componente do Flutter é mais indicado para criar uma lista longa e dinâmica de itens de forma eficiente, carregando apenas os elementos visíveis na tela sob demanda?",
+        c: "",
+        o: [
+            "A) Column",
+            "B) ListView",
+            "C) ListView.builder",
+            "D) Stack"
+        ],
+        a: "C",
+        e: "O ListView.builder constrói os itens sob demanda, conforme eles entram na área visível da tela, otimizando o uso de memória em listas extensas.",
+        t: "Nunca utilize Column para listas grandes com muitos elementos para evitar problemas de desempenho."
+    },
+    {
+        q: "O que são Isolate em Dart?",
+        c: "",
+        o: [
+            "A) Componentes visuais isolados que não afetam o layout principal.",
+            "B) Threads independentes que possuem sua própria memória heap, permitindo processamento concorrente sem bloquear a thread principal (UI thread).",
+            "C) Funções assíncronas baseadas em Future e async/await.",
+            "D) Bibliotecas de terceiros para gerenciar requisições HTTP seguras."
+        ],
+        a: "B",
+        e: "Em Dart, o código roda na thread principal (event loop). Para tarefas pesadas de CPU, usam-se Isolates, que rodam em paralelo com memórias separadas.",
+        t: "Isolates ajudam a manter a interface fluida mesmo durante cálculos complexos."
+    },
+    {
+        q: "Como é chamada a linguagem de programação principal utilizada para desenvolver aplicativos em Flutter?",
+        c: "",
+        o: [
+            "A) JavaScript",
+            "B) TypeScript",
+            "C) Kotlin",
+            "D) Dart"
+        ],
+        a: "D",
+        e: "Flutter utiliza a linguagem Dart, desenvolvida pelo Google, que suporta compilação JIT (Just-In-Time) para desenvolvimento rápido e AOT (Ahead-Of-Time) para produção.",
+        t: "Dart possui tipagem forte e suporta orientação a objetos."
+    },
+    {
+        q: "Qual é a utilidade do arquivo pubspec.yaml em um projeto Flutter?",
+        c: "",
+        o: [
+            "A) Configurar as regras de estilização CSS do aplicativo.",
+            "B) Gerenciar dependências do projeto, fontes, ativos (imagens) e metadados gerais.",
+            "C) Compilar o código nativo para iOS e Android simultaneamente.",
+            "D) Executar os testes unitários automatizados."
+        ],
+        a: "B",
+        e: "O arquivo pubspec.yaml é o manifesto do projeto, onde declaramos pacotes externos, fontes locais e assets de imagens.",
+        t: "Qualquer alteração de dependência exige a execução do comando pub get."
+    },
+    {
+        q: "No contexto de programação assíncrona em Dart, qual é a diferença essencial entre um Future e um Stream?",
+        c: "",
+        o: [
+            "A) Future lida com um único valor assíncrono futuro, enquanto Stream lida com uma sequência de eventos ou múltiplos valores ao longo do tempo.",
+            "B) Future roda em uma thread separada, enquanto Stream roda na thread principal.",
+            "C) Stream é síncrono e Future é assíncrono.",
+            "D) Não há diferença prática; ambos são sinônimos para Promises."
+        ],
+        a: "A",
+        e: "Um Future representa a computação de um único valor que estará disponível no futuro. Um Stream é como uma tubulação de dados que pode emitir múltiplos eventos ao longo do tempo.",
+        t: "Streams são amplamente utilizados para manipulação de dados em tempo real."
     }
 ];
 
@@ -1927,4 +2018,4 @@ dartFlutter.forEach(x => {
     addQuestion("Dart e Flutter", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
 
-console.log("Total de questões:",questions.length);
+console.log("Total de questões:", questions.length);
