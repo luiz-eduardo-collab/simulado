@@ -1631,98 +1631,280 @@ designPatterns.forEach(x => {
 });
 
 /* =====================================================
-   DDD (Domain-Driven Design)
+   DOMAIN-DRIVEN DESIGN (DDD)
 ===================================================== */
 
-const ddd = [
+const dddQuest = [
     {
-        q: "Qual conceito fundamental do Domain-Driven Design (DDD) representa um objeto que não possui identidade conceitual própria e é definido inteiramente por seus atributos?",
-        c: "",
+        q: "O que é a 'Linguagem Ubíqua' (Ubiquitous Language) no contexto do Domain-Driven Design (DDD)?",
+        c: "Linguagem Ubíqua",
         o: [
-            "A) Entity (Entidade)",
-            "B) Value Object (Objeto de Valor)",
-            "C) Aggregate Root",
-            "D) Repository"
+            "A) Uma linguagem de programação exclusiva desenvolvida para implementar regras de negócio complexas.",
+            "B) Uma linguagem rigorosamente compartilhada e comum entre desenvolvedores e especialistas do domínio, utilizada tanto nas conversas quanto no código-fonte.",
+            "C) O padrão internacional de documentação em diagramas UML exigido para sistemas corporativos.",
+            "D) Um framework de tradução automática de código legado para microsserviços modernos."
         ],
         a: "B",
-        e: "Os Value Objects são imutáveis e definidos pelos seus valores (como um endereço ou CPF). Se dois objetos têm os mesmos valores, eles são considerados iguais.",
-        t: "Entidades possuem identidade única que persiste ao longo do tempo, independentemente de mudanças em seus atributos."
+        e: "A Linguagem Ubíqua elimina a barreira de tradução entre negócios e tecnologia, garantindo que os termos do domínio apareçam diretamente nas classes, métodos e variáveis do software.",
+        t: "Se os especialistas de negócio chamam o conceito de 'Apólice', o código deve usar `Apolice`, e não termos genéricos como `Registro`."
     },
     {
-        q: "No contexto de DDD, o que define uma 'Aggregate' (Agregado) e sua 'Aggregate Root' (Raiz de Agregado)?",
-        c: "",
+        q: "Qual é a principal diferença conceitual entre uma Entidade (Entity) e um Objeto de Valor (Value Object) no DDD?",
+        c: "Entidades vs Objetos de Valor",
         o: [
-            "A) Um grupo de objetos associados tratados como uma unidade para mudanças de dados, onde apenas a raiz é acessível externamente.",
-            "B) Uma tabela de banco de dados que centraliza todas as chaves estrangeiras de um microsserviço.",
-            "C) Um serviço de infraestrutura responsável por mapear objetos para tabelas relacionais.",
-            "D) Um padrão de arquitetura focado exclusivamente na performance de consultas SQL complexas."
+            "A) As entidades possuem identidade própria e única que persiste ao longo das mudanças de atributos, enquanto os objetos de valor são definidos exclusivamente pelos seus valores e são imutáveis.",
+            "B) Os objetos de valor salvam dados no banco relacional, e as entidades ficam apenas na memória RAM.",
+            "C) As entidades não podem conter regras de negócio, função exclusiva dos objetos de valor.",
+            "D) Não há diferença arquitetural; ambos são sinônimos para classes de domínio."
         ],
         a: "A",
-        e: "A Aggregate Root é a entidade principal do agregado que controla o acesso e garante a consistência das regras de negócio para todo o limite do agregado.",
-        t: "Regra de ouro do DDD: objetos externos só podem referenciar a Aggregate Root."
+        e: "Uma Entidade (ex: `Cliente` com um ID único) continua sendo a mesma mesmo se o endereço mudar. Um Objeto de Valor (ex: `Endereco` ou `Dinheiro`) é comparado pelo conteúdo; se alterar um centavo, ele se torna outro objeto de valor.",
+        t: "Sempre que possível, prefira modelar conceitos como Objetos de Valor pela facilidade de manutenção e imutabilidade."
     },
     {
-        q: "Qual é o principal objetivo da Linguagem Ubíqua (Ubiquitous Language) no Domain-Driven Design?",
-        c: "",
+        q: "O que define um 'Bounded Context' (Contexto Delimitado) e qual é a sua importância na arquitetura?",
+        c: "Contexto Delimitado",
         o: [
-            "A) Traduzir automaticamente o código fonte de Java para C# sem perda de desempenho.",
-            "B) Estabelecer um vocabulário comum e rigoroso compartilhado entre desenvolvedores e especialistas do domínio.",
-            "C) Documentar o sistema utilizando termos técnicos avançados de infraestrutura e redes.",
-            "D) Criar diagramas UML estritos que substituem a necessidade de testes automatizados."
+            "A) O limite físico de memória RAM que um microsserviço pode consumir em produção.",
+            "B) A demarcação explícita dentro da qual um modelo de domínio se aplica, garantindo que termos e conceitos tenham um significado preciso e isolado.",
+            "C) A restrição de segurança que impede acessos externos não autorizados via token JWT.",
+            "D) O tempo limite de resposta (timeout) para requisições HTTP entre diferentes servidores."
         ],
         a: "B",
-        e: "A Linguagem Ubíqua deve ser usada em todos os lugares do projeto — nas conversas, na documentação e diretamente no código (classes, métodos e variáveis).",
-        t: "Evita o desalinhamento entre o que o negócio precisa e o que o software implementa."
+        e: "Em grandes sistemas, um termo como 'Produto' significa coisas totalmente diferentes para o setor de Vendas e para o setor de Logística. O Bounded Context isola esses modelos para que não haja contaminação conceitual.",
+        t: "Muitas vezes, cada Bounded Context corresponde diretamente a um microsserviço independente."
+    },
+    {
+        q: "No padrão de projeto tático do DDD, o que é um 'Aggregate' (Agregado) e uma 'Aggregate Root' (Raiz do Agregado)?",
+        c: "Agregados",
+        o: [
+            "A) Um banco de dados NoSQL utilizado para armazenar logs de auditoria em lote.",
+            "B) Um agrupamento de entidades e objetos de valor associados tratado como uma unidade única para mudanças de dados, sendo que a Raiz do Agregado é a única porta de entrada externa para acessá-los.",
+            "C) Uma biblioteca de relatórios estatísticos em tempo de execução.",
+            "D) O diagrama que une todas as tabelas do sistema em formato relacional."
+        ],
+        a: "B",
+        e: "O Agregado define limites de consistência transacional. Alterações em qualquer elemento interno devem passar obrigatoriamente pela Raiz do Agregado para garantir a integridade das regras de negócio.",
+        t: "Manter os agregados pequenos reduz conflitos de concorrência em sistemas distribuídos."
+    },
+    {
+        q: "Quando devemos utilizar um 'Domain Service' (Serviço de Domínio) no DDD?",
+        c: "Serviços de Domínio",
+        o: [
+            "A) Para realizar consultas SQL de infraestrutura diretamente na tabela de usuários.",
+            "B) Quando uma operação de negócio envolve múltiplos agregados ou conceitos que não pertencem de forma natural a nenhuma entidade ou objeto de valor isolado.",
+            "C) Para substituir completamente os controladores REST de uma API web.",
+            "D) Para gerenciar o roteamento de telas no frontend."
+        ],
+        a: "B",
+        e: "Embora a maioria da lógica de negócio deva residir dentro das Entidades e Objetos de Valor, algumas regras coordenam vários objetos diferentes (ex: uma transferência bancária entre duas contas distintas). Nesses casos, usa-se um Serviço de Domínio.",
+        t: "Serviços de domínio não devem conter estado (stateless) e focam puramente em comportamento."
+    },
+    {
+        q: "Qual é a principal função de um Repositório (Repository) na arquitetura orientada ao domínio?",
+        c: "Repositórios",
+        o: [
+            "A) Executar scripts de migração de banco de dados (Flyway ou Liquibase).",
+            "B) Forçar o desacoplamento entre a camada de domínio e a persistência, simulando uma coleção em memória para encontrar, adicionar e remover agregados inteiros.",
+            "C) Substituir os testes unitários por simulações reais de disco rígido.",
+            "D) Criptografar senhas de usuários antes de salvar no SGBD."
+        ],
+        a: "B",
+        e: "O repositório isola o domínio dos detalhes de infraestrutura (como ORMs, SQL ou NoSQL). Ele deve operar sempre em nível de Agregados, e não de tabelas individuais.",
+        t: "Em DDD, criamos repositórios apenas para Raízes de Agregados."
+    },
+    {
+        q: "O que distingue o 'Design Estratégico' (Strategic Design) do 'Design Tático' (Tactical Design) no DDD?",
+        c: "Estratégico vs Tático",
+        o: [
+            "A) O estratégico foca na organização de grandes sistemas, contextos delimitados e relacionamentos entre equipes; o tático foca nos padrões de código de implementação interna (entidades, objetos de valor, repositórios).",
+            "B) O estratégico é usado apenas em projetos legados, e o tático é exclusivo para arquiteturas serverless.",
+            "C) O estratégico é responsabilidade exclusiva dos testadores (QA), enquanto o tático é feito pelo Product Owner.",
+            "D) Não há distinção conceitual; ambos tratam da mesma granularidade de código."
+        ],
+        a: "A",
+        e: "O Design Estratégico ajuda a enxergar o 'panorama geral' da empresa e dividir o domínio em partes gerenciáveis (Bounded Contexts, Context Mapping). O Design Tático entra no nível microscópico do código-fonte.",
+        t: "Muitos desenvolvedores aplicam padrões táticos sem usar o design estratégico, perdendo os maiores benefícios do DDD."
+    },
+    {
+        q: "Para que serve uma 'Anti-Corruption Layer' (Camada Anticorrupção - ACL) quando integramos sistemas?",
+        c: "Camada Anticorrupção",
+        o: [
+            "A) Para bloquear tentativas de invasão e ataques de injeção de SQL na API.",
+            "B) Para traduzir e isolar o modelo de domínio moderno de sistemas legados ou de terceiros mal estruturados, impedindo que conceitos externos 'sujem' o código limpo da aplicação.",
+            "C) Para auditar a folha de pagamento e evitar fraudes financeiras internas.",
+            "D) Para compactar pacotes de dados antes de enviar via protocolo gRPC."
+        ],
+        a: "B",
+        e: "A ACL atua como uma ponte tradutora entre dois subsistemas com modelos diferentes. Assim, se o sistema legado usa termos confusos, a camada os traduz para a Linguagem Ubíqua do seu domínio atual.",
+        t: "É um padrão essencial ao modernizar sistemas legados de forma incremental."
+    },
+    {
+        q: "Qual é o papel de um 'Domain Event' (Evento de Domínio) em uma arquitetura DDD?",
+        c: "Eventos de Domínio",
+        o: [
+            "A) Registrar erros de sintaxe e exceções de NullPointer no arquivo de log do servidor.",
+            "B) Representar formalmente algo importante que aconteceu no domínio do negócio (ex: 'PedidoPago' ou 'ClienteCadastrado'), permitindo comunicação assíncrona e reativa entre agregados ou contextos.",
+            "C) Agendar reinicializações automáticas do servidor de aplicações toda meia-noite.",
+            "D) Controlar cliques de mouse e eventos de interface do usuário no front-end."
+        ],
+        a: "B",
+        e: "Eventos de Domínio capturam efeitos colaterais de negócios de forma desacoplada. Um agregado dispara um evento, e outros componentes ou contextos podem escutá-lo para reagir sem acoplamento direto.",
+        t: "São a base fundamental para arquiteturas orientadas a eventos (Event-Driven Architecture) e padrões como CQRS."
+    },
+    {
+        q: "No contexto de criação de objetos complexos no DDD, quando devemos utilizar o padrão 'Factory' (Fábrica)?",
+        c: "Fábricas",
+        o: [
+            "A) Para fabricar componentes físicos de hardware em linhas de montagem industrial.",
+            "B) Para encapsular a lógica complexa de criação de Agregados ou Entidades, garantindo que o objeto nasça sempre em um estado válido e consistente, sem poluir o construtor padrão.",
+            "C) Para gerar conexões simultâneas com bancos de dados relacionais.",
+            "D) Para compilar o código Java/C# para código de máquina nativo."
+        ],
+        a: "B",
+        e: "Quando a construção de um agregado exige validações complexas, regras de negócio ou montagem de sub-objetos, delegar essa responsabilidade a uma Factory mantém o domínio limpo e coeso.",
+        t: "Ajuda a evitar a criação de objetos 'incompletos' ou inválidos na aplicação."
     }
 ];
 
-ddd.forEach(x => {
-    addQuestion("DDD", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
+dddQuest.forEach(x => {
+    addQuestion("Domain-Driven Design (DDD)", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
 
 /* =====================================================
-   SCRUM E XP (Extreme Programming)
+   SCRUM E EXTREME PROGRAMMING (XP)
 ===================================================== */
 
 const scrumXp = [
     {
-        q: "Qual cerimônia do Scrum é destinada a inspecionar o incremento gerado no final do ciclo e adaptar o Product Backlog se necessário, contando com a participação do Product Owner, do Time e de stakeholders?",
-        c: "",
+        q: "Qual é a principal responsabilidade do Product Owner (PO) no framework Scrum?",
+        c: "Papéis no Scrum",
         o: [
-            "A) Sprint Planning",
-            "B) Daily Scrum",
-            "C) Sprint Review",
-            "D) Sprint Retrospective"
-        ],
-        a: "C",
-        e: "A Sprint Review foca no produto: o time apresenta o que foi feito e avalia o incremento com os stakeholders.",
-        t: "Não confunda com a Sprint Retrospective, que é voltada para a inspeção do processo interno e das pessoas da equipe."
-    },
-    {
-        q: "No contexto de Extreme Programming (XP), qual prática de engenharia consiste em dois programadores trabalharem juntos em uma mesma estação de trabalho, onde um escreve o código e o outro revisa simultaneamente?",
-        c: "",
-        o: [
-            "A) Refatoração (Refactoring)",
-            "B) Programação em Par (Pair Programming)",
-            "C) Integração Contínua (Continuous Integration)",
-            "D) Desenvolvimento Orientado a Testes (TDD)"
+            "A) Garantir que o time siga rigorosamente os processos tradicionais de gerenciamento de projetos em cascata.",
+            "B) Representar os interesses dos stakeholders, gerenciar, detalhar e priorizar o Product Backlog (Fila do Produto).",
+            "C) Atuar como líder servente removendo impedimentos técnicos e facilitando os eventos diários.",
+            "D) Escrever e executar os testes automatizados de aceitação de código."
         ],
         a: "B",
-        e: "O Pair Programming melhora a qualidade do código, facilita a troca de conhecimento e reduz erros em tempo real.",
-        t: "Os papéis se alternam frequentemente entre quem digita (driver) e quem observa e pensa estrategicamente (navigator)."
+        e: "O Product Owner é o único dono do Product Backlog e responsável por maximizar o valor do produto, decidindo o que entra na fila e qual a ordem de prioridade com base no retorno de valor para o negócio.",
+        t: "O PO responde pelo 'quê' deve ser feito, enquanto o time de desenvolvimento decide o 'como'."
     },
     {
-        q: "Qual artefato do Scrum representa a lista ordenada de tudo o que é necessário no produto e serve como a única fonte de requisitos para as alterações a serem feitas?",
-        c: "",
+        q: "O que ocorre tipicamente durante a reunião de Sprint Retrospective (Retrospectiva da Sprint) no Scrum?",
+        c: "Eventos do Scrum",
         o: [
-            "A) Sprint Backlog",
-            "B) Product Backlog",
-            "C) Incremento",
-            "D) Burndown Chart"
+            "A) O time apresenta o incremento de software pronto para os clientes e stakeholders externos.",
+            "B) O time de desenvolvimento inspeciona a si próprio, avaliando pessoas, relacionamentos, processos e ferramentas, criando um plano de melhorias para a próxima Sprint.",
+            "C) O Scrum Master distribui as tarefas da semana seguinte para cada desenvolvedor.",
+            "D) O Product Owner cancela a Sprint caso as metas financeiras não tenham sido atingidas."
         ],
         a: "B",
-        e: "O Product Backlog é gerenciado exclusivamente pelo Product Owner e evolui constantemente para refletir as necessidades do produto.",
-        t: "O Sprint Backlog, por sua vez, é o subconjunto de itens selecionados para a sprint atual junto com o plano para entregá-los."
+        e: "A Retrospectiva é um evento focado em melhoria contínua interna do time, onde se discute o que funcionou bem, o que falhou e o que pode ser aprimorado no processo de trabalho.",
+        t: "Diferencia-se da Sprint Review, que foca na inspeção do produto entregue."
+    },
+    {
+        q: "No Extreme Programming (XP), o que caracteriza a prática de 'Programação em Par' (Pair Programming)?",
+        c: "Práticas do XP",
+        o: [
+            "A) Dois desenvolvedores trabalham juntos na mesma estação de trabalho, onde um escreve o código (piloto) e o outro revisa e pensa criticamente em tempo real (observador/copiloto), invertendo os papéis frequentemente.",
+            "B) Cada desenvolvedor trabalha em um branch separado e faz um merge ao final do dia.",
+            "C) Os desenvolvedores competem para ver quem entrega a mesma feature mais rápido.",
+            "D) A equipe se divide em duplas para realizar testes de carga em servidores remotos."
+        ],
+        a: "A",
+        e: "A programação em par melhora a qualidade do código, reduz a quantidade de defeitos de forma instantânea e promove a disseminação de conhecimento técnico entre os membros da equipe.",
+        t: "É uma das práticas mais icônicas e debatidas do desenvolvimento ágil."
+    },
+    {
+        q: "O que compõe o chamado 'Sprint Backlog' em um projeto Scrum?",
+        c: "Artefatos do Scrum",
+        o: [
+            "A) A lista completa de todos os requisitos desejados para o software ao longo de todo o ciclo de vida do produto.",
+            "B) O conjunto de itens do Product Backlog selecionados para a Sprint atual, juntamente com o plano de desenvolvimento necessário para entregar o incremento.",
+            "C) O relatório de desempenho financeiro apresentado aos investidores da empresa.",
+            "D) A lista de bugs críticos encontrados pelo setor de qualidade em produção."
+        ],
+        a: "B",
+        e: "O Sprint Backlog pertence exclusivamente ao time de desenvolvimento e detalha o trabalho que a equipe realizará para atingir a Meta da Sprint (Sprint Goal).",
+        t: "Ele é dinâmico e evolui ao longo da Sprint conforme o time descobre mais sobre o trabalho."
+    },
+    {
+        q: "Quais são os cinco valores fundamentais propostos pelo Extreme Programming (XP)?",
+        c: "Valores do XP",
+        o: [
+            "A) Custo, Escopo, Prazo, Qualidade e Hierarquia.",
+            "B) Comunicação, Simplicidade, Feedback, Coragem e Respeito.",
+            "C) Planejamento, Execução, Controle, Monitoramento e Encerramento.",
+            "D) Transparência, Inspeção, Adaptação, Velocidade e Previsibilidade."
+        ],
+        a: "B",
+        e: "Os cinco valores do XP guiam as atitudes e comportamentos da equipe técnica, criando um ambiente colaborativo e altamente adaptável a mudanças.",
+        t: "Esses valores sustentam as 12 práticas clássicas do XP."
+    },
+    {
+        q: "Qual melhor descreve o papel do Scrum Master em um projeto ágil?",
+        c: "Papéis no Scrum",
+        o: [
+            "A) Um gerente de projeto tradicional que cobra prazos, delega tarefas e controla horas trabalhadas.",
+            "B) Um líder servente (servant leader) que ajuda a remover impedimentos, protege a equipe de interferências externas e promove a adoção do Scrum.",
+            "C) O responsável técnico supremo pela arquitetura de código e banco de dados.",
+            "D) O representante oficial dos clientes que valida cada linha de código escrita."
+        ],
+        a: "B",
+        e: "O Scrum Master não manda na equipe; ele serve ao time, facilitando os eventos, garantindo que o Scrum seja compreendido e ajudando a eliminar bloqueios que atrapalham a produtividade.",
+        t: "Ele atua como um facilitador e guardião do processo ágil."
+    },
+    {
+        q: "No contexto do Extreme Programming (XP), qual é o objetivo da prática de Refatoração Contínua (Refactoring)?",
+        c: "Práticas do XP",
+        o: [
+            "A) Reescrever completamente o software do zero a cada seis meses para usar novas linguagens.",
+            "B) Melhorar a estrutura interna do código existente sem alterar o seu comportamento externo, mantendo-o limpo, legível e livre de dívidas técnicas.",
+            "C) Aumentar artificialmente o número de linhas de código para impressionar os gestores.",
+            "D) Traduzir comentários em inglês para o idioma nativo da equipe."
+        ],
+        a: "B",
+        e: "A refatoração constante evita o acúmulo de complexidade desnecessária (dívida técnica), tornando o sistema mais fácil de manter e estender ao longo do tempo.",
+        t: "No XP, refatorar é uma atividade diária e integrada ao desenvolvimento."
+    },
+    {
+        q: "O que significa a 'Definição de Pronto' (Definition of Done - DoD) no Scrum?",
+        c: "Conceitos do Scrum",
+        o: [
+            "A) O momento exato em que o cliente paga a fatura mensal do contrato de software.",
+            "B) Uma compreensão compartilhada e formal de todos os critérios de qualidade que um incremento de software deve atender para ser considerado completo e liberável.",
+            "C) A quantidade de horas semanais que os desenvolvedores passam na empresa.",
+            "D) A autorização dada pelo gerente para iniciar uma nova Sprint."
+        ],
+        a: "B",
+        e: "A DoD garante transparência e qualidade. Se um item do backlog não atende aos critérios da DoD (ex: código revisado, testes unitários passando, documentado), ele não pode ser considerado pronto nem entregue.",
+        t: "Diferencia-se da 'Definition of Ready' (DoR), que define quando um item está pronto para entrar na Sprint."
+    },
+    {
+        q: "O que significa o conceito de 'Timebox' aplicado aos eventos do Scrum?",
+        c: "Eventos do Scrum",
+        o: [
+            "A) Um cronograma flexível que pode ser estendido caso a reunião não termine.",
+            "B) Uma duração máxima fixa alocada para cada evento ou atividade, ajudando a focar, evitar reuniões longas e promover a pontualidade.",
+            "C) O prazo de entrega estipulado pelo contrato com o cliente final.",
+            "D) Uma ferramenta de controle de ponto dos funcionários."
+        ],
+        a: "B",
+        e: "Os eventos do Scrum (como a Daily de 15 minutos ou a Planning de até 8 horas para Sprints de um mês) possuem duração máxima estrita (Timebox) para otimizar o tempo e evitar desperdícios.",
+        t: "Uma vez esgotado o tempo de um evento timeboxed, ele é encerrado."
+    },
+    {
+        q: "Qual prática do Extreme Programming (XP) enfatiza a integração frequente de código várias vezes ao dia, combinada com testes automatizados?",
+        c: "Práticas do XP",
+        o: [
+            "A) Integração Contínua (Continuous Integration)",
+            "B) Cascata Estendida (Extended Waterfall)",
+            "C) Planejamento de Longo Prazo (Long-Term Planning)",
+            "D) Controle Manual de Mudanças (Change Control Board)"
+        ],
+        a: "A",
+        e: "A Integração Contínua no XP exige que os desenvolvedores integrem seu código ao repositório principal com alta frequência, rodando suítes de testes automatizados para detectar conflitos e bugs imediatamente.",
+        t: "Minimiza o pesadelo de integrar códigos divergentes após semanas de trabalho isolado."
     }
 ];
 
@@ -1733,148 +1915,421 @@ scrumXp.forEach(x => {
    TESTES DE SOFTWARE
 ===================================================== */
 
-const testes = [
+const testesSoftware = [
     {
-        q: "Qual nível de teste de software é responsável por verificar a integração entre diferentes módulos ou componentes do sistema para garantir que eles funcionem corretamente juntos?",
-        c: "",
+        q: "Qual é a principal diferença conceitual entre testes de caixa preta (black-box) e testes de caixa branca (white-box)?",
+        c: "Caixa Preta vs Caixa Branca",
         o: [
-            "A) Testes Unitários",
-            "B) Testes de Integração",
-            "C) Testes de Aceitação",
-            "D) Testes de Regressão"
+            "A) O teste de caixa preta é feito apenas em servidores de produção, enquanto o de caixa branca roda localmente.",
+            "B) O teste de caixa preta valida a funcionalidade externa e os requisitos do sistema sem conhecer o código interno, enquanto o teste de caixa branca examina a estrutura interna, lógica e caminhos do código-fonte.",
+            "C) O teste de caixa preta é totalmente automatizado e o de caixa branca é executado exclusivamente de forma manual.",
+            "D) Não há diferença prática; ambos utilizam os mesmos algoritmos de cobertura de código."
         ],
         a: "B",
-        e: "Os testes de integração focam nas interfaces e nas interações entre componentes integrados, identificando falhas na comunicação entre módulos.",
-        t: "A ordem clássica da pirâmide de testes vai de Unitários (base) até Aceitação/E2E (topo)."
+        e: "Nos testes de caixa preta (especificação), o testador avalia entradas e saídas baseando-se nos requisitos funcionais. Nos testes de caixa branca (estruturais), o testador conhece o código e escreve casos para cobrir ramificações, loops e linhas de código.",
+        t: "Testes unitários costumam ser de caixa branca, enquanto testes de aceitação e sistema tendem a ser de caixa preta."
     },
     {
-        q: "No contexto de testes automatizados, o que preconiza a técnica de TDD (Test-Driven Development / Desenvolvimento Orientado por Testes)?",
-        c: "",
+        q: "No contexto da pirâmide de testes de software, qual é a principal característica dos testes unitários (Unit Tests)?",
+        c: "Pirâmide de Testes",
         o: [
-            "A) Escrever a documentação completa do sistema antes de iniciar qualquer linha de código.",
-            "B) Escrever o código de produção primeiro e adicionar testes automatizados apenas após a entrega em produção.",
-            "C) Escrever um teste automatizado que falha antes de escrever o código de produção necessário para fazê-lo passar.",
-            "D) Delegar a criação de todos os testes unitários exclusivamente para a equipe de garantia de qualidade (QA)."
+            "A) São testes lentos que validam a integração completa entre o banco de dados e a interface gráfica.",
+            "B) São testes de baixo nível, rápidos e isolados que verificam o comportamento de pequenos blocos de código (como funções ou métodos individuais).",
+            "C) São executados manualmente por usuários finais em ambiente de homologação.",
+            "D) Substituem completamente a necessidade de testes de sistema e de regressão."
         ],
-        a: "C",
-        e: "O ciclo do TDD resume-se em: Red (escrever teste que falha), Green (escrever código para passar) e Refactor (melhorar o código sem alterar o comportamento).",
-        t: "Garante alta testabilidade e design de código mais desacoplado."
+        a: "B",
+        e: "Os testes unitários formam a base da pirâmide de testes. Devem ser executados em grande quantidade, rodar em milissegundos e isolar dependências externas utilizando mocks ou stubs.",
+        t: "Uma boa suíte de testes unitários detecta regressões imediatamente após alterações no código."
     },
     {
-        q: "Qual tipo de teste caixa-preta tem como objetivo verificar se o sistema atende aos requisitos de negócio e se está pronto para ser entregue ao usuário final?",
-        c: "",
+        q: "O que significa o conceito de 'TDD' (Test-Driven Development) no ciclo de desenvolvimento de software?",
+        c: "TDD",
         o: [
-            "A) Testes de Unidade",
-            "B) Testes de Sistema",
-            "C) Testes de Aceitação",
-            "D) Testes de Estresse"
+            "A) Desenvolver todo o sistema primeiro e escrever os testes automatizados apenas após o deploy em produção.",
+            "B) Uma técnica onde os testes automatizados são escritos antes do código de produção, seguindo o ciclo: falhar (Red), passar (Green) e refatorar (Refactor).",
+            "C) Um método de teste baseado em carga para medir a tolerância a falhas de servidores web.",
+            "D) Documentar os requisitos do cliente utilizando diagramas de casos de uso em UML."
         ],
-        a: "C",
-        e: "Os testes de aceitação validam o software sob a perspectiva do usuário e das regras de negócio, muitas vezes utilizando critérios de aceite descritos em Histórias de Usuário.",
-        t: "Podem envolver testes de aceitação do usuário (UAT) realizados pelos próprios stakeholders ou clientes."
+        a: "B",
+        e: "No TDD, o desenvolvedor primeiro escreve um teste que falha para uma funcionalidade desejada, depois escreve o código mínimo necessário para fazer o teste passar, e por fim refatora o código mantendo-o limpo.",
+        t: "O TDD ajuda a projetar códigos mais desacoplados e altamente testáveis desde a concepção."
+    },
+    {
+        q: "Qual é o principal objetivo dos testes de integração em uma aplicação?",
+        c: "Testes de Integração",
+        o: [
+            "A) Garantir que métodos individuais em classes isoladas funcionem sem erros de sintaxe.",
+            "B) Verificar se diferentes módulos, componentes ou serviços do sistema (como a comunicação entre a API e o banco de dados) funcionam corretamente quando combinados.",
+            "C) Validar a experiência visual e o design responsivo em diferentes tamanhos de tela.",
+            "D) Testar o comportamento do aplicativo sob estresse extremo de requisições simultâneas."
+        ],
+        a: "B",
+        e: "Enquanto o teste unitário isola as partes, o teste de integração assegura que a engrenagem conjunta funcione — por exemplo, testando se um repositório consegue persistir dados reais no banco de dados sem quebrar.",
+        t: "Eles identificam falhas de interface ou contratos entre serviços que os testes unitários não conseguem pegar."
+    },
+    {
+        q: "O que avalia o tipo de teste conhecido como 'Teste de Regressão'?",
+        c: "Testes de Regressão",
+        o: [
+            "A) Se o software consegue voltar para uma versão anterior em caso de falha crítica no servidor.",
+            "B) Se novas alterações no código (correções de bugs ou novas features) quebraram funcionalidades que já funcionavam anteriormente.",
+            "C) Se a velocidade de carregamento regrediu após a otimização de imagens.",
+            "D) O nível de satisfação dos usuários antigos em relação aos novos menus do sistema."
+        ],
+        a: "B",
+        e: "O teste de regressão é executado sempre que há uma mudança no código para garantir que o comportamento existente permaneceu intacto. A automação é fundamental para tornar esse processo viável.",
+        t: "Suítes de testes de regressão automatizadas economizam centenas de horas de testes manuais."
+    },
+    {
+        q: "Qual é a finalidade de utilizar 'Mocks' (ou Dublês de Teste) durante a execução de testes unitários?",
+        c: "Mocks e Stubs",
+        o: [
+            "A) Simular o comportamento de componentes ou dependências externas complexas (como APIs de pagamento ou conexões de banco de dados) de forma controlada e rápida.",
+            "B) Gerar senhas criptografadas aleatórias para testes de segurança de intrusão.",
+            "C) Criar cópias de backup automáticas do código-fonte para o GitHub.",
+            "D) Traduzir mensagens de erro do inglês para o português no console."
+        ],
+        a: "A",
+        e: "Mocks permitem isolar a unidade que está sendo testada, simulando respostas e evitando dependências lentas ou instáveis (como requisições reais de rede ou operações pesadas de disco).",
+        t: "O uso excessivo de mocks pode indicar que o código possui forte acoplamento e precisa de refatoração."
+    },
+    {
+        q: "O que mede a métrica de 'Cobertura de Código' (Code Coverage), como a fornecida por ferramentas como JaCoCo ou Istanbul?",
+        c: "Cobertura de Código",
+        o: [
+            "A) A porcentagem exata de bugs corrigidos pela equipe de QA em um sprint.",
+            "B) A proporção de linhas, instruções ou ramificações do código-fonte que foram executadas ao menos uma vez durante a bateria de testes automatizados.",
+            "C) O espaço em disco ocupado pelos arquivos de teste em comparação com o código de produção.",
+            "D) O tempo total de execução da suíte de testes em segundos."
+        ],
+        a: "B",
+        e: "A cobertura de código aponta quais partes do sistema passaram pelos testes. Alta cobertura não garante ausência total de bugs, mas indica quais trechos do código estão desprotegidos contra falhas.",
+        t: "Deve ser tratada como um indicador de qualidade, e não como uma meta absoluta de perfeição."
+    },
+    {
+        q: "Qual é o foco principal dos chamados 'Testes de Aceitação' (Acceptance Testing)?",
+        c: "Testes de Aceitação",
+        o: [
+            "A) Verificar se a lógica matemática de funções matemáticas internas está correta.",
+            "B) Validar se o sistema atende aos requisitos de negócio e se está pronto para ser aceito pelo cliente ou usuário final.",
+            "C) Testar a robustez do servidor contra quedas de energia no data center.",
+            "D) Analisar vulnerabilidades de injeção de SQL no backend."
+        ],
+        a: "B",
+        e: "Os testes de aceitação focam nos critérios de valor de negócio. Muitas vezes são expressos no formato Behavior-Driven Development (BDD) utilizando sintaxe Gherkin (Dado-Quando-Então).",
+        t: "Garantem que o software construído é exatamente o que o cliente pediu e especificou."
+    },
+    {
+        q: "No contexto de testes de software não funcionais, o que avalia um 'Teste de Carga' (Load Testing)?",
+        c: "Testes Não Funcionais",
+        o: [
+            "A) A capacidade do sistema de suportar uma carga esperada de usuários e transações simultâneas, medindo o desempenho sob estresse operacional.",
+            "B) O peso físico dos servidores em racks metálicos dentro de uma sala climatizada.",
+            "C) A quantidade de linhas de código que cada desenvolvedor consegue commitar por dia.",
+            "D) A facilidade de uso e acessibilidade da interface para pessoas com deficiência visual."
+        ],
+        a: "A",
+        e: "O teste de carga simula o tráfego real ou projetado para identificar gargalos de performance, tempos de resposta lentos e limites operacionais antes que o sistema vá para produção.",
+        t: "É um pilar essencial para sistemas corporativos que recebem alta concorrência de acessos."
+    },
+    {
+        q: "O que caracteriza a prática de Integração Contínua (CI) em relação aos testes automatizados?",
+        c: "Integração Contínua",
+        o: [
+            "A) Executar testes manuais de homologação uma vez a cada semestre antes de liberar o sistema.",
+            "B) Automatizar a execução de toda a suíte de testes sempre que novos códigos são enviados (pushed) para o repositório compartilhado, garantindo feedback rápido sobre falhas.",
+            "C) Permitir que o código seja enviado para produção sem passar por validações prévias.",
+            "D) Sincronizar branches locais via git fetch de forma manual."
+        ],
+        a: "B",
+        e: "A Integração Contínua (gerenciada por ferramentas como GitHub Actions, GitLab CI ou Jenkins) roda os testes automaticamente a cada commit, bloqueando a entrada de código que quebre o sistema.",
+        t: "Garante que o repositório principal permaneça sempre em um estado saudável e executável."
     }
 ];
 
-testes.forEach(x => {
+testesSoftware.forEach(x => {
     addQuestion("Testes de Software", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
 /* =====================================================
-   GIT E VERSIONAMENTO
+   GIT E CONTROLE DE VERSÃO
 ===================================================== */
 
-const git = [
+const gitQuest = [
     {
-        q: "Qual comando do Git é utilizado para salvar as alterações atuais do diretório de trabalho no repositório local, criando um novo commit com uma mensagem descritiva?",
-        c: "git commit -m \"mensagem\"",
+        q: "Qual é a principal diferença entre os comandos 'git pull' e 'git fetch' em um fluxo de trabalho com Git?",
+        c: "Fetch vs Pull",
         o: [
-            "A) git push",
-            "B) git commit",
-            "C) git add",
-            "D) git save"
+            "A) O 'git fetch' atualiza imediatamente os arquivos da árvore de trabalho (working directory), enquanto o 'git pull' apenas baixa o histórico.",
+            "B) O 'git fetch' baixa as alterações do repositório remoto sem aplicá-las automaticamente no seu branch atual, enquanto o 'git pull' baixa e faz o merge (mesclagem) automático na sequência.",
+            "C) O 'git pull' é exclusivo para servidores locais e o 'git fetch' é usado apenas no GitHub.",
+            "D) Não há diferença funcional; ambos executam exatamente a mesma rotina de sincronização."
         ],
         a: "B",
-        e: "O comando `git commit` grava o estado atual das alterações que estavam no estágio (`staging area`) no histórico do repositório local.",
-        t: "Lembre-se que antes de commitar, os arquivos precisam ser adicionados ao staging area usando o `git add`."
+        e: "O `git fetch` busca as novidades do remoto atualizando as referências locais (como `origin/main`), permitindo que você inspecione o código antes de integrar. O `git pull` faz o `fetch` seguidos de um `merge` imediato.",
+        t: "Utilizar `git fetch` costuma ser mais seguro para revisar o que mudou antes de juntar no seu código atual."
     },
     {
-        q: "Qual comando do Git permite alternar entre ramos (branches) existentes ou criar e mudar para um novo ramo simultaneamente?",
-        c: "git checkout -b <nome-branch> (ou git switch -c)",
+        q: "No Git, para que serve o comando 'git stash'?",
+        c: "Git Stash",
         o: [
-            "A) git branch -d",
-            "B) git checkout / git switch",
-            "C) git merge",
-            "D) git clone"
+            "A) Para apagar permanentemente o histórico de commits corrompidos.",
+            "B) Para guardar temporariamente as alterações não commitadas (modificações em arquivos rastreados) em um estoque, limpando a sua área de trabalho sem perder o progresso.",
+            "C) Para criar um novo branch isolado direto na nuvem do GitHub.",
+            "D) Para enviar o código diretamente para o servidor de produção em ambiente de homologação."
         ],
         a: "B",
-        e: "Os comandos `git checkout` (ou o mais moderno `git switch`) são utilizados para navegar entre diferentes branches e gerenciar o contexto de trabalho.",
-        t: "A bandeira `-b` cria a branch e já realiza a troca para ela em um único passo."
+        e: "O `git stash` é ideal quando você está no meio de uma alteração, precisa mudar de branch urgentemente para corrigir um bug, mas ainda não quer fazer um commit definitivo.",
+        t: "Você pode recuperar o que guardou usando o comando `git stash pop`."
     },
     {
-        q: "No fluxo de trabalho do Git, qual é a principal diferença entre os comandos `git merge` e `git rebase` ao juntar alterações de ramos diferentes?",
-        c: "",
+        q: "O que acontece quando executamos o comando 'git reset --soft HEAD~1'?",
+        c: "Git Reset",
         o: [
-            "A) O merge cria um commit de junção preservando o histórico exato das ramificações, enquanto o rebase reescreve o histórico aplicando os commits em cima da nova base.",
-            "B) O merge apaga o ramo de origem após a junção, enquanto o rebase mantém ambos intactos.",
-            "C) O rebase só pode ser executado localmente e nunca pode ser enviado para o repositório remoto sob nenhuma circunstância.",
-            "D) Não há diferença prática; ambos geram exatamente a mesma árvore de commits e logs."
+            "A) Desfaz o último commit, mas mantém todas as alterações dos arquivos preservadas na área de staged (prontas para novo commit).",
+            "B) Apaga permanentemente o último commit e descarta todas as alterações feitas no código de forma irreversível.",
+            "C) Remove o repositório local do computador e desconecta do GitHub.",
+            "D) Converte o branch atual em um arquivo compactado zip."
         ],
         a: "A",
-        e: "O `merge` preserva a história tal como aconteceu (mesmo que crie um nó extra de merge), enquanto o `rebase` lineariza o histórico movendo os commits para a ponta da branch alvo.",
-        t: "Cuidado ao usar `rebase` em branches públicas/compartilhadas, pois reescrever histórico público gera conflitos para os demais colaboradores."
+        e: "O modificador `--soft` volta o ponteiro do HEAD em um commit, mantendo intactas as modificações no `staging area`. O `--mixed` (padrão) mantém as alterações no working directory, e o `--hard` apaga tudo.",
+        t: "Use `--hard` com muito cuidado, pois ele descarta o trabalho não salvo."
+    },
+    {
+        q: "Qual é a utilidade e o comportamento padrão do arquivo '.gitignore' em um projeto versionado?",
+        c: ".gitignore",
+        o: [
+            "A) Listar os colaboradores autorizados a realizar push no repositório remoto.",
+            "B) Definir padrões de arquivos e pastas que o Git deve ignorar e não rastrear (como dependências pesadas, arquivos de configuração local e caches).",
+            "C) Automatizar os testes unitários toda vez que um commit for realizado.",
+            "D) Armazenar senhas de acesso criptografadas para conexão com o banco de dados."
+        ],
+        a: "B",
+        e: "O `.gitignore` impede que arquivos gerados automaticamente, credenciais sensíveis ou pastas de pacotes (`node_modules`, `build`, etc.) sejam enviados por engano para o versionamento.",
+        t: "Arquivos que já estão sendo rastreados pelo Git continuam sendo monitorados mesmo se você adicioná-los depois ao `.gitignore`, exigindo remoção prévia com `git rm --cached`."
+    },
+    {
+        q: "Qual é a diferença fundamental entre os comandos 'git merge' e 'git rebase' ao integrar alterações de um branch em outro?",
+        c: "Merge vs Rebase",
+        o: [
+            "A) O 'merge' cria um commit de junção preservando o histórico real de ramificação, enquanto o 'rebase' reescreve o histórico aplicando os commits em sequência linear.",
+            "B) O 'rebase' é mais rápido porque deleta os branches antigos, enquanto o 'merge' é proibido em equipes ágeis.",
+            "C) O 'merge' altera o código remoto e o 'rebase' altera apenas o repositório local.",
+            "D) Não há diferença matemática; ambos geram exatos mesmos hashes de commit."
+        ],
+        a: "A",
+        e: "O `merge` preserva o contexto histórico criando um nó de união (merge commit). O `rebase` move a base da sua branch para o topo da branch de destino, gerando uma linha do tempo limpa e linear.",
+        t: "Evite usar `rebase` em branches públicos/compartilhados para não confundir o histórico de outros desenvolvedores."
+    },
+    {
+        q: "No fluxo de trabalho do Git, o que caracteriza a área chamada 'Staging Area' (ou Index)?",
+        c: "Áreas do Git",
+        o: [
+            "A) O servidor remoto hospedado na nuvem (GitHub ou GitLab).",
+            "B) Uma área intermediária onde você seleciona e prepara quais arquivos modificados serão incluídos no próximo commit.",
+            "C) O diretório físico oculto `.git` onde ficam os logs de configuração.",
+            "D) Um ambiente de homologação onde o site roda em produção."
+        ],
+        a: "B",
+        e: "Antes de salvar as mudanças com `git commit`, você usa o `git add` para mover os arquivos da working tree para a Staging Area, selecionando exatamente o que compõe a sua entrega.",
+        t: "Isso permite commitar partes específicas de arquivos modificados através do modo interativo (`git add -p`)."
+    },
+    {
+        q: "O que o comando 'git checkout -b novo-branch' (ou 'git switch -c') realiza na prática?",
+        c: "Branches",
+        o: [
+            "A) Deleta permanentemente o branch atual e todos os seus arquivos.",
+            "B) Cria um novo branch e muda imediatamente o contexto de trabalho para ele em um único comando.",
+            "C) Sincroniza o branch local com a última versão estável da nuvem.",
+            "D) Cria uma tag de versão para release de software."
+        ],
+        a: "B",
+        e: "Esse comando combina a criação de uma nova ramificação (`branch`) com a troca instantânea para ela, economizando o uso de dois comandos separados (`git branch` + `git checkout`).",
+        t: "Nas versões mais recentes do Git, o comando moderno recomendado para troca é `git switch`."
+    },
+    {
+        q: "O que ocorre quando o Git aponta um conflito de merge (merge conflict)?",
+        c: "Conflitos",
+        o: [
+            "A) O repositório é corrompido e precisa ser baixado novamente do zero.",
+            "B) O Git encontrou alterações concorrentes na mesma linha de código em branches diferentes e pausa a mesclagem para que o desenvolvedor decida manualmente qual código manter.",
+            "C) O sistema operacional bloqueia o acesso aos arquivos por falta de permissão de administrador.",
+            "D) O GitHub rejeita o projeto por violação de boas práticas de código limpo."
+        ],
+        a: "B",
+        e: "O Git insere marcadores visuais (`<<<<<<<`, `=======`, `>>>>>>>`) no arquivo conflitante. Cabe ao programador editar o código para resolver o impasse, salvar o arquivo, dar `git add` e concluir o commit.",
+        t: "Editores modernos como o VS Code possuem ferramentas visuais excelentes para resolução de conflitos de merge."
+    },
+    {
+        q: "Para que serve o comando 'git log --oneline --graph'?",
+        c: "Git Log",
+        o: [
+            "A) Para gerar um gráfico de consumo de memória RAM do processo do Git.",
+            "B) Para exibir o histórico de commits de forma resumida (uma linha por commit) acompanhado de uma representação gráfica em árvore das ramificações.",
+            "C) Para criar um diagrama UML da arquitetura do software baseado nos commits.",
+            "D) Para medir a produtividade e quantidade de linhas escritas por cada desenvolvedor."
+        ],
+        a: "B",
+        e: "Essa combinação de parâmetros do `git log` é excelente para visualizar rapidamente o fluxo de merges, ramificações e o histórico linear de forma limpa e direta no terminal.",
+        t: "Muitos desenvolvedores criam um alias (atalho) no terminal para esse comando devido à sua alta utilidade."
+    },
+    {
+        q: "O que é um 'Git Hook' e onde ele é executado?",
+        c: "Git Hooks",
+        o: [
+            "A) Uma ferramenta gráfica oficial para conectar o repositório local ao GitHub Desktop.",
+            "B) Um script personalizado que o Git executa automaticamente antes ou depois de eventos específicos, como commits, pushes ou merges.",
+            "C) Um tipo de chave criptográfica utilizada para autenticação SSH no servidor remoto.",
+            "D) Um plugin de extensão para debug de erros de sintaxe em JavaScript."
+        ],
+        a: "B",
+        e: "Os hooks ficam na pasta oculta `.git/hooks` e são muito usados para rodar linters (como ESLint), formatadores de código ou testes automatizados antes de permitir um commit (`pre-commit`).",
+        t: "Eles ajudam a garantir a qualidade do código antes mesmo que ele seja enviado para o repositório compartilhado."
     }
 ];
 
-git.forEach(x => {
+gitQuest.forEach(x => {
     addQuestion("Git", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
 /* =====================================================
-   CRIPTOGRAFIA E SEGURANÇA
+   CRIPTOGRAFIA E CERTIFICAÇÃO DIGITAL
 ===================================================== */
 
 const criptografia = [
     {
-        q: "Qual tipo de criptografia utiliza uma única chave secreta tanto para cifrar (criptografar) quanto para decifrar (descriptografar) os dados?",
-        c: "",
+        q: "Qual é a principal diferença conceitual entre a criptografia simétrica e a criptografia assimétrica?",
+        c: "Simétrica vs Assimétrica",
         o: [
-            "A) Criptografia Assimétrica",
-            "B) Criptografia Simétrica",
-            "C) Assinatura Digital",
-            "D) Função Hashing"
+            "A) A criptografia simétrica utiliza chaves diferentes para cifrar e decifrar, enquanto a assimétrica utiliza a mesma chave.",
+            "B) A criptografia simétrica utiliza uma única chave compartilhada para cifrar e decifrar, enquanto a assimétrica utiliza um par de chaves (pública e privada).",
+            "C) A criptografia simétrica é exclusiva para ambientes web via HTTPS, e a assimétrica é apenas para arquivos locais.",
+            "D) Não há diferença de segurança; a criptografia assimétrica é apenas uma versão mais antiga da simétrica."
         ],
         a: "B",
-        e: "A criptografia simétrica (como AES e DES) utiliza a mesma chave para as duas operações, sendo extremamente rápida e eficiente para grandes volumes de dados.",
-        t: "O grande desafio da criptografia simétrica é a troca segura dessa chave entre remetente e destinatário."
+        e: "Na criptografia simétrica, a mesma chave secreta faz todo o trabalho, exigindo um canal seguro de troca. Na assimétrica, o que a chave pública criptografa, apenas a chave privada correspondente descodifica.",
+        t: "Algoritmos simétricos (como AES) são muito mais rápidos que os assimétricos (como RSA)."
     },
     {
-        q: "No contexto de segurança da informação e criptografia assimétrica, como são utilizadas a chave pública e a chave privada de um par de chaves?",
+        q: "No contexto da Segurança da Informação, o que garante a propriedade de 'Não-Repúdio' (ou Irretratabilidade)?",
         c: "",
         o: [
-            "A) A chave pública é mantida em segredo absoluto pelo proprietário, enquanto a chave privada é distribuída publicamente para qualquer pessoa.",
-            "B) O que é criptografado com a chave pública só pode ser decifrado com a chave privada correspondente, e vice-versa.",
-            "C) Ambas as chaves devem ser idênticas para que o algoritmo de cifragem funcione corretamente.",
-            "D) A chave pública serve apenas para gerar hashes e não possui relação matemática com a chave privada."
+            "A) O uso exclusiva de senhas fortes com troca obrigatória a cada 30 dias.",
+            "B) A capacidade de impedir que um usuário negue a autoria de uma mensagem ou transação que ele realizou.",
+            "C) A criptografia de dados em trânsito utilizando protocolos de rede como o TLS 1.3.",
+            "D) O armazenamento de senhas utilizando funções de hash unidirecionais com salt."
         ],
         a: "B",
-        e: "Na criptografia assimétrica (como RSA), o par de chaves possui relação matemática complementar: dados cifrados com a chave pública só abrem com a privada, garantindo confidencialidade ou autenticidade (via assinatura digital).",
-        t: "Lembre-se: chave pública é compartilhada com o mundo; chave privada é guardada a sete chaves."
+        e: "O não-repúdio assegura que o emissor de uma mensagem não possa negar posteriormente tê-la enviado, o que é comumente alcançado com o uso de assinaturas digitais baseadas em criptografia assimétrica.",
+        t: "Fundamental em transações bancárias e documentos legais digitais."
     },
     {
-        q: "Qual é a principal propriedade de uma função hash criptográfica (como SHA-256) que garante que é computacionalmente inviável encontrar duas entradas diferentes que gerem exatamente o mesmo valor de hash?",
-        c: "",
+        q: "O que é uma função de Hash criptográfico (como SHA-256) e qual é uma de suas propriedades fundamentais?",
+        c: "Funções Hash",
         o: [
-            "A) Reversibilidade",
-            "B) Simetria de chaves",
-            "C) Resistência a colisões",
-            "D) Dobramento de bits"
+            "A) Uma função reversível que compacta e descompacta arquivos grandes para otimizar espaço em disco.",
+            "B) Um algoritmo matemático que converte uma entrada de tamanho arbitrário em uma string de tamanho fixo, sendo unidirecional (impossível de reverter para obter o dado original).",
+            "C) Um sistema de chaves gêmeas onde a chave pública descobre o texto original gerado pelo hash.",
+            "D) Um protocolo de troca de chaves simétricas inseguras em redes públicas."
+        ],
+        a: "B",
+        e: "O hash gera uma 'impressão digital' única do arquivo ou texto. Ele é unidirecional (one-way) e resistente a colisões (difícil encontrar duas entradas que gerem o mesmo hash).",
+        t: "Funções hash são amplamente utilizadas na verificação de integridade de dados e armazenamento seguro de senhas."
+    },
+    {
+        q: "Qual é a principal função de uma Autoridade Certificadora (AC) dentro de uma Infraestrutura de Chaves Públicas (ICP)?",
+        c: "ICP-Brasil e Certificação",
+        o: [
+            "A) Bloquear ataques de negação de serviço (DDoS) em servidores de aplicações web.",
+            "B) Emitir, suspender, revogar e gerenciar certificados digitais, atrelando uma chave pública à identidade de um usuário ou instituição.",
+            "C) Armazenar cópias de segurança (backup) de todas as senhas dos usuários para recuperação em caso de perda.",
+            "D) Executar varreduras de vulnerabilidades em códigos-fonte antes do deploy em produção."
+        ],
+        a: "B",
+        e: "A Autoridade Certificadora atua como uma terceira parte confiável que valida a identidade do titular e emite o certificado digital assinado com sua própria chave privada.",
+        t: "O certificado digital funciona como o 'RG' eletrônico de pessoas físicas ou jurídicas."
+    },
+    {
+        q: "Como funciona o processo de criação de uma Assinatura Digital?",
+        c: "Assinatura Digital",
+        o: [
+            "A) O documento é cifrado integralmente utilizando a chave pública do destinatário.",
+            "B) O resumo (hash) do documento é gerado e criptografado utilizando a chave privada do remetente.",
+            "C) A senha do usuário é anexada ao final do arquivo em formato de texto plano protegido por permissões do sistema.",
+            "D) Utiliza-se exclusivamente criptografia simétrica para mascarar o cabeçalho do arquivo."
+        ],
+        a: "B",
+        e: "Para assinar, calcula-se o hash do documento e criptografa-se esse hash com a chave privada de quem assina. Qualquer pessoa pode usar a chave pública do remetente para decifrar o hash e conferir a integridade e autoria.",
+        t: "A assinatura digital garante integridade, autenticidade e não-repúdio."
+    },
+    {
+        q: "O que significa dizer que um certificado digital foi revogado e onde essa informação é consultada?",
+        c: "Revogação de Certificados",
+        o: [
+            "A) Significa que a senha expirou e deve ser trocada no painel da AC. É consultada no arquivo hosts do sistema.",
+            "B) Significa que o certificado perdeu a validade antes do prazo devido a comprometimento de chave ou mudança de dados, sendo consultado via LCR (Lista de Certificados Revogados ou CRL) ou protocolo OCSP.",
+            "C) Significa que o site utilizava protocolo HTTP e migrou para HTTPS.",
+            "D) Significa que o algoritmo AES foi substituído por uma chave simétrica menor."
+        ],
+        a: "B",
+        e: "A revogação invalida o certificado antes da data de expiração oficial. Sistemas checam listas de revogação (CRL) ou consultam o status em tempo real via protocolo OCSP (Online Certificate Status Protocol).",
+        t: "Verificar a revogação é uma etapa crucial na validação de conexões SSL/TLS seguras."
+    },
+    {
+        q: "Qual é o objetivo do protocolo TLS (Transport Layer Security) — sucessor espiritual do SSL — em uma aplicação web?",
+        c: "TLS / HTTPS",
+        o: [
+            "A) Otimizar o tempo de carregamento de páginas HTML através da compressão de imagens e scripts.",
+            "B) Proporcionar segurança de comunicação fim-a-fim na internet através de criptografia, autenticação de servidor e garantia de integridade.",
+            "C) Substituir os bancos de dados relacionais por estruturas baseadas em blocos criptografados.",
+            "D) Controlar o acesso de usuários por meio de perfis de permissão baseados em papéis (RBAC)."
+        ],
+        a: "B",
+        e: "O TLS opera na camada de transporte (ou logo acima dela), criando um túnel seguro (HTTPS) onde os dados trocados entre o navegador e o servidor ficam protegidos contra interceptação e adulteração.",
+        t: "O estabelecimento dessa conexão segura ocorre inicialmente através do chamado 'Handshake TLS'."
+    },
+    {
+        q: "O que caracteriza um ataque do tipo 'Man-in-the-Middle' (MitM) em redes de computadores?",
+        c: "Ameaças e Ataques",
+        o: [
+            "A) Um invasor sobrecarrega o servidor web com milhões de requisições falsas simultâneas.",
+            "B) Um atacante intercepta secretamente e possivelmente altera a comunicação entre duas partes que acreditam estar se comunicando diretamente entre si.",
+            "C) O roubo físico de discos rígidos em um data center para extração de arquivos em cache.",
+            "D) A instalação de vírus de macro em planilhas eletrônicas compartilhadas na rede interna."
+        ],
+        a: "B",
+        e: "No ataque MitM, o intermediário mal-intencionado fica no meio da rota dos pacotes de dados, podendo escutar ou modificar o conteúdo sem que os usuários percebam, o que é mitigado pelo uso de certificados digitais válidos e HSTS.",
+        t: "Redes Wi-Fi públicas desprotegidas são cenários comuns para esse tipo de tentativa de invasão."
+    },
+    {
+        q: "No contexto de criptografia simétrica, qual é a finalidade do 'Salt' (um dado aleatório) quando adicionado ao processo de hash de senhas?",
+        c: "Armazenamento de Senhas",
+        o: [
+            "A) Aumentar o tamanho do arquivo de texto plano para dificultar ataques de força bruta.",
+            "B) Garantir que duas pessoas que utilizem a mesma senha gerem hashes finais completamente diferentes, neutralizando ataques baseados em tabelas prontas (Rainbow Tables).",
+            "C) Permitir que a senha seja recuperada facilmente pelo administrador do sistema em caso de esquecimento.",
+            "D) Criptografar a conexão de rede durante o envio da senha para o servidor backend."
+        ],
+        a: "B",
+        e: "O Salt adiciona uma sequência de caracteres aleatórios única a cada senha antes de aplicar a função hash. Assim, senhas iguais geram hashes totalmente distintos nas tabelas do banco de dados.",
+        t: "O uso de Salt em conjunto com funções lentas como Argon2 ou Bcrypt é padrão ouro para segurança de senhas."
+    },
+    {
+        q: "Qual dos seguintes algoritmos é amplamente reconhecido e utilizado como padrão global para criptografia simétrica de blocos?",
+        c: "Algoritmos Criptográficos",
+        o: [
+            "A) RSA",
+            "B) Diffie-Hellman",
+            "C) AES (Advanced Encryption Standard)",
+            "D) MD5"
         ],
         a: "C",
-        e: "A resistência a colisões assegura que duas mensagens distintas não produzam a mesma saída (hash), o que é crítico para integridade de dados e assinaturas digitais.",
-        t: "Funções hash são de mão única (unidirecionais), ou seja, é impossível 'desfazer' o hash para descobrir o texto original."
+        e: "O AES (Advanced Encryption Standard) é o algoritmo de criptografia simétrica padrão da indústria e do governo norte-americano, operando em blocos de 128 bits com chaves de 128, 192 ou 256 bits.",
+        t: "O MD5 é uma função hash antiga e insegura, enquanto o RSA é um algoritmo assimétrico."
     }
 ];
 
 criptografia.forEach(x => {
-    addQuestion("Criptografia", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
+    addQuestion("Criptografia e Certificação Digital", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
 
 /* =====================================================
