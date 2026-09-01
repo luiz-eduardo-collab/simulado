@@ -919,163 +919,285 @@ addQuestion(
     "Na Max-Heap, a raiz guarda o maior valor."
 );
 /* =====================================================
-   BANCO DE DADOS
+   BANCO DE DADOS (CONCEITOS, NOSQL, ARQUITETURA)
 ===================================================== */
 
-addQuestion(
-    "Banco de Dados", "Fácil",
-    "Qual campo é a melhor chave primária?",
-    "CLIENTE\n\nid_cliente\nnome\ncpf\ncidade",
-    ["A) nome", "B) cidade", "C) id_cliente", "D) cpf e cidade"],
-    "C",
-    "O identificador único normalmente é utilizado como chave primária.",
-    "Chave primária identifica unicamente um registro."
-);
+const bancoDadosQuest = [
+    {
+        q: "O que preconiza o Teorema de CAP em sistemas distribuídos de bancos de dados?",
+        c: "Teorema de CAP",
+        o: [
+            "A) Um sistema distribuído pode garantir simultaneamente e sem restrições a Consistência (Consistency), a Disponibilidade (Availability) e a Tolerância a Particionamento de Rede (Partition Tolerance).",
+            "B) Em caso de uma falha de rede (particionamento), um sistema distribuído pode escolher garantir Consistência ou Disponibilidade, mas nunca ambas simultaneamente.",
+            "C) Garante criptografia absoluta para dados em repouso e em trânsito.",
+            "D) Define o limite máximo de conexões simultâneas que um banco NoSQL suporta."
+        ],
+        a: "B",
+        e: "O Teorema de CAP (Brewer) estabelece que redes distribuídas estão sujeitas a falhas de comunicação (partições). Portanto, a escolha em cenários de falha resume-se a CP (consistência ou parada) ou AP (disponibilidade com dados eventualmente consistentes).",
+        t: "Bancos relacionais tradicionais tendem a priorizar CP, enquanto muitos NoSQL focam em AP."
+    },
+    {
+        q: "Qual é a principal diferença conceitual entre bancos de dados relacionais (SQL) e não relacionais (NoSQL)?",
+        c: "Relacional vs NoSQL",
+        o: [
+            "A) Bancos NoSQL não utilizam nenhum tipo de estrutura de dados e armazenam tudo em arquivos comprimidos.",
+            "B) Bancos relacionais estruturam dados em tabelas rígidas com esquemas fixos e fortes garantias ACID; bancos NoSQL oferecem alta escalabilidade horizontal e esquemas flexíveis (documentos, chave-valor, colunas ou grafos), priorizando performance e flexibilidade.",
+            "C) Bancos NoSQL são totalmente incompatíveis com arquiteturas de microsserviços.",
+            "D) Bancos relacionais rodam apenas em servidores Linux e NoSQL apenas em Windows."
+        ],
+        a: "B",
+        e: "O NoSQL surgiu para resolver problemas de grande volume e alta velocidade de dados (Big Data) onde a escalabilidade horizontal é mais crítica do que as junções relacionais complexas.",
+        t: "A escolha depende diretamente do domínio do problema e dos requisitos de consistência dos dados."
+    },
+    {
+        q: "O que caracteriza o modelo de Consistência Eventual (Eventual Consistency) comumente adotado em bancos NoSQL?",
+        c: "Consistência Eventual",
+        o: [
+            "A) Os dados nunca são salvos permanentemente no disco rígido.",
+            "B) Se nenhuma nova atualização for feita em um dado item, todas as réplicas eventualmente retornarão o mesmo valor após um curto período de propagação na rede.",
+            "C) As transações exigem bloqueio síncrono absoluto em todas as máquinas do cluster.",
+            "D) O banco de dados apaga registros antigos automaticamente a cada meia-noite."
+        ],
+        a: "B",
+        e: "A consistência eventual prioriza a alta disponibilidade e performance de gravação (modelo AP do CAP), aceitando que leituras imediatas após uma escrita possam retornar dados desatualizados por instantes.",
+        t: "Comum em sistemas de redes sociais, carrinhos de compras e contadores de visualizações."
+    },
+    {
+        q: "Para que serve o processo de Normalização de Bancos de Dados (até a 3ª Forma Normal)?",
+        c: "Normalização",
+        o: [
+            "A) Para duplicar dados intencionalmente e acelerar consultas complexas de leitura.",
+            "B) Para organizar as tabelas e colunas de forma a reduzir a redundância de dados e eliminar anomalias de inserção, atualização e exclusão, garantindo a integridade estrutural.",
+            "C) Para converter arquivos de texto em planilhas Excel formatadas.",
+            "D) Para criptografar senhas de usuários com algoritmos de hash."
+        ],
+        a: "B",
+        e: "A normalização divide dados repetidos em tabelas relacionadas através de chaves estrangeiras, otimizando o armazenamento e evitando inconsistências lógicas.",
+        t: "Em contrapartida, excesso de normalização pode exigir muitos JOINs, motivando a desnormalização em cenários de alta leitura."
+    },
+    {
+        q: "Qual é a principal utilidade de um banco de dados em memória do tipo Chave-Valor (como Redis) em uma arquitetura de software moderna?",
+        c: "Bancos Chave-Valor (Redis)",
+        o: [
+            "A) Armazenar logs históricos e backups em fitas magnéticas de longo prazo.",
+            "B) Atuar como cache de alta performance, gerenciamento de sessões, filas de mensagens rápidas e contadores em tempo real, devido ao acesso quase instantâneo na RAM.",
+            "C) Executar relatórios gerenciais complexos em SQL com milhões de linhas cruzadas.",
+            "D) Substituir totalmente o armazenamento persistente em disco em sistemas corporativos críticos."
+        ],
+        a: "B",
+        e: "O Redis armazena dados diretamente na memória RAM, oferecendo tempos de resposta na ordem de microssegundos, o que alivia a carga de bancos relacionais em consultas frequentes.",
+        t: "Pode ser configurado com persistência em disco (RDB/AOF) para evitar perda total de dados em reinicializações."
+    },
+    {
+        q: "O que diferencia o Sharding (Fragmentação) da Replicação em bancos de dados distribuídos?",
+        c: "Sharding vs Replicação",
+        o: [
+            "A) Sharding duplica todos os dados em múltiplos servidores para redundância; replicação divide os dados particionando-os entre diferentes nós.",
+            "B) A replicação copia e sincroniza dados em múltiplos nós para garantir alta disponibilidade e leitura escalável; o sharding divide o banco de dados em partes menores (shards) distribuídas horizontalmente para suportar volumes massivos de escrita e armazenamento.",
+            "C) Não há diferença técnica; ambos são sinônimos de backups em nuvem.",
+            "D) Sharding é exclusivo de bancos relacionais e replicação de NoSQL."
+        ],
+        a: "B",
+        e: "Enquanto a replicação resolve problemas de disponibilidade e performance de leitura (nós Master-Slave), o sharding resolve problemas de limite físico de armazenamento e gargalos de escrita em bases gigantescas.",
+        t: "O roteamento de chaves de sharding exige planejamento cuidadoso para evitar desbalanceamento (hot spots)."
+    },
+    {
+        q: "O que modela primariamente um banco de dados orientado a Grafos (Graph Database, como Neo4j)?",
+        c: "Bancos de Grafos",
+        o: [
+            "A) Tabelas relacionais estritas com restrições de chaves primárias numéricas.",
+            "B) Dados altamente conectados compostos por Nós (Entidades), Arestas (Relacionamentos) e Propriedades, ideal para redes sociais, motores de recomendação e detecção de fraudes.",
+            "C) Arquivos binários planos sem estrutura relacional.",
+            "D) Séries temporais de métricas de CPU e temperatura."
+        ],
+        a: "B",
+        e: "Bancos de grafos calculam relacionamentos complexos de múltiplos graus de forma extremamente eficiente, sem a necessidade de operações custosas de JOIN em grandes tabelas relacionais.",
+        t: "Utilizam linguagens de consulta específicas, como o Cypher."
+    },
+    {
+        q: "O que é o modelo BASE em bancos de dados NoSQL distribuídos, em contraponto ao modelo ACID?",
+        c: "Modelo BASE",
+        o: [
+            "A) Um protocolo rígido de segurança bancária para senhas.",
+            "B) Um acrônimo para Basic Availability (Disponibilidade Básica), Soft-state (Estado Flexível) e Eventual consistency (Consistência Eventual), priorizando disponibilidade e escalabilidade sobre consistência imediata.",
+            "C) Um método para compactar tabelas SQL em formato binário.",
+            "D) Um padrão de arquitetura frontend para aplicações React."
+        ],
+        a: "B",
+        e: "Enquanto o ACID busca rigidez transacional imediata, o modelo BASE aceita que o sistema flutue temporariamente em seu estado até atingir a consistência completa de forma assíncrona.",
+        t: "Reflete perfeitamente a filosofia de design dos sistemas NoSQL modernos orientados a microsserviços."
+    },
+    {
+        q: "Em que consiste a técnica de 'Desnormalização' em bancos de dados?",
+        c: "Desnormalização",
+        o: [
+            "A) Corrigir erros de sintaxe em comandos SQL corrompidos.",
+            "B) Introduzir intencionalmente redundância de dados (como duplicar colunas ou tabelas) para eliminar a necessidade de JOINs complexos e acelerar drasticamente o tempo de leitura em consultas pesadas.",
+            "C) Apagar todas as chaves primárias de um banco relacional.",
+            "D) Converter um banco NoSQL em tabelas planas do Excel."
+        ],
+        a: "B",
+        e: "A desnormalização é um compromisso de design: sacrifica-se a pureza estrutural e a facilidade de escrita para obter ganhos expressivos de performance de leitura em ambientes de alta escala (como relatórios e dashboards).",
+        t: "Exige que a aplicação gerencie a consistência dos dados duplicados via código ou eventos."
+    },
+    {
+        q: "Qual é a função de um banco de dados de Séries Temporais (Time-Series Database, como InfluxDB ou TimescaleDB)?",
+        c: "Séries Temporais",
+        o: [
+            "A) Armazenar calendários de compromissos pessoais e agendas corporativas.",
+            "B) Otimizar a ingestão, armazenamento massivo e consulta de dados indexados por carimbos de data/hora (timestamps), como métricas de IoT, logs de servidores e cotações financeiras em tempo real.",
+            "C) Gerenciar versões de código fonte em repositórios Git.",
+            "D) Executar animações gráficas 3D em navegadores web."
+        ],
+        a: "B",
+        e: "Dados de séries temporais chegam em alto volume e ordem cronológica estrita. Bancos especializados usam compressão agressiva de colunas por tempo e políticas automáticas de retenção (retention policies).",
+        t: "Essenciais para monitoramento de infraestrutura e observabilidade moderna."
+    }
+];
 
-addQuestion(
-    "Banco de Dados", "Fácil",
-    "Qual atributo representa uma chave estrangeira?",
-    "CLIENTE\nid_cliente\n\nPEDIDO\nid_pedido\nid_cliente",
-    ["A) CLIENTE.id_cliente", "B) PEDIDO.id_pedido", "C) PEDIDO.id_cliente", "D) Nenhum"],
-    "C",
-    "PEDIDO.id_cliente referencia CLIENTE.id_cliente.",
-    "Chave estrangeira cria relacionamento entre tabelas."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "Qual é o objetivo principal da normalização?",
-    "Tabela\n\nServidor\nid\nnome\ntelefone1\ntelefone2\ntelefone3",
-    ["A) Aumentar redundância", "B) Reduzir redundância", "C) Eliminar chaves", "D) Criar índices"],
-    "B",
-    "A normalização busca reduzir redundâncias e anomalias.",
-    "Questão clássica de modelagem."
-);
-
-addQuestion(
-    "Banco de Dados", "Difícil",
-    "Em modelagem de dados, o que caracteriza a Terceira Forma Normal (3FN)?",
-    "Eliminação de dependências transitivas",
-    ["A) A tabela não deve conter grupos de repetição", "B) Todos os atributos não-chave devem depender inteiramente da chave primária inteira", "C) A tabela deve estar na 2FN e não possuir dependências transitivas entre atributos não-chave", "D) Todos os dados devem estar desnormalizados para otimizar leitura"],
-    "C",
-    "Na 3FN, nenhuma coluna não-chave pode depender de outra coluna não-chave (dependência transitiva).",
-    "Reduz drasticamente redundâncias e anomalias de atualização."
-);
-
-addQuestion(
-    "Banco de Dados", "Fácil",
-    "O que define a Primeira Forma Normal (1FN)?",
-    "Atributos atômicos e sem grupos de repetição",
-    ["A) Ausência total de chaves estrangeiras", "B) Que os domínios dos atributos sejam atômicos (valores indivisíveis) e não haja grupos repetitivos", "C) A eliminação de dependências parciais", "D) A criação obrigatória de visões (views)"],
-    "B",
-    "A 1FN exige que cada célula da tabela contenha apenas um único valor e que não existam arrays ou colunas repetidas.",
-    "Base fundamental para tabelas relacionais."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "O que caracteriza a Segunda Forma Normal (2FN)?",
-    "Estar na 1FN e eliminar dependência parcial",
-    ["A) Dependência total da chave primária composta", "B) Eliminação de qualquer chave candidata", "C) Uso exclusivo de bancos NoSQL", "D) Ocultação de dados sensíveis"],
-    "A",
-    "A 2FN exige que a tabela esteja na 1FN e que todos os atributos não-chave sejam totalmente dependentes de toda a chave primária.",
-    "Importante principalmente em chaves primárias compostas."
-);
-
-
+bancoDadosQuest.forEach(x => {
+    addQuestion("Banco de Dados", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
+});
 /* =====================================================
-   SQL
+   SQL (STRUCTURED QUERY LANGUAGE)
 ===================================================== */
 
-addQuestion(
-    "SQL", "Fácil",
-    "O que essa consulta retorna?",
-    "SELECT nome\nFROM servidor\nWHERE salario > 5000",
-    ["A) Todos servidores", "B) Salários menores", "C) Servidores com salário acima de 5000", "D) Apenas um servidor"],
-    "C",
-    "WHERE filtra registros conforme a condição.",
-    "Leia cuidadosamente a cláusula WHERE."
-);
+const sqlQuest = [
+    {
+        q: "Qual é a principal diferença entre os comandos `DELETE`, `TRUNCATE` e `DROP` em bancos de dados relacionais?",
+        c: "Comandos DDL e DML",
+        o: [
+            "A) Todos fazem exatamente a mesma coisa, apagando dados e estruturas de forma idêntica.",
+            "B) `DELETE` é um comando DML que remove linhas específicas (permitindo filtro WHERE e rollback de transação); `TRUNCATE` é um comando DDL que remove todas as linhas rapidamente reiniciando contadores de identidade sem registrar cada linha individualmente no log de transações; `DROP` exclui permanentemente a estrutura inteira da tabela do banco de dados.",
+            "C) `DROP` apaga apenas uma linha específica e `DELETE` destrói o servidor físico.",
+            "D) `TRUNCATE` é utilizado exclusivamente para criar novas tabelas e visões."
+        ],
+        a: "B",
+        e: "Compreender a diferença entre DML (Data Manipulation Language) e DDL (Data Definition Language) é crucial para performance e segurança operacional em bancos relacionais.",
+        t: "Sempre verifique se há chaves estrangeiras ativas antes de executar comandos como `TRUNCATE` ou `DROP`."
+    },
+    {
+        q: "Qual é o comportamento padrão de um `INNER JOIN` ao combinar duas tabelas em uma consulta SQL?",
+        c: "Junções (Joins)",
+        o: [
+            "A) Retorna todos os registros da tabela à esquerda, mesmo que não haja correspondência na tabela à direita.",
+            "B) Retorna apenas os registros que possuem correspondência (valores correspondentes) em ambas as tabelas envolvidas na junção.",
+            "C) Retorna o produto cartesiano absoluto, combinando todas as linhas de ambas as tabelas sem restrições.",
+            "D) Retorna apenas os registros exclusivos que não possuem correspondência em nenhuma das tabelas."
+        ],
+        a: "B",
+        e: "O `INNER JOIN` é a junção mais comum. Linhas que não encontram correspondência na condição de igualdade (ON) são descartadas do resultado final.",
+        t: "Diferencia-se de `LEFT JOIN` e `RIGHT JOIN`, que preservam registros da tabela base mesmo sem correspondência."
+    },
+    {
+        q: "Para que servem as funções de agregação no SQL, como `COUNT`, `SUM`, `AVG`, `MAX` e `MIN`, quando combinadas com a cláusula `GROUP BY`?",
+        c: "Funções de Agregação e Agrupamento",
+        o: [
+            "A) Para ordenar o resultado final da consulta alfabeticamente.",
+            "B) Para realizar cálculos estatísticos e resumir conjuntos de dados agrupados por colunas específicas, condensando múltiplos registros em linhas de resumo.",
+            "C) Para criar chaves primárias automáticas em novas tabelas.",
+            "D) Para filtrar registros individuais antes que a consulta seja executada."
+        ],
+        a: "B",
+        e: "O `GROUP BY` divide o conjunto de resultados em subgrupos, permitindo aplicar funções de agregação (como somar valores de vendas ou contar clientes) por cada categoria específica.",
+        t: "Para filtrar resultados após a agregação, deve-se utilizar a cláusula `HAVING` em vez de `WHERE`."
+    },
+    {
+        q: "Qual é a função da cláusula `HAVING` em uma consulta SQL agregada?",
+        c: "Cláusula HAVING vs WHERE",
+        o: [
+            "A) Filtrar linhas individuais da tabela antes que o agrupamento (`GROUP BY`) seja realizado.",
+            "B) Filtrar os resultados gerados após a aplicação de funções de agregação e agrupamento (`GROUP BY`), atuando como um filtro para os grupos formados.",
+            "C) Ordenar os dados em ordem decrescente de forma automática.",
+            "D) Unir duas tabelas diferentes sem precisar da palavra-chave JOIN."
+        ],
+        a: "B",
+        e: "A confusão entre `WHERE` e `HAVING` é clássica: o `WHERE` filtra linhas brutas antes da agregação, enquanto o `HAVING` filtra os resultados já agregados (ex: `HAVING COUNT(*) > 5`).",
+        t: "O `HAVING` vem sempre após o `GROUP BY` na estrutura sintática da query."
+    },
+    {
+        q: "O que é uma Chave Estrangeira (Foreign Key) em um banco de dados relacional?",
+        c: "Integridade Referencial",
+        o: [
+            "A) Um campo criptografado usado exclusivamente para armazenar senhas de administradores.",
+            "B) Uma coluna ou conjunto de colunas que estabelece e impõe um link de integridade referencial entre os dados de duas tabelas, garantindo que o valor inserido na tabela filha exista obrigatoriamente na tabela pai (Chave Primária).",
+            "C) Uma chave física de segurança usada para fazer backup em fitas magnéticas.",
+            "D) Um índice oculto que acelera buscas de texto completo."
+        ],
+        a: "B",
+        e: "As chaves estrangeiras impedem a inserção de registros órfãos, garantindo a consistência relacional e a integridade dos dados em arquiteturas ACID.",
+        t: "Regras de exclusão em cascata (`ON DELETE CASCADE`) podem ser configuradas para gerenciar dependências automaticamente."
+    },
+    {
+        q: "Qual é a utilidade de criar um Índice (`CREATE INDEX`) em uma tabela de banco de dados?",
+        c: "Indexação e Performance",
+        o: [
+            "A) Aumentar o espaço em disco ocupado para duplicar a segurança dos dados.",
+            "B) Otimizar e acelerar a velocidade de recuperação de dados em consultas baseadas em colunas específicas (como WHERE ou JOIN), criando uma estrutura de dados de busca rápida (como árvore B-Tree).",
+            "C) Impedir totalmente que qualquer comando de atualização seja executado.",
+            "D) Compactar o formato das imagens armazenadas em campos BLOB."
+        ],
+        a: "B",
+        e: "Embora os índices melhorem drasticamente a performance de leitura (`SELECT`), eles geram um custo adicional de processamento e espaço em operações de escrita (`INSERT`, `UPDATE`, `DELETE`), pois o índice precisa ser atualizado.",
+        t: "Devem ser criados de forma estratégica nas colunas mais consultadas em filtros e junções."
+    },
+    {
+        q: "Qual é a diferença funcional entre os operadores `UNION` e `UNION ALL` ao combinar consultas SQL?",
+        c: "Operadores de Conjuntos",
+        o: [
+            "A) `UNION` remove duplicatas dos resultados combinados e executa uma ordenação implícita; `UNION ALL` inclui todos os registros (inclusive duplicados) de forma direta e mais rápida.",
+            "B) `UNION` une tabelas de bancos de dados diferentes e `UNION ALL` junta apenas uma tabela consigo mesma.",
+            "C) Não há diferença; ambos funcionam de maneira idêntica em qualquer SGBD.",
+            "D) `UNION ALL` apaga os dados originais e `UNION` cria um backup."
+        ],
+        a: "A",
+        e: "Como o `UNION` padrão exige a remoção de duplicatas (processo de distinct), ele consome mais CPU e memória. Se você sabe que não há duplicatas ou quer mantê-las, o `UNION ALL` é consideravelmente mais performático.",
+        t: "Ambos exigem que as consultas combinadas tenham o mesmo número de colunas e tipos de dados compatíveis."
+    },
+    {
+        q: "O que representa o conceito de Transações ACID em sistemas de gerenciamento de bancos de dados relacionais (SGBDR)?",
+        c: "Transações ACID",
+        o: [
+            "A) Um protocolo de criptografia de rede para conexões remota.",
+            "B) Um acrônimo para Atomicidade (tudo ou nada), Consistência (regras de integridade respeitadas), Isolamento (transações concorrentes não interferem umas nas outras) e Durabilidade (dados confirmados não são perdidos após falhas).",
+            "C) Um método para desfragmentar discos rígidos em servidores Linux.",
+            "D) Uma linguagem de programação orientada a objetos para banco de dados."
+        ],
+        a: "B",
+        e: "As propriedades ACID garantem a confiabilidade absoluta em operações transacionais críticas, como transferências bancárias ou faturamento e-commerce.",
+        t: "Comandos como `BEGIN TRANSACTION`, `COMMIT` e `ROLLBACK` controlam diretamente esse comportamento."
+    },
+    {
+        q: "Qual é a função de uma Subconsulta (Subquery ou Consulta Aninhada) no SQL?",
+        c: "Subconsultas",
+        o: [
+            "A) Executar tarefas de manutenção e limpeza física de logs no servidor.",
+            "B) Permitir que uma consulta SQL seja colocada dentro de outra instrução (`SELECT`, `INSERT`, `UPDATE` ou `DELETE`), servindo como filtro dinâmico ou fonte de dados derivada.",
+            "C) Submeter relatórios gerenciais diretamente para a impressora padrão.",
+            "D) Criptografar colunas sensíveis em formato binário."
+        ],
+        a: "B",
+        e: "Subconsultas podem ser escalares (retornando um único valor) ou correlacionadas (quando dependem da linha avaliada na consulta externa). São poderosas para resolver lógicas complexas de filtragem.",
+        t: "Em muitos cenários modernos, o uso de CTEs (`WITH`) substitui subconsultas complexas com ganho de legibilidade."
+    },
+    {
+        q: "O que caracteriza uma Visão (View) em um banco de dados relacional?",
+        c: "Views (Visões)",
+        o: [
+            "A) Um arquivo físico duplicado que copia todos os dados para uma máquina de backup na nuvem.",
+            "B) Uma consulta SQL armazenada no banco de dados que atua como uma tabela virtual, permitindo encapsular consultas complexas, simplificar a segurança de acesso a colunas e reutilizar lógicas de negócio.",
+            "C) Uma interface gráfica web para visualização de relatórios em PDF.",
+            "D) Um índice temporário gerado apenas durante reinicializações do sistema."
+        ],
+        a: "B",
+        e: "As views não armazenam os dados fisicamente por padrão (exceto em materialized views); elas recalculam o resultado a cada acesso, servindo como uma camada de abstração e segurança sobre as tabelas base.",
+        t: "Úteis para ocultar colunas sensíveis de usuários comuns em grandes bases de dados."
+    }
+];
 
-addQuestion(
-    "SQL", "Fácil",
-    "Qual comando modifica registros existentes?",
-    "UPDATE servidor\nSET salario=6000\nWHERE id=10;",
-    ["A) INSERT", "B) UPDATE", "C) DELETE", "D) DROP"],
-    "B",
-    "UPDATE altera dados já existentes.",
-    "DELETE remove registros; DROP remove estrutura."
-);
-
-addQuestion(
-    "SQL", "Média",
-    "Qual cláusula filtra grupos?",
-    "SELECT setor,COUNT(*)\nFROM servidor\nGROUP BY setor\nHAVING COUNT(*)>10;",
-    ["A) WHERE", "B) ORDER BY", "C) HAVING", "D) DISTINCT"],
-    "C",
-    "HAVING atua após o agrupamento.",
-    "WHERE filtra linhas; HAVING filtra grupos."
-);
-
-addQuestion(
-    "SQL", "Fácil",
-    "Qual comando SQL é utilizado para recuperar dados de uma tabela?",
-    "SELECT * FROM clientes;",
-    ["A) GET", "B) SELECT", "C) EXTRACT", "D) FETCH"],
-    "B",
-    "O comando SELECT é a instrução padrão da linguagem SQL para realizar consultas em uma ou mais tabelas.",
-    "Fundamental para qualquer operação de leitura no banco de dados relacional."
-);
-
-addQuestion(
-    "SQL", "Média",
-    "O que define uma Chave Primária (Primary Key) em uma tabela relacional?",
-    "CONSTRAINT pk_cliente PRIMARY KEY (id)",
-    ["A) Um campo que aceita valores duplicados e nulos", "B) Um identificador único para cada registro da tabela, sem permitir nulos", "C) Um ponteiro físico para o disco rígido", "D) Uma senha de acesso criptografada para o DBA"],
-    "B",
-    "A chave primária garante a integridade da entidade, assegurando que cada linha seja unicamente identificável.",
-    "Nenhum campo de uma chave primária pode ser NULL."
-);
-
-addQuestion(
-    "SQL", "Difícil",
-    "Qual tipo de JOIN retorna todos os registros da tabela da esquerda e os registros correspondentes da tabela da direita (ou NULL se não houver correspondência)?",
-    "SELECT * FROM A LEFT JOIN B ON A.id = B.id;",
-    ["A) INNER JOIN", "B) FULL OUTER JOIN", "C) LEFT JOIN (ou LEFT OUTER JOIN)", "D) CROSS JOIN"],
-    "C",
-    "O LEFT JOIN preserva toda a tabela esquerda, preenchendo com nulos as colunas da direita quando a condição de junção falha.",
-    "Muito usado para listar entidades mesmo que elas não possuam relacionamentos dependentes."
-);
-
-addQuestion(
-    "SQL", "Fácil",
-    "Qual comando SQL é utilizado para apagar uma tabela inteira do banco de dados (inclusive sua estrutura)?",
-    "DROP TABLE funcionarios;",
-    ["A) DELETE TABLE", "B) TRUNCATE TABLE", "C) DROP TABLE", "D) CLEAR TABLE"],
-    "C",
-    "O comando DROP remove a tabela do banco de dados por completo. Já o DELETE remove linhas, mantendo a estrutura.",
-    "Operação irreversível na maioria dos SGBDs sem backup."
-);
-
-addQuestion(
-    "SQL", "Difícil",
-    "Qual é a principal utilidade do comando GROUP BY em SQL?",
-    "SELECT cargo, AVG(salario) FROM funcionarios GROUP BY cargo;",
-    ["A) Ordenar alfabeticamente o resultado final", "B) Agrupar linhas que possuem valores idênticos em colunas especificadas para aplicar funções de agregação", "C) Criar uma nova tabela física no banco", "D) Unir dados de tabelas distintas sem usar chaves"],
-    "B",
-    "O GROUP BY organiza os dados em conjuntos para que funções como COUNT, SUM, AVG ou MAX operem por grupo.",
-    "Sempre usado em conjunto com funções agregadas."
-);
-
-addQuestion(
-    "SQL", "Média",
-    "Qual cláusula é utilizada para ordenar o resultado de uma consulta SQL em ordem decrescente?",
-    "SELECT * FROM produtos ORDER BY preco DESC;",
-    ["A) ASC", "B) SORT", "C) DESC", "D) REVERSE"],
-    "C",
-    "A palavra-chave DESC indica ordenação descendente (do maior para o menor). ASC é o padrão (crescente).",
-    "Aplicada no final da instrução SELECT."
-);
+sqlQuest.forEach(x => {
+    addQuestion("SQL", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
+});
 /* =====================================================
 DESENVOLVIMENTO WEB (HTML, CSS E JAVASCRIPT)
 ===================================================== */
@@ -1344,89 +1466,144 @@ addQuestion(
 );
 
 /* =====================================================
-   SPRING
+   SPRING FRAMEWORK (SPRING BOOT, DATA, SECURITY)
 ===================================================== */
 
-const spring = [
+const springQuest = [
     {
-        q: "Qual anotação do Spring Boot é utilizada na classe principal para habilitar a configuração automática, o escaneamento de componentes e a configuração de beans?",
-        c: "@SpringBootApplication",
+        q: "O que é o conceito de Inversão de Controle (IoC) e Injeção de Dependência (DI) no Spring Framework?",
+        c: "IoC e Injeção de Dependência",
         o: [
-            "A) @SpringAppConfig",
-            "B) @EnableAutoConfiguration",
-            "C) @SpringBootApplication",
-            "D) @ConfigurationRoot"
+            "A) O Spring obriga o desenvolvedor a instanciar manualmente todas as classes com o operador `new` em tempo de execução.",
+            "B) O framework (Container IoC) assume a responsabilidade de criar, gerenciar o ciclo de vida e injetar automaticamente os objetos (beans) onde forem necessários, promovendo o desacoplamento.",
+            "C) É um mecanismo de segurança para criptografar senhas de usuários no banco de dados.",
+            "D) Um padrão de roteamento de requisições HTTP para microsserviços."
+        ],
+        a: "B",
+        e: "Em vez da classe controlar a criação de suas próprias dependências, o container do Spring faz essa injeção (geralmente via `@Autowired` ou construtor), facilitando testes e manutenção.",
+        t: "A injeção via construtor é atualmente a prática recomendada em detrimento da injeção direta em campos (`@Autowired` em atributos)."
+    },
+    {
+        q: "Qual é o principal objetivo do Spring Boot na simplificação do desenvolvimento de aplicações Java?",
+        c: "Spring Boot",
+        o: [
+            "A) Substituir a linguagem Java por JavaScript no backend.",
+            "B) Eliminar a necessidade de configurações XML complexas e Boilerplate, oferecendo auto-configuração (autoconfigure), dependências empacotadas (starters) e um servidor embutido (como Tomcat).",
+            "C) Executar o código exclusivamente no navegador web do cliente.",
+            "D) Fornecer um banco de dados relacional em memória com persistência infinita."
+        ],
+        a: "B",
+        e: "O Spring Boot automatiza a configuração inicial de bibliotecas com base no classpath e nas dependências declaradas (os famosos `spring-boot-starter-*`), permitindo subir uma aplicação pronta para produção em minutos.",
+        t: "Permite focar nas regras de negócio em vez de gastar horas configurando servidores de aplicação."
+    },
+    {
+        q: "Como o Spring Data JPA simplifica a camada de persistência de dados em aplicações Java?",
+        c: "Spring Data JPA",
+        o: [
+            "A) Exigindo que o desenvolvedor escreva manualmente todas as consultas SQL brutas para operações básicas de CRUD.",
+            "B) Permitindo a criação automática de repositórios através de interfaces que estendem `JpaRepository`, gerando consultas dinâmicas baseadas no nome dos métodos e implementando o mapeamento objeto-relacional (ORM).",
+            "C) Substituindo o banco de dados por arquivos de texto plano em formato CSV.",
+            "D) Executando migrações de esquema via linha de comando do terminal."
+        ],
+        a: "B",
+        e: "Com o Spring Data JPA, você cria uma interface como `interface UsuarioRepository extends JpaRepository<Usuario, Long>` e o framework implementa automaticamente operações como `save`, `findById`, `delete`, além de parser de nomes como `findByEmail`.",
+        t: "Reduz drasticamente o código repetitivo (boilerplate) de acesso a dados."
+    },
+    {
+        q: "Qual é a função das anotações `@Controller` e `@RestController` no Spring MVC / Spring Boot?",
+        c: "Spring MVC e REST",
+        o: [
+            "A) `@Controller` lida com requisições HTTP retornando visualizações (como páginas HTML via Thymeleaf), enquanto `@RestController` é uma combinação de `@Controller` com `@ResponseBody`, serializando os retornos automaticamente para JSON ou XML.",
+            "B) `@RestController` é usado apenas para conectar o sistema ao banco de dados Oracle.",
+            "C) Não há diferença técnica; ambas executam exatamente o mesmo comportamento de serialização.",
+            "D) `@Controller` gerencia transações de segurança e `@RestController` gerencia rotas de arquivos estáticos."
+        ],
+        a: "A",
+        e: "A anotação `@RestController` é o padrão para desenvolvimento de APIs REST modernas, pois garante que o objeto retornado por um método seja convertido diretamente em JSON para consumo pelo frontend.",
+        t: "Facilita a construção de arquiteturas desacopladas."
+    },
+    {
+        q: "O que o Spring Security gerencia em uma aplicação web corporativa?",
+        c: "Spring Security",
+        o: [
+            "A) O balanceamento de carga entre servidores na nuvem AWS.",
+            "B) O framework abrangente e altamente customizável de autenticação (quem você é) e controle de autorização (o que você pode fazer), além de proteção contra vulnerabilidades comuns como CSRF e XSS.",
+            "C) A compactação de arquivos estáticos de imagem e JavaScript.",
+            "D) A execução de testes unitários automatizados."
+        ],
+        a: "B",
+        e: "O Spring Security intercepta requisições HTTP através de uma cadeia de filtros (Security Filter Chain), garantindo que apenas usuários autenticados e com as devidas roles/permissões acessem endpoints protegidos.",
+        t: "É amplamente integrado com padrões modernos como OAuth2, JWT e autenticação baseada em sessão."
+    },
+    {
+        q: "Para que serve a anotação `@Transactional` no Spring?",
+        c: "Gerenciamento de Transações",
+        o: [
+            "A) Para registrar logs de erro no arquivo console da aplicação.",
+            "B) Para gerenciar automaticamente o limite de conexões simultâneas com o servidor.",
+            "C) Para declarar que um método ou classe deve executar dentro de uma transação de banco de dados, garantindo atomicidade (ACID) — ou seja, se ocorrer uma exceção não tratada, todas as operações são revertidas (rollback).",
+            "D) Para criptografar dados sensíveis trafegados na rede."
         ],
         a: "C",
-        e: "A anotação @SpringBootApplication é um atalho que combina @Configuration, @EnableAutoConfiguration e @ComponentScan.",
-        t: "Não confunda com anotações isoladas como @EnableAutoConfiguration, que não realiza o escaneamento de pacotes por si só."
+        e: "O Spring gerencia transações de forma declarativa através de proxies. Se um método anotado com `@Transactional` lança uma RuntimeException, o framework executa o rollback automático no banco.",
+        t: "Fundamental para manter a consistência de dados em operações complexas que envolvem múltiplos passos."
     },
     {
-        q: "Em aplicações Spring Data JPA, qual anotação é utilizada para indicar que uma classe Java representa uma entidade mapeada para uma tabela de banco de dados?",
-        c: "@Entity",
+        q: "O que são e para que servem os 'Spring Boot Actuator' em uma aplicação de produção?",
+        c: "Spring Boot Actuator",
         o: [
-            "A) @TableMapping",
-            "B) @Entity",
-            "C) @DatabaseModel",
-            "D) @Persistable"
+            "A) Ferramentas para gerar diagramas UML da arquitetura da aplicação.",
+            "B) Endpoints prontos de monitoramento e gerenciamento que expõem métricas de saúde da aplicação (`/actuator/health`), uso de memória, threads, ambiente e informações de build.",
+            "C) Um compilador de código Java para binários nativos.",
+            "D) Um framework de testes de aceitação em interface gráfica."
         ],
         a: "B",
-        e: "A anotação @Entity especifica que a classe é uma entidade JPA e deve ser mapeada para uma tabela no banco de dados relacional.",
-        t: "Geralmente vem acompanhada de @Id para definir a chave primária e @Table para customizar o nome da tabela."
+        e: "O Actuator é essencial em ambientes de microsserviços e produção, permitindo que ferramentas de observabilidade (como Prometheus, Grafana ou Kubernetes) monitorem a saúde do serviço em tempo real.",
+        t: "Endpoints sensíveis devem ser devidamente protegidos via Spring Security."
     },
     {
-        q: "Qual conceito está presente no construtor abaixo?",
-        c: `@Service
-class ServidorService{
-    private final Repository repo;
-    ServidorService(Repository repo){
-        this.repo = repo;
-    }
-}`,
+        q: "Qual é a utilidade do ecossistema 'Spring Cloud' no desenvolvimento de software?",
+        c: "Spring Cloud",
         o: [
-            "A) Recursividade",
-            "B) Injeção de dependência",
-            "C) Herança",
-            "D) Hash"
+            "A) Fornecer ferramentas e padrões para o desenvolvimento e gerenciamento de arquiteturas baseadas em microsserviços (como Service Discovery, API Gateway, Config Server e Circuit Breaker).",
+            "B) Hospedar arquivos estáticos de imagens na nuvem da Google.",
+            "C) Substituir o framework Spring Boot por servidores web tradicionais legados.",
+            "D) Otimizar consultas SQL em bancos de dados relacionais locais."
         ],
-        a: "B",
-        e: "O Repository é fornecido ao Service pelo construtor.",
-        t: "IoC e DI são fundamentos do Spring."
+        a: "A",
+        e: "O Spring Cloud resolve os problemas complexos inerentes a sistemas distribuídos, como descoberta dinâmica de serviços (Eureka), centralização de configurações e tolerância a faltas.",
+        t: "Facilita a transição de monólitos para ambientes resilientes baseados em nuvem."
     },
     {
-        q: "Qual módulo facilita persistência?",
-        c: `interface ServidorRepository
-extends JpaRepository<Servidor, Long>{}`,
+        q: "Como o Spring lida com o tratamento global de exceções em APIs REST?",
+        c: "Tratamento de Exceções",
         o: [
-            "A) Spring Security",
-            "B) Spring Data",
-            "C) Spring Boot apenas",
-            "D) Spring MVC"
+            "A) Deixando a aplicação quebrar e exibir stack traces em HTML para o usuário final.",
+            "B) Utilizando classes anotadas com `@ControllerAdvice` (ou `@RestControllerAdvice`) combinadas com `@ExceptionHandler` para capturar exceções de forma centralizada e retornar respostas HTTP padronizadas.",
+            "C) Forçando o reinício automático do servidor web a cada erro encontrado.",
+            "D) Convertendo erros de banco de dados diretamente em arquivos PDF."
         ],
         a: "B",
-        e: "Spring Data fornece abstrações para acesso aos dados.",
-        t: "JpaRepository é pista importante."
+        e: "O `@ControllerAdvice` atua como um interceptor global de erros, permitindo mapear exceções de negócio (ex: `RecursoNaoEncontradoException`) para códigos de status HTTP apropriados (`404 Not Found`) de forma limpa.",
+        t: "Evita duplicação de blocos `try-catch` espalhados por todos os controllers."
     },
     {
-        q: "Qual módulo trata autenticação?",
-        c: `http
-.authorizeHttpRequests(...)
-.formLogin(...);`,
+        q: "O que o Spring Profiles (`application-{profile}.properties` ou `.yml`) permite configurar em uma aplicação?",
+        c: "Spring Profiles",
         o: [
-            "A) Spring Data",
-            "B) Spring Security",
-            "C) JDBC",
-            "D) Maven"
+            "A) Os perfis de acesso e permissões dos usuários administradores do sistema.",
+            "B) Conjuntos de configurações customizadas e isoladas para diferentes ambientes de execução (como `dev`, `test`, `prod`), permitindo alternar facilmente conexões de banco de dados e portas sem alterar o código fonte.",
+            "C) A paleta de cores e temas visuais do framework.",
+            "D) As credenciais de acesso ao repositório GitHub."
         ],
         a: "B",
-        e: "Spring Security trata autenticação e autorização.",
-        t: "Autenticação e autorização são conceitos diferentes."
+        e: "Os profiles ajudam a separar parâmetros que mudam conforme o ambiente onde a aplicação está rodando (ex: banco H2 em memória para desenvolvimento e PostgreSQL corporativo para produção).",
+        t: "Pode ser ativado via propriedade `spring.profiles.active=prod`."
     }
 ];
 
-// Carrega as questões do array para o sistema principal
-spring.forEach(x => {
-    addQuestion("Spring", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
+springQuest.forEach(x => {
+    addQuestion("Spring Framework", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
 
 
@@ -1434,152 +1611,422 @@ spring.forEach(x => {
    ARQUITETURA DE SOFTWARE
 ===================================================== */
 
-const arquitetura = [
+const arquiteturaSoftware = [
     {
-        q: "Qual padrão arquitetural separa a representação da informação da interação do usuário com ela, dividindo a aplicação em três componentes principais?",
-        c: "",
+        q: "Qual é o principal objetivo da Arquitetura Limpa (Clean Architecture), proposta por Robert C. Martin (Uncle Bob)?",
+        c: "Clean Architecture",
         o: [
-            "A) MVC (Model-View-Controller)",
-            "B) Singleton",
-            "C) Factory Method",
-            "D) Peer-to-Peer"
-        ],
-        a: "A",
-        e: "O padrão MVC divide a aplicação em Model (dados/regras), View (interface) e Controller (fluxo/comunicação).",
-        t: "Muito comum em aplicações web tradicionais e frameworks modernos."
-    },
-    {
-        q: "No contexto de Arquitetura Limpa (Clean Architecture), qual camada fica mais ao centro e contém as regras de negócio corporativas da aplicação?",
-        c: "",
-        o: [
-            "A) Frameworks e Drivers",
-            "B) Interface Adapters",
-            "C) Use Cases (Casos de Uso)",
-            "D) Entities (Entidades)"
-        ],
-        a: "D",
-        e: "As Entidades (Entities) encapsulam as regras de negócio de alto nível e independentes da aplicação, ficando no núcleo da arquitetura.",
-        t: "A regra de dependência aponta sempre para dentro, do detalhe para o núcleo."
-    },
-    {
-        q: "Qual é a principal característica da Arquitetura Orientada a Microsserviços em comparação com a Arquitetura Monolítica?",
-        c: "",
-        o: [
-            "A) Todos os módulos compartilham obrigatoriamente a mesma base de dados.",
-            "B) A aplicação é dividida em pequenos serviços independentes que se comunicam por rede.",
-            "C) O deploy de qualquer alteração exige a recompilação e republicação de todo o sistema.",
-            "D) Elimina completamente a necessidade de gerenciamento de rede e balanceadores de carga."
+            "A) Garantir que o banco de dados relacional seja o núcleo central e inalterável de toda a regra de negócio da aplicação.",
+            "B) Separar as preocupações do software em camadas concêntricas, onde as dependências apontam sempre de fora para dentro (as regras de negócio centrais não conhecem detalhes de framework, UI ou banco de dados).",
+            "C) Automatizar a criação de arquivos CSS e scripts de estilização para o front-end.",
+            "D) Substituir a orientação a objetos tradicional por programação puramente funcional em servidores web."
         ],
         a: "B",
-        e: "Microsserviços descentralizam o desenvolvimento, deploy e escalabilidade, isolando domínios de negócio.",
-        t: "Apesar de escaláveis, trazem complexidade distribuída (consistência eventual, latência)."
+        e: "A Clean Architecture isola o domínio (regras de negócio) de agentes externos como frameworks, banco de dados ou interfaces de usuário, garantindo alta testabilidade e independência tecnológica.",
+        t: "A Regra de Dependência é o pilar fundamental: código de círculos externos pode conhecer círculos internos, mas nunca o inverso."
+    },
+    {
+        q: "No contexto da Arquitetura Hexagonal (também conhecida como Ports and Adapters), qual é a função das Portas (Ports) e dos Adaptadores (Adapters)?",
+        c: "Arquitetura Hexagonal",
+        o: [
+            "A) As portas são gabinetes de servidores físicos e os adaptadores são cabos de rede de fibra ótica.",
+            "B) As portas definem interfaces abstratas de entrada e saída para a aplicação, enquanto os adaptadores implementam essas portas para conectar o núcleo de negócio a tecnologias externas específicas (como REST APIs, bancos SQL ou filas).",
+            "C) As portas controlam o roteamento de telas no front-end e os adaptadores gerenciam folhas de estilo.",
+            "D) As portas substituem completamente a necessidade de testes unitários automatizados."
+        ],
+        a: "B",
+        e: "A Arquitetura Hexagonal isola o núcleo da aplicação (Domain) permitindo que ele seja acionado ou acione o mundo exterior através de Portas (contratos) e Adaptadores (implementações concretas de I/O).",
+        t: "Isso facilita a troca de um banco de dados ou framework sem alterar uma única linha da regra de negócio."
+    },
+    {
+        q: "Quais são as características fundamentais que definem o estilo de Arquitetura de Microsserviços em comparação com uma aplicação Monolítica?",
+        c: "Microsserviços vs Monolito",
+        o: [
+            "A) Microsserviços rodam obrigatoriamente na mesma máquina física e compartilham a mesma base de dados centralizada.",
+            "B) Uma aplicação é estruturada como um conjunto de pequenos serviços independentes, cada um executando em seu próprio processo, comunicando-se via mecanismos leves (geralmente HTTP/REST ou gRPC) e podendo ser implantados de forma autônoma.",
+            "C) Microsserviços eliminam a necessidade de testes automatizados e integração contínua.",
+            "D) Monolitos são sempre modernos e escaláveis, enquanto microsserviços são usados apenas em sistemas legados."
+        ],
+        a: "B",
+        e: "Microsserviços promovem o desacoplamento organizacional e técnico, permitindo que diferentes equipes desenvolvam, escalem e façam deploy de serviços de forma independente.",
+        t: "Em contrapartida, introduzem complexidade distribuída em áreas como consistência de dados, latência de rede e observabilidade."
+    },
+    {
+        q: "O que caracteriza o padrão arquitetural MVC (Model-View-Controller)?",
+        c: "Padrão MVC",
+        o: [
+            "A) A união de todas as regras de banco de dados, layout visual e lógica de controle em um único arquivo de código executável.",
+            "B) A separação de responsabilidades em três componentes: o Model (dados e lógica de negócio), a View (interface de apresentação visual) e o Controller (intermediário que gerencia as entradas do usuário e atualiza o Model/View).",
+            "C) Um padrão exclusivo para bancos de dados NoSQL distribuídos.",
+            "D) Uma técnica de criptografia de ponta para requisições HTTP."
+        ],
+        a: "B",
+        e: "O MVC é um dos padrões mais clássicos da engenharia de software, promovendo a separação entre a representação visual dos dados, a interface de controle e a lógica estrutural.",
+        t: "Serve de base conceitual para diversos frameworks web modernos (como Spring MVC, ASP.NET Core MVC, Laravel, entre outros)."
+    },
+    {
+        q: "O que propõe o padrão arquitetural CQRS (Command Query Responsibility Segregation)?",
+        c: "CQRS",
+        o: [
+            "A) Utilizar a mesma tabela e o mesmo modelo de objetos tanto para operações pesadas de escrita quanto para consultas simples de leitura.",
+            "B) Separar rigorosamente os modelos e operações de leitura (Queries) dos modelos e operações de escrita/atualização (Commands), permitindo otimizar cada lado de forma independente.",
+            "C) Sincronizar dados exclusivamente via arquivos de texto plano em lotes diários.",
+            "D) Substituir servidores web tradicionais por funções serverless."
+        ],
+        a: "B",
+        e: "Em sistemas de alta escala, as necessidades de leitura diferem drasticamente das de escrita. O CQRS permite escalar e otimizar bancos de dados de leitura separadamente das bases transacionais de escrita.",
+        t: "Muitas vezes é combinado com o padrão Event Sourcing para rastrear o estado do sistema através de eventos."
+    },
+    {
+        q: "No contexto de Arquitetura Orientada a Microsserviços, qual é o objetivo do padrão 'API Gateway'?",
+        c: "API Gateway",
+        o: [
+            "A) Substituir os bancos de dados relacionais por tabelas em cache.",
+            "B) Atuar como um ponto único de entrada (proxy reverso) para todas as requisições dos clientes, lidando com roteamento, autenticação, controle de taxa (rate limiting), SSL termination e agregação de respostas.",
+            "C) Executar testes de carga automatizados direto no servidor de produção.",
+            "D) Gerenciar o versionamento de código no repositório GitHub."
+        ],
+        a: "B",
+        e: "O API Gateway oculta a topologia interna dos microsserviços dos clientes externos, fornecendo uma fachada unificada que simplifica o consumo e centraliza políticas transversais de segurança.",
+        t: "Evita que clientes móveis precisem fazer dezenas de requisições diretas a microsserviços internos diferentes."
+    },
+    {
+        q: "O que caracteriza uma Arquitetura Orientada a Eventos (Event-Driven Architecture - EDA)?",
+        c: "Event-Driven Architecture",
+        o: [
+            "A) Os serviços comunicam-se estritamente de forma síncrona através de chamadas HTTP bloqueantes encadeadas.",
+            "B) A produção, detecção e consumo de eventos ocorrem de forma assíncrona entre componentes desacoplados, permitindo reatividade imediata e alta escalabilidade por meio de brokers de mensagens (como Kafka ou RabbitMQ).",
+            "C) O sistema aguarda o encerramento manual do operador para processar qualquer dado.",
+            "D) As regras de negócio ficam centralizadas em um único banco de dados monolítico."
+        ],
+        a: "B",
+        e: "Na EDA, um componente publica um fato ocorrido (evento) sem se preocupar com quem vai consumi-lo, promovendo um desacoplamento temporal e espacial extremo entre os serviços.",
+        t: "É ideal para arquiteturas reativas e sistemas que lidam com grandes volumes de dados em tempo real."
+    },
+    {
+        q: "O que avalia a métrica de 'Acoplamento' (Coupling) na arquitetura de software?",
+        c: "Acoplamento e Coesão",
+        o: [
+            "A) O grau de dependência entre diferentes módulos ou classes de um sistema; quanto menor o acoplamento, mais independentes e fáceis de modificar os módulos são.",
+            "B) A quantidade de linhas de código que cada desenvolvedor escreve por dia.",
+            "C) O espaço em disco ocupado pelos arquivos binários da aplicação compilada.",
+            "D) A velocidade de execução dos testes unitários em milissegundos."
+        ],
+        a: "B",
+        e: "Na verdade, a opção correta é: o grau de interconexão entre módulos. Um baixo acoplamento é altamente desejável, pois alterações em um módulo não quebram os demais.",
+        t: "Deve sempre caminhar junto com a alta coesão (módulos que fazem uma única coisa bem feita)."
+    },
+    {
+        q: "Qual é a principal proposta da Arquitetura Orientada a Serviços (SOA - Service-Oriented Architecture)?",
+        c: "SOA",
+        o: [
+            "A) Desenvolver aplicações monolíticas gigantescas sem divisão de componentes.",
+            "B) Estruturar o software em serviços interoperáveis e reutilizáveis que se comunicam através de um barramento central de integração (ESB - Enterprise Service Bus) e protocolos padronizados.",
+            "C) Executar códigos exclusivamente no navegador web do cliente.",
+            "D) Eliminar o uso de bancos de dados relacionais em corporações."
+        ],
+        a: "B",
+        e: "A SOA precursora dos microsserviços focava fortemente na integração empresarial e reutilização de serviços corporativos, frequentemente utilizando SOAP, XML e o ESB.",
+        t: "Enquanto a SOA foca em compartilhamento e integração corporativa, os microsserviços focam em autonomia e descentralização."
+    },
+    {
+        q: "O que define a Arquitetura em Camadas (Layered Architecture ou N-Tier)?",
+        c: "Arquitetura em Camadas",
+        o: [
+            "A) Organizar o software em bandas horizontais superpostas (ex: Apresentação, Negócio/Domínio, Persistência/Dados), onde cada camada presta serviços para a camada imediatamente superior.",
+            "B) Dividir o sistema em pequenos processos independentes distribuídos em servidores cloud.",
+            "C) Executar o código de forma estritamente funcional sem estados internos.",
+            "D) Agrupar classes por funcionalidades de negócio verticais independentes."
+        ],
+        a: "A",
+        e: "A arquitetura em camadas tradicional organiza o sistema de forma técnica e horizontal. É amplamente compreendida, embora exija cuidado para evitar o vazamento de regras de negócio entre as camadas.",
+        t: "É o ponto de partida arquitetural mais comum para sistemas corporativos tradicionais."
     }
 ];
 
-arquitetura.forEach(x => {
+arquiteturaSoftware.forEach(x => {
     addQuestion("Arquitetura de Software", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
-
 /* =====================================================
-   REST E SOAP
+   REST E SOAP (ARQUITETURAS DE APIS E SERVIÇOS WEB)
 ===================================================== */
 
-const restSoap = [
+const restSoapQuest = [
     {
-        q: "Qual protocolo de comunicação para serviços Web é baseado estritamente em XML, possui especificações rígidas de segurança e confiabilidade (WS-Security, WS-ReliableMessaging) e opera tipicamente sobre os protocolos HTTP, SMTP ou TCP?",
-        c: "",
+        q: "Qual é a principal diferença arquitetural e de protocolo entre os estilos REST e SOAP?",
+        c: "Conceitos Básicos",
         o: [
-            "A) REST",
-            "B) SOAP",
-            "C) GraphQL",
-            "D) gRPC"
+            "A) O REST é um protocolo estrito baseado em XML padronizado pela W3C, enquanto o SOAP é um estilo arquitetural flexível restrito apenas ao método GET.",
+            "B) O SOAP é um protocolo rígido baseado estritamente em XML com envelope próprio e contratos WSDL rígidos; o REST é um estilo arquitetural leve que utiliza verbos HTTP padrão (GET, POST, PUT, DELETE) e suporta múltiplos formatos de dados como JSON.",
+            "C) O REST funciona exclusivamente sobre redes locais sem fio, enquanto o SOAP opera somente via Bluetooth.",
+            "D) Não há diferenças técnicas; ambos são sinônimos para chamadas de procedimentos remotos (RPC)."
         ],
         a: "B",
-        e: "O SOAP (Simple Object Access Protocol) é um protocolo altamente padronizado e baseado em XML, ideal para ambientes corporativos que exigem contratos formais via WSDL.",
-        t: "Lembre-se: SOAP é um protocolo pesado e estrito, enquanto REST é um estilo arquitetural."
+        e: "O SOAP (Simple Object Access Protocol) é um protocolo pesado com especificações rígidas de segurança e transações (WS-Security). O REST (Representational State Transfer) foca em recursos, escalabilidade e simplicidade usando os princípios nativos da web.",
+        t: "O REST tornou-se o padrão dominante para APIs web modernas devido à sua leveza e facilidade de consumo com JSON."
     },
     {
-        q: "No design de APIs RESTful, qual método HTTP é semanticamente o mais adequado para realizar a atualização completa ou parcial de um recurso existente?",
-        c: "",
+        q: "Como o REST lida com o conceito de 'Stateless' (Sem Estado) em suas requisições?",
+        c: "Princípios do REST",
         o: [
-            "A) GET",
-            "B) POST",
-            "C) PUT (ou PATCH)",
-            "D) DELETE"
+            "A) O servidor armazena todas as senhas e históricos de navegação dos clientes em memória RAM.",
+            "B) Cada requisição do cliente para o servidor deve conter todas as informações necessárias para entender e processar a solicitação, sem depender de contextos ou sessões armazenadas previamente no servidor.",
+            "C) O estado da aplicação é mantido permanentemente em cookies criptografados no banco de dados relacional.",
+            "D) O servidor gerencia o fluxo temporal das telas do usuário através de conexões TCP persistentes."
+        ],
+        a: "B",
+        e: "A restrição Stateless melhora drasticamente a escalabilidade dos servidores REST, pois qualquer instância do servidor pode atender a qualquer requisição de forma independente.",
+        t: "A autenticação baseada em tokens (como JWT) encaixa-se perfeitamente nessa premissa."
+    },
+    {
+        q: "Qual é o papel do arquivo WSDL (Web Services Description Language) no ecossistema SOAP?",
+        c: "Contratos SOAP",
+        o: [
+            "A) Servir como um documento de estilos CSS para renderizar páginas HTML no navegador.",
+            "B) Descrever formalmente o contrato do serviço SOAP, especificando as operações disponíveis, os formatos XML esperados, os tipos de dados e os endpoints de comunicação.",
+            "C) Criptografar o payload da mensagem contra ataques de negação de serviço (DDoS).",
+            "D) Substituir o banco de dados relacional no armazenamento de logs de erro."
+        ],
+        a: "B",
+        e: "O WSDL atua como um contrato rígido baseado em XML. Ferramentas de desenvolvimento podem ler esse arquivo automaticamente para gerar stubs e classes de cliente capazes de consumir a API SOAP.",
+        t: "Garante alta tipagem e validação estricta, embora adicione complexidade de configuração."
+    },
+    {
+        q: "Quais são os verbos HTTP padrão mais comumente utilizados em uma API RESTful para mapear operações CRUD (Create, Read, Update, Delete)?",
+        c: "Verbos HTTP no REST",
+        o: [
+            "A) `FETCH`, `SEND`, `CHANGE`, `REMOVE`",
+            "B) `GET` (Ler), `POST` (Criar), `PUT`/`PATCH` (Atualizar), `DELETE` (Remover)",
+            "C) `SELECT`, `INSERT`, `UPDATE`, `DROP`",
+            "D) `REQUEST`, `RESPONSE`, `VALIDATE`, `EXECUTE`"
+        ],
+        a: "B",
+        e: "O REST explora a semântica nativa dos métodos HTTP. O `GET` recupera recursos, `POST` cria novos recursos, `PUT`/`PATCH` atualizam e `DELETE` os remove.",
+        t: "O uso correto dos verbos e códigos de status HTTP (200, 201, 400, 404, 500) é essencial para uma API REST bem projetada."
+    },
+    {
+        q: "Por que o protocolo SOAP é frequentemente escolhido em ambientes corporativos bancários ou governamentais legados?",
+        c: "Uso do SOAP",
+        o: [
+            "A) Porque ele consome menos largura de banda que o formato JSON.",
+            "B) Devido aos seus padrões nativos robustos de segurança avançada (WS-Security), confiabilidade transacional (ACID/WS-AtomicTransaction) e contratos contratuais rígidos.",
+            "C) Porque os navegadores web modernos executam SOAP de forma nativa sem bibliotecas adicionais.",
+            "D) Porque ele não exige o uso de endereços IP para comunicação."
+        ],
+        a: "B",
+        e: "Embora mais pesado e complexo que o REST, o SOAP oferece recursos de segurança corporativa de nível empresarial integrados e garantias rígidas de entrega de mensagens.",
+        t: "Ainda é muito comum em sistemas legados corporativos e integrações B2B (Business-to-Business)."
+    },
+    {
+        q: "O que significa o conceito de 'HATEOAS' (Hypermedia As The Engine Of Application State) no nível mais avançado de maturidade REST (Modelo de Maturidade de Richardson)?",
+        c: "HATEOAS no REST",
+        o: [
+            "A) Um sistema de criptografia de ponta a ponta para proteger dados contra ataques de man-in-the-middle.",
+            "B) A prática de incluir links de hipermídia nas respostas da API, permitindo que o cliente navegue dinamicamente pelas próximas ações possíveis sem precisar hardcodar URLs.",
+            "C) Uma biblioteca de compressão de arquivos JSON para otimizar o tráfego de rede.",
+            "D) Um framework de injeção de dependência para microsserviços Java."
+        ],
+        a: "B",
+        e: "Com HATEOAS, a resposta da API não traz apenas os dados, mas também os links de navegação disponíveis (ex: links para pagar, cancelar ou atualizar o recurso), tornando o cliente altamente desacoplado da estrutura de URLs.",
+        t: "Representa o Nível 3 do Modelo de Maturidade de Leonard Richardson para APIs REST."
+    },
+    {
+        q: "Qual é a principal desvantagem técnica associada ao uso do protocolo SOAP?",
+        c: "Limitações do SOAP",
+        o: [
+            "A) A incapacidade total de trafegar dados em formato numérico.",
+            "B) O alto overhead de processamento e banda devido à obrigatoriedade de serialização e parsing de estruturas XML complexas (Envelopes SOAP), além do acoplamento rígido.",
+            "C) A falta absoluta de padrões de segurança e criptografia.",
+            "D) A impossibilidade de ser executado sobre o protocolo HTTP."
+        ],
+        a: "B",
+        e: "O XML do SOAP é verboso e pesado. Processar envelopes SOAP exige mais recursos computacionais de CPU e memória em comparação com o formato JSON leve utilizado pelo REST.",
+        t: "Isso tornou o SOAP impopular para aplicações móveis e arquiteturas de alta escala orientadas a microsserviços."
+    },
+    {
+        q: "Como o REST gerencia a identificação dos recursos disponibilizados na web?",
+        c: "Recursos no REST",
+        o: [
+            "A) Através de nomes de métodos remotos encapsulados em um arquivo XML.",
+            "B) Através de URIs (Uniform Resource Identifiers) claros e orientados a substantivos (ex: `/clientes/123/pedidos`).",
+            "C) Através de números de portas TCP exclusivos para cada cliente conectado.",
+            "D) Através de comandos SQL diretos enviados na URL."
+        ],
+        a: "B",
+        e: "No REST, tudo é tratado como um 'recurso'. As URIs devem identificar os recursos de forma intuitiva, focando em substantivos no plural em vez de verbos de ação.",
+        t: "Exemplo correto: `GET /produtos` em vez de `GET /obterProdutos`."
+    },
+    {
+        q: "Em termos de transporte e flexibilidade de protocolos, qual é a grande vantagem do REST sobre o SOAP?",
+        c: "Transporte no REST",
+        o: [
+            "A) O REST opera exclusivamente via protocolo FTP.",
+            "B) O SOAP está preso obrigatoriamente ao protocolo HTTP, enquanto o REST pode usar qualquer protocolo de rede.",
+            "C) O SOAP é altamente acoplado ao protocolo HTTP (e dependente de extensões rígidas), enquanto o REST tira proveito universal de qualquer recurso web baseado em HTTP, podendo também transitar facilmente sobre JSON, XML, HTML ou texto puro.",
+            "D) O REST exige conexões dedicadas via cabo de fibra ótica."
         ],
         a: "C",
-        e: "O método PUT é utilizado para substituir ou atualizar um recurso, enquanto o PATCH é focado em atualizações parciais. O POST cria novos recursos e o GET apenas recupera.",
-        t: "Atente-se à idempotência dos métodos: PUT e GET são idempotentes, POST geralmente não é."
+        e: "Embora o SOAP possa teoricamente rodar sobre SMTP ou TCP, ele é fortemente atrelado ao HTTP com regras complexas de envelopamento. O REST aproveita diretamente a infraestrutura nativa da web (cache, proxies, gateways HTTP).",
+        t: "A flexibilidade de formatos de payload (JSON, XML, YAML) também favorece o REST."
     },
     {
-        q: "Qual formato de dados é o mais amplamente utilizado em requisições e respostas de APIs REST modernas devido à sua leveza e facilidade de manipulação em linguagens como JavaScript?",
-        c: "",
+        q: "Qual formato de serialização de dados é o mais universal e amplamente associado ao desenvolvimento de APIs REST modernas?",
+        c: "Formatos de Dados no REST",
         o: [
-            "A) XML",
-            "B) JSON",
-            "C) YAML",
-            "D) CSV"
+            "A) XML estrito com validação XSD obrigatória.",
+            "B) JSON (JavaScript Object Notation), devido à sua leveza, legibilidade humana e facilidade de parsing nativo em linguagens web.",
+            "C) Arquivos binários compactados em formato ZIP.",
+            "D) Textos estruturados em planilhas CSV."
         ],
         a: "B",
-        e: "O JSON (JavaScript Object Notation) tornou-se o padrão da indústria para REST por consumir menos banda e ser facilmente convertido em objetos nativos.",
-        t: "Embora REST suporte XML, JSON é quase universal no ecossistema atual."
+        e: "Embora o REST suporte múltiplos formatos (conteúdo negociado via header `Accept`), o JSON tornou-se o padrão de fato da indústria por sua simplicidade e baixo consumo de banda comparado ao XML.",
+        t: "Acelera o desenvolvimento tanto no backend quanto no frontend."
     }
 ];
 
-restSoap.forEach(x => {
+restSoapQuest.forEach(x => {
     addQuestion("REST e SOAP", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
-
 /* =====================================================
-   UML (Unified Modeling Language)
+   UML (LINGUAGEM DE MODELAGEM UNIFICADA)
 ===================================================== */
 
-const uml = [
+const umlQuest = [
     {
-        q: "Qual diagrama UML é utilizado para representar a visão estática do sistema, mostrando as classes, seus atributos, operações e os relacionamentos entre elas?",
-        c: "",
+        q: "Qual é o principal objetivo de um Diagrama de Classes na UML?",
+        c: "Diagrama de Classes",
         o: [
-            "A) Diagrama de Casos de Uso",
-            "B) Diagrama de Classes",
-            "C) Diagrama de Atividades",
-            "D) Diagrama de Sequência"
+            "A) Mostrar o fluxo temporal de mensagens trocadas entre objetos em um cenário de uso.",
+            "B) Representar a estrutura estática do sistema, exibindo as classes, seus atributos, operações e os relacionamentos entre elas.",
+            "C) Descrever o comportamento dinâmico de um objeto através de estados e transições.",
+            "D) Mapear fisicamente os nós de hardware e a topologia de rede onde a aplicação será executada."
         ],
         a: "B",
-        e: "O Diagrama de Classes é o principal bloco de construção da modelagem orientada a objetos na UML, detalhando a estrutura estática do sistema.",
-        t: "Foque na diferença entre visões estáticas (Classes, Objetos, Componentes) e dinâmicas (Sequência, Atividades, Estados)."
+        e: "O Diagrama de Classes é o pilar estrutural mais utilizado da UML, servindo para modelar o domínio do problema e a arquitetura orientada a objetos antes da implementação do código.",
+        t: "Ele foca na visão estática, diferindo dos diagramas comportamentais."
     },
     {
-        q: "No contexto de relacionamentos em Diagramas de Classes UML, qual tipo de associação representa uma relação de 'todo-parte' onde a parte pode existir de forma independente do todo (agregação fraca)?",
-        c: "",
+        q: "No contexto de relacionamentos entre classes na UML, qual é a diferença fundamental entre Composição e Agregação?",
+        c: "Relacionamentos UML",
         o: [
-            "A) Composição",
-            "B) Agregação",
-            "C) Generalização",
-            "D) Realização"
-        ],
-        a: "B",
-        e: "A agregação indica que um objeto contém outros, mas as partes sobrevivem se o todo for destruído. A composição representa uma relação de propriedade exclusiva (ciclo de vida dependente).",
-        t: "Lembre-se da representação gráfica: losango branco para Agregação e losango preto preenchido para Composição."
-    },
-    {
-        q: "Qual diagrama UML comportamental foca na ordenação temporal das mensagens trocadas entre objetos ao longo do tempo?",
-        c: "",
-        o: [
-            "A) Diagrama de Sequência",
-            "B) Diagrama de Implantação",
-            "C) Diagrama de Pacotes",
-            "D) Diagrama de Perfis"
+            "A) A agregação indica uma relação de 'todo-parte' onde as partes podem existir independentemente do todo; a composição é uma forma mais forte de agregação onde o ciclo de vida da parte é dependente do todo.",
+            "B) A composição é utilizada exclusivamente para classes abstratas e a agregação para interfaces.",
+            "C) Não há diferença prática; ambos os termos são sinônimos para herança múltipla.",
+            "D) A agregação utiliza uma seta preta sólida e a composição uma seta tracejada."
         ],
         a: "A",
-        e: "O Diagrama de Sequência detalha como os objetos interagem em um cenário específico, destacando a linha de vida temporal de cada participante.",
-        t: "É um dos diagramas dinâmicos mais cobrados em concursos para detalhar fluxos de casos de uso."
+        e: "Na agregação (losango vazio), o objeto parte sobrevive se o todo for destruído (ex: um curso e seus alunos). Na composição (losango preenchido), se o todo morre, as partes morrem junto (ex: uma casa e seus cômodos ou uma nota fiscal e seus itens).",
+        t: "A composição representa uma relação de propriedade estrita."
+    },
+    {
+        q: "Qual é a finalidade principal de um Diagrama de Casos de Uso?",
+        c: "Diagrama de Casos de Uso",
+        o: [
+            "A) Detalhar a sintaxe de programação e os algoritmos internos dos métodos de uma classe.",
+            "B) Mapear a infraestrutura de servidores cloud e balanceadores de carga.",
+            "C) Ilustrar as funcionalidades do sistema a partir da perspectiva dos atores externos (usuários ou outros sistemas), mostrando quem interage com o quê.",
+            "D) Controlar o versionamento de branches e merges no repositório Git."
+        ],
+        a: "C",
+        e: "O Diagrama de Casos de Uso é uma ferramenta de análise de requisitos que descreve o comportamento do sistema sob o ponto de vista do usuário (ator), sem entrar em detalhes técnicos de implementação.",
+        t: "Utiliza elementos como atores (bonequinhos), elipses (casos de uso) e limites do sistema."
+    },
+    {
+        q: "Para que serve o relacionamento do tipo 'Include' (Inclusão) em um Diagrama de Casos de Uso?",
+        c: "Casos de Uso (Relacionamentos)",
+        o: [
+            "A) Para indicar que um caso de uso é opcional e só executa se o usuário pagar uma taxa.",
+            "B) Para indicar que o comportamento de um caso de uso base inclui obrigatoriamente a execução de outro caso de uso subtarefa (reutilização de comportamento obrigatório).",
+            "C) Para herdar atributos e métodos de uma classe pai para uma classe filha.",
+            "D) Para conectar o banco de dados relacional ao servidor backend."
+        ],
+        a: "B",
+        e: "A relação `<<include>>` aponta que um fluxo principal sempre executa um subfluxo obrigatório (ex: o caso de uso 'Efetuar Pagamento' pode incluir obrigatoriamente o caso de uso 'Validar Token de Segurança').",
+        t: "Diferencia-se do `<<extend>>`, que modela comportamentos opcionais ou condicionais."
+    },
+    {
+        q: "Qual tipo de diagrama UML é mais adequado para representar a ordem cronológica de mensagens trocadas entre objetos ou atores?",
+        c: "Diagrama de Sequência",
+        o: [
+            "A) Diagrama de Implantação",
+            "B) Diagrama de Sequência",
+            "C) Diagrama de Classes",
+            "D) Diagrama de Componentes"
+        ],
+        a: "B",
+        e: "O Diagrama de Sequência pertence à categoria de diagramas de interação, organizando os objetos na horizontal e o tempo na vertical para mostrar o fluxo dinâmico das chamadas de métodos.",
+        t: "É amplamente utilizado por desenvolvedores para documentar fluxos complexos de APIs e microsserviços."
+    },
+    {
+        q: "O que representa a visibilidade de um atributo ou método precedido pelo sinal de menos (`-`) em um Diagrama de Classes?",
+        c: "Visibilidade na UML",
+        o: [
+            "A) Público (`public`); acessível por qualquer classe externa.",
+            "B) Protegido (`protected`); acessível apenas pelas subclasses.",
+            "C) Privado (`private`); acessível exclusivamente dentro da própria classe.",
+            "D) Pacote (`package`); acessível apenas por classes do mesmo diretório."
+        ],
+        a: "C",
+        e: "Na notação UML, o sinal de mais (`+`) indica visibilidade pública, o sustenido (`#`) indica protegida, o til (`~`) indica pacote e o menos (`-`) indica privada.",
+        t: "Esses símbolos ajudam a aplicar o princípio do encapsulamento na modelagem."
+    },
+    {
+        q: "Qual é o objetivo de um Diagrama de Atividades na UML?",
+        c: "Diagrama de Atividades",
+        o: [
+            "A) Modelar o fluxo de controle lógico de processos, algoritmos ou fluxos de trabalho (workflows), funcionando como uma evolução sofisticada dos fluxogramas tradicionais.",
+            "B) Descrever exclusivamente a arquitetura física de redes de computadores.",
+            "C) Armazenar os logs de transações financeiras de um banco de dados.",
+            "D) Representar a estrutura hierárquica de pastas de um projeto de software."
+        ],
+        a: "A",
+        e: "O Diagrama de Atividades utiliza nós de ação, decisões (losangos) e barras de sincronização (fork/join) para modelar processos paralelos ou sequenciais, tanto de negócio quanto de software.",
+        t: "Excelente para modelar regras de negócio complexas com múltiplos desvios condicionais."
+    },
+    {
+        q: "O que modela um Diagrama de Estados (State Machine Diagram)?",
+        c: "Diagrama de Estados",
+        o: [
+            "A) O estado financeiro e o balanço patrimonial da empresa desenvolvedora.",
+            "B) O ciclo de vida de um objeto específico, mostrando os estados pelos quais ele passa, os eventos que disparam a mudança de estado e as ações associadas.",
+            "C) A quantidade de servidores ativos em um cluster de computação em nuvem.",
+            "D) As relações estáticas de herança entre várias classes do sistema."
+        ],
+        a: "B",
+        e: "O Diagrama de Estados é ideal para objetos que mudam de comportamento drasticamente dependendo do momento (ex: um pedido que passa por: `Pendente` -> `Aprovado` -> `Enviado` -> `Entregue`).",
+        t: "Conecta-se intimamente com padrões de projeto como o State Pattern."
+    },
+    {
+        q: "Qual é a finalidade de um Diagrama de Implantação (Deployment Diagram)?",
+        c: "Diagrama de Implantação",
+        o: [
+            "A) Mostrar a arquitetura física dos artefatos de software executados em nós de hardware (como servidores, dispositivos móveis e ambientes de nuvem).",
+            "B) Detalhar o código fonte linha por linha em arquivos de extensão .java ou .cs.",
+            "C) Descrever o passo a passo de uma tela de login para o usuário final.",
+            "D) Listar os requisitos de negócio exigidos pelo Product Owner."
+        ],
+        a: "A",
+        e: "O Diagrama de Implantação situa os componentes de software em suas respectivas infraestruturas físicas de hardware, mapeando conexões de rede e nós operacionais.",
+        t: "Pertence à categoria de diagramas estruturais voltados para a visão de infraestrutura."
+    },
+    {
+        q: "No contexto da UML, o que significa uma classe descrita em itálico ou com o modificador `<<abstract>>`?",
+        c: "Classes Abstratas na UML",
+        o: [
+            "A) Uma classe que possui erros de sintaxe e não pode ser compilada.",
+            "B) Uma classe abstrata, que serve como modelo base e não pode ser instanciada diretamente, exigindo que suas subclasses implementem seus métodos abstratos.",
+            "C) Uma classe legada que foi descontinuada pelo desenvolvedor.",
+            "D) Uma interface gráfica de usuário renderizada em formato web."
+        ],
+        a: "B",
+        e: "Classes abstratas definem contratos genéricos e comportamentos parciais. Na UML, seus nomes aparecem em itálico ou acompanhados do estereótipo `<<abstract>>`.",
+        t: "Diferem das interfaces puras, embora ambas compartilhem a restrição de não permitirem instanciação direta com `new`."
     }
 ];
 
-uml.forEach(x => {
+umlQuest.forEach(x => {
     addQuestion("UML", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
-
 /* =====================================================
    DESIGN PATTERNS
 ===================================================== */
