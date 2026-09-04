@@ -1230,397 +1230,397 @@ addQuestion(
 );
 
 /* =====================================================
-JAVA
+   BLOCO 4: JAVA (40 QUESTÕES)
 ===================================================== */
 
 addQuestion(
-"Java", "Fácil",
-"Qual método é o ponto de entrada principal (main entry point) de uma aplicação Java executável?",
-"public static void main(String[] args)",
-["A) public void start(String[] args)", "B) public static void main(String[] args)", "C) private static void run(String args)", "D) public int main()"],
-"B",
-"A Java Virtual Machine (JVM) procura exatamente pela assinatura public static void main(String[] args) para iniciar a execução de um programa.",
-"Sem esse método exato, a classe não pode ser executada diretamente como um aplicativo standalone."
+    "Java", "Fácil",
+    "Qual método é o ponto de entrada principal (main entry point) de uma aplicação Java executável?",
+    "public static void main(String[] args)",
+    ["A) public void start(String[] args)", "B) public static void main(String[] args)", "C) private static void run(String args)", "D) public int main()"],
+    "B",
+    "A Java Virtual Machine (JVM) procura exatamente pela assinatura public static void main(String[] args) para iniciar a execução de um programa.",
+    "Sem esse método exato, a classe não pode ser executada diretamente como um aplicativo standalone."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Qual dos seguintes tipos de dados em Java é considerado um tipo primitivo?",
-"int idade = 25;",
-["A) String", "B) Integer", "C) double", "D) BigDecimal"],
-"C",
-"O tipo double é primitivo e armazena números de ponto flutuante diretamente na pilha (stack). String, Integer e BigDecimal são classes (referências).",
-"Tipos primitivos em Java começam com letra minúscula (int, char, boolean, double, etc.)."
+    "Java", "Fácil",
+    "Qual dos seguintes tipos de dados em Java é considerado um tipo primitivo?",
+    "int idade = 25;",
+    ["A) String", "B) Integer", "C) double", "D) BigDecimal"],
+    "C",
+    "O tipo double é primitivo e armazena números de ponto flutuante diretamente na pilha (stack). String, Integer e BigDecimal são classes (referências).",
+    "Tipos primitivos em Java começam com letra minúscula (int, char, boolean, double, etc.)."
 );
 
 addQuestion(
-"Java", "Média",
-"Qual é a principal diferença entre as classes String, StringBuilder e StringBuffer em relação à mutabilidade?",
-"Manipulação de texto eficiente",
-["A) Todas são imutáveis após a sua criação", "B) String é imutável, enquanto StringBuilder e StringBuffer são mutáveis", "C) StringBuilder é sincronizada para ambientes multi-thread, ao contrário de StringBuffer", "D) StringBuffer consome menos memória que String em qualquer cenário"],
-"B",
-"Objetos do tipo String não podem ser alterados após criados (qualquer modificação gera um novo objeto). StringBuilder e StringBuffer permitem alteração direta no buffer de caracteres.",
-"StringBuffer é thread-safe (sincronizada), enquanto StringBuilder não é, sendo mais rápida em ambientes de uma única thread."
+    "Java", "Média",
+    "Qual é a principal diferença entre as classes String, StringBuilder e StringBuffer em relação à mutabilidade?",
+    "Manipulação de texto eficiente",
+    ["A) Todas são imutáveis após a sua criação", "B) String é imutável, enquanto StringBuilder e StringBuffer são mutáveis", "C) StringBuilder é sincronizada para ambientes multi-thread, ao contrário de StringBuffer", "D) StringBuffer consome menos memória que String em qualquer cenário"],
+    "B",
+    "Objetos do tipo String não podem ser alterados após criados (qualquer modificação gera um novo objeto). StringBuilder e StringBuffer permitem alteração direta no buffer de caracteres.",
+    "StringBuffer é thread-safe (sincronizada), enquanto StringBuilder não é, sendo mais rápida em ambientes de uma única thread."
 );
 
 addQuestion(
-"Java", "Difícil",
-"O que acontece no código abaixo durante a execução?",
-"String s1 = Java;\nString s2 = new String(Java);\nSystem.out.println(s1 == s2);",
-["A) Imprime true porque o conteúdo de ambas é idêntico", "B) Imprime false porque o operador == compara referências de memória, e s2 foi instanciada com new", "C) Gera um erro de compilação por tipos incompatíveis", "D) Gera uma exceção NullPointerException em tempo de execução"],
-"B",
-"O operador == em objetos compara o endereço de memória. A string literal \"Java\" vem do String Pool, enquanto new String(...) cria um novo objeto no heap.",
-"Para comparar o conteúdo de textos em Java, deve-se usar o método .equals()."
+    "Java", "Difícil",
+    "O que acontece no código abaixo durante a execução?",
+    "String s1 = \"Java\";\nString s2 = new String(\"Java\");\nSystem.out.println(s1 == s2);",
+    ["A) Imprime true porque o conteúdo de ambas é idêntico", "B) Imprime false porque o operador == compara referências de memória, e s2 foi instanciada com new", "C) Gera um erro de compilação por tipos incompatíveis", "D) Gera uma exceção NullPointerException em tempo de execução"],
+    "B",
+    "O operador == em objetos compara o endereço de memória. A string literal \"Java\" vem do String Pool, enquanto new String(...) cria um novo objeto no heap.",
+    "Para comparar o conteúdo de textos em Java, deve-se usar o método .equals()."
 );
 
 addQuestion(
-"Java", "Média",
-"Qual estrutura de controle de fluxo foi introduzida no Java 12 (tornada permanente no Java 14) como uma forma mais concisa e limpa de substituir múltiplos blocos if-else ou switch tradicionais?",
-"Expressões Switch (Switch Expressions)",
-["A) O comando goto estruturado", "B) Switch Expressions com uso da seta (->)", "C) O comando try-with-resources avançado", "D) Laço for-each assíncrono"],
-"B",
-"As expressões switch modernas usam o operador -> para retornar valores diretamente sem a necessidade incômoda da instrução break em cada case.",
-"Evita o problema comum de fall-through acidental do switch clássico."
+    "Java", "Média",
+    "Qual estrutura de controle de fluxo foi introduzida no Java 12 (tornada permanente no Java 14) como uma forma mais concisa e limpa de substituir múltiplos blocos if-else ou switch tradicionais?",
+    "Expressões Switch (Switch Expressions)",
+    ["A) O comando goto estruturado", "B) Switch Expressions com uso da seta (->)", "C) O comando try-with-resources avançado", "D) Laço for-each assíncrono"],
+    "B",
+    "As expressões switch modernas usam o operador -> para retornar valores diretamente sem a necessidade incômoda da instrução break em cada case.",
+    "Evita o problema comum de fall-through acidental do switch clássico."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Qual modificador de acesso em Java restringe a visibilidade de um atributo ou método apenas às classes do mesmo pacote?",
-"Modificador padrão (Package-Private)",
-["A) private", "B) public", "C) protected", "D) Nenhum modificador explícito (package-private)"],
-"D",
-"Quando nenhum modificador de acesso é declarado, o membro assume o escopo de pacote (package-private), ficando visível apenas dentro do mesmo diretório/pacote.",
-"Diferente de protected, que também permite acesso por subclasses em pacotes externos."
+    "Java", "Fácil",
+    "Qual modificador de acesso em Java restringe a visibilidade de um atributo ou método apenas às classes do mesmo pacote?",
+    "Modificador padrão (Package-Private)",
+    ["A) private", "B) public", "C) protected", "D) Nenhum modificador explícito (package-private)"],
+    "D",
+    "Quando nenhum modificador de acesso é declarado, o membro assume o escopo de pacote (package-private), ficando visível apenas dentro do mesmo diretório/pacote.",
+    "Diferente de protected, que também permite acesso por subclasses em pacotes externos."
 );
 
 addQuestion(
-"Java", "Média",
-"O que caracteriza uma Interface Funcional em Java (introduzida a partir do Java 8)?",
-"Uso intensivo de expressões lambda",
-["A) Uma interface que possui obrigatoriamente 10 métodos abstratos", "B) Uma interface que possui exatamente um único método abstrato", "C) Uma interface que não pode conter métodos default", "D) Uma classe abstrata sem construtor"],
-"B",
-"Interfaces funcionais servem como base para expressões lambda e referências de métodos. Elas podem conter métodos default ou estáticos, mas devem ter apenas um método abstrato.",
-"Anotadas frequentemente com @FunctionalInterface."
+    "Java", "Média",
+    "O que caracteriza uma Interface Funcional em Java (introduzida a partir do Java 8)?",
+    "Uso intensivo de expressões lambda",
+    ["A) Uma interface que possui obrigatoriamente 10 métodos abstratos", "B) Uma interface que possui exatamente um único método abstrato", "C) Uma interface que não pode conter métodos default", "D) Uma classe abstrata sem construtor"],
+    "B",
+    "Interfaces funcionais servem como base para expressões lambda e referências de métodos. Elas podem conter métodos default ou estáticos, mas devem ter apenas um método abstrato.",
+    "Anotadas frequentemente com @FunctionalInterface."
 );
 
 addQuestion(
-"Java", "Difícil",
-"Qual é a principal finalidade da classe Optional<T> introduzida no Java 8?",
-"Eliminar o tratamento manual repetitivo de valores nulos",
-["A) Substituir completamente o uso de bancos de dados relacionais", "B) Container para representar a presença ou ausência de um valor, evitando NullPointerException", "C) Gerenciar a concorrência em threads de forma automática", "D) Criptografar dados sensíveis na memória"],
-"B",
-"Optional força o desenvolvedor a lidar explicitamente com a possibilidade de um valor ser ausente (null), tornando o código mais seguro e legível.",
-"Evita o famigerado NullPointerException se utilizado corretamente em retornos de métodos."
+    "Java", "Difícil",
+    "Qual é a principal finalidade da classe Optional<T> introduzida no Java 8?",
+    "Eliminar o tratamento manual repetitivo de valores nulos",
+    ["A) Substituir completamente o uso de bancos de dados relacionais", "B) Container para representar a presença ou ausência de um valor, evitando NullPointerException", "C) Gerenciar a concorrência em threads de forma automática", "D) Criptografar dados sensíveis na memória"],
+    "B",
+    "Optional força o desenvolvedor a lidar explicitamente com a possibilidade de um valor ser ausente (null), tornando o código mais seguro e legível.",
+    "Evita o famigerado NullPointerException se utilizado corretamente em retornos de métodos."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Qual coleção do Java Collections Framework armazena elementos de forma ordenada e não permite elementos duplicados?",
-"Set e suas implementações como HashSet ou TreeSet",
-["A) ArrayList", "B) HashMap", "C) TreeSet / HashSet", "D) LinkedList"],
-"C",
-"A interface Set modela conjuntos matemáticos, rejeitando inserções duplicadas. O TreeSet ainda mantém os elementos ordenados por sua ordem natural ou comparator.",
-"ArrayList permite duplicatas e mantém ordem de inserção."
+    "Java", "Fácil",
+    "Qual coleção do Java Collections Framework armazena elementos de forma ordenada e não permite elementos duplicados?",
+    "Set e suas implementações como HashSet ou TreeSet",
+    ["A) ArrayList", "B) HashMap", "C) TreeSet / HashSet", "D) LinkedList"],
+    "C",
+    "A interface Set modela conjuntos matemáticos, rejeitando inserções duplicadas. O TreeSet ainda mantém os elementos ordenados por sua ordem natural ou comparator.",
+    "ArrayList permite duplicatas e mantém ordem de inserção."
 );
 
 addQuestion(
-"Java", "Média",
-"O que a API Stream (java.util.stream), introduzida no Java 8, permite realizar de forma declarativa?",
-"Processamento funcional de coleções de dados",
-["A) Conexão direta com servidores web via protocolo HTTP", "B) Operações de filtro, mapeamento e redução em coleções de dados com suporte a paralelismo", "C) Manipulação direta de ponteiros de memória em baixo nível", "D) Criação automática de interfaces gráficas em Swing"],
-"B",
-"A Stream API permite processar sequências de elementos de maneira declarativa e funcional (usando métodos como filter, map, collect).",
-"Facilita o processamento paralelo sem escrever código manual complexo de threads."
+    "Java", "Média",
+    "O que a API Stream (java.util.stream), introduzida no Java 8, permite realizar de forma declarativa?",
+    "Processamento funcional de coleções de dados",
+    ["A) Conexão direta com servidores web via protocolo HTTP", "B) Operações de filtro, mapeamento e redução em coleções de dados com suporte a paralelismo", "C) Manipulação direta de ponteiros de memória em baixo nível", "D) Criação automática de interfaces gráficas em Swing"],
+    "B",
+    "A Stream API permite processar sequências de elementos de maneira declarativa e funcional (usando métodos como filter, map, collect).",
+    "Facilita o processamento paralelo sem escrever código manual complexo de threads."
 );
 
 addQuestion(
-"Java", "Difícil",
-"No contexto de tratamento de exceções em Java, qual é a principal diferença entre Checked Exceptions e Unchecked Exceptions?",
-"Obrigatoriedade de tratamento em tempo de compilação",
-["A) Checked exceptions herdam de RuntimeException, enquanto unchecked herdam de Exception", "B) O compilador obriga o desenvolvedor a tratar ou declarar checked exceptions (como IOException), enquanto unchecked (como NullPointerException) não são verificadas em compilação", "C) Exceções checked nunca podem ser capturadas por blocos catch", "D) Unchecked exceptions encerram o sistema operacional obrigatoriamente"],
-"B",
-"Exceções checadas (Exception direta) forçam o uso de try-catch ou throws na assinatura. Exceções não checadas (RuntimeException) indicam falhas de lógica que podem ocorrer em tempo de execução.",
-"Exemplos de unchecked: NullPointerException, ArrayIndexOutOfBoundsException."
+    "Java", "Difícil",
+    "No contexto de tratamento de exceções em Java, qual é a principal diferença entre Checked Exceptions e Unchecked Exceptions?",
+    "Obrigatoriedade de tratamento em tempo de compilação",
+    ["A) Checked exceptions herdam de RuntimeException, enquanto unchecked herdam de Exception", "B) O compilador obriga o desenvolvedor a tratar ou declarar checked exceptions (como IOException), enquanto unchecked (como NullPointerException) não são verificadas em compilação", "C) Exceções checked nunca podem ser capturadas por blocos catch", "D) Unchecked exceptions encerram o sistema operacional obrigatoriamente"],
+    "B",
+    "Exceções checadas (Exception direta) forçam o uso de try-catch ou throws na assinatura. Exceções não checadas (RuntimeException) indicam falhas de lógica que podem ocorrer em tempo de execução.",
+    "Exemplos de unchecked: NullPointerException, ArrayIndexOutOfBoundsException."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Qual palavra-chave é utilizada em Java para impedir que uma classe seja herdada ou que um método seja sobrescrito?",
-"final class Servidor",
-["A) static", "B) private", "C) final", "D) abstract"],
-"C",
-"O modificador final aplicado a uma classe proíbe herança. Aplicado a um método, proíbe sobrescrita (override). Aplicado a uma variável, torna-a uma constante.",
-"Garante imutabilidade estrutural ou de valor."
+    "Java", "Fácil",
+    "Qual palavra-chave é utilizada em Java para impedir que uma classe seja herdada ou que um método seja sobrescrito?",
+    "final class Servidor",
+    ["A) static", "B) private", "C) final", "D) abstract"],
+    "C",
+    "O modificador final aplicado a uma classe proíbe herança. Aplicado a um método, proíbe sobrescrita (override). Aplicado a uma variável, torna-a uma constante.",
+    "Garante imutabilidade estrutural ou de valor."
 );
 
 addQuestion(
-"Java", "Média",
-"O que faz o bloco finally em uma estrutura try-catch-finally?",
-"Execução garantida de código de limpeza",
-["A) É executado apenas se ocorrer uma exceção grave no bloco try", "B) É executado independentemente de ter ocorrido uma exceção ou não", "C) Substitui o bloco catch em qualquer situação", "D) Serve apenas para fechar conexões de rede em modo assíncrono"],
-"B",
-"O bloco finally garante que instruções cruciais (como fechamento de arquivos, conexões de banco de dados ou sockets) sejam executadas antes de sair do bloco.",
-"Mesmo que haja um return no try ou catch, o finally executa (com raras exceções como System.exit())."
+    "Java", "Média",
+    "O que faz o bloco finally em uma estrutura try-catch-finally?",
+    "Execução garantida de código de limpeza",
+    ["A) É executado apenas se ocorrer uma exceção grave no bloco try", "B) É executado independentemente de ter ocorrido uma exceção ou não", "C) Substitui o bloco catch em qualquer situação", "D) Serve apenas para fechar conexões de rede em modo assíncrono"],
+    "B",
+    "O bloco finally garante que instruções cruciais (como fechamento de arquivos, conexões de banco de dados ou sockets) sejam executadas antes de sair do bloco.",
+    "Mesmo que haja um return no try ou catch, o finally executa (com raras exceções como System.exit())."
 );
 
 addQuestion(
-"Java", "Difícil",
-"O que são os Records introduzidos formalmente no Java 14/16?",
-"Classes portadoras de dados imutáveis (Transparent Data Carriers)",
-["A) Arquivos de configuração binários usados pelo compilador javac", "B) Uma forma concisa de declarar classes cuja única finalidade é armazenar dados imutáveis, gerando automaticamente construtores, equals, hashCode e getters", "C) Uma substituição para tabelas de banco de dados NoSQL", "D) Uma estrutura de dados para gerenciar logs do sistema"],
-"B",
-"Records reduzem drasticamente o código boilerplate (código repetitivo) necessário para criar classes de transporte de dados (DTOs) ou entidades simples.",
-"Declarados com a palavra-chave public record Aluno(String nome, int idade) {}."
+    "Java", "Difícil",
+    "O que são os Records introduzidos formalmente no Java 14/16?",
+    "Classes portadoras de dados imutáveis (Transparent Data Carriers)",
+    ["A) Arquivos de configuração binários usados pelo compilador javac", "B) Uma forma concisa de declarar classes cuja única finalidade é armazenar dados imutáveis, gerando automaticamente construtores, equals, hashCode e getters", "C) Uma substituição para tabelas de banco de dados NoSQL", "D) Uma estrutura de dados para gerenciar logs do sistema"],
+    "B",
+    "Records reduzem drasticamente o código boilerplate (código repetitivo) necessário para criar classes de transporte de dados (DTOs) ou entidades simples.",
+    "Declarados com a palavra-chave public record Aluno(String nome, int idade) {}."
 );
 
 addQuestion(
-"Java", "Média",
-"Qual é a utilidade da palavra-chave super dentro de uma subclasse em Java?",
-"Referência à superclasse imediata",
-["A) Chamar o construtor ou métodos da classe pai (superclasse)", "B) Criar uma nova instância estática da classe atual", "C) Converter tipos primitivos em objetos empacotados", "D) Definir uma variável global compartilhada"],
-"A",
-"super() permite invocar o construtor da classe pai, enquanto super.metodo() invoca um método sobrescrito na superclasse.",
-"Deve ser a primeira instrução em um construtor de subclasse se usada para chamar o construtor pai."
+    "Java", "Média",
+    "Qual é a utilidade da palavra-chave super dentro de uma subclasse em Java?",
+    "Referência à superclasse imediata",
+    ["A) Chamar o construtor ou métodos da classe pai (superclasse)", "B) Criar uma nova instância estática da classe atual", "C) Converter tipos primitivos em objetos empacotados", "D) Definir uma variável global compartilhada"],
+    "A",
+    "super() permite invocar o construtor da classe pai, enquanto super.metodo() invoca um método sobrescrito na superclasse.",
+    "Deve ser a primeira instrução em um construtor de subclasse se usada para chamar o construtor pai."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Como se declara corretamente um vetor (array) de 10 inteiros em Java?",
-"int[] numeros = new int[10];",
-["A) int numeros[10];", "B) int[] numeros = new int[10];", "C) array numeros = new array(10);", "D) vector numeros = new vector();"],
-"B",
-"Em Java, a declaração de arrays utiliza colchetes e o operador new especificando o tamanho fixo da estrutura na memória.",
-"Os índices dos elementos vão de 0 até 9."
+    "Java", "Fácil",
+    "Como se declara corretamente um vetor (array) de 10 inteiros em Java?",
+    "int[] numeros = new int[10];",
+    ["A) int numeros[10];", "B) int[] numeros = new int[10];", "C) array numeros = new array(10);", "D) vector numeros = new vector();"],
+    "B",
+    "Em Java, a declaração de arrays utiliza colchetes e o operador new especificando o tamanho fixo da estrutura na memória.",
+    "Os índices dos elementos vão de 0 até 9."
 );
 
 addQuestion(
-"Java", "Difícil",
-"O que significa dizer que o coletor de lixo (Garbage Collector) do Java opera de forma automática?",
-"Gerenciamento automático de memória no heap",
-["A) O programador deve liberar explicitamente cada objeto usando o comando delete", "B) A JVM identifica e remove da memória os objetos que não possuem mais nenhuma referência ativa", "C) O sistema operacional apaga arquivos temporários do disco rígido", "D) As variáveis locais da pilha são limpas por threads de sistema"],
-"B",
-"O Garbage Collector monitora o heap do Java, reciclando dinamicamente a memória ocupada por objetos inalcançáveis para evitar vazamentos de memória (memory leaks).",
-"Elimina a necessidade de desalocação manual de ponteiros como em C ou C++."
+    "Java", "Difícil",
+    "O que significa dizer que o coletor de lixo (Garbage Collector) do Java opera de forma automática?",
+    "Gerenciamento automático de memória no heap",
+    ["A) O programador deve liberar explicitamente cada objeto usando o comando delete", "B) A JVM identifica e remove da memória os objetos que não possuem mais nenhuma referência ativa", "C) O sistema operacional apaga arquivos temporários do disco rígido", "D) As variáveis locais da pilha são limpas por threads de sistema"],
+    "B",
+    "O Garbage Collector monitora o heap do Java, reciclando dinamicamente a memória ocupada por objetos inalcançáveis para evitar vazamentos de memória (memory leaks).",
+    "Elimina a necessidade de desalocação manual de ponteiros como em C ou C++."
 );
 
 addQuestion(
-"Java", "Média",
-"Qual interface do Java Collections Framework representa uma estrutura baseada em chave-valor?",
-"Map (como HashMap, TreeMap)",
-["A) List", "B) Set", "C) Map", "D) Queue"],
-"C",
-"A interface Map não herda de Collection, mapeando chaves exclusivas para valores correspondentes.",
-"Exemplo clássico: Map<String, String> configs = new HashMap<>();."
+    "Java", "Média",
+    "Qual interface do Java Collections Framework representa uma estrutura baseada em chave-valor?",
+    "Map (como HashMap, TreeMap)",
+    ["A) List", "B) Set", "C) Map", "D) Queue"],
+    "C",
+    "A interface Map não herda de Collection, mapeando chaves exclusivas para valores correspondentes.",
+    "Exemplo clássico: Map<String, String> configs = new HashMap<>();."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Qual modificador indica que um atributo ou método pertence à classe em si, e não a uma instância específica criada com new?",
-"static",
-["A) final", "B) static", "C) transient", "D) volatile"],
-"B",
-"Membros static são compartilhados por todas as instâncias da classe e podem ser acessados diretamente sem criar um objeto.",
-"Exemplo: Math.sqrt() ou o método main."
+    "Java", "Fácil",
+    "Qual modificador indica que um atributo ou método pertence à classe em si, e não a uma instância específica criada com new?",
+    "static",
+    ["A) final", "B) static", "C) transient", "D) volatile"],
+    "B",
+    "Membros static são compartilhados por todas as instâncias da classe e podem ser acessados diretamente sem criar um objeto.",
+    "Exemplo: Math.sqrt() ou o método main."
 );
 
 addQuestion(
-"Java", "Média",
-"O que é o conceito de Autoboxing e Unboxing em Java?",
-"Conversão automática entre tipos primitivos e suas classes wrapper",
-["A) A conversão automática de arquivos Java para bytecode", "B) A conversão automática realizada pelo compilador entre tipos primitivos (ex: int) e seus wrappers correspondentes (ex: Integer)", "C) A serialização automática de objetos para transmissão em rede", "D) O empacotamento de dependências usando Maven ou Gradle"],
-"B",
-"Autoboxing converte primitivo para objeto (ex: int para Integer), e unboxing faz o inverso de forma transparente.",
-"Facilita o uso de tipos primitivos em coleções como ArrayList<Integer>."
+    "Java", "Média",
+    "O que é o conceito de Autoboxing e Unboxing em Java?",
+    "Conversão automática entre tipos primitivos e suas classes wrapper",
+    ["A) A conversão automática de arquivos Java para bytecode", "B) A conversão automática realizada pelo compilador entre tipos primitivos (ex: int) e seus wrappers correspondentes (ex: Integer)", "C) A serialização automática de objetos para transmissão em rede", "D) O empacotamento de dependências usando Maven ou Gradle"],
+    "B",
+    "Autoboxing converte primitivo para objeto (ex: int para Integer), e unboxing faz o inverso de forma transparente.",
+    "Facilita o uso de tipos primitivos em coleções como ArrayList<Integer>."
 );
 
 addQuestion(
-"Java", "Difícil",
-"O que é uma Classe Anônima (Anonymous Inner Class) em Java?",
-"Declaração e instanciação simultânea de uma classe sem nome",
-["A) Uma classe que não possui métodos declarados", "B) Uma classe sem nome declarada e instanciada em uma única expressão, útil para implementações rápidas de interfaces ou classes abstratas", "C) Uma classe de segurança que oculta o código-fonte compilado", "D) Um erro de sintaxe gerado pelo compilador moderno"],
-"B",
-"Classes anônimas permitiam criar implementações pontuais de interfaces (como listeners antigos de eventos), sendo hoje em dia grandemente substituídas por expressões lambda.",
-"Sintaxe típica: Runnable r = new Runnable() { @Override public void run() { ... } };."
+    "Java", "Difícil",
+    "O que é uma Classe Anônima (Anonymous Inner Class) em Java?",
+    "Declaração e instanciação simultânea de uma classe sem nome",
+    ["A) Uma classe que não possui métodos declarados", "B) Uma classe sem nome declarada e instanciada em uma única expressão, útil para implementações rápidas de interfaces ou classes abstratas", "C) Uma classe de segurança que oculta o código-fonte compilado", "D) Um erro de sintaxe gerado pelo compilador moderno"],
+    "B",
+    "Classes anônimas permitiam criar implementações pontuais de interfaces (como listeners antigos de eventos), sendo hoje em dia grandemente substituídas por expressões lambda.",
+    "Sintaxe típica: Runnable r = new Runnable() { @Override public void run() { ... } };."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Qual operador em Java é utilizado para verificar se um objeto é uma instância de uma determinada classe ou interface?",
-"instanceof",
-["A) isInstance", "B) instanceof", "C) checkClass", "D) typeOf"],
-"B",
-"O operador instanceof retorna um valor booleano indicando se o objeto à esquerda é compatível com o tipo especificado à direita.",
-"Muito útil antes de realizar downcasting de referências."
+    "Java", "Fácil",
+    "Qual operador em Java é utilizado para verificar se um objeto é uma instância de uma determinada classe ou interface?",
+    "instanceof",
+    ["A) isInstance", "B) instanceof", "C) checkClass", "D) typeOf"],
+    "B",
+    "O operador instanceof retorna um valor booleano indicando se o objeto à esquerda é compatível com o tipo especificado à direita.",
+    "Muito útil antes de realizar downcasting de referências."
 );
 
 addQuestion(
-"Java", "Média",
-"O que são métodos default em interfaces (recurso introduzido no Java 8)?",
-"Métodos com implementação padrão em interfaces",
-["A) Métodos que obrigatoriamente devem ser reescritos por todas as classes", "B) Métodos declarados com a palavra-chave default que possuem corpo/implementação dentro da interface, permitindo evolução sem quebrar classes legadas", "C) Métodos privados utilitários", "D) Construtores padrão gerados automaticamente"],
-"B",
-"Permitem adicionar novos métodos com comportamento padrão a interfaces existentes sem exigir que todas as classes implementadoras modifiquem seu código imediatamente.",
-"Evita quebrar contratos em bibliotecas legadas."
+    "Java", "Média",
+    "O que são métodos default em interfaces (recurso introduzido no Java 8)?",
+    "Métodos com implementação padrão em interfaces",
+    ["A) Métodos que obrigatoriamente devem ser reescritos por todas as classes", "B) Métodos declarados com a palavra-chave default que possuem corpo/implementação dentro da interface, permitindo evolução sem quebrar classes legadas", "C) Métodos privados utilitários", "D) Construtores padrão gerados automaticamente"],
+    "B",
+    "Permitem adicionar novos métodos com comportamento padrão a interfaces existentes sem exigir que todas as classes implementadoras modifiquem seu código imediatamente.",
+    "Evita quebrar contratos em bibliotecas legadas."
 );
 
 addQuestion(
-"Java", "Difícil",
-"No contexto de concorrência em Java, qual é a utilidade da palavra-chave synchronized?",
-"Controle de concorrência e exclusão mútua",
-["A) Garantir que variáveis estáticas nunca mudem de valor", "B) Garantir que um bloco de código ou método seja acessado por apenas uma thread por vez, evitando condições de corrida", "C) Sincronizar o relógio do sistema operacional com servidores externos", "D) Executar tarefas de forma assíncrona em segundo plano"],
-"B",
-"synchronized provê exclusão mútua em blocos críticos de código multi-thread, prevenindo corrupção de dados compartilhados.",
-"Garante visibilidade de memória e atomicidade em seções críticas."
+    "Java", "Difícil",
+    "No contexto de concorrência em Java, qual é a utilidade da palavra-chave synchronized?",
+    "Controle de concorrência e exclusão mútua",
+    ["A) Garantir que variáveis estáticas nunca mudem de valor", "B) Garantir que um bloco de código ou método seja acessado por apenas uma thread por vez, evitando condições de corrida", "C) Sincronizar o relógio do sistema operacional com servidores externos", "D) Executar tarefas de forma assíncrona em segundo plano"],
+    "B",
+    "synchronized provê exclusão mútua em blocos críticos de código multi-thread, prevenindo corrupção de dados compartilhados.",
+    "Garante visibilidade de memória e atomicidade em seções críticas."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Qual pacote padrão do Java é importado implicitamente em todos os arquivos de código-fonte Java sem necessidade de declaração explícita?",
-"java.lang",
-["A) java.util", "B) java.io", "C) java.lang", "D) java.net"],
-"C",
-"O pacote java.lang contém classes fundamentais como String, System, Math, Integer, Exception e Object, sendo importado automaticamente.",
-"Outros pacotes exigem o comando import."
+    "Java", "Fácil",
+    "Qual pacote padrão do Java é importado implicitamente em todos os arquivos de código-fonte Java sem necessidade de declaração explícita?",
+    "java.lang",
+    ["A) java.util", "B) java.io", "C) java.lang", "D) java.net"],
+    "C",
+    "O pacote java.lang contém classes fundamentais como String, System, Math, Integer, Exception e Object, sendo importado automaticamente.",
+    "Outros pacotes exigem o comando import."
 );
 
 addQuestion(
-"Java", "Média",
-"O que significa a serialização de objetos em Java?",
-"Transformação de objeto em fluxo de bytes",
-["A) Converter código Java em código executável de máquina nativa", "B) O processo de converter o estado de um objeto em uma sequência de bytes para armazenamento em arquivo ou transmissão em rede", "C) Organizar métodos em ordem alfabética estrita", "D) Ordenar coleções de dados numéricos"],
-"B",
-"Para serializar um objeto, a classe deve implementar a interface marcadora Serializable.",
-"O oposto (reconstruir o objeto a partir de bytes) chama-se desserialização."
+    "Java", "Média",
+    "O que significa a serialização de objetos em Java?",
+    "Transformação de objeto em fluxo de bytes",
+    ["A) Converter código Java em código executável de máquina nativa", "B) O processo de converter o estado de um objeto em uma sequência de bytes para armazenamento em arquivo ou transmissão em rede", "C) Organizar métodos em ordem alfabética estrita", "D) Ordenar coleções de dados numéricos"],
+    "B",
+    "Para serializar um objeto, a classe deve implementar a interface marcadora Serializable.",
+    "O oposto (reconstruir o objeto a partir de bytes) chama-se desserialização."
 );
 
 addQuestion(
-"Java", "Difícil",
-"O que estabelece a especificação do Java Memory Model (JMM) em relação à palavra-chave volatile?",
-"Garantia de visibilidade imediata de variáveis entre threads",
-["A) Torna a variável imutável como uma constante", "B) Garante que leituras e escritas nessa variável sejam feitas diretamente na memória principal (RAM), garantindo visibilidade imediata entre diferentes threads", "C) Acelera o cálculo matemático usando processamento de GPU", "D) Impede que a variável seja coletada pelo Garbage Collector"],
-"B",
-"Em arquiteturas modernas de CPU, threads usam caches locais. O modificador volatile evita que uma thread use valores desatualizados em cache de variáveis compartilhadas.",
-"Não garante atomicidade para operações compostas como incremento (++)."
+    "Java", "Difícil",
+    "O que estabelece a especificação do Java Memory Model (JMM) em relação à palavra-chave volatile?",
+    "Garantia de visibilidade imediata de variáveis entre threads",
+    ["A) Torna a variável imutável como uma constante", "B) Garante que leituras e escritas nessa variável sejam feitas diretamente na memória principal (RAM), garantindo visibilidade imediata entre diferentes threads", "C) Acelera o cálculo matemático usando processamento de GPU", "D) Impede que a variável seja coletada pelo Garbage Collector"],
+    "B",
+    "Em arquiteturas modernas de CPU, threads usam caches locais. O modificador volatile evita que uma thread use valores desatualizados em cache de variáveis compartilhadas.",
+    "Não garante atomicidade para operações compostas como incremento (++)."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Qual método da classe Object (presente em todas as classes Java) é utilizado para obter a representação textual de um objeto?",
-"toString()",
-["A) printObject()", "B) toString()", "C) stringValue()", "D) display()"],
-"B",
-"O método toString() retorna uma string que descreve o objeto. É altamente recomendável sobrescrevê-lo nas suas classes para depuração legível.",
-"Por padrão, retorna o nome da classe seguido por @ e o hash code em hexadecimal."
+    "Java", "Fácil",
+    "Qual método da classe Object (presente em todas as classes Java) é utilizado para obter a representação textual de um objeto?",
+    "toString()",
+    ["A) printObject()", "B) toString()", "C) stringValue()", "D) display()"],
+    "B",
+    "O método toString() retorna uma string que descreve o objeto. É altamente recomendável sobrescrevê-lo nas suas classes para depuração legível.",
+    "Por padrão, retorna o nome da classe seguido por @ e o hash code em hexadecimal."
 );
 
 addQuestion(
-"Java", "Média",
-"Qual é a finalidade principal do comando try-with-resources introduzido no Java 7?",
-"Gerenciamento automático de recursos que implementam AutoCloseable",
-["A) Capturar múltiplos erros de sintaxe em tempo de compilação", "B) Fechar automaticamente recursos abertos (como arquivos e conexões JDBC) ao término do bloco try", "C) Substituir blocos try-catch tradicionais em códigos assíncronos", "D) Otimizar o consumo de memória RAM do Garbage Collector"],
-"B",
-"O try-with-resources fecha de forma segura e automática qualquer recurso que implemente a interface AutoCloseable ou Closeable, mesmo se exceções forem lançadas.",
-"Evita vazamentos de conexões e arquivos abertos."
+    "Java", "Média",
+    "Qual é a finalidade principal do comando try-with-resources introduzido no Java 7?",
+    "Gerenciamento automático de recursos que implementam AutoCloseable",
+    ["A) Capturar múltiplos erros de sintaxe em tempo de compilação", "B) Fechar automaticamente recursos abertos (como arquivos e conexões JDBC) ao término do bloco try", "C) Substituir blocos try-catch tradicionais em códigos assíncronos", "D) Otimizar o consumo de memória RAM do Garbage Collector"],
+    "B",
+    "O try-with-resources fecha de forma segura e automática qualquer recurso que implemente a interface AutoCloseable ou Closeable, mesmo se exceções forem lançadas.",
+    "Evita vazamentos de conexões e arquivos abertos."
 );
 
 addQuestion(
-"Java", "Difícil",
-"O que é a reflexão (Reflection API) em Java (java.lang.reflect)?",
-"Inspeção e manipulação dinâmica de classes em tempo de execução",
-["A) Um mecanismo de renderização gráfica 3D", "B) Uma API que permite a um programa examinar e modificar sua própria estrutura, inspecionando classes, métodos, atributos e construtores em tempo de execução", "C) Um padrão de projeto para clonar objetos profundos", "D) Um compilador just-in-time otimizado"],
-"B",
-"Reflection é amplamente utilizada por frameworks como Spring e Hibernate para mapear entidades, injetar dependências e processar anotações dinamicamente.",
-"Pode impactar a performance se usada excessivamente e burlar verificações de encapsulamento."
+    "Java", "Difícil",
+    "O que é a reflexão (Reflection API) em Java (java.lang.reflect)?",
+    "Inspeção e manipulação dinâmica de classes em tempo de execução",
+    ["A) Um mecanismo de renderização gráfica 3D", "B) Uma API que permite a um programa examinar e modificar sua própria estrutura, inspecionando classes, métodos, atributos e construtores em tempo de execução", "C) Um padrão de projeto para clonar objetos profundos", "D) Um compilador just-in-time otimizado"],
+    "B",
+    "Reflection é amplamente utilizada por frameworks como Spring e Hibernate para mapear entidades, injetar dependências e processar anotações dinamicamente.",
+    "Pode impactar a performance se usada excessivamente e burlar verificações de encapsulamento."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Qual palavra-chave é utilizada para criar uma nova instância (objeto) de uma classe em Java?",
-"new",
-["A) create", "B) instantiate", "C) new", "D) malloc"],
-"C",
-"O operador new aloca memória no heap para o novo objeto e invoca o construtor correspondente.",
-"Exemplo: Carro meuCarro = new Carro();."
+    "Java", "Fácil",
+    "Qual palavra-chave é utilizada para criar uma nova instância (objeto) de uma classe em Java?",
+    "new",
+    ["A) create", "B) instantiate", "C) new", "D) malloc"],
+    "C",
+    "O operador new aloca memória no heap para o novo objeto e invoca o construtor correspondente.",
+    "Exemplo: Carro meuCarro = new Carro();."
 );
 
 addQuestion(
-"Java", "Média",
-"O que é uma Enum (Enumeração) em Java?",
-"Tipo de dado especial que representa um conjunto fixo de constantes",
-["A) Uma classe abstrata sem atributos", "B) Um tipo de dado especial que restringe uma variável a assumir apenas um conjunto predefinido de valores constantes nomeados", "C) Uma interface para manipulação de arquivos binários", "D) Uma estrutura de repetição equivalente ao for clássico"],
-"B",
-"Enums melhoram a segurança de tipos e legibilidade do código comparado ao uso de constantes inteiras ou strings soltas.",
-"Exemplo: dias da semana, status de pedidos, direções cardinais."
+    "Java", "Média",
+    "O que é uma Enum (Enumeração) em Java?",
+    "Tipo de dado especial que representa um conjunto fixo de constantes",
+    ["A) Uma classe abstrata sem atributos", "B) Um tipo de dado especial que restringe uma variável a assumir apenas um conjunto predefinido de valores constantes nomeados", "C) Uma interface para manipulação de arquivos binários", "D) Uma estrutura de repetição equivalente ao for clássico"],
+    "B",
+    "Enums melhoram a segurança de tipos e legibilidade do código comparado ao uso de constantes inteiras ou strings soltas.",
+    "Exemplo: dias da semana, status de pedidos, direções cardinais."
 );
 
 addQuestion(
-"Java", "Difícil",
-"Qual é a diferença conceitual e de comportamento entre StringBuilder e StringBuffer?",
-"Sincronização de threads",
-["A) StringBuilder é mais lento que StringBuffer em qualquer ambiente", "B) StringBuilder não é sincronizada (não thread-safe), o que a torna mais rápida para uso em uma única thread; StringBuffer é sincronizada (thread-safe)", "C) StringBuffer foi descontinuada no Java moderno", "D) Não há nenhuma diferença de performance ou comportamento"],
-"B",
-"A sincronização interna do StringBuffer adiciona overhead de desempenho. Se o código roda em uma única thread, StringBuilder é sempre a melhor escolha.",
-"Ambas compartilham exatamente os mesmos métodos públicos de manipulação de texto."
+    "Java", "Difícil",
+    "Qual é a diferença conceitual e de comportamento entre StringBuilder e StringBuffer?",
+    "Sincronização de threads",
+    ["A) StringBuilder é mais lento que StringBuffer em qualquer ambiente", "B) StringBuilder não é sincronizada (não thread-safe), o que a torna mais rápida para uso em uma única thread; StringBuffer é sincronizada (thread-safe)", "C) StringBuffer foi descontinuada no Java moderno", "D) Não há nenhuma diferença de performance ou comportamento"],
+    "B",
+    "A sincronização interna do StringBuffer adiciona overhead de desempenho. Se o código roda em uma única thread, StringBuilder é sempre a melhor escolha.",
+    "Ambas compartilham exatamente os mesmos métodos públicos de manipulação de texto."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Como se faz um comentário de múltiplas linhas em código Java?",
-"/* Comentário /",
-["A) ", "B) / Comentário */", "C)  Comentário ", "D) # Comentário"],
-"B",
-"Comentários de múltiplas linhas em Java usam /* ... */. Para documentação JavaDoc, usa-se /** ... */ e para linha única //.",
-"O compilador ignora completamente qualquer comentário."
+    "Java", "Fácil",
+    "Como se faz um comentário de múltiplas linhas em código Java?",
+    "/* Comentário */",
+    ["A) // Comentário", "B) /* Comentário */", "C) # Comentário", "D) <!-- Comentário -->"],
+    "B",
+    "Comentários de múltiplas linhas em Java usam /* ... */. Para documentação JavaDoc, usa-se /** ... */ e para linha única //.",
+    "O compilador ignora completamente qualquer comentário."
 );
 
 addQuestion(
-"Java", "Média",
-"O que significa a assinatura de método public static final int MAX = 100; dentro de uma interface?",
-"Definição de constante pública estática",
-["A) A variável pode ser alterada livremente por classes implementadoras", "B) Todos os atributos declarados em interfaces são implicitamente public, static e final, funcionando como constantes globais", "C) O código gerará um erro de compilação por redundância de modificadores", "D) O atributo é privado e visível apenas internamente"],
-"B",
-"Em interfaces Java, qualquer campo declarado é automaticamente tratado como constante pública, estática e final.",
-"Não é necessário repetir os modificadores, embora seja comum."
+    "Java", "Média",
+    "O que significa a assinatura de método public static final int MAX = 100; dentro de uma interface?",
+    "Definição de constante pública estática",
+    ["A) A variável pode ser alterada livremente por classes implementadoras", "B) Todos os atributos declarados em interfaces são implicitamente public, static e final, funcionando como constantes globais", "C) O código gerará um erro de compilação por redundância de modificadores", "D) O atributo é privado e visível apenas internamente"],
+    "B",
+    "Em interfaces Java, qualquer campo declarado é automaticamente tratado como constante pública, estática e final.",
+    "Não é necessário repetir os modificadores, embora seja comum."
 );
 
 addQuestion(
-"Java", "Difícil",
-"O que são métodos estáticos private permitidos em interfaces a partir do Java 9?",
-"Métodos auxiliares privados para reutilização interna na interface",
-["A) Métodos acessíveis diretamente por qualquer classe externa ao pacote", "B) Métodos auxiliares que permitem compartilhar código comum entre métodos default ou estáticos dentro da própria interface sem expô-los publicamente", "C) Construtores privados para impedir instanciação de classes", "D) Métodos obsoletos substituídos por lambdas"],
-"B",
-"O Java 9 permitiu que interfaces encapsulassem lógica repetitiva em métodos privados, melhorando a organização do código sem violar o contrato público.",
-"Reduz duplicação de código entre métodos default."
+    "Java", "Difícil",
+    "O que são métodos estáticos private permitidos em interfaces a partir do Java 9?",
+    "Métodos auxiliares privados para reutilização interna na interface",
+    ["A) Métodos acessíveis diretamente por qualquer classe externa ao pacote", "B) Métodos auxiliares que permitem compartilhar código comum entre métodos default ou estáticos dentro da própria interface sem expô-los publicamente", "C) Construtores privados para impedir instanciação de classes", "D) Métodos obsoletos substituídos por lambdas"],
+    "B",
+    "O Java 9 permitiu que interfaces encapsulassem lógica repetitiva em métodos privados, melhorando a organização do código sem violar o contrato público.",
+    "Reduz duplicação de código entre métodos default."
 );
 
 addQuestion(
-"Java", "Fácil",
-"Qual operador aritmético em Java é utilizado para calcular o resto de uma divisão inteira?",
-"%",
-["A) /", "B) %%", "C) %", "D) mod"],
-"C",
-"O operador módulo % retorna o resto da divisão entre dois números inteiros (ou de ponto flutuante).",
-"Exemplo: 5 % 2 resulta em 1."
+    "Java", "Fácil",
+    "Qual operador aritmético em Java é utilizado para calcular o resto de uma divisão inteira?",
+    "%",
+    ["A) /", "B) %%", "C) %", "D) mod"],
+    "C",
+    "O operador módulo % retorna o resto da divisão entre dois números inteiros (ou de ponto flutuante).",
+    "Exemplo: 5 % 2 resulta em 1."
 );
 
 addQuestion(
-"Java", "Média",
-"O que ocorre se tentarmos compilar e executar uma classe Java que não possui nenhum construtor explícito escrito pelo programador?",
-"Inclusão automática do construtor padrão (default constructor)",
-["A) O compilador emite um erro fatal de compilação", "B) O compilador insere automaticamente um construtor padrão público sem parâmetros", "C) O programa roda, mas gera NullPointerException imediata", "D) A JVM utiliza um construtor genérico externo"],
-"B",
-"Se nenhum construtor é definido na classe, o compilador gera um construtor padrão sem argumentos (ClassName() {}) por baixo dos panos.",
-"Caso você crie um construtor com parâmetros, o construtor padrão deixa de ser gerado automaticamente."
+    "Java", "Média",
+    "O que ocorre se tentarmos compilar e executar uma classe Java que não possui nenhum construtor explícito escrito pelo programador?",
+    "Inclusão automática do construtor padrão (default constructor)",
+    ["A) O compilador emite um erro fatal de compilação", "B) O compilador insere automaticamente um construtor padrão público sem parâmetros", "C) O programa roda, mas gera NullPointerException imediata", "D) A JVM utiliza um construtor genérico externo"],
+    "B",
+    "Se nenhum construtor é definido na classe, o compilador gera um construtor padrão sem argumentos (ClassName() {}) por baixo dos panos.",
+    "Caso você crie um construtor com parâmetros, o construtor padrão deixa de ser gerado automaticamente."
 );
 
 addQuestion(
-"Java", "Difícil",
-"Qual é a finalidade da anotação @Override em Java?",
-"Verificação em tempo de compilação de sobrescrita de método",
-["A) Marcar o método como obsoleto (deprecated)", "B) Solicitar que o compilador verifique se o método realmente está sobrescrevendo um método da superclasse ou interface, prevenindo erros de digitação na assinatura", "C) Forçar a execução síncrona do método em múltiplas threads", "D) Otimizar a velocidade de execução via JIT compiler"],
-"B",
-"@Override é uma boa prática de segurança de código. Se você errar o nome ou os parâmetros do método herdado, o compilador avisa imediatamente.",
-"Não afeta o comportamento em tempo de execução, servindo para checagem estática."
+    "Java", "Difícil",
+    "Qual é a finalidade da anotação @Override em Java?",
+    "Verificação em tempo de compilação de sobrescrita de método",
+    ["A) Marcar o método como obsoleto (deprecated)", "B) Solicitar que o compilador verifique se o método realmente está sobrescrevendo um método da superclasse ou interface, prevenindo erros de digitação na assinatura", "C) Forçar a execução síncrona do método em múltiplas threads", "D) Otimizar a velocidade de execução via JIT compiler"],
+    "B",
+    "@Override é uma boa prática de segurança de código. Se você errar o nome ou os parâmetros do método herdado, o compilador avisa imediatamente.",
+    "Não afeta o comportamento em tempo de execução, servindo para checagem estática."
 );
 
 /* =====================================================
