@@ -5340,6 +5340,650 @@ addQuestion(
 );
 
 /* =====================================================
+    UML (LINGUAGEM DE MODELAGEM UNIFICADA) - Bloco 01
+===================================================== */
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é o principal objetivo de um Diagrama de Classes na UML?", 
+    "Diagrama de Classes", 
+    [
+        "A) Mostrar o fluxo temporal de mensagens trocadas entre objetos em um cenário de uso.",
+        "B) Representar a estrutura estática do sistema, exibindo as classes, seus atributos, operações e os relacionamentos entre elas.",
+        "C) Descrever o comportamento dinâmico de um objeto através de estados e transições.",
+        "D) Mapear fisicamente os nós de hardware e a topologia de rede onde a aplicação será executada."
+    ], 
+    "B", 
+    "O Diagrama de Classes é o pilar estrutural mais utilizado da UML, servindo para modelar o domínio do problema e a arquitetura orientada a objetos antes da implementação do código.", 
+    "Ele foca na visão estática, diferindo dos diagramas comportamentais."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "No contexto de relacionamentos entre classes na UML, qual é a diferença fundamental entre Composição e Agregação?", 
+    "Relacionamentos UML", 
+    [
+        "A) A agregação indica uma relação de 'todo-parte' onde as partes podem existir independentemente do todo; a composição é uma forma mais forte de agregação onde o ciclo de vida da parte é dependente do todo.",
+        "B) A composição é utilizada exclusivamente para classes abstratas e a agregação para interfaces.",
+        "C) Não há diferença prática; ambos os termos são sinônimos para herança múltipla.",
+        "D) A agregação utiliza uma seta preta sólida e a composição uma seta tracejada."
+    ], 
+    "A", 
+    "Na agregação (losango vazio), o objeto parte sobrevive se o todo for destruído (ex: um curso e seus alunos). Na composição (losango preenchido), se o todo morre, as partes morrem junto (ex: uma casa e seus cômodos ou uma nota fiscal e seus itens).", 
+    "A composição representa uma relação de propriedade estrita."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é a finalidade principal de um Diagrama de Casos de Uso?", 
+    "Diagrama de Casos de Uso", 
+    [
+        "A) Detalhar a sintaxe de programação e os algoritmos internos dos métodos de uma classe.",
+        "B) Mapear a infraestrutura de servidores cloud e balanceadores de carga.",
+        "C) Ilustrar as funcionalidades do sistema a partir da perspectiva dos atores externos (usuários ou outros sistemas), mostrando quem interage com o quê.",
+        "D) Controlar o versionamento de branches e merges no repositório Git."
+    ], 
+    "C", 
+    "O Diagrama de Casos de Uso é uma ferramenta de análise de requisitos que descreve o comportamento do sistema sob o ponto de vista do usuário (ator), sem entrar em detalhes técnicos de implementação.", 
+    "Utiliza elementos como atores (bonequinhos), elipses (casos de uso) e limites do sistema."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Para que serve o relacionamento do tipo 'Include' (Inclusão) em um Diagrama de Casos de Uso?", 
+    "Casos de Uso (Relacionamentos)", 
+    [
+        "A) Para indicar que um caso de uso é opcional e só executa se o usuário pagar uma taxa.",
+        "B) Para indicar que o comportamento de um caso de uso base inclui obrigatoriamente a execução de outro caso de uso subtarefa (reutilização de comportamento obrigatório).",
+        "C) Para herdar atributos e métodos de uma classe pai para uma classe filha.",
+        "D) Para conectar o banco de dados relacional ao servidor backend."
+    ], 
+    "B", 
+    "A relação `<<include>>` aponta que um fluxo principal sempre executa um subfluxo obrigatório (ex: o caso de uso 'Efetuar Pagamento' pode incluir obrigatoriamente o caso de uso 'Validar Token de Segurança').", 
+    "Diferencia-se do `<<extend>>`, que modela comportamentos opcionais ou condicionais."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual tipo de diagrama UML é mais adequado para representar a ordem cronológica de mensagens trocadas entre objetos ou atores?", 
+    "Diagrama de Sequência", 
+    [
+        "A) Diagrama de Implantação",
+        "B) Diagrama de Sequência",
+        "C) Diagrama de Classes",
+        "D) Diagrama de Componentes"
+    ], 
+    "B", 
+    "O Diagrama de Sequência pertence à categoria de diagramas de interação, organizando os objetos na horizontal e o tempo na vertical para mostrar o fluxo dinâmico das chamadas de métodos.", 
+    "É amplamente utilizado por desenvolvedores para documentar fluxos complexos de APIs e microsserviços."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que representa a visibilidade de um atributo ou método precedido pelo sinal de menos (`-`) em um Diagrama de Classes?", 
+    "Visibilidade na UML", 
+    [
+        "A) Público (`public`); acessível por qualquer classe externa.",
+        "B) Protegido (`protected`); acessível apenas pelas subclasses.",
+        "C) Privado (`private`); acessível exclusivamente dentro da própria classe.",
+        "D) Pacote (`package`); acessível apenas por classes do mesmo diretório."
+    ], 
+    "C", 
+    "Na notação UML, o sinal de mais (`+`) indica visibilidade pública, o sustenido (`#`) indica protegida, o til (`~`) indica pacote e o menos (`-`) indica privada.", 
+    "Esses símbolos ajudam a aplicar o princípio do encapsulamento na modelagem."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é o objetivo de um Diagrama de Atividades na UML?", 
+    "Diagrama de Atividades", 
+    [
+        "A) Modelar o fluxo de controle lógico de processos, algoritmos ou fluxos de trabalho (workflows), funcionando como uma evolução sofisticada dos fluxogramas tradicionais.",
+        "B) Descrever exclusivamente a arquitetura física de redes de computadores.",
+        "C) Armazenar os logs de transações financeiras de um banco de dados.",
+        "D) Representar a estrutura hierárquica de pastas de um projeto de software."
+    ], 
+    "A", 
+    "O Diagrama de Atividades utiliza nós de ação, decisões (losangos) e barras de sincronização (fork/join) para modelar processos paralelos ou sequenciais, tanto de negócio quanto de software.", 
+    "Excelente para modelar regras de negócio complexas com múltiplos desvios condicionais."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que modela um Diagrama de Estados (State Machine Diagram)?", 
+    "Diagrama de Estados", 
+    [
+        "A) O estado financeiro e o balanço patrimonial da empresa desenvolvedora.",
+        "B) O ciclo de vida de um objeto específico, mostrando os estados pelos quais ele passa, os eventos que disparam a mudança de estado e as ações associadas.",
+        "C) A quantidade de servidores ativos em um cluster de computação em nuvem.",
+        "D) As relações estáticas de herança entre várias classes do sistema."
+    ], 
+    "B", 
+    "O Diagrama de Estados é ideal para objetos que mudam de comportamento drasticamente dependendo do momento (ex: um pedido que passa por: `Pendente` -> `Aprovado` -> `Enviado` -> `Entregue`).", 
+    "Conecta-se intimamente com padrões de projeto como o State Pattern."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é a finalidade de um Diagrama de Implantação (Deployment Diagram)?", 
+    "Diagrama de Implantação", 
+    [
+        "A) Mostrar a arquitetura física dos artefatos de software executados em nós de hardware (como servidores, dispositivos móveis e ambientes de nuvem).",
+        "B) Detalhar o código fonte linha por linha em arquivos de extensão .java ou .cs.",
+        "C) Descrever o passo a passo de uma tela de login para o usuário final.",
+        "D) Listar os requisitos de negócio exigidos pelo Product Owner."
+    ], 
+    "A", 
+    "O Diagrama de Implantação situa os componentes de software em suas respectivas infraestruturas físicas de hardware, mapeando conexões de rede e nós operacionais.", 
+    "Pertence à categoria de diagramas estruturais voltados para a visão de infraestrutura."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "No contexto da UML, o que significa uma classe descrita em itálico ou com o modificador `<<abstract>>`?", 
+    "Classes Abstratas na UML", 
+    [
+        "A) Uma classe que possui erros de sintaxe e não pode ser compilada.",
+        "B) Uma classe abstrata, que serve como modelo base e não pode ser instanciada diretamente, exigindo que suas subclasses implementem seus métodos abstratos.",
+        "C) Uma classe legada que foi descontinuada pelo desenvolvedor.",
+        "D) Uma interface gráfica de usuário renderizada em formato web."
+    ], 
+    "B", 
+    "Classes abstratas definem contratos genéricos e comportamentos parciais. Na UML, seus nomes aparecem em itálico ou acompanhados do estereótipo `<<abstract>>`.", 
+    "Diferem das interfaces puras, embora ambas compartilhem a restrição de não permitirem instanciação direta com `new`."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que representa o relacionamento do tipo 'Extend' (Extensão) em um Diagrama de Casos de Uso?", 
+    "Casos de Uso (Relacionamentos)", 
+    [
+        "A) Uma extensão de garantia contratual fornecida pelo fabricante do software.",
+        "B) Um comportamento opcional ou condicional que é inserido em um caso de uso base sob determinadas circunstâncias.",
+        "C) A herança direta de atributos entre tabelas de banco de dados relacionais.",
+        "D) O encadeamento síncrono obrigatório de chamadas de métodos em uma API."
+    ], 
+    "B", 
+    "A relação `<<extend>>` indica que um caso de uso secundário pode (ou não) estender o comportamento de um caso de uso base se uma condição específica for atendida (ex: 'Fazer Login' pode ser estendido por 'Enviar Código 2FA').", 
+    "A seta aponta do caso de uso de extensão para o caso de uso base."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é a principal função de um Diagrama de Componentes na UML?", 
+    "Diagrama de Componentes", 
+    [
+        "A) Mostrar a organização e as dependências entre os módulos de software, bibliotecas, executáveis e arquivos que compõem o sistema.",
+        "B) Listar os componentes de hardware de uma placa-mãe de computador.",
+        "C) Detalhar os componentes visuais de interface do usuário (botões, inputs e formulários HTML).",
+        "D) Gerenciar a dependência de pacotes externos via gerenciadores como npm ou pip."
+    ], 
+    "A", 
+    "O Diagrama de Componentes foca na arquitetura de alto nível baseada em blocos de software reutilizáveis e nas interfaces que eles expõem ou requerem.", 
+    "Ajuda a visualizar a modularidade do sistema e o desacoplamento de partes."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Como a herança (ou generalização) é representada graficamente em um Diagrama de Classes UML?", 
+    "Relacionamentos UML", 
+    [
+        "A) Por uma linha tracejada com uma seta preta preenchida.",
+        "B) Por uma linha contínua com uma ponta de seta fechada em forma de triângulo vazio apontando para a superclasse.",
+        "C) Por um losango preenchido na ponta da classe filha.",
+        "D) Por uma linha dupla com duas setas em sentidos apostos."
+    ], 
+    "B", 
+    "A generalização estabelece que a subclasse herda características da superclasse. Na UML, a seta triangular vazia aponta sempre da classe especializada (filha) para a generalizada (pai).", 
+    "Representa a famosa relação 'é um' (is-a)."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que indica a multiplicidade (como `1..*` ou `0..1`) colocada nas extremidades de uma associação em um Diagrama de Classes?", 
+    "Multiplicidade na UML", 
+    [
+        "A) A quantidade de instâncias de uma classe que podem se relacionar com instâncias de outra classe.",
+        "B) O número de linhas de código que cada método possui.",
+        "C) A prioridade de execução das tarefas em um ambiente multithread.",
+        "D) O consumo de memória RAM estimado para carregar o objeto."
+    ], 
+    "A", 
+    "A multiplicidade define a cardinalidade do relacionamento. Por exemplo, `1` significa obrigatoriamente um, enquanto `0..*` significa de zero a muitos.", 
+    "É fundamental para o mapeamento correto de cardinalidades em bancos de dados relacionais (1 para 1, 1 para N, N para N)."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é o propósito de um Diagrama de Comunicação (anteriormente chamado de Diagrama de Colaboração) na UML?", 
+    "Diagrama de Comunicação", 
+    [
+        "A) Descrever o envio de e-mails de notificação automática aos usuários do sistema.",
+        "B) Enfatizar a organização estrutural dos objetos que enviam e recebem mensagens, utilizando numeração sequencial para indicar a ordem das interações.",
+        "C) Estabelecer protocolos de comunicação de rede TCP/IP.",
+        "D) Controlar os chats e fóruns de suporte técnico de uma aplicação web."
+    ], 
+    "B", 
+    "Enquanto o Diagrama de Sequência foca no eixo temporal, o Diagrama de Comunicação foca na disposição espacial dos objetos e nas ligações físicas/lógicas entre eles para trocar mensagens.", 
+    "Ambos fazem parte da categoria de diagramas de interação da UML."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que representa o sinal de mais (`+`) antes de um atributo ou operação em um Diagrama de Classes?", 
+    "Visibilidade na UML", 
+    [
+        "A) Visibilidade pública (`public`), permitindo acesso livre por qualquer outra classe.",
+        "B) Operação matemática de adição ou incremento.",
+        "C) Atributo obrigatório que não pode ser nulo.",
+        "D) Indicador de que a classe possui múltiplos herdeiros."
+    ], 
+    "A", 
+    "O modificador de acesso público (`+`) garante visibilidade irrestrita ao membro da classe a partir de qualquer ponto do projeto.", 
+    "Faz parte do conjunto padrão de visibilidade junto com `-` (privado), `#` (protegido) e `~` (pacote)."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que caracteriza uma Interface na UML, geralmente representada pelo estereótipo `<<interface>>` ou por um círculo?", 
+    "Interfaces na UML", 
+    [
+        "A) Uma classe completa com código funcional pronto para ser executado.",
+        "B) Um conjunto de operações públicas que especifica um serviço de uma classe ou componente, sem conter implementações próprias de código.",
+        "C) Uma tela gráfica de interface com o usuário construída em React ou Angular.",
+        "D) Um driver de conexão proprietário para banco de dados relacional."
+    ], 
+    "B", 
+    "Interfaces definem contratos que as classes devem cumprir ao implementá-las, contendo apenas assinaturas de métodos e constantes.", 
+    "Promovem o princípio do acoplamento frouxo e da inversão de dependência."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Para que serve um Diagrama de Visão Geral de Interação (Interaction Overview Diagram)?", 
+    "Visão Geral de Interação", 
+    [
+        "A) Unir elementos de diagramas de atividades e diagramas de sequência para modelar o fluxo de controle de interações de forma macro.",
+        "B) Substituir completamente o manual do usuário de um software comercial.",
+        "C) Gerenciar o fluxo de caixa financeiro de projetos de TI.",
+        "D) Exibir unicamente a tabela de rotas de uma API REST."
+    ], 
+    "A", 
+    "Ele combina a estrutura de controle de um diagrama de atividades com nós que contêm fragmentos de diagramas de interação.", 
+    "É um dos diagramas comportamentais mais avançados e menos comuns da UML."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que significa o conceito de Polimorfismo no contexto da orientação a objetos modelada em UML?", 
+    "Conceitos de OO / UML", 
+    [
+        "A) A capacidade de um objeto assumir múltiplas formas de hardware.",
+        "B) A habilidade de diferentes classes responderem à mesma mensagem (mesmo método) de maneiras específicas para cada uma delas.",
+        "C) A duplicação acidental de código em múltiplos arquivos do projeto.",
+        "D) A conversão automática de tipos de dados primitivos em strings."
+    ], 
+    "B", 
+    "O polimorfismo permite que subclasses reescrevam (sobreponham) métodos herdados da superclasse, garantindo flexibilidade e extensibilidade ao sistema.", 
+    "É um dos pilares fundamentais da programação orientada a objetos junto com encapsulamento e herança."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual elemento da UML é utilizado para agrupar elementos correlacionados do modelo em blocos lógicos de gerenciamento, como pacotes de código?", 
+    "Diagrama de Pacotes", 
+    [
+        "A) Caixa de areia (Sandbox)",
+        "B) Pacote (Package), representado graficamente pelo ícone de uma pasta de arquivos",
+        "C) Contêiner Docker",
+        "D) Módulo estrito de compilação"
+    ], 
+    "B", 
+    "Os pacotes ajudam a organizar modelos complexos em namespaces gerenciáveis, reduzindo a complexidade visual e estrutural do projeto.", 
+    "Podem ser aplicados em qualquer tipo de diagrama UML para organizar elementos."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que indica o símbolo de `#` (sustenido) antes de um membro de classe em um Diagrama de Classes UML?", 
+    "Visibilidade na UML", 
+    [
+        "A) Visibilidade protegida (`protected`); o membro é acessível na própria classe e em suas subclasses.",
+        "B) Um número sequencial para identificação de hash no banco de dados.",
+        "C) Que o método é estático (`static`) e compartilhado.",
+        "D) Que a propriedade é obsoleta."
+    ], 
+    "A", 
+    "O modificador `#` protege o atributo ou método contra acessos externos gerais, mas permite visibilidade para herdeiros diretos.", 
+    "Complementa o conjunto de visibilidades junto com `+`, `-` e `~`."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "No Diagrama de Sequência, o que representa a linha tracejada vertical que desce a partir de um objeto ou ator?", 
+    "Diagrama de Sequência", 
+    [
+        "A) Linha de Vida (Lifeline), indicando a existência do objeto ao longo do eixo temporal.",
+        "B) Conexão de rede sem fio (Wi-Fi) com o servidor.",
+        "C) Um erro de execução em tempo de compilação.",
+        "D) O canal de log de depuração."
+    ], 
+    "A", 
+    "A linha de vida mostra o período de tempo em que o objeto permanece ativo e participando das interações descritas no diagrama.", 
+    "A caixa retangular no topo representa a instância do objeto."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que significam os blocos condicionais como `alt`, `loop` e `opt` em um Diagrama de Sequência UML?", 
+    "Diagrama de Sequência", 
+    [
+        "A) Atalhos de teclado para edição do diagrama.",
+        "B) Fragmentos combinados (Combined Fragments) que permitem modelar lógica de controle avançada (alternativas condicionais, repetições e opções).",
+        "C) Funções matemáticas avançadas de otimização de código.",
+        "D) Métodos deprecados de bibliotecas antigas."
+    ], 
+    "B", 
+    "Os fragmentos combinados evitam a necessidade de criar diagramas separados para cada fluxo lógico alternativo, agrupando blocos de mensagens sob regras lógicas.", 
+    "São essenciais para representar fluxos lógicos complexos baseados em desvios."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é a principal função de um Diagrama de Tempo (Timing Diagram) na UML?", 
+    "Diagrama de Tempo", 
+    [
+        "A) Medir o tempo de resposta de requisições HTTP em servidores web.",
+        "B) Focar nas mudanças de estado de um objeto ao longo do tempo e nas restrições temporais entre eventos.",
+        "C) Cronometrar o tempo de desenvolvimento de uma sprint ágil.",
+        "D) Gerenciar fuso horário em aplicações distribuídas globais."
+    ], 
+    "B", 
+    "O Diagrama de Tempo é uma forma especializada de diagrama de interação que prioriza o eixo temporal linear para sistemas de tempo real ou embarcados.", 
+    "Muito utilizado em sistemas ciber-físicos e automação industrial."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que representa o símbolo de `~` (til) antes de um atributo ou método em um Diagrama de Classes?", 
+    "Visibilidade na UML", 
+    [
+        "A) Visibilidade de pacote (`package` ou default); acessível apenas por classes pertencentes ao mesmo pacote.",
+        "B) Operação de negação lógica (NOT).",
+        "C) Dado corrompido ou temporário.",
+        "D) Atributo criptografado."
+    ], 
+    "A", 
+    "A visibilidade de pacote restringe o acesso aos limites lógicos do namespace (pasta/pacote) onde a classe está declarada.", 
+    "Corresponde ao modificador padrão em linguagens como Java quando nenhum outro modificador é explícito."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que é uma Classe Associativa em um Diagrama de Classes UML?", 
+    "Relacionamentos UML", 
+    [
+        "A) Uma classe que armazena informações extras referentes unicamente a um relacionamento de associação N para N entre outras duas classes.",
+        "B) Uma classe que une dois bancos de dados distintos.",
+        "C) Um erro de modelagem que deve ser evitado a todo custo.",
+        "D) Uma classe filha que herda de múltiplas superclasses simultaneamente."
+    ], 
+    "A", 
+    "Quando um relacionamento N para N precisa carregar atributos próprios (ex: a associação entre `Aluno` e `Curso` precisa do atributo `Nota`), utiliza-se uma classe associativa conectada por uma linha tracejada.", 
+    "Resolve a necessidade de armazenar dados que pertencem à relação e não às entidades isoladas."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Em um Diagrama de Atividades, qual elemento representa um ponto de decisão ou ramificação condicional?", 
+    "Diagrama de Atividades", 
+    [
+        "A) Um círculo preenchido em preto",
+        "B) Um losango (Diamond) com múltiplos caminhos de saída rotulados por guardas condicionais",
+        "C) Uma barra retangular preta espessa",
+        "D) Um retângulo com bordas arredondadas"
+    ], 
+    "B", 
+    "O losango funciona como um desvio onde o fluxo de execução segue apenas pelo caminho cuja condição (guarda) seja verdadeira.", 
+    "Equivale conceitualmente ao comando `if/else` ou `switch` da programação."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que representam as barras de sincronização (Fork e Join) em um Diagrama de Atividades?", 
+    "Diagrama de Atividades", 
+    [
+        "A) O início e o fim absoluto do sistema operacional.",
+        "B) Barras pretas grossas utilizadas para dividir um fluxo único em múltiplos fluxos concorrentes (Fork) ou unir múltiplos fluxos concorrentes em um só (Join).",
+        "C) Conexões de rede física via cabo de fibra óptica.",
+        "D) O ponto de salvamento automático de arquivos."
+    ], 
+    "B", 
+    "Elas permitem modelar processamento paralelo e multithreading, garantindo que tarefas paralelas sejam iniciadas juntas ou aguardem a conclusão umas das outras.", 
+    "Essenciais para fluxos de trabalho que ocorrem simultaneamente."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é o objetivo de um Diagrama de Estrutura Composicionais (Composite Structure Diagram)?", 
+    "Estrutura Composicional", 
+    [
+        "A) Mostrar a estrutura interna de um classificador (como uma classe, componente ou nó), incluindo suas partes, portas e conectores.",
+        "B) Compor músicas de fundo para o software.",
+        "C) Organizar arquivos compactados em formato ZIP ou RAR.",
+        "D) Estruturar tabelas de layout CSS em páginas web."
+    ], 
+    "A", 
+    "Ele detalha o interior de classes complexas que possuem arquiteturas internas de colaboração de instâncias acopladas.", 
+    "Aprofunda a visão estrutural além dos atributos e operações tradicionais."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que significa o conceito de Dependência (representado por uma seta tracejada) em diagramas UML?", 
+    "Relacionamentos UML", 
+    [
+        "A) Que a classe cliente sofre de acoplamento permanente de herança múltipla.",
+        "B) Que uma mudança na especificação de um elemento (fornecedor) pode afetar o outro elemento que o utiliza (cliente), sem que haja uma associação estrutural permanente.",
+        "C) Que o código possui erros de compilação pendentes.",
+        "D) Que os arquivos dependem de conexão com a internet."
+    ], 
+    "B", 
+    "A dependência é um relacionamento de uso mais fraco que a associação (ex: uma classe usa outra como parâmetro de método ou tipo de retorno local).", 
+    "Representada graficamente por uma linha tracejada com seta aberta."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que é um 'Ator' (Actor) em um Diagrama de Casos de Uso?", 
+    "Diagrama de Casos de Uso", 
+    [
+        "A) Um ator de cinema contratado para fazer o marketing do software.",
+        "B) Um papel desempenhado por um usuário externo, hardware ou outro sistema que interage diretamente com o sistema em desenvolvimento.",
+        "C) Uma função interna privada executada pelo banco de dados.",
+        "D) O desenvolvedor sênior responsável pela codificação."
+    ], 
+    "B", 
+    "Atores representam entidades externas que iniciam ou recebem interações do sistema, sendo tipicamente representados por um boneco palito.", 
+    "Não fazem parte do sistema em si, mas delimitam o escopo de uso."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é a finalidade do Limite do Sistema (System Boundary) em um Diagrama de Casos de Uso?", 
+    "Diagrama de Casos de Uso", 
+    [
+        "A) Delimitar visualmente o escopo do sistema que está sendo construído, separando o que está dentro do sistema (casos de uso) do que está fora (atores).",
+        "B) Limitar a quantidade máxima de usuários logados simultaneamente.",
+        "C) Proteger o sistema contra ataques cibernéticos de firewall.",
+        "D) Definir o orçamento financeiro do projeto."
+    ], 
+    "A", 
+    "O retângulo delimitador define claramente os limites funcionais do software em questão, facilitando a gestão de requisitos e escopo.", 
+    "Ajuda a evitar a expansão descontrolada de escopo (scope creep)."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "No contexto de diagramas UML, o que representa a Orientação a Objetos no tocante ao Encapsulamento?", 
+    "Conceitos de OO / UML", 
+    [
+        "A) A ocultação dos detalhes internos de funcionamento de um objeto, expondo apenas uma interface pública controlada.",
+        "B) A compactação de arquivos binários para economia de disco.",
+        "C) O armazenamento de dados em nuvem criptografada.",
+        "D) A proteção de copyright da marca do software."
+    ], 
+    "A", 
+    "O encapsulamento protege o estado interno do objeto contra modificações externas indevidas, permitindo alteração interna sem quebrar o código cliente.", 
+    "É diretamente mapeado na UML através dos modificadores de visibilidade (+, -, #, ~)."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que representa uma Operação Abstrata (ou método abstrato) em uma classe UML?", 
+    "Classes Abstratas na UML", 
+    [
+        "A) Um método que possui código completo altamente otimizado.",
+        "B) Um método que possui apenas a assinatura definida na superclasse, exigindo obrigatoriamente que as subclasses concretas forneçam a implementação.",
+        "C) Um método que foi deletado do sistema.",
+        "D) Um método executado automaticamente em segundo plano."
+    ], 
+    "B", 
+    "Métodos abstratos definem contratos obrigatórios que garantem que todas as subclasses compartilhem o mesmo comportamento polimórfico adaptado.", 
+    "Aparecem em itálico nos diagramas de classes."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é a utilidade do Diagrama de Perfil (Profile Diagram) na UML?", 
+    "Diagrama de Perfil", 
+    [
+        "A) Criar perfis de acesso e senhas para os administradores do sistema.",
+        "B) Permitir a personalização e extensão de modelos UML através de estereótipos, tags e restrições para domínios específicos.",
+        "C) Analisar o perfil de consumo de memória RAM do servidor.",
+        "D) Criar redes sociais corporativas."
+    ], 
+    "B", 
+    "Os perfis estendem a metamodelação padrão da UML para atender a nichos específicos (como modelagem de banco de dados ou sistemas embarcados).", 
+    "Permite criar metadados customizados."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que caracteriza a Multiplicidade '0..*' em uma associação UML?", 
+    "Multiplicidade na UML", 
+    [
+        "A) Exatamente zero ou uma ocorrência.",
+        "B) Zero ou mais ocorrências (nenhuma ou quantas forem necessárias).",
+        "C) Obrigatoriamente muitas ocorrências, com mínimo de uma.",
+        "D) Intervalo fechado exclusivo de dez itens."
+    ], 
+    "B", 
+    "Indica opcionalidade total de instâncias na outra ponta da associação, permitindo coleções vazias ou com múltiplos elementos.", 
+    "Corresponde a listas ou arrays que podem estar vazios no código."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é a principal diferença entre um Diagrama de Estados e um Diagrama de Atividades?", 
+    "Diagramas Comportamentais", 
+    [
+        "A) O Diagrama de Estados foca nos estados de um único objeto e nos eventos que mudam esses estados; o Diagrama de Atividades foca no fluxo de controle procedimental de processos ou algoritmos.",
+        "B) O Diagrama de Estados é feito em formato 3D e o de atividades em 2D.",
+        "C) Não há diferença; são sinônimos perfeitos na especificação UML.",
+        "D) O Diagrama de Estados é voltado apenas para hardware e o de atividades para software."
+    ], 
+    "A", 
+    "Enquanto o diagrama de estados descreve o ciclo de vida reativo de uma entidade baseada em eventos, o diagrama de atividades modela uma sequência linear ou paralela de passos executados.", 
+    "Ambos descrevem comportamento dinâmico, mas sob perspectivas distintas."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "O que é uma Classe Concreta na UML em oposição a uma Classe Abstrata?", 
+    "Classes na UML", 
+    [
+        "A) Uma classe construída de concreto armado para infraestrutura física.",
+        "B) Uma classe que pode ser instanciada diretamente (criar objetos com `new`), pois possui implementações para todas as suas operações.",
+        "C) Uma classe que não possui atributos, apenas comentários.",
+        "D) Uma classe legada que não pode mais ser modificada."
+    ], 
+    "B", 
+    "Classes concretas implementam todos os contratos herdados e estão prontas para gerar instâncias em tempo de execução.", 
+    "Seus nomes aparecem com fonte normal (não em itálico)."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "No contexto de modelagem de dados, como uma chave estrangeira (Foreign Key) costuma ser representada em um Diagrama de Classes UML?", 
+    "Diagrama de Classes", 
+    [
+        "A) Através de linhas de associação diretas entre as classes com multiplicidades corretas, em vez de expor apenas o ID bruto como atributo isolado.",
+        "B) Através de linhas vermelhas tracejadas com marca d'água.",
+        "C) Não pode ser representada de nenhuma forma na UML.",
+        "D) Apenas utilizando comentários textuais."
+    ], 
+    "A", 
+    "A UML prioriza relacionamentos orientados a objetos (Associações) em vez de depender estritamente de chaves estrangeiras primitivas, embora atributos de ID possam coexistir.", 
+    "Facilita a transição do modelo conceitual para o objeto-relacional."
+);
+
+addQuestion(
+    "UML", 
+    "Média", 
+    "Qual é a principal vantagem de utilizar a UML (Linguagem de Modelagem Unificada) em projetos de software corporativos?", 
+    "Fundamentos da UML", 
+    [
+        "A) Garantir que o sistema seja compilado automaticamente sem bugs.",
+        "B) Fornecer uma notação padronizada, rica e visual para especificar, construir e documentar os artefatos de um sistema de software, facilitando a comunicação da equipe.",
+        "C) Substituir totalmente a necessidade de escrever código de programação.",
+        "D) Reduzir o custo de aquisição de licenças de servidores em nuvem."
+    ], 
+    "B", 
+    "A UML atua como uma 'planta baixa' padronizada da engenharia de software, permitindo alinhar arquitetos, desenvolvedores, testadores e analistas de negócios.", 
+    "Padronizada pela OMG (Object Management Group)."
+);
+
+/* =====================================================
    ARQUITETURA DE SOFTWARE
 ===================================================== */
 
@@ -5480,146 +6124,8 @@ arquiteturaSoftware.forEach(x => {
     addQuestion("Arquitetura de Software", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
 
-/* =====================================================
-   UML (LINGUAGEM DE MODELAGEM UNIFICADA)
-===================================================== */
 
-const umlQuest = [
-    {
-        q: "Qual é o principal objetivo de um Diagrama de Classes na UML?",
-        c: "Diagrama de Classes",
-        o: [
-            "A) Mostrar o fluxo temporal de mensagens trocadas entre objetos em um cenário de uso.",
-            "B) Representar a estrutura estática do sistema, exibindo as classes, seus atributos, operações e os relacionamentos entre elas.",
-            "C) Descrever o comportamento dinâmico de um objeto através de estados e transições.",
-            "D) Mapear fisicamente os nós de hardware e a topologia de rede onde a aplicação será executada."
-        ],
-        a: "B",
-        e: "O Diagrama de Classes é o pilar estrutural mais utilizado da UML, servindo para modelar o domínio do problema e a arquitetura orientada a objetos antes da implementação do código.",
-        t: "Ele foca na visão estática, diferindo dos diagramas comportamentais."
-    },
-    {
-        q: "No contexto de relacionamentos entre classes na UML, qual é a diferença fundamental entre Composição e Agregação?",
-        c: "Relacionamentos UML",
-        o: [
-            "A) A agregação indica uma relação de 'todo-parte' onde as partes podem existir independentemente do todo; a composição é uma forma mais forte de agregação onde o ciclo de vida da parte é dependente do todo.",
-            "B) A composição é utilizada exclusivamente para classes abstratas e a agregação para interfaces.",
-            "C) Não há diferença prática; ambos os termos são sinônimos para herança múltipla.",
-            "D) A agregação utiliza uma seta preta sólida e a composição uma seta tracejada."
-        ],
-        a: "A",
-        e: "Na agregação (losango vazio), o objeto parte sobrevive se o todo for destruído (ex: um curso e seus alunos). Na composição (losango preenchido), se o todo morre, as partes morrem junto (ex: uma casa e seus cômodos ou uma nota fiscal e seus itens).",
-        t: "A composição representa uma relação de propriedade estrita."
-    },
-    {
-        q: "Qual é a finalidade principal de um Diagrama de Casos de Uso?",
-        c: "Diagrama de Casos de Uso",
-        o: [
-            "A) Detalhar a sintaxe de programação e os algoritmos internos dos métodos de uma classe.",
-            "B) Mapear a infraestrutura de servidores cloud e balanceadores de carga.",
-            "C) Ilustrar as funcionalidades do sistema a partir da perspectiva dos atores externos (usuários ou outros sistemas), mostrando quem interage com o quê.",
-            "D) Controlar o versionamento de branches e merges no repositório Git."
-        ],
-        a: "C",
-        e: "O Diagrama de Casos de Uso é uma ferramenta de análise de requisitos que descreve o comportamento do sistema sob o ponto de vista do usuário (ator), sem entrar em detalhes técnicos de implementação.",
-        t: "Utiliza elementos como atores (bonequinhos), elipses (casos de uso) e limites do sistema."
-    },
-    {
-        q: "Para que serve o relacionamento do tipo 'Include' (Inclusão) em um Diagrama de Casos de Uso?",
-        c: "Casos de Uso (Relacionamentos)",
-        o: [
-            "A) Para indicar que um caso de uso é opcional e só executa se o usuário pagar uma taxa.",
-            "B) Para indicar que o comportamento de um caso de uso base inclui obrigatoriamente a execução de outro caso de uso subtarefa (reutilização de comportamento obrigatório).",
-            "C) Para herdar atributos e métodos de uma classe pai para uma classe filha.",
-            "D) Para conectar o banco de dados relacional ao servidor backend."
-        ],
-        a: "B",
-        e: "A relação `<<include>>` aponta que um fluxo principal sempre executa um subfluxo obrigatório (ex: o caso de uso 'Efetuar Pagamento' pode incluir obrigatoriamente o caso de uso 'Validar Token de Segurança').",
-        t: "Diferencia-se do `<<extend>>`, que modela comportamentos opcionais ou condicionais."
-    },
-    {
-        q: "Qual tipo de diagrama UML é mais adequado para representar a ordem cronológica de mensagens trocadas entre objetos ou atores?",
-        c: "Diagrama de Sequência",
-        o: [
-            "A) Diagrama de Implantação",
-            "B) Diagrama de Sequência",
-            "C) Diagrama de Classes",
-            "D) Diagrama de Componentes"
-        ],
-        a: "B",
-        e: "O Diagrama de Sequência pertence à categoria de diagramas de interação, organizando os objetos na horizontal e o tempo na vertical para mostrar o fluxo dinâmico das chamadas de métodos.",
-        t: "É amplamente utilizado por desenvolvedores para documentar fluxos complexos de APIs e microsserviços."
-    },
-    {
-        q: "O que representa a visibilidade de um atributo ou método precedido pelo sinal de menos (`-`) em um Diagrama de Classes?",
-        c: "Visibilidade na UML",
-        o: [
-            "A) Público (`public`); acessível por qualquer classe externa.",
-            "B) Protegido (`protected`); acessível apenas pelas subclasses.",
-            "C) Privado (`private`); acessível exclusivamente dentro da própria classe.",
-            "D) Pacote (`package`); acessível apenas por classes do mesmo diretório."
-        ],
-        a: "C",
-        e: "Na notação UML, o sinal de mais (`+`) indica visibilidade pública, o sustenido (`#`) indica protegida, o til (`~`) indica pacote e o menos (`-`) indica privada.",
-        t: "Esses símbolos ajudam a aplicar o princípio do encapsulamento na modelagem."
-    },
-    {
-        q: "Qual é o objetivo de um Diagrama de Atividades na UML?",
-        c: "Diagrama de Atividades",
-        o: [
-            "A) Modelar o fluxo de controle lógico de processos, algoritmos ou fluxos de trabalho (workflows), funcionando como uma evolução sofisticada dos fluxogramas tradicionais.",
-            "B) Descrever exclusivamente a arquitetura física de redes de computadores.",
-            "C) Armazenar os logs de transações financeiras de um banco de dados.",
-            "D) Representar a estrutura hierárquica de pastas de um projeto de software."
-        ],
-        a: "A",
-        e: "O Diagrama de Atividades utiliza nós de ação, decisões (losangos) e barras de sincronização (fork/join) para modelar processos paralelos ou sequenciais, tanto de negócio quanto de software.",
-        t: "Excelente para modelar regras de negócio complexas com múltiplos desvios condicionais."
-    },
-    {
-        q: "O que modela um Diagrama de Estados (State Machine Diagram)?",
-        c: "Diagrama de Estados",
-        o: [
-            "A) O estado financeiro e o balanço patrimonial da empresa desenvolvedora.",
-            "B) O ciclo de vida de um objeto específico, mostrando os estados pelos quais ele passa, os eventos que disparam a mudança de estado e as ações associadas.",
-            "C) A quantidade de servidores ativos em um cluster de computação em nuvem.",
-            "D) As relações estáticas de herança entre várias classes do sistema."
-        ],
-        a: "B",
-        e: "O Diagrama de Estados é ideal para objetos que mudam de comportamento drasticamente dependendo do momento (ex: um pedido que passa por: `Pendente` -> `Aprovado` -> `Enviado` -> `Entregue`).",
-        t: "Conecta-se intimamente com padrões de projeto como o State Pattern."
-    },
-    {
-        q: "Qual é a finalidade de um Diagrama de Implantação (Deployment Diagram)?",
-        c: "Diagrama de Implantação",
-        o: [
-            "A) Mostrar a arquitetura física dos artefatos de software executados em nós de hardware (como servidores, dispositivos móveis e ambientes de nuvem).",
-            "B) Detalhar o código fonte linha por linha em arquivos de extensão .java ou .cs.",
-            "C) Descrever o passo a passo de uma tela de login para o usuário final.",
-            "D) Listar os requisitos de negócio exigidos pelo Product Owner."
-        ],
-        a: "A",
-        e: "O Diagrama de Implantação situa os componentes de software em suas respectivas infraestruturas físicas de hardware, mapeando conexões de rede e nós operacionais.",
-        t: "Pertence à categoria de diagramas estruturais voltados para a visão de infraestrutura."
-    },
-    {
-        q: "No contexto da UML, o que significa uma classe descrita em itálico ou com o modificador `<<abstract>>`?",
-        c: "Classes Abstratas na UML",
-        o: [
-            "A) Uma classe que possui erros de sintaxe e não pode ser compilada.",
-            "B) Uma classe abstrata, que serve como modelo base e não pode ser instanciada diretamente, exigindo que suas subclasses implementem seus métodos abstratos.",
-            "C) Uma classe legada que foi descontinuada pelo desenvolvedor.",
-            "D) Uma interface gráfica de usuário renderizada em formato web."
-        ],
-        a: "B",
-        e: "Classes abstratas definem contratos genéricos e comportamentos parciais. Na UML, seus nomes aparecem em itálico ou acompanhados do estereótipo `<<abstract>>`.",
-        t: "Diferem das interfaces puras, embora ambas compartilhem a restrição de não permitirem instanciação direta com `new`."
-    }
-];
 
-umlQuest.forEach(x => {
-    addQuestion("UML", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
 /* =====================================================
    DESIGN PATTERNS
 ===================================================== */
