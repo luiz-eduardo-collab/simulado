@@ -8725,6 +8725,37 @@ addQuestion(
     "Sem uma suíte de testes automatizados robusta, entregas contínuas em ambientes complexos de microsserviços tornam-se caóticas e propensas a falhas catastróficas em produção.", 
     "Automação e DevOps caminham lado a lado."
 );
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que avalia o 'Teste de Escalabilidade' (Scalability Testing) dentro dos testes de desempenho?", 
+    "Testes de Escalabilidade", 
+    [
+        "A) A capacidade do sistema de continuar funcionando eficientemente quando há um aumento na carga de trabalho, expandindo recursos (vertical ou horizontalmente) conforme a demanda.",
+        "B) A facilidade de escalar montanhas com os servidores da empresa.",
+        "C) O cálculo do aumento salarial dos testadores baseado no número de bugs encontrados.",
+        "D) A habilidade de redimensionar imagens PNG automaticamente no layout."
+    ], 
+    "A", 
+    "O teste de escalabilidade mede o quão bem o software lida com o crescimento de dados, tráfego ou número de usuários simultâneos, identificando limites de expansão.", 
+    "Essencial para aplicações em nuvem (Cloud Computing) que precisam crescer elásticas."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que significa a prática de 'Test-First Development' em comparação ao desenvolvimento tradicional?", 
+    "Test-First Development", 
+    [
+        "A) Escrever a documentação completa do projeto antes de ligar o computador.",
+        "B) A inversão na ordem de entrega onde os testes automatizados são priorizados e escritos antes do código funcional, garantindo especificações claras e menor acoplamento.",
+        "C) Fazer testes físicos de hardware antes de montar a placa-mãe.",
+        "D) Executar todos os testes de aceitação apenas no dia do encerramento do contrato."
+    ], 
+    "B", 
+    "Escrever o teste primeiro obriga o desenvolvedor a entender exatamente qual é o requisito e o comportamento esperado antes de pensar na implementação técnica.", 
+    "É a base conceitual de metodologias como o TDD."
+);
 
 /* =====================================================
     Bloco 17: GIT E CONTROLE DE VERSÃO - 40 QUESTÕES COMPLETAS
