@@ -5983,147 +5983,681 @@ addQuestion(
     "Padronizada pela OMG (Object Management Group)."
 );
 
+
 /* =====================================================
-   ARQUITETURA DE SOFTWARE
+    ARQUITETURA DE SOFTWARE - 40 QUESTÕES
 ===================================================== */
 
-const arquiteturaSoftware = [
-    {
-        q: "Qual é o principal objetivo da Arquitetura Limpa (Clean Architecture), proposta por Robert C. Martin (Uncle Bob)?",
-        c: "Clean Architecture",
-        o: [
-            "A) Garantir que o banco de dados relacional seja o núcleo central e inalterável de toda a regra de negócio da aplicação.",
-            "B) Separar as preocupações do software em camadas concêntricas, onde as dependências apontam sempre de fora para dentro (as regras de negócio centrais não conhecem detalhes de framework, UI ou banco de dados).",
-            "C) Automatizar a criação de arquivos CSS e scripts de estilização para o front-end.",
-            "D) Substituir a orientação a objetos tradicional por programação puramente funcional em servidores web."
-        ],
-        a: "B",
-        e: "A Clean Architecture isola o domínio (regras de negócio) de agentes externos como frameworks, banco de dados ou interfaces de usuário, garantindo alta testabilidade e independência tecnológica.",
-        t: "A Regra de Dependência é o pilar fundamental: código de círculos externos pode conhecer círculos internos, mas nunca o inverso."
-    },
-    {
-        q: "No contexto da Arquitetura Hexagonal (também conhecida como Ports and Adapters), qual é a função das Portas (Ports) e dos Adaptadores (Adapters)?",
-        c: "Arquitetura Hexagonal",
-        o: [
-            "A) As portas são gabinetes de servidores físicos e os adaptadores são cabos de rede de fibra ótica.",
-            "B) As portas definem interfaces abstratas de entrada e saída para a aplicação, enquanto os adaptadores implementam essas portas para conectar o núcleo de negócio a tecnologias externas específicas (como REST APIs, bancos SQL ou filas).",
-            "C) As portas controlam o roteamento de telas no front-end e os adaptadores gerenciam folhas de estilo.",
-            "D) As portas substituem completamente a necessidade de testes unitários automatizados."
-        ],
-        a: "B",
-        e: "A Arquitetura Hexagonal isola o núcleo da aplicação (Domain) permitindo que ele seja acionado ou acione o mundo exterior através de Portas (contratos) e Adaptadores (implementações concretas de I/O).",
-        t: "Isso facilita a troca de um banco de dados ou framework sem alterar uma única linha da regra de negócio."
-    },
-    {
-        q: "Quais são as características fundamentais que definem o estilo de Arquitetura de Microsserviços em comparação com uma aplicação Monolítica?",
-        c: "Microsserviços vs Monolito",
-        o: [
-            "A) Microsserviços rodam obrigatoriamente na mesma máquina física e compartilham a mesma base de dados centralizada.",
-            "B) Uma aplicação é estruturada como um conjunto de pequenos serviços independentes, cada um executando em seu próprio processo, comunicando-se via mecanismos leves (geralmente HTTP/REST ou gRPC) e podendo ser implantados de forma autônoma.",
-            "C) Microsserviços eliminam a necessidade de testes automatizados e integração contínua.",
-            "D) Monolitos são sempre modernos e escaláveis, enquanto microsserviços são usados apenas em sistemas legados."
-        ],
-        a: "B",
-        e: "Microsserviços promovem o desacoplamento organizacional e técnico, permitindo que diferentes equipes desenvolvam, escalem e façam deploy de serviços de forma independente.",
-        t: "Em contrapartida, introduzem complexidade distribuída em áreas como consistência de dados, latência de rede e observabilidade."
-    },
-    {
-        q: "O que caracteriza o padrão arquitetural MVC (Model-View-Controller)?",
-        c: "Padrão MVC",
-        o: [
-            "A) A união de todas as regras de banco de dados, layout visual e lógica de controle em um único arquivo de código executável.",
-            "B) A separação de responsabilidades em três componentes: o Model (dados e lógica de negócio), a View (interface de apresentação visual) e o Controller (intermediário que gerencia as entradas do usuário e atualiza o Model/View).",
-            "C) Um padrão exclusivo para bancos de dados NoSQL distribuídos.",
-            "D) Uma técnica de criptografia de ponta para requisições HTTP."
-        ],
-        a: "B",
-        e: "O MVC é um dos padrões mais clássicos da engenharia de software, promovendo a separação entre a representação visual dos dados, a interface de controle e a lógica estrutural.",
-        t: "Serve de base conceitual para diversos frameworks web modernos (como Spring MVC, ASP.NET Core MVC, Laravel, entre outros)."
-    },
-    {
-        q: "O que propõe o padrão arquitetural CQRS (Command Query Responsibility Segregation)?",
-        c: "CQRS",
-        o: [
-            "A) Utilizar a mesma tabela e o mesmo modelo de objetos tanto para operações pesadas de escrita quanto para consultas simples de leitura.",
-            "B) Separar rigorosamente os modelos e operações de leitura (Queries) dos modelos e operações de escrita/atualização (Commands), permitindo otimizar cada lado de forma independente.",
-            "C) Sincronizar dados exclusivamente via arquivos de texto plano em lotes diários.",
-            "D) Substituir servidores web tradicionais por funções serverless."
-        ],
-        a: "B",
-        e: "Em sistemas de alta escala, as necessidades de leitura diferem drasticamente das de escrita. O CQRS permite escalar e otimizar bancos de dados de leitura separadamente das bases transacionais de escrita.",
-        t: "Muitas vezes é combinado com o padrão Event Sourcing para rastrear o estado do sistema através de eventos."
-    },
-    {
-        q: "No contexto de Arquitetura Orientada a Microsserviços, qual é o objetivo do padrão 'API Gateway'?",
-        c: "API Gateway",
-        o: [
-            "A) Substituir os bancos de dados relacionais por tabelas em cache.",
-            "B) Atuar como um ponto único de entrada (proxy reverso) para todas as requisições dos clientes, lidando com roteamento, autenticação, controle de taxa (rate limiting), SSL termination e agregação de respostas.",
-            "C) Executar testes de carga automatizados direto no servidor de produção.",
-            "D) Gerenciar o versionamento de código no repositório GitHub."
-        ],
-        a: "B",
-        e: "O API Gateway oculta a topologia interna dos microsserviços dos clientes externos, fornecendo uma fachada unificada que simplifica o consumo e centraliza políticas transversais de segurança.",
-        t: "Evita que clientes móveis precisem fazer dezenas de requisições diretas a microsserviços internos diferentes."
-    },
-    {
-        q: "O que caracteriza uma Arquitetura Orientada a Eventos (Event-Driven Architecture - EDA)?",
-        c: "Event-Driven Architecture",
-        o: [
-            "A) Os serviços comunicam-se estritamente de forma síncrona através de chamadas HTTP bloqueantes encadeadas.",
-            "B) A produção, detecção e consumo de eventos ocorrem de forma assíncrona entre componentes desacoplados, permitindo reatividade imediata e alta escalabilidade por meio de brokers de mensagens (como Kafka ou RabbitMQ).",
-            "C) O sistema aguarda o encerramento manual do operador para processar qualquer dado.",
-            "D) As regras de negócio ficam centralizadas em um único banco de dados monolítico."
-        ],
-        a: "B",
-        e: "Na EDA, um componente publica um fato ocorrido (evento) sem se preocupar com quem vai consumi-lo, promovendo um desacoplamento temporal e espacial extremo entre os serviços.",
-        t: "É ideal para arquiteturas reativas e sistemas que lidam com grandes volumes de dados em tempo real."
-    },
-    {
-        q: "O que avalia a métrica de 'Acoplamento' (Coupling) na arquitetura de software?",
-        c: "Acoplamento e Coesão",
-        o: [
-            "A) O grau de dependência entre diferentes módulos ou classes de um sistema; quanto menor o acoplamento, mais independentes e fáceis de modificar os módulos são.",
-            "B) A quantidade de linhas de código que cada desenvolvedor escreve por dia.",
-            "C) O espaço em disco ocupado pelos arquivos binários da aplicação compilada.",
-            "D) A velocidade de execução dos testes unitários em milissegundos."
-        ],
-        a: "B",
-        e: "Na verdade, a opção correta é: o grau de interconexão entre módulos. Um baixo acoplamento é altamente desejável, pois alterações em um módulo não quebram os demais.",
-        t: "Deve sempre caminhar junto com a alta coesão (módulos que fazem uma única coisa bem feita)."
-    },
-    {
-        q: "Qual é a principal proposta da Arquitetura Orientada a Serviços (SOA - Service-Oriented Architecture)?",
-        c: "SOA",
-        o: [
-            "A) Desenvolver aplicações monolíticas gigantescas sem divisão de componentes.",
-            "B) Estruturar o software em serviços interoperáveis e reutilizáveis que se comunicam através de um barramento central de integração (ESB - Enterprise Service Bus) e protocolos padronizados.",
-            "C) Executar códigos exclusivamente no navegador web do cliente.",
-            "D) Eliminar o uso de bancos de dados relacionais em corporações."
-        ],
-        a: "B",
-        e: "A SOA precursora dos microsserviços focava fortemente na integração empresarial e reutilização de serviços corporativos, frequentemente utilizando SOAP, XML e o ESB.",
-        t: "Enquanto a SOA foca em compartilhamento e integração corporativa, os microsserviços focam em autonomia e descentralização."
-    },
-    {
-        q: "O que define a Arquitetura em Camadas (Layered Architecture ou N-Tier)?",
-        c: "Arquitetura em Camadas",
-        o: [
-            "A) Organizar o software em bandas horizontais superpostas (ex: Apresentação, Negócio/Domínio, Persistência/Dados), onde cada camada presta serviços para a camada imediatamente superior.",
-            "B) Dividir o sistema em pequenos processos independentes distribuídos em servidores cloud.",
-            "C) Executar o código de forma estritamente funcional sem estados internos.",
-            "D) Agrupar classes por funcionalidades de negócio verticais independentes."
-        ],
-        a: "A",
-        e: "A arquitetura em camadas tradicional organiza o sistema de forma técnica e horizontal. É amplamente compreendida, embora exija cuidado para evitar o vazamento de regras de negócio entre as camadas.",
-        t: "É o ponto de partida arquitetural mais comum para sistemas corporativos tradicionais."
-    }
-];
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "Qual é o principal objetivo da Arquitetura Limpa (Clean Architecture), proposta por Robert C. Martin (Uncle Bob)?", 
+    "Clean Architecture", 
+    [
+        "A) Garantir que o banco de dados relacional seja o núcleo central e inalterável de toda a regra de negócio da aplicação.",
+        "B) Separar as preocupações do software em camadas concêntricas, onde as dependências apontam sempre de fora para dentro (as regras de negócio centrais não conhecem detalhes de framework, UI ou banco de dados).",
+        "C) Automatizar a criação de arquivos CSS e scripts de estilização para o front-end.",
+        "D) Substituir a orientação a objetos tradicional por programação puramente funcional em servidores web."
+    ], 
+    "B", 
+    "A Clean Architecture isola o domínio (regras de negócio) de agentes externos como frameworks, banco de dados ou interfaces de usuário, garantindo alta testabilidade e independência tecnológica.", 
+    "A Regra de Dependência é o pilar fundamental: código de círculos externos pode conhecer círculos internos, mas nunca o inverso."
+);
 
-arquiteturaSoftware.forEach(x => {
-    addQuestion("Arquitetura de Software", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "No contexto da Arquitetura Hexagonal (também conhecida como Ports and Adapters), qual é a função das Portas (Ports) e dos Adaptadores (Adapters)?", 
+    "Arquitetura Hexagonal", 
+    [
+        "A) As portas são gabinetes de servidores físicos e os adaptadores são cabos de rede de fibra ótica.",
+        "B) As portas definem interfaces abstratas de entrada e saída para a aplicação, enquanto os adaptadores implementam essas portas para conectar o núcleo de negócio a tecnologias externas específicas (como REST APIs, bancos SQL ou filas).",
+        "C) As portas controlam o roteamento de telas no front-end e os adaptadores gerenciam folhas de estilo.",
+        "D) As portas substituem completamente a necessidade de testes unitários automatizados."
+    ], 
+    "B", 
+    "A Arquitetura Hexagonal isola o núcleo da aplicação (Domain) permitindo que ele seja acionado ou acione o mundo exterior através de Portas (contratos) e Adaptadores (implementações concretas de I/O).", 
+    "Isso facilita a troca de um banco de dados ou framework sem alterar uma única linha da regra de negócio."
+);
 
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "Quais são as características fundamentais que definem o estilo de Arquitetura de Microsserviços em comparação com uma aplicação Monolítica?", 
+    "Microsserviços vs Monolito", 
+    [
+        "A) Microsserviços rodam obrigatoriamente na mesma máquina física e compartilham a mesma base de dados centralizada.",
+        "B) Uma aplicação é estruturada como um conjunto de pequenos serviços independentes, cada um executando em seu próprio processo, comunicando-se via mecanismos leves (geralmente HTTP/REST ou gRPC) e podendo ser implantados de forma autônoma.",
+        "C) Microsserviços eliminam a necessidade de testes automatizados e integração contínua.",
+        "D) Monolitos são sempre modernos e escaláveis, enquanto microsserviços são usados apenas em sistemas legados."
+    ], 
+    "B", 
+    "Microsserviços promovem o desacoplamento organizacional e técnico, permitindo que diferentes equipes desenvolvam, escalem e façam deploy de serviços de forma independente.", 
+    "Em contrapartida, introduzem complexidade distribuída em áreas como consistência de dados, latência de rede e observabilidade."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que caracteriza o padrão arquitetural MVC (Model-View-Controller)?", 
+    "Padrão MVC", 
+    [
+        "A) A união de todas as regras de banco de dados, layout visual e lógica de controle em um único arquivo de código executável.",
+        "B) A separação de responsabilidades em três componentes: o Model (dados e lógica de negócio), a View (interface de apresentação visual) e o Controller (intermediário que gerencia as entradas do usuário e atualiza o Model/View).",
+        "C) Um padrão exclusivo para bancos de dados NoSQL distribuídos.",
+        "D) Uma técnica de criptografia de ponta para requisições HTTP."
+    ], 
+    "B", 
+    "O MVC é um dos padrões mais clássicos da engenharia de software, promovendo a separação entre a representação visual dos dados, a interface de controle e a lógica estrutural.", 
+    "Serve de base conceitual para diversos frameworks web modernos (como Spring MVC, ASP.NET Core MVC, Laravel, entre outros)."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que propõe o padrão arquitetural CQRS (Command Query Responsibility Segregation)?", 
+    "CQRS", 
+    [
+        "A) Utilizar a mesma tabela e o mesmo modelo de objetos tanto para operações pesadas de escrita quanto para consultas simples de leitura.",
+        "B) Separar rigorosamente os modelos e operações de leitura (Queries) dos modelos e operações de escrita/atualização (Commands), permitindo otimizar cada lado de forma independente.",
+        "C) Sincronizar dados exclusivamente via arquivos de texto plano em lotes diários.",
+        "D) Substituir servidores web tradicionais por funções serverless."
+    ], 
+    "B", 
+    "Em sistemas de alta escala, as necessidades de leitura diferem drasticamente das de escrita. O CQRS permite escalar e otimizar bancos de dados de leitura separadamente das bases transacionais de escrita.", 
+    "Muitas vezes é combinado com o padrão Event Sourcing para rastrear o estado do sistema através de eventos."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "No contexto de Arquitetura Orientada a Microsserviços, qual é o objetivo do padrão 'API Gateway'?", 
+    "API Gateway", 
+    [
+        "A) Substituir os bancos de dados relacionais por tabelas em cache.",
+        "B) Atuar como um ponto único de entrada (proxy reverso) para todas as requisições dos clientes, lidando com roteamento, autenticação, controle de taxa (rate limiting), SSL termination e agregação de respostas.",
+        "C) Executar testes de carga automatizados direto no servidor de produção.",
+        "D) Gerenciar o versionamento de código no repositório GitHub."
+    ], 
+    "B", 
+    "O API Gateway oculta a topologia interna dos microsserviços dos clientes externos, fornecendo uma fachada unificada que simplifica o consumo e centraliza políticas transversais de segurança.", 
+    "Evita que clientes móveis precisem fazer dezenas de requisições diretas a microsserviços internos diferentes."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que caracteriza uma Arquitetura Orientada a Eventos (Event-Driven Architecture - EDA)?", 
+    "Event-Driven Architecture", 
+    [
+        "A) Os serviços comunicam-se estritamente de forma síncrona através de chamadas HTTP bloqueantes encadeadas.",
+        "B) A produção, detecção e consumo de eventos ocorrem de forma assíncrona entre componentes desacoplados, permitindo reatividade imediata e alta escalabilidade por meio de brokers de mensagens (como Kafka ou RabbitMQ).",
+        "C) O sistema aguarda o encerramento manual do operador para processar qualquer dado.",
+        "D) As regras de negócio ficam centralizadas em um único banco de dados monolítico."
+    ], 
+    "B", 
+    "Na EDA, um componente publica um fato ocorrido (evento) sem se preocupar com quem vai consumi-lo, promovendo um desacoplamento temporal e espacial extremo entre os serviços.", 
+    "É ideal para arquiteturas reativas e sistemas que lidam com grandes volumes de dados em tempo real."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que avalia a métrica de 'Acoplamento' (Coupling) na arquitetura de software?", 
+    "Acoplamento e Coesão", 
+    [
+        "A) O grau de interconexão entre diferentes módulos ou classes de um sistema; quanto menor o acoplamento, mais independentes e fáceis de modificar os módulos são.",
+        "B) A quantidade de linhas de código que cada desenvolvedor escreve por dia.",
+        "C) O espaço em disco ocupado pelos arquivos binários da aplicação compilada.",
+        "D) A velocidade de execução dos testes unitários em milissegundos."
+    ], 
+    "A", 
+    "Um baixo acoplamento é altamente desejável, pois alterações em um módulo não quebram os demais.", 
+    "Deve sempre caminhar junto com a alta coesão (módulos que fazem uma única coisa bem feita)."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "Qual é a principal proposta da Arquitetura Orientada a Serviços (SOA - Service-Oriented Architecture)?", 
+    "SOA", 
+    [
+        "A) Desenvolver aplicações monolíticas gigantescas sem divisão de componentes.",
+        "B) Estruturar o software em serviços interoperáveis e reutilizáveis que se comunicam através de um barramento central de integração (ESB - Enterprise Service Bus) e protocolos padronizados.",
+        "C) Executar códigos exclusivamente no navegador web do cliente.",
+        "D) Eliminar o uso de bancos de dados relacionais em corporações."
+    ], 
+    "B", 
+    "A SOA precursora dos microsserviços focava fortemente na integração empresarial e reutilização de serviços corporativos, frequentemente utilizando SOAP, XML e o ESB.", 
+    "Enquanto a SOA foca em compartilhamento e integração corporativa, os microsserviços focam em autonomia e descentralização."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que define a Arquitetura em Camadas (Layered Architecture ou N-Tier)?", 
+    "Arquitetura em Camadas", 
+    [
+        "A) Organizar o software em bandas horizontais superpostas (ex: Apresentação, Negócio/Domínio, Persistência/Dados), onde cada camada presta serviços para a camada imediatamente superior.",
+        "B) Dividir o sistema em pequenos processos independentes distribuídos em servidores cloud.",
+        "C) Executar o código de forma estritamente funcional sem estados internos.",
+        "D) Agrupar classes por funcionalidades de negócio verticais independentes."
+    ], 
+    "A", 
+    "A arquitetura em camadas tradicional organiza o sistema de forma técnica e horizontal. É amplamente compreendida, embora exija cuidado para evitar o vazamento de regras de negócio entre as camadas.", 
+    "É o ponto de partida arquitetural mais comum para sistemas corporativos tradicionais."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que caracteriza o padrão arquitetural Publisher-Subscriber (Pub/Sub)?", 
+    "Padrão Pub/Sub", 
+    [
+        "A) Os emissores de mensagens enviam dados diretamente para um único cliente de forma síncrona e bloqueante.",
+        "B) Os emissores (publishers) enviam mensagens a um canal ou tópico sem conhecer os destinatários (subscribers), e a infraestrutura de mensageria encaminha as cópias aos interessados.",
+        "C) Um banco de dados relacional centralizado onde todos os clientes realizam leitura e escrita síncrona.",
+        "D) Uma técnica de renderização de páginas HTML no lado do cliente."
+    ], 
+    "B", 
+    "O padrão Pub/Sub desacopla severamente quem produz a informação de quem a consome, permitindo múltiplos assinantes dinâmicos sem alterar o publicador.", 
+    "É altamente empregado em sistemas de streaming de dados e mensageria distribuída."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que significa a sigla SOLID no contexto de design de software orientado a objetos?", 
+    "Princípios SOLID", 
+    [
+        "A) Cinco princípios fundamentais de design (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) que facilitam a manutenção e testabilidade.",
+        "B) Cinco regras obrigatórias de estruturação de tabelas em bancos de dados relacionais.",
+        "C) Cinco padrões para criptografia de senhas em sistemas web.",
+        "D) Uma metodologia ágil focada exclusivamente em reuniões diárias de equipe."
+    ], 
+    "A", 
+    "Os princípios SOLID ajudam arquitetos e desenvolvedores a escreverem código altamente modular, flexível, de baixo acoplamento e fácil de estender.", 
+    "São a base essencial para arquiteturas limpas e sustentáveis a longo prazo."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que estabelece o Princípio da Responsabilidade Única (Single Responsibility Principle - SRP)?", 
+    "Princípios SOLID", 
+    [
+        "A) Uma classe deve ter apenas um, e apenas um, motivo para mudar, significando que ela deve concentrar-se em uma única parte da funcionalidade do software.",
+        "B) Um sistema inteiro deve consistir em apenas um arquivo de código-fonte principal.",
+        "C) Toda função deve executar exatamente uma linha de comando antes de retornar.",
+        "D) Uma aplicação deve possuir apenas um desenvolvedor responsável por sua manutenção."
+    ], 
+    "A", 
+    "O SRP evita que classes fiquem sobrecarregadas com múltiplas responsabilidades não relacionadas, reduzindo o impacto de futuras alterações.", 
+    "Se uma classe lida com lógica de negócio e persistência ao mesmo tempo, ela viola o SRP."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que determina o Princípio Aberto/Fechado (Open/Closed Principle - OCP)?", 
+    "Princípios SOLID", 
+    [
+        "A) As entidades de software devem ser abertas para extensão, mas fechadas para modificação.",
+        "B) O código-fonte de um sistema deve permanecer sempre aberto na internet, mas fechado para edições locais.",
+        "C) Funções públicas devem ser abertas para chamadas externas e fechadas para testes internos.",
+        "D) Bancos de dados devem ser abertos a leituras e fechados para escrituras simultâneas."
+    ], 
+    "A", 
+    "O OCP permite adicionar novas funcionalidades ao sistema criando novos códigos (extensão) em vez de alterar códigos antigos já testados e funcionais (modificação).", 
+    "Geralmente é alcançado através do uso de interfaces, classes abstratas e polimorfismo."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que postula o Princípio da Substituição de Liskov (Liskov Substitution Principle - LSP)?", 
+    "Princípios SOLID", 
+    [
+        "A) Objetos em um programa devem ser substituíveis por instâncias de seus subtipos sem alterar a correção ou o comportamento esperado do programa.",
+        "B) Subclasses devem sempre lançar exceções quando herdarem métodos de classes pai.",
+        "C) Herança de classes deve ser evitada em favor de funções estáticas globais.",
+        "D) Variáveis globais podem substituir parâmetros de métodos em qualquer situação."
+    ], 
+    "A", 
+    "O LSP garante que uma classe derivada atenda rigorosamente ao contrato estabelecido pela classe base, evitando comportamentos inesperados ao usar polimorfismo.", 
+    "Violar o LSP costuma gerar erros sutis em tempo de execução."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "Qual é o objetivo do Princípio da Segregação de Interfaces (Interface Segregation Principle - ISP)?", 
+    "Princípios SOLID", 
+    [
+        "A) Forçar classes a implementarem interfaces grandes e genéricas com dezenas de métodos.",
+        "B) Muitas interfaces específicas são melhores do que uma única interface genérica e volumosa, evitando que clientes dependam de métodos que não utilizam.",
+        "C) Segregar a interface gráfica do usuário do banco de dados relacional.",
+        "D) Isolar redes corporativas usando firewalls baseados em portas físicas."
+    ], 
+    "B", 
+    "O ISP evita o acoplamento desnecessário a métodos irrelevantes, mantendo os contratos coesos e focados nas necessidades reais de cada cliente.", 
+    "Interfaces enxutas facilitam implementações mockadas em testes unitários."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que determina o Princípio da Inversão de Dependência (Dependency Inversion Principle - DIP)?", 
+    "Princípios SOLID", 
+    [
+        "A) Módulos de alto nível não devem depender de módulos de baixo nível; ambos devem depender de abstrações. Além disso, abstrações não devem depender de detalhes.",
+        "B) O banco de dados deve controlar diretamente a lógica de negócio central.",
+        "C) Dependências circulares entre pacotes são obrigatórias para otimizar compilações.",
+        "D) Classes concretas devem instanciar diretamente suas dependências internas usando 'new'."
+    ], 
+    "A", 
+    "O DIP desacopla os componentes principais das implementações tecnológicas voláteis, injetando interfaces ou contratos em vez de acoplar classes concretas.", 
+    "É o princípio base que sustenta a Injeção de Dependência e arquiteturas desacopladas."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que avalia a métrica de 'Coesão' (Cohesion) em um módulo de software?", 
+    "Acoplamento e Coesão", 
+    [
+        "A) O grau em que os elementos internos de um módulo pertencem uns aos outros e trabalham juntos para realizar uma única tarefa bem definida.",
+        "B) O volume de conexões de rede entre servidores distribuidos na nuvem.",
+        "C) A quantidade de dependências externas que uma biblioteca possui no arquivo package.json.",
+        "D) O tempo necessário para compilar todo o código-fonte."
+    ], 
+    "A", 
+    "Busca-se sempre alta coesão dentro de módulos ou classes, garantindo que suas responsabilidades sejam estritamente focadas e coesas.", 
+    "Alta coesão combinada com baixo acoplamento é o padrão ouro do design de software."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que caracteriza o padrão arquitetural Domain-Driven Design (DDD)?", 
+    "Domain-Driven Design", 
+    [
+        "A) Um foco em modelar o software em torno do domínio de negócio complexo, utilizando uma Linguagem Ubíqua compartilhada entre especialistas de negócio e desenvolvedores.",
+        "B) Uma técnica exclusiva para otimizar consultas SQL em bancos de dados relacionais legados.",
+        "C) Um framework JavaScript voltado para criação de interfaces de usuário reativas.",
+        "D) Uma metodologia de infraestrutura focada apenas em servidores físicos on-premise."
+    ], 
+    "A", 
+    "O DDD prioriza o núcleo do negócio, modelando entidades, value objects, agregados e repositórios para refletir fielmente as regras e processos da empresa.", 
+    "Ajuda a lidar com alta complexidade de domínios corporativos."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "No contexto de Domain-Driven Design (DDD), o que é um 'Agregado' (Aggregate)?", 
+    "Domain-Driven Design", 
+    [
+        "A) Um cluster de objetos de domínio associados que tratamos como uma unidade única para fins de alteração de dados, tendo uma Entidade raiz (Aggregate Root).",
+        "B) Uma tabela temporária de auditoria em um banco NoSQL.",
+        "C) Um grupo de servidores web balanceados por carga.",
+        "D) Um arquivo de configuração de build em ferramentas como Maven ou Gradle."
+    ], 
+    "A", 
+    "O Aggregate define limites claros de consistência transacional, garantindo que invariantes de negócio sejam mantidas dentro do limite do agregado.", 
+    "Modificações externas devem sempre passar pela raiz do agregado (Aggregate Root)."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que define o padrão arquitetural Microkernel (ou Arquitetura Plugável)?", 
+    "Padrão Microkernel", 
+    [
+        "A) Um núcleo central minimalista que fornece apenas as funcionalidades sistêmicas fundamentais, complementado por módulos ou plugins independentes que adicionam recursos específicos.",
+        "B) Um sistema operacional completo rodando dentro de um navegador web.",
+        "C) Uma aplicação monolítica sem nenhuma separação de pacotes.",
+        "D) Um banco de dados distribuído sem suporte a transações ACID."
+    ], 
+    "A", 
+    "O padrão Microkernel é muito utilizado em IDEs (como VS Code ou Eclipse) e sistemas operacionais, onde funcionalidades extras são adicionadas via extensões.", 
+    "Permite alta extensibilidade e isolamento de funcionalidades opcionais."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que caracteriza uma Arquitetura Baseada em Espaços (Space-Based Architecture)?", 
+    "Space-Based Architecture", 
+    [
+        "A) Um estilo arquitetural projetado para escalar horizontalmente de forma extrema através da remoção de gargalos de banco de dados centralizado, utilizando dados em memória (in-memory data grids) e processamento paralelo.",
+        "B) Uma arquitetura restrita apenas a sistemas de controle de satélites espaciais.",
+        "C) O armazenamento de dados exclusivamente em discos rígidos físicos externos.",
+        "D) Uma aplicação que roda inteiramente dentro da memória cache do processador CPU."
+    ], 
+    "A", 
+    "A Space-Based Architecture elimina o banco de dados centralizado como ponto único de falha e gargalo de concorrência, replicando dados em cache na memória de nós processadores.", 
+    "Ideal para lidar com picos massivos de tráfego imprevisíveis."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que é a 'Lei de Conway' na engenharia de software e arquitetura?", 
+    "Lei de Conway", 
+    [
+        "A) As organizações que projetam sistemas são restritas a produzir designs que são cópias das estruturas de comunicação dessas organizações.",
+        "B) O tempo de execução de um software dobra a cada 18 meses, independentemente do hardware.",
+        "C) Todo microsserviço deve possuir exatamente três desenvolvedores associados.",
+        "D) Bugs de software sempre aparecem primeiro em ambientes de produção."
+    ], 
+    "A", 
+    "A Lei de Conway demonstra que a estrutura organizacional de uma empresa influencia diretamente a arquitetura técnica dos softwares que ela constrói.", 
+    "É frequentemente citada para justificar o uso de microsserviços alinhados a equipes multidisciplinares autônomas (Equipes Inversas / Reverse Conway Maneuver)."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que avalia o conceito de 'Escalabilidade Horizontal' (Scale Out)?", 
+    "Escalabilidade", 
+    [
+        "A) A capacidade de adicionar mais instâncias ou nós de servidores ao sistema para distribuir a carga de trabalho.",
+        "B) O aumento da capacidade de processamento de um único servidor adicionando mais memória RAM ou discos mais potentes.",
+        "C) A expansão física do tamanho do gabinete do computador central.",
+        "D) O aumento do número de linhas de código em um arquivo fonte."
+    ], 
+    "A", 
+    "A escalabilidade horizontal permite crescer infinitamente (até limites de rede/infra) adicionando máquinas mais simples, diferentemente da escalabilidade vertical (Scale Up), que possui limites físicos de hardware.", 
+    "É um pilar fundamental em arquiteturas nativas em nuvem."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "No contexto de sistemas distribuídos e arquitetura de microsserviços, o que preconiza o Teorema de CAP?", 
+    "Teorema de CAP", 
+    [
+        "A) Um sistema de dados distribuído pode garantir simultaneamente no máximo duas de três propriedades: Consistência (Consistency), Disponibilidade (Availability) e Tolerância a Partição (Partition Tolerance).",
+        "B) Servidores cloud devem priorizar Custo, Agilidade e Performance acima de tudo.",
+        "C) Aplicações web modernas exigem Cache, Autenticação e Proxy obrigatórios.",
+        "D) Conexões de rede suportam apenas Concorrência, Autonomia e Protocolos seguros."
+    ], 
+    "A", 
+    "Como falhas de rede (partições) são inevitáveis em sistemas distribuídos reais, os arquitetos devem escolher conscientemente entre Consistência (CP) ou Disponibilidade (AP) durante uma falha de rede.", 
+    "Fundamento crítico na escolha de bancos de dados NoSQL e SQL distribuídos."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que descreve o padrão 'Circuit Breaker' (Disjuntor) em sistemas distribuídos?", 
+    "Resiliência e Circuit Breaker", 
+    [
+        "A) Um mecanismo de proteção que monitora falhas em chamadas a serviços externos; se o índice de falhas ultrapassar um limite, o circuito 'abre' e rejeita requisições rapidamente sem sobrecarregar o serviço instável.",
+        "B) Um disjuntor elétrico físico que desliga o servidor em caso de superaquecimento.",
+        "C) Um algoritmo de criptografia para proteger senhas de usuários.",
+        "D) Uma ferramenta de integração contínua para build de projetos."
+    ], 
+    "A", 
+    "O Circuit Breaker evita falhas em cascata em arquiteturas de microsserviços, permitindo que sistemas falhem de forma controlada e se recuperem graciosamente.", 
+    "Possui estados típicos como Closed, Open e Half-Open."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "Qual é a finalidade do padrão 'Service Discovery' em arquiteturas de microsserviços?", 
+    "Service Discovery", 
+    [
+        "A) Permitir que os microsserviços descubram dinamicamente endereços IP e portas de outros serviços na rede sem necessidade de configuração estática.",
+        "B) Descobrir senhas perdidas de administradores de sistemas.",
+        "C) Encontrar arquivos perdidos no disco rígido do servidor.",
+        "D) Mapear rotas de URL no front-end da aplicação."
+    ], 
+    "A", 
+    "Em ambientes de nuvem onde instâncias de microsserviços sobem e descem elasticamente (com IPs dinâmicos), o Service Discovery (como Consul, Eureka ou DNS interno) mantém o diretório atualizado de localização dos serviços.", 
+    "Essencial para automação de infraestrutura."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que caracteriza o padrão arquitetural 'Serverless' (Computação Sem Servidor)?", 
+    "Serverless", 
+    [
+        "A) O desenvolvedor escreve código que é executado em containers efêmeros gerenciados por terceiros (como AWS Lambda), cobrando apenas pelo tempo de execução real, sem gerenciamento de servidores físicos ou virtuais.",
+        "B) Um sistema que não utiliza nenhum tipo de computador ou processador.",
+        "C) Servidores que rodam exclusivamente desligados da tomada.",
+        "D) Uma aplicação que roda inteiramente no navegador do cliente sem backend."
+    ], 
+    "A", 
+    "O Serverless transfere toda a responsabilidade de provisionamento, escalabilidade automática e manutenção de infraestrutura para o provedor de nuvem.", 
+    "Excelente para cargas de trabalho orientadas a eventos e APIs de uso esporádico ou variável."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que define o padrão arquitetural 'Monolito Modular'?", 
+    "Monolito Modular", 
+    [
+        "A) Uma aplicação estruturada como um único binário/implantação, mas dividida internamente em módulos de negócio fortemente encapsulados e desacoplados, evitando o espalhamento de dependências.",
+        "B) Um monolito antigo que foi dividido em 50 microsserviços independentes.",
+        "C) Um conjunto de microsserviços que compartilham o mesmo código fonte.",
+        "D) Um sistema sem nenhuma separação de pacotes ou camadas."
+    ], 
+    "A", 
+    "O Monolito Modular combina a simplicidade de deploy de um monolito com a organização limpa e modular de um sistema bem desenhado, servindo muitas vezes de transição para microsserviços.", 
+    "Evita a complexidade distribuída precoce."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que avalia a característica de 'Mantenabilidade' (Maintainability) de um sistema de software?", 
+    "Atributos de Qualidade", 
+    [
+        "A) A facilidade com que um sistema pode ser modificado para corrigir defeitos, melhorar o desempenho ou adaptar-se a mudanças em seu ambiente.",
+        "B) A quantidade de manutenção física preventiva feita nos racks de servidores.",
+        "C) O custo mensal da conta de energia elétrica do data center.",
+        "D) A velocidade com que a equipe atual faz reuniões de planejamento."
+    ], 
+    "A", 
+    "Sistemas com alta mantenabilidade possuem código limpo, boa cobertura de testes, baixo acoplamento e alta coesão, reduzindo o custo total de propriedade (TCO).", 
+    "É um dos principais atributos de qualidade arquitetural (ilities)."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "No contexto de testes de arquitetura, o que ferramentas como ArchUnit permitem verificar?", 
+    "Testes de Arquitetura", 
+    [
+        "A) Regras arquiteturais de forma automatizada no código (ex: classes de persistência não devem acessar diretamente camadas de apresentação, ou pacotes de domínio não devem depender de frameworks web).",
+        "B) A velocidade de clock do processador do servidor de homologação.",
+        "C) A quantidade de pixels corretos em uma tela mobile.",
+        "D) O tempo de resposta de requisições HTTP externas."
+    ], 
+    "A", 
+    "O ArchUnit permite escrever testes unitários em código para validar o próprio design arquitetural, impedindo que desenvolvedores quebrem as regras de dependência ao longo do tempo.", 
+    "Garante conformidade arquitetural contínua em projetos de grande porte."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que caracteriza o padrão arquitetural 'Pipes and Filters' (Tubos e Filtros)?", 
+    "Padrão Pipes and Filters", 
+    [
+        "A) O processamento de um fluxo de dados é dividido em etapas sequenciais independentes (filtros) conectadas por canais de transmissão (tubos), onde cada filtro transforma a entrada e repassa a saída.",
+        "B) Um encanamento hidráulico físico que refrigera os servidores do data center.",
+        "C) Filtros de segurança de rede baseados em endereços IP.",
+        "D) Um método de filtragem de dados em consultas SQL complexas."
+    ], 
+    "A", 
+    "O padrão Pipes and Filters é amplamente utilizado em processamento de lotes (batch processing), compiladores e pipelines de dados, promovendo alta reutilização e desacoplamento de etapas.", 
+    "Cada filtro opera de forma isolada."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que significa a prática de 'Refatoração Arquitetural' (Architectural Refactoring)?", 
+    "Refatoração", 
+    [
+        "A) A reestruturação de componentes e dependências estruturais de um sistema para melhorar seus atributos de qualidade internos sem alterar seu comportamento externo observável.",
+        "B) A reescrita completa de um software usando uma linguagem de programação diferente a cada semana.",
+        "C) A formatação automática de arquivos de texto usando editores de código.",
+        "D) A troca física de servidores antigos por novos discos rígidos."
+    ], 
+    "A", 
+    "A refatoração arquitetural combate o 'débito técnico estrutural' acumulado, permitindo que o sistema continue evoluindo de forma sustentável.", 
+    "Exige forte cobertura de testes automatizados para garantir segurança."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "Qual é a função de um 'Load Balancer' (Balanceador de Carga) na arquitetura de infraestrutura?", 
+    "Balanceamento de Carga", 
+    [
+        "A) Distribuir o tráfego de rede ou de requisições de clientes entre múltiplos servidores de backend para otimizar a utilização de recursos, maximizar a capacidade de processamento e evitar sobrecarga.",
+        "B) Equilibrar o peso físico dos gabinetes de servidores no rack.",
+        "C) Balancear o uso de memória RAM entre threads de uma única aplicação.",
+        "D) Dividir tarefas de desenvolvimento entre os membros da equipe de TI."
+    ], 
+    "A", 
+    "O Load Balancer é indispensável para alcançar alta disponibilidade e escalabilidade horizontal, atuando como ponto de entrada para clusters de servidores.", 
+    "Pode operar em camadas de rede (L4) ou de aplicação (L7)."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que caracteriza o padrão arquitetural 'Blackboard' (Quadro-Negro)?", 
+    "Padrão Blackboard", 
+    [
+        "A) Um espaço de dados global compartilhado (o quadro-negro) onde vários módulos especialistas independentes (agentes) leem e escrevem informações para resolver problemas complexos onde não há uma rotina determinística clara.",
+        "B) Uma sala de aula tradicional usada para treinamentos de arquitetura de software.",
+        "C) Um painel Kanban usado por equipes ágeis para gerenciar tarefas.",
+        "D) Um sistema de monitoramento de logs em tempo real."
+    ], 
+    "A", 
+    "O padrão Blackboard é útil em inteligência artificial, reconhecimento de padrões e sistemas especialistas, onde múltiplos algoritmos colaboram para construir uma solução parcial iterativa.", 
+    "Os agentes não se comunicam diretamente entre si, apenas através do quadro-negro."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que avalia o atributo de qualidade 'Resiliência' (Resilience) em sistemas distribuídos?", 
+    "Resiliência", 
+    [
+        "A) A capacidade do sistema de se recuperar de falhas e continuar operando de forma aceitável, em vez de falhar completamente diante de erros inesperados.",
+        "B) A rigidez dos materiais físicos usados na carcaça dos computadores.",
+        "C) A velocidade com que desenvolvedores corrigem bugs em produção.",
+        "D) A capacidade de resistir a ataques de força bruta em senhas."
+    ], 
+    "A", 
+    "Sistemas resilientes assumem que falhas de rede, quedas de serviços e travamentos de hardware vão ocorrer, implementando estratégias como retries, fallbacks e disjuntores.", 
+    "Difere de robustez, pois foca na recuperação após a falha."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "No contexto de arquitetura de software, o que é um 'Anti-Corruption Layer' (ACL - Camada Anticorrupção)?", 
+    "Anti-Corruption Layer", 
+    [
+        "A) Uma camada tradutora posicionada entre um subsistema moderno e um sistema legado (ou de terceiros), impedindo que conceitos e modelos legados mal estruturados 'corrompam' o domínio limpo da nova aplicação.",
+        "B) Um sistema antivírus corporativo que bloqueia acessos maliciosos.",
+        "C) Um módulo de segurança focado em auditoria de fraudes financeiras.",
+        "D) Uma ferramenta para impedir plágio de código-fonte no GitHub."
+    ], 
+    "A", 
+    "A ACL isola o sistema novo traduzindo bidirecionalmente os modelos de dados e chamadas, permitindo integração segura com legados sem poluir a arquitetura interna.", 
+    "Crucial em projetos de migração gradual."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que define o padrão arquitetural 'Broker' (Corretor de Mensagens/Serviços)?", 
+    "Padrão Broker", 
+    [
+        "A) Um componente intermediário responsável por coordenar a comunicação entre clientes e servidores distribuídos, ocultando os detalhes de localização e facilitando o desacoplamento.",
+        "B) Um corretor de imóveis responsável por alugar data centers.",
+        "C) Um sistema de transações financeiras em bolsas de valores.",
+        "D) Uma biblioteca para formatação de arquivos JSON."
+    ], 
+    "A", 
+    "O padrão Broker permite que componentes distribuídos solicitem e recebam serviços de terceiros através de um intermediário padronizado.", 
+    "Muito presente em sistemas de filas e brokers de mensageria modernos."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que significa a adoção de 'Design Patterns' (Padrões de Projeto) na arquitetura de software?", 
+    "Design Patterns", 
+    [
+        "A) Soluções típicas e reutilizáveis para problemas recorrentes encontrados no projeto e desenvolvimento de software orientado a objetos.",
+        "B) Regras estritas de formatação visual de telas em CSS.",
+        "C) Padrões obrigatórios de nomenclatura de variáveis definidos pelo compilador.",
+        "D) Modelos de contratos comerciais entre empresas de tecnologia."
+    ], 
+    "A", 
+    "Catalogados amplamente pelo livro da Gang of Four (GoF), os padrões de projeto (como Factory, Singleton, Observer, Strategy) fornecem vocabulário compartilhado e soluções validadas para arquitetos e desenvolvedores.", 
+    "Ajudam a estruturar o código de forma elegante e desacoplada."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que caracteriza o padrão de projeto comportamental 'Strategy'?", 
+    "Design Patterns", 
+    [
+        "A) Permitir definir uma família de algoritmos, encapsular cada um deles em classes separadas e tornar os algoritmos intercambiáveis em tempo de execução.",
+        "B) Garantir que uma classe tenha apenas uma única instância em todo o sistema.",
+        "C) Notificar automaticamente múltiplos objetos sobre mudanças de estado.",
+        "D) Criar objetos complexos passo a passo de forma isolada."
+    ], 
+    "A", 
+    "O padrão Strategy elimina o uso excessivo de condicionais complexas (if/else ou switch), delegando comportamentos variados a classes polimórficas injetadas.", 
+    "Promove o princípio aberto/fechado (OCP)."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "Qual é o propósito principal do padrão de projeto 'Observer'?", 
+    "Design Patterns", 
+    [
+        "A) Definir uma dependência um-para-muitos entre objetos para que, quando um objeto mudar de estado, todos os seus dependentes sejam notificados e atualizados automaticamente.",
+        "B) Observar o desempenho de CPU e memória dos servidores em tempo real.",
+        "C) Monitorar logs de erro gerados por usuários na aplicação web.",
+        "D) Inspecionar pacotes de rede usando firewalls."
+    ], 
+    "A", 
+    "O padrão Observer é a base conceitual para arquiteturas reativas, programação assíncrona baseada em eventos e fluxos de dados observáveis.", 
+    "Desacopla o emissor do evento dos receptores interessados."
+);
+
+addQuestion(
+    "Arquitetura de Software", 
+    "Média", 
+    "O que define a abordagem de 'Documentação Arquitetural' através do modelo C4?", 
+    "Documentação Arquitetural", 
+    [
+        "A) Um conjunto de diagramas hierárquicos baseados em Contexto, Contêineres, Componentes e Código para descrever a arquitetura de software de forma clara e estruturada.",
+        "B) Um modelo matemático para calcular o custo de servidores em nuvem.",
+        "C) Um padrão de quatro colunas para relatórios de testes de carga.",
+        "D) Uma metodologia ágil focada em quatro reuniões semanais."
+    ], 
+    "A", 
+    "Criado por Simon Brown, o modelo C4 resolve o problema de diagramas confusos ou desatualizados, permitindo dar 'zoom' desde a visão macro do sistema (contexto) até os detalhes internos de componentes.", 
+    "Facilita enormemente a comunicação técnica na equipe."
 
 
 /* =====================================================
