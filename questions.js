@@ -20,9 +20,10 @@ function addQuestion(area, difficulty, question, code, options, answer, explanat
 }
 
 /* =====================================================
-    BLOCO 1: LÓGICA DE PROGRAMAÇÃO
+   BLOCO 1: LÓGICA DE PROGRAMAÇÃO (40 QUESTÕES)
 ===================================================== */
 
+// --- Questões Originais Ajustadas ---
 addQuestion(
     "Lógica de Programação", "Fácil",
     "Considere o algoritmo abaixo. Qual será o valor final de x?",
@@ -153,50 +154,673 @@ addQuestion(
     "Fique atento às especificidades matemáticas versus a implementação de linguagens de programação."
 );
 
-/* =====================================================
-   QUESTÕES DE LÓGICA DE PROGRAMAÇÃO
-===================================================== */
+// --- Novas Questões Adicionadas para Completar 40 ---
 
 addQuestion(
-    "Lógica de Programação", "Difícil",
-    "Qual será o valor final impresso para a variável 'res' ao término do algoritmo abaixo?",
-    "int res = 1;\nfor(int i = 1; i <= 5; i++){\n    if(i % 2 == 0){\n        res += i;\n    } else {\n        res -= 1;\n    }\n}\nSystem.out.println(res);",
-    ["A) 4", "B) 7", "C) 6", "D) 5"],
-    "C",
-    "Passo a passo:\n- i=1 (ímpar): res = 1 - 1 = 0\n- i=2 (par): res = 0 + 2 = 2\n- i=3 (ímpar): res = 2 - 1 = 1\n- i=4 (par): res = 1 + 4 = 5\n- i=5 (ímpar): res = 5 - 1 = 4.",
-    "Rastreie com atenção os operadores de atribuição acumulativa (+= e -=)."
-);
-
-addQuestion(
-    "Lógica de Programação", "Média",
-    "Qual é o comportamento do algoritmo abaixo ao receber n = 5?",
-    "int calc(int n){\n    if(n == 0) return 1;\n    return n * calc(n - 1);\n}",
-    ["A) Retorna 5", "B) Retorna 120", "C) Retorna 25", "D) Entra em loop infinito"],
+    "Lógica de Programação", "Fácil",
+    "O que representa um fluxograma em algoritmos?",
+    "// Representação gráfica",
+    ["A) A compilação binária de um programa", "B) A representação gráfica da lógica de um algoritmo através de símbolos padronizados", "C) Um banco de dados relacional em nuvem", "D) Uma ferramenta de estilização de páginas web"],
     "B",
-    "O algoritmo calcula o fatorial de n. Para n=5, o resultado é 5 * 4 * 3 * 2 * 1 = 120.",
-    "Caso base (n=0 retorna 1) interrompe a recursão com segurança."
+    "O fluxograma utiliza formas geométricas para ilustrar o fluxo de execução e tomadas de decisão de um processo ou algoritmo.",
+    "Símbolos comuns incluem retângulos para processamento e losangos para decisões."
 );
 
 addQuestion(
     "Lógica de Programação", "Fácil",
-    "Em lógica booleana, qual é o resultado da expressão: `(true AND false) OR (true AND true)`?",
-    "boolean v = (true && false) || (true && true);",
-    ["A) true", "B) false", "C) null", "D) undefined"],
+    "Qual é o tipo de dado adequado para armazenar valores lógicos que assumem apenas verdadeiro ou falso?",
+    "// Tipagem básica",
+    ["A) String", "B) int", "C) boolean", "D) double"],
+    "C",
+    "O tipo boolean armazena exclusivamente os estados verdadeiro (true) ou falso (false).",
+    "Essencial para testes condicionais."
+);
+
+addQuestion(
+    "Lógica de Programação", "Fácil",
+    "Em uma atribuição matemática em programação como 'x = x + 1', qual é a operação realizada comumente conhecida?",
+    "x = x + 1;",
+    ["A) Decremento", "B) Incremento", "C) Divisão inteira", "D) Potenciação"],
+    "B",
+    "A adição de uma unidade a uma variável é chamada de incremento, frequentemente abreviada como x++.",
+    "Muito utilizada em contadores de laços."
+);
+
+addQuestion(
+    "Lógica de Programação", "Fácil",
+    "Qual comando de saída é amplamente utilizado na linguagem Java para exibir mensagens no console?",
+    "System.out.println(\"Teste\");",
+    ["A) console.print()", "B) printfs()", "C) System.out.println()", "D) echo()"],
+    "C",
+    "System.out.println imprime o argumento fornecido seguido de uma quebra de linha no console padrão.",
+    "Essencial para testes rápidos de depuração."
+);
+
+addQuestion(
+    "Lógica de Programação", "Fácil",
+    "O que é uma variável em programação?",
+    "// Conceito fundamental",
+    ["A) Um valor fixo que nunca pode ser alterado durante a execução", "B) Um espaço reservado na memória RAM para armazenar dados temporários que podem mudar", "C) Um erro de compilação crítico", "D) Uma biblioteca externa de funções matemáticas"],
+    "B",
+    "Variáveis guardam dados que variam e são manipulados ao longo da execução do programa.",
+    "Possuem nome, tipo e valor armazenado."
+);
+
+addQuestion(
+    "Lógica de Programação", "Fácil",
+    "Qual operador relacional representa a comparação de igualdade entre dois valores em linguagens como Java e C?",
+    "if (a == b)",
+    ["A) =", "B) ==", "C) ===", "D) !="],
+    "B",
+    "O operador '==' compara se dois valores são iguais. Um único '=' é reservado para atribuição.",
+    "Confundir '=' com '==' é um dos erros mais comuns de iniciantes."
+);
+
+addQuestion(
+    "Lógica de Programação", "Fácil",
+    "Qual estrutura de repetição é controlada por uma contagem numérica explícita (inicialização, condição e incremento)?",
+    "for(int i=0; i<10; i++)",
+    ["A) while", "B) do-while", "C) for", "D) switch"],
+    "C",
+    "O laço 'for' agrupa a inicialização, a condição de continuidade e a atualização do contador em uma única linha estruturada.",
+    "Ideal para repetições com número de vezes conhecido."
+);
+
+addQuestion(
+    "Lógica de Programação", "Fácil",
+    "O que significa a sigla IDE no contexto de desenvolvimento de software?",
+    "// Ferramentas",
+    ["A) Interface Dinâmica de Execução", "B) Integrated Development Environment", "C) Internal Data Engine", "D) Internet Domain Extension"],
+    "B",
+    "IDE significa Ambiente de Desenvolvimento Integrado, reunindo editores, compiladores e depuradores.",
+    "Exemplos: IntelliJ, Eclipse, VS Code."
+);
+
+addQuestion(
+    "Lógica de Programação", "Fácil",
+    "Qual operador representa a disjunção lógica (OU) em Java?",
+    "if (a || b)",
+    ["A) &&", "B) ||", "C) !", "D) ^"],
+    "B",
+    "O operador '||' retorna verdadeiro se pelo menos uma das condições envolvidas for verdadeira.",
+    "Diferente do '&&' (E), que exige que todas sejam verdadeiras."
+);
+
+addQuestion(
+    "Lógica de Programação", "Fácil",
+    "O que é um vetor (array unidimensional)?",
+    "int[] v = new int[5];",
+    ["A) Uma matriz tridimensional sem limites", "B) Uma estrutura de dados homogênea que armazena múltiplos elementos de um mesmo tipo sob um único identificador", "C) Um ponteiro de memória volátil estático", "D) Uma função matemática de raiz"],
+    "B",
+    "Arrays armazenam coleções indexadas de dados do mesmo tipo em posições contíguas de memória.",
+    "O primeiro índice de um array em Java é sempre 0."
+);
+
+addQuestion(
+    "Lógica de Programação", "Média",
+    "Qual será o valor impresso pelo trecho abaixo?\n\nint a = 5;\nint b = 2;\nSystem.out.println(a / b);",
+    "int a = 5;\nint b = 2;\nSystem.out.println(a / b);",
+    ["A) 2.5", "B) 2", "C) 3", "D) 2.0"],
+    "B",
+    "Como 'a' e 'b' são inteiros, a divisão inteira descarta a parte fracionária. 5 / 2 resulta em 2.",
+    "Para obter 2.5, pelo menos um dos operandos deveria ser do tipo ponto flutuante (double/float)."
+);
+
+addQuestion(
+    "Lógica de Programação", "Média",
+    "Analise o laço abaixo:\n\nint c = 0;\nfor(int i = 0; i < 4; i++){\n    c += i;\n}\nSystem.out.println(c);",
+    "int c = 0;\nfor(int i = 0; i < 4; i++){\n    c += i;\n}\nSystem.out.println(c);",
+    ["A) 10", "B) 6", "C) 4", "D) 0"],
+    "B",
+    "O laço acumula os valores de i de 0 a 3: 0 + 0 + 1 + 2 + 3 = 6.",
+    "Atenção ao limite superior: i vai até estritamente menor que 4."
+);
+
+addQuestion(
+    "Lógica de Programação", "Média",
+    "O que caracteriza uma busca binária em relação à busca linear?",
+    "// Algoritmos de busca",
+    ["A) A busca binária exige que o vetor esteja ordenado e possui complexidade logarítmica O(log n)", "B) A busca binária é mais lenta que a linear em grandes volumes de dados", "C) A busca linear divide o vetor recursivamente ao meio", "D) Não há diferença prática de desempenho"],
     "A",
-    "(true && false) resulta em false. (true && true) resulta em true. Logo, false || true resulta em true.",
-    "Avalie primeiro os parênteses internos antes do operador OR (||)."
+    "A busca binária divide o espaço de busca pela metade a cada passo, exigindo ordenação prévia, o que a torna muito eficiente.",
+    "Complexidade O(log n) contra O(n) da busca linear."
+);
+
+addQuestion(
+    "Lógica de Programação", "Média",
+    "Qual é a saída do código abaixo?\n\nString s = \"Java\";\nSystem.out.println(s.length());",
+    "String s = \"Java\";\nSystem.out.println(s.length());",
+    ["A) 3", "B) 4", "C) 5", "D) Erro de compilação"],
+    "B",
+    "O método length() retorna a quantidade de caracteres da string. 'J-a-v-a' possui 4 caracteres.",
+    "Diferente de arrays, onde length é um atributo, em strings Java length() é um método."
+);
+
+addQuestion(
+    "Lógica de Programação", "Média",
+    "O que acontece se um vetor em Java for declarado com tamanho 5 e tentarmos acessar o índice 5 (ex: v[5])?",
+    "int[] v = new int[5];\nint x = v[5];",
+    ["A) Retorna o valor 0 por padrão", "B) Lança uma exceção do tipo ArrayIndexOutOfBoundsException em tempo de execução", "C) Expande o vetor automaticamente", "D) Retorna null"],
+    "B",
+    "Os índices válidos para um vetor de tamanho 5 vão de 0 a 4. Acessar o índice 5 viola os limites e gera exceção.",
+    "Cuidado com erros de off-by-one em laços de repetição."
+);
+
+addQuestion(
+    "Lógica de Programação", "Média",
+    "Qual é o resultado da expressão lógica se a=true, b=false e c=true:\n`!(a && b) || c`?",
+    "boolean res = !(a && b) || c;",
+    ["A) false", "B) true", "C) null", "D) Indefinido"],
+    "B",
+    "(a && b) é false. Negação !(false) é true. Como temos true || c (true || true), o resultado geral é true.",
+    "Resolva os parênteses e operações de negação de dentro para fora."
+);
+
+addQuestion(
+    "Lógica de Programação", "Média",
+    "Qual é o objetivo principal de modularizar um programa utilizando funções ou métodos?",
+    "// Boas práticas",
+    ["A) Aumentar o consumo de memória RAM", "B) Promover a reutilização de código, legibilidade e facilidade de manutenção", "C) Impedir o uso de variáveis globais", "D) Forçar o uso obrigatório de orientação a objetos"],
+    "B",
+    "A modularização divide um problema complexo em partes menores, isoladas e fáceis de testar e reutilizar.",
+    "Conceito fundamental de engenharia de software."
+);
+
+addQuestion(
+    "Lógica de Programação", "Média",
+    "Analise o trecho:\n\nint x = 3;\nswitch(x) {\n    case 1: x++; break;\n    case 3: x += 2;\n    case 5: x--; break;\n    default: x = 0;\n}\nSystem.out.println(x);",
+    "int x = 3;\nswitch(x) {\n    case 1: x++; break;\n    case 3: x += 2;\n    case 5: x--; break;\n    default: x = 0;\n}\nSystem.out.println(x);",
+    ["A) 5", "B) 4", "C) 0", "D) 3"],
+    "B",
+    "x inicia em 3. Entra no 'case 3', executando x += 2 (x vira 5). Como NÃO HÁ comando 'break' no case 3, o fluxo executa o 'case 5' em seguida: x-- (x vira 4), onde encontra o break.",
+    "Atenção ao efeito 'fall-through' do switch-case quando o break é omitido."
+);
+
+addQuestion(
+    "Lógica de Programação", "Média",
+    "Qual método de ordenação compara elementos distantes entre si e vai reduzindo o intervalo (gap) a cada passo?",
+    "// Algoritmos avançados",
+    ["A) Shell Sort", "B) Bubble Sort", "C) Selection Sort", "D) Linear Sort"],
+    "A",
+    "O Shell Sort é uma evolução do Insertion Sort que permite a troca de elementos distantes, melhorando a velocidade.",
+    "Reduz o intervalo progressivamente até 1."
+);
+
+addQuestion(
+    "Lógica de Programação", "Média",
+    "O que significa a complexidade assintótica de um algoritmo expressa pela notação Big O?",
+    "// Complexidade",
+    ["A) O tempo exato em segundos que o código demora para rodar no computador", "B) O comportamento de crescimento do tempo de execução ou uso de espaço conforme o tamanho da entrada aumenta", "C) A quantidade de linhas de código escritas", "D) O consumo de bateria do dispositivo"],
+    "B",
+    "Big O mede a escalabilidade do algoritmo, abstraindo detalhes de hardware e focando no comportamento com entradas grandes.",
+    "Exemplos: O(1), O(n), O(n²)."
 );
 
 addQuestion(
     "Lógica de Programação", "Difícil",
-    "Qual será o valor impresso após a execução do trecho de código com matrizes?",
-    "int[][] m = {{1, 2}, {3, 4}};\nint s = 0;\nfor(int i=0; i<2; i++){\n    s += m[i][i];\n}\nSystem.out.println(s);",
-    ["A) 4", "B) 5", "C) 10", "D) 3"],
+    "Qual será o valor impresso ao final da execução do algoritmo abaixo?\n\nint total = 0;\nfor(int i = 1; i <= 3; i++){\n    for(int j = 1; j <= 2; j++){\n        total += (i * j);\n    }\n}\nSystem.out.println(total);",
+    "int total = 0;\nfor(int i = 1; i <= 3; i++){\n    for(int j = 1; j <= 2; j++){\n        total += (i * j);\n    }\n}\nSystem.out.println(total);",
+    ["A) 12", "B) 18", "C) 36", "D) 24"],
     "B",
-    "O código soma os elementos da diagonal principal da matriz (m[0][0] + m[1][1]), ou seja, 1 + 4 = 5.",
-    "m[i][i] acessa exatamente a diagonal principal em matrizes quadradas."
+    "Cálculo por iteração:\n- i=1: j=1 (1*1=1), j=2 (1*2=2) -> soma=3\n- i=2: j=1 (2*1=2), j=2 (2*2=4) -> soma=6\n- i=3: j=1 (3*1=3), j=2 (3*2=6) -> soma=9\nTotal = 3 + 6 + 9 = 18.",
+    "Rastreie laços aninhados multiplicando e somando passo a passo."
 );
 
+addQuestion(
+    "Lógica de Programação", "Difícil",
+    "Qual é a complexidade de tempo no pior caso para o algoritmo de ordenação Quick Sort?",
+    "// Análise de Algoritmos",
+    ["A) O(n log n)", "B) O(n)", "C) O(n²)", "D) O(log n)"],
+    "C",
+    "Embora no caso médio o Quick Sort seja O(n log n), no pior caso (quando a escolha do pivô é inadequada, como escolher sempre o menor/maior elemento), sua complexidade degrada para O(n²).",
+    "O caso médio é excelente, mas o pior caso exige cuidado na escolha do pivô."
+);
+
+addQuestion(
+    "Lógica de Programação", "Difícil",
+    "Analise o método recursivo abaixo:\n\npublic int m(int n) {\n    if (n <= 1) return n;\n    return m(n - 1) + m(n - 2);\n}\n\nO que esse método calcula e qual o valor de m(4)?",
+    "public int m(int n) {\n    if (n <= 1) return n;\n    return m(n - 1) + m(n - 2);\n}",
+    ["A) Sequência de Fibonacci; resultado 3", "B) Fatorial; resultado 24", "C) Soma progressiva; resultado 10", "D) Potenciação; resultado 16"],
+    "A",
+    "O método implementa a série de Fibonacci. Para m(4): m(3)+m(2) -> (m(2)+m(1)) + (m(1)+m(0)) -> ((1+1)+1) + (1+0) = 3.",
+    "A sequência de Fibonacci soma os dois termos anteriores."
+);
+
+addQuestion(
+    "Lógica de Programação", "Difícil",
+    "Qual é o comportamento da passagem de parâmetros por valor em tipos primitivos ao modificar a variável dentro de um método em Java?",
+    "// Passagem de parâmetros",
+    ["A) O valor original na função chamadora é alterado permanentemente", "B) Apenas uma cópia do valor é passada, logo a variável original permanece inalterada fora do escopo do método", "C) Ocorre um erro de compilação automático", "D) A variável passa a ser tratada como constante"],
+    "B",
+    "Em Java, os tipos primitivos são passados estritamente por valor, significando que o método manipula uma cópia local.",
+    "Alterações internas no parâmetro não afetam a variável externa."
+);
+
+addQuestion(
+    "Lógica de Programação", "Difícil",
+    "Qual será a saída do código abaixo ao processar operadores bitwise:\n\nint x = 5;\nint y = 3;\nSystem.out.println(x & y);",
+    "int x = 5;\nint y = 3;\nSystem.out.println(x & y);",
+    ["A) 7", "B) 1", "C) 5", "D) 0"],
+    "B",
+    "Em binário: 5 é '101' e 3 é '011'. A operação AND bitwise (&) compara bit a bit: 101 & 011 resulta em 001, que vale 1 em decimal.",
+    "Operadores bitwise operam diretamente sobre a representação binária dos números."
+);
+
+addQuestion(
+    "Lógica de Programação", "Difícil",
+    "O que caracteriza uma estrutura de dados do tipo Pilha (Stack) em relação à política de acesso aos elementos?",
+    "// Estruturas de Dados Lineares",
+    ["A) FIFO (First In, First Out)", "B) LIFO (Last In, First Out)", "C) Acesso randômico por índice O(1)", "D) Ordenação automática alfabética"],
+    "B",
+    "A pilha segue o princípio LIFO (último a entrar, primeiro a sair), onde inserções e remoções ocorrem no mesmo topo.",
+    "Exemplo clássico: pilha de pratos ou o controle de chamadas (stack trace) de métodos."
+);
+
+addQuestion(
+    "Lógica de Programação", "Difícil",
+    "Qual é a principal vantagem de uma Lista Encadeada (Linked List) sobre um Vetor tradicional estático?",
+    "// Estruturas Dinâmicas",
+    ["A) Acesso direto a qualquer elemento em tempo O(1) usando índices", "B) Inserções e remoções eficientes sem a necessidade de realocar ou deslocar blocos inteiros de memória contígua", "C) Menor consumo de memória RAM por elemento", "D) Suporte nativo a matrizes multidimensionais"],
+    "B",
+    "Enquanto vetores exigem realocação e deslocamento custoso para inserções no meio, listas encadeadas apenas ajustam referências de ponteiros.",
+    "Em contrapartida, perdem o acesso indexado direto O(1)."
+);
+/* =====================================================
+   BLOCO 2: ESTRUTURAS DE DADOS (40 QUESTÕES)
+===================================================== */
+
+// --- Questões Originais Ajustadas ---
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Qual elemento será removido?",
+    "Stack<Integer> pilha = new Stack<>();\n\npilha.push(10);\npilha.push(20);\npilha.push(30);\n\npilha.pop();",
+    ["A) 10", "B) 20", "C) 30", "D) Nenhum"],
+    "C",
+    "A pilha segue LIFO. O último elemento inserido é removido primeiro.",
+    "LIFO = Last In First Out."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Qual elemento será atendido primeiro?",
+    "Queue<Integer> fila = new LinkedList<>();\n\nfila.add(10);\nfila.add(20);\nfila.add(30);\n\nfila.poll();",
+    ["A) 10", "B) 20", "C) 30", "D) Erro"],
+    "A",
+    "A fila segue FIFO. O primeiro inserido sai primeiro.",
+    "FIFO = First In First Out."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Qual estrutura representa melhor uma hierarquia?",
+    "        Diretor\n        /       \\\n   Gerente A     Gerente B",
+    ["A) Fila", "B) Pilha", "C) Árvore", "D) Vetor"],
+    "C",
+    "Estruturas hierárquicas são representadas por árvores.",
+    "Árvore possui raiz e nós."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "Qual é a principal propriedade de uma estrutura de dados do tipo Pilha (Stack)?",
+    "Operações push e pop",
+    ["A) FIFO (First In, First Out)", "B) LIFO (Last In, First Out)", "C) Acesso direto por índice O(1)", "D) Ordenação automática alfabética"],
+    "B",
+    "A pilha opera no modelo LIFO, onde o último elemento inserido é obrigatoriamente o primeiro a ser retirado.",
+    "Pilha = pratos empilhados (último a entrar sai primeiro)."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "Em uma Lista Simplesmente Encadeada, qual é a complexidade de tempo para inserir um novo elemento diretamente no início da lista (cabeça)?",
+    "Head -> [Nó 1] -> [Nó 2]",
+    ["A) O(1)", "B) O(n)", "C) O(log n)", "D) O(n log n)"],
+    "A",
+    "Como mantemos a referência direta para a cabeça (head), a inserção no início requer apenas atualizar os ponteiros, custando tempo constante O(1).",
+    "Inserir no final sem ponteiro de cauda exigiria varrer toda a lista O(n)."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Qual estrutura de dados não linear organiza elementos em uma relação hierárquica de pai e filhos, contendo uma raiz única?",
+    "Nós conectados por arestas hierárquicas",
+    ["A) Fila", "B) Pilha", "C) Árvore", "D) Vetor estático"],
+    "C",
+    "Árvores modelam hierarquias corporativas, sistemas de arquivos e sintaxes de compiladores.",
+    "Possuem nós raiz, ramos e folhas."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "O que caracteriza uma Árvore Binária de Busca (BST)?",
+    "Filho esquerdo menor / Filho direito maior",
+    ["A) Cada nó pode ter no máximo 4 filhos", "B) Os nós à esquerda são menores que a raiz, e os à direita são maiores", "C) Os dados são armazenados estritamente de forma linear", "D) Não existem chaves duplicadas em hipótese alguma"],
+    "B",
+    "A propriedade fundamental da BST garante buscas eficientes comparando valores recursivamente.",
+    "Busca em árvore balanceada custa O(log n)."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "Qual método de resolução de colisões em Tabelas Hash armazena múltiplos elementos que caíram no mesmo índice em uma lista encadeada interna?",
+    "Índice Hash -> [Elemento A -> Elemento B]",
+    ["A) Endereçamento aberto por sondagem linear", "B) Encadeamento separado (Chaining)", "C) Redimensionamento estático", "D) Dupla Hifenação"],
+    "B",
+    "No encadeamento separado, cada posição da tabela aponta para uma lista ligada que abriga as colisões.",
+    "Evita perda de dados e estouro de índice."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "Qual é a complexidade de tempo no pior caso para buscar um elemento em um Vetor Desordenado de tamanho n?",
+    "Busca linear em array comum",
+    ["A) O(1)", "B) O(log n)", "C) O(n)", "D) O(n²)"],
+    "C",
+    "Como o vetor não está ordenado, pode ser necessário inspecionar cada um dos n elementos (busca linear).",
+    "Busca binária só se aplica a vetores previamente ordenados."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Qual estrutura linear é ideal para implementar algoritmos de percurso em largura (BFS) em grafos?",
+    "Estrutura FIFO para controle de visita",
+    ["A) Pilha", "B) Fila", "C) Tabela Hash", "D) Matriz esparsa"],
+    "B",
+    "A Fila (Queue) gerencia a ordem de exploração dos nós vizinhos no algoritmo BFS.",
+    "Busca em profundidade (DFS) utiliza Pilha (ou recursão)."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "O que é um Grafo Direcionado (Dígrafo)?",
+    "Arestas com setas direcionais unidirecionais",
+    ["A) Um grafo cujas arestas possuem direção específica de um vértice para outro", "B) Um grafo que não permite ciclos", "C) Uma árvore com múltiplos nós raízes", "D) Uma lista encadeada bidirecional"],
+    "A",
+    "No dígrafo, a aresta (u, v) indica um caminho de u para v, mas não necessariamente o inverso.",
+    "Exemplo clássico: seguidores no Twitter ou rotas de mão única."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "Qual é a principal vantagem de uma Lista Duplamente Encadeada sobre a Lista Simplesmente Encadeada?",
+    "Ponteiros next e prev",
+    ["A) Ocupa menos memória RAM", "B) Permite percorrer a lista tanto para frente quanto para trás de forma eficiente", "C) Dispensa o uso de ponteiros", "D) Ordena os elementos automaticamente"],
+    "B",
+    "Cada nó possui um ponteiro para o próximo e para o anterior, facilitando operações de remoção e navegação reversa.",
+    "O custo é um leve acréscimo no consumo de memória para o segundo ponteiro."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "Em uma Heap Binária Mínima (Min-Heap), onde se encontra sempre o menor elemento da estrutura?",
+    "Árvore parcialmente ordenada",
+    ["A) Na raiz da árvore", "B) Em uma das folhas da última camada", "C) No último nó inserido", "D) Distribuído aleatoriamente"],
+    "A",
+    "Na Min-Heap, o elemento pai é sempre menor ou igual aos seus filhos, garantindo que a raiz guarde o menor valor global.",
+    "Na Max-Heap, a raiz guarda o maior valor."
+);
+
+// --- Novas Questões Adicionadas para Completar 40 ---
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Qual operação é utilizada para inserir um elemento em uma Pilha?",
+    "// Operações básicas de Pilha",
+    ["A) enqueue", "B) push", "C) addLast", "D) insert"],
+    "B",
+    "O método push empilha um novo elemento no topo da estrutura.",
+    "O oposto é o pop."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Qual operação é utilizada para inserir um elemento em uma Fila tradicional?",
+    "// Operações básicas de Fila",
+    ["A) push", "B) enqueue (ou add)", "C) pop", "D) peek"],
+    "B",
+    "Elementos entram no final da fila através de operações como enqueue ou add.",
+    "O atendimento ocorre pelo início (dequeue/poll)."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Como é chamado o nó de uma árvore que não possui nenhum filho (ou seja, está no final dos ramos)?",
+    "// Terminologia de Árvores",
+    ["A) Raiz", "B) Folha (Leaf)", "C) Sub-árvore", "D) Aresta"],
+    "B",
+    "Nós terminais sem descendentes são denominados nós folha.",
+    "Nós intermediários são nós internos."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Qual estrutura de dados permite armazenar pares de chave-valor permitindo buscas extremamente rápidas?",
+    "// Mapeamento direto",
+    ["A) Fila", "B) Tabela Hash (HashMap)", "C) Lista Encadeada Simples", "D) Vetor desordenado"],
+    "B",
+    "A Tabela Hash utiliza funções de espalhamento para mapear chaves diretamente a índices de armazenamento.",
+    "Complexidade média O(1) para inserção e busca."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "O que mede a altura de uma árvore binária?",
+    "// Propriedades dimensionais",
+    ["A) A quantidade total de folhas", "B) O comprimento do maior caminho da raiz até uma folha", "C) O número total de nós multiplicado por dois", "D) A largura do nível mais preenchido"],
+    "B",
+    "A altura representa o número de arestas no caminho mais longo da raiz até um nó folha.",
+    "Árvores balanceadas mantêm a altura logarítmica."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Qual é a principal característica de uma estrutura de dados estática, como um vetor tradicional?",
+    "// Alocação de memória",
+    ["A) Seu tamanho pode crescer dinamicamente em tempo de execução conforme a demanda", "B) Seu tamanho é fixo e definido no momento da sua criação", "C) Ela descarta automaticamente elementos duplicados", "D) Ela não precisa de tipo definido"],
+    "B",
+    "Estruturas estáticas alocam um bloco fixo de memória que não pode ser redimensionado após a inicialização.",
+    "Para tamanhos variáveis, utilizam-se estruturas dinâmicas."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Em um grafo, como são chamados os pontos ou entidades que armazenam os dados?",
+    "// Elementos de Grafos",
+    ["A) Arestas", "B) Vértices (ou Nós)", "C) Ponteiros", "D) Registros"],
+    "B",
+    "Vértices representam os objetos ou entidades, enquanto arestas representam as conexões entre eles.",
+    "Conceito base da Teoria dos Grafos."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Qual método permite consultar o elemento que está no topo de uma Pilha sem removê-lo?",
+    "// Consulta de Pilha",
+    ["A) pop", "B) peek", "C) poll", "D) clear"],
+    "B",
+    "O método peek (ou top) inspeciona o elemento atual do topo sem alterar a estrutura da pilha.",
+    "Diferente do pop, que remove o item."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "O que significa dizer que uma estrutura de dados é linear?",
+    "// Classificação estrutural",
+    ["A) Os elementos formam uma sequência onde cada elemento possui um único predecessor e um único sucessor (exceto pontas)", "B) Os dados são dispostos em matrizes bidimensionais complexas", "C) Os nós possuem múltiplos pais simultâneos", "D) Os dados não possuem ordem sequencial"],
+    "A",
+    "Estruturas lineares (como listas, pilhas e filas) organizam os dados de forma sequencial.",
+    "Oposição às estruturas não lineares (árvores e grafos)."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Fácil",
+    "Qual é o tipo de percurso em árvores binárias que visita primeiro a raiz, depois a sub-árvore esquerda e por fim a sub-árvore direita?",
+    "// Percursos",
+    ["A) Em-ordem (Inorder)", "B) Pré-ordem (Preorder)", "C) Pós-ordem (Postorder)", "D) Por nível (Level order)"],
+    "B",
+    "O percurso em pré-ordem processa a raiz (Root-Left-Right), sendo útil para clonar árvores.",
+    "Existem três percursos recursivos principais baseados em profundidade."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "Qual é a complexidade de tempo para inserir ou remover um elemento no início de uma Lista Encadeada versus um Vetor?",
+    "// Comparativo de desempenho",
+    ["A) Lista Encadeada: O(1); Vetor: O(n)", "B) Lista Encadeada: O(n); Vetor: O(1)", "C) Ambas possuem complexidade O(n)", "D) Ambas possuem complexidade O(1)"],
+    "A",
+    "Na lista encadeada, basta ajustar o ponteiro da cabeça O(1). No vetor, inserir no início exige deslocar todos os demais elementos uma posição à frente O(n).",
+    "Vantagem clássica das listas para inserções frequentes."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "O que ocorre com uma Árvore Binária de Busca (BST) se inserirmos elementos já ordenados de forma crescente?",
+    "// Degradação de Árvores",
+    ["A) Ela se torna perfeitamente balanceada", "B) Ela degenera para uma estrutura semelhante a uma lista encadeada linear com complexidade O(n)", "C) Ocorre um erro de estouro de pilha imediato", "D) Os elementos são duplicados automaticamente"],
+    "B",
+    "Inserções ordenadas criam uma árvore desbalanceada (degenerada), perdendo a eficiência logarítmica e virando O(n).",
+    "Árvores AVL e Rubro-Negras resolvem isso com auto-balanceamento."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "Qual é a principal função de uma função de dispersão (Hash Function) eficiente?",
+    "// Tabelas Hash",
+    ["A) Ordenar alfabeticamente os elementos inseridos", "B) Converter chaves de entrada em índices inteiros válidos dentro do tamanho da tabela, minimizando colisões", "C) Criptografar dados sensíveis de senhas", "D) Compactar o tamanho dos dados armazenados"],
+    "B",
+    "Uma boa função hash distribui uniformemente as chaves pelos slots disponíveis na tabela, reduzindo colisões.",
+    "Essencial para manter o acesso em O(1)."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "Qual algoritmo de percurso em grafos utiliza uma Fila para explorar os vértices camada por camada a partir de uma origem?",
+    "// Algoritmos em Grafos",
+    ["A) Busca em Profundidade (DFS)", "B) Busca em Largura (BFS)", "C) Algoritmo de Dijkstra", "D) Ordenação Topológica"],
+    "B",
+    "O BFS (Breadth-First Search) expande os nós vizinhos mais próximos antes de avançar para os mais distantes usando uma Fila.",
+    "O DFS utiliza Pilha."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "O que caracteriza uma Árvore AVL em relação às Árvores Binárias de Busca comuns?",
+    "// Árvores Balanceadas",
+    ["A) Ela é uma árvore binária de busca auto-balanceada que mantém a diferença de altura entre sub-árvores menor ou igual a 1", "B) Ela aceita apenas dados numéricos inteiros", "C) Ela possui quatro filhos por nó", "D) Ela não permite remoção de nós"],
+    "A",
+    "A AVL aplica rotações automáticas (simples e duplas) para garantir altura O(log n) e evitar degradação.",
+    "Nomeada em homenagem aos seus criadores Adelson-Velsky e Landis."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "Qual é o comportamento da operação de redimensionamento (rehash) em uma Tabela Hash quando ela atinge seu fator de carga limite?",
+    "// Redimensionamento",
+    ["A) A tabela é apagada inteira", "B) A tabela dobra de tamanho aproximadamente e todos os elementos existentes são recalculados e reinseridos", "C) Novos elementos são rejeitados permanentemente", "D) Os elementos excedentes vão para uma pilha auxiliar"],
+    "B",
+    "O rehash expande o array subjacente para acomodar mais dados sem degradar a performance por excesso de colisões.",
+    "Mantém a eficiência O(1) amortizada."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "Em um Grafo Ponderado, o que representam os pesos associados às arestas?",
+    "// Grafos Ponderados",
+    ["A) A cor visual do nó", "B) Custos, distâncias, capacidades ou tempos associados ao trajeto entre dois vértices", "C) A quantidade de filhos que o vértice possui", "D) O nível hierárquico do nó"],
+    "B",
+    "Grafos ponderados atribuem valores numéricos às arestas, fundamentais para resolver problemas de menor caminho.",
+    "Exemplos: mapas rodoviários (quilômetros) ou redes de computadores (latência)."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "Qual é a complexidade de tempo para acessar um elemento pelo seu índice em um Array (Vetor estático)?",
+    "// Acesso a Vetores",
+    ["A) O(1)", "B) O(n)", "C) O(log n)", "D) O(n²)"],
+    "A",
+    "Como o array ocupa posições contíguas de memória e o índice indica o deslocamento exato a partir da base, o acesso é direto e instantâneo O(1).",
+    "Grande vantagem dos vetores."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Média",
+    "O que é um Deque (Double-Ended Queue)?",
+    "// Deque",
+    ["A) Uma fila especial que permite inserções e remoções tanto no início quanto no final", "B) Uma pilha que aceita apenas dois elementos", "C) Uma árvore com dois troncos", "D) Uma lista encadeada sem ponteiros"],
+    "A",
+    "O Deque flexibiliza as pontas, combinando comportamentos de pilha e fila de forma unificada.",
+    "Utilizado em algoritmos de janela deslizante."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "Qual é a complexidade de tempo no pior caso para realizar operações de busca em uma Árvore AVL perfeitamente balanceada com n nós?",
+    "// Desempenho AVL",
+    ["A) O(1)", "B) O(log n)", "C) O(n)", "D) O(n log n)"],
+    "B",
+    "Como a AVL garante fator de balanceamento estrito, sua altura máxima é rigorosamente limitada a O(log n), garantindo buscas rápidas.",
+    "Evita o pior caso O(n) da BST comum."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "Qual algoritmo clássico encontra a árvore geradora mínima (MST) em um grafo conexo e ponderado adicionando sempre a aresta de menor peso disponível que não forme ciclos?",
+    "// Algoritmos de Grafos",
+    ["A) Algoritmo de Dijkstra", "B) Algoritmo de Kruskal", "C) Algoritmo de Floyd-Warshall", "D) Busca em Largura"],
+    "B",
+    "Kruskal ordena todas as arestas por peso e usa estruturas de conjunto disjunto (Union-Find) para montar a árvore geradora mínima.",
+    "O algoritmo de Prim constrói a árvore a partir de um vértice inicial."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "Em uma Max-Heap representada por um vetor, se um nó está localizado no índice i, quais são as fórmulas matemáticas para encontrar os índices de seus filhos esquerdo e direito?",
+    "// Heap em Vetor",
+    ["A) Esquerdo: 2*i + 1, Direito: 2*i + 2", "B) Esquerdo: i - 1, Direito: i + 1", "C) Esquerdo: i / 2, Direito: i * 2", "D) Esquerdo: i + 2, Direito: i + 4"],
+    "A",
+    "A indexação baseada em zero para heap em vetor utiliza 2*i + 1 para o filho esquerdo e 2*i + 2 para o direito.",
+    "O pai de um nó em i é dado por (i - 1) / 2."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "Qual algoritmo é utilizado para encontrar o caminho mais curto de um único vértice de origem para todos os demais vértices em um grafo com arestas de pesos não negativos?",
+    "// Caminho mais curto",
+    ["A) Algoritmo de Dijkstra", "B) Algoritmo de Kruskal", "C) Busca em Profundidade", "D) Ordenação Topológica"],
+    "A",
+    "O algoritmo de Dijkstra utiliza uma fila de prioridades gananciosa para determinar as menores distâncias a partir de uma fonte.",
+    "Não funciona corretamente se houver pesos negativos nas arestas (onde se usa Bellman-Ford)."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "O que caracteriza uma Árvore Rubro-Negra (Red-Black Tree)?",
+    "// Árvores Avançadas",
+    ["A) Uma árvore binária de busca auto-balanceada onde cada nó possui um atributo de cor (vermelho ou preto) e regras restritas de coloração para manter o balanceamento aproximado", "B) Uma árvore que possui estritamente nós coloridos em vermelho", "C) Uma árvore que aceita apenas nós com chaves numéricas pares", "D) Uma árvore onde os nós vermelhos ficam apenas na raiz"],
+    "A",
+    "A Rubro-Negra relaxa ligeiramente o balanceamento em comparação com a AVL, resultando em menor custo de rotações em inserções e remoções frequentes.",
+    "Utilizada internamente no TreeMap e TreeSet do Java."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "Qual é a complexidade temporal para remover um elemento de uma Heap Binária (por exemplo, extrair o elemento máximo/mínimo da raiz) em uma estrutura com n elementos?",
+    "// Complexidade de Heaps",
+    ["A) O(1)", "B) O(log n)", "C) O(n)", "D) O(n log n)"],
+    "B",
+    "A remoção da raiz substitui o topo pelo último elemento e executa a operação de reorganização (heapify) descendo pela árvore, proporcional à altura O(log n).",
+    "A consulta ao topo (peek) custa O(1)."
+);
+
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "O que é uma Ordenação Topológica aplicada a um Grafo Direcionado Acíclico (DAG)?",
+    "// Ordenação Topológica",
+    ["A) Uma listagem linear de todos os vértices tal que, para toda aresta direcionada u -> v, u aparece antes de v na ordem", "B) Ordenar alfabeticamente os nomes dos vértices do grafo", "C) Organizar os vértices em ordem decrescente de grau de saída", "D) Um algoritmo para apagar ciclos do grafo"],
+    "A",
+    "A ordenação topológica lineariza dependências (como pré-requisitos de matérias ou compilação de tarefas), exigindo ausência de ciclos (DAG).",
+    "Pode ser implementada via DFS ou algoritmo de Kahn."
+);
 
 /* =====================================================
    PROGRAMAÇÃO ORIENTADA A OBJETOS (POO)
