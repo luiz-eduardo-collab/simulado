@@ -9368,6 +9368,37 @@ addQuestion(
     "Usado após finalizar uma feature, ter o PR aprovado e mesclado, para manter o servidor remoto livre de ramificações mortas e desnecessárias.", 
     "Equivale a clicar no botão de deletar branch diretamente na interface do GitHub."
 );
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git revert <hash-do-commit>' realiza no histórico do projeto?", 
+    "Git Revert", 
+    [
+        "A) Apaga permanentemente o commit especificado e todos os seus arquivos do repositório local e remoto.",
+        "B) Cria um novo commit que aplica o inverso exato das alterações introduzidas pelo commit especificado, desfazendo suas modificações sem destruir o histórico anterior.",
+        "C) Restaura o projeto inteiro para o estado de fábrica ignorando branches.",
+        "D) Move o ponteiro HEAD de volta para o commit anterior sem deixar rastros."
+    ], 
+    "B", 
+    "O `git revert` é uma forma segura de anular mudanças em repositórios compartilhados, pois ele adiciona um novo commit corretivo em vez de reescrever a linha do tempo linear.", 
+    "Diferente do `reset`, ele é totalmente seguro para usar em branches públicos como a `main`."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "Para que serve o comando 'git log --author=\"Nome\"'?", 
+    "Git Log Author", 
+    [
+        "A) Para filtrar e exibir apenas os commits realizados por um autor específico no histórico do repositório.",
+        "B) Para alterar o nome do autor de todos os commits passados automaticamente.",
+        "C) Para bloquear contribuições de autores não autorizados no GitHub.",
+        "D) Para gerar um relatório de horas trabalhadas por cada desenvolvedor."
+    ], 
+    "A", 
+    "O filtro `--author` é extremamente útil em grandes equipes para auditar rapidamente quem escreveu ou modificou partes específicas do sistema ao longo do tempo.", 
+    "Pode ser combinado com outros parâmetros como `--oneline` e `-p`."
+);
 
 /* =====================================================
     Bloco 18: CRIPTOGRAFIA E CERTIFICAÇÃO DIGITAL - 40 QUESTÕES
