@@ -7304,146 +7304,616 @@ addQuestion(
 );
 
 /* =====================================================
-   DOMAIN-DRIVEN DESIGN (DDD)
+    DOMAIN-DRIVEN DESIGN (DDD) - 40 QUESTÕES COMPLETAS
 ===================================================== */
 
-const dddQuest = [
-    {
-        q: "O que é a 'Linguagem Ubíqua' (Ubiquitous Language) no contexto do Domain-Driven Design (DDD)?",
-        c: "Linguagem Ubíqua",
-        o: [
-            "A) Uma linguagem de programação exclusiva desenvolvida para implementar regras de negócio complexas.",
-            "B) Uma linguagem rigorosamente compartilhada e comum entre desenvolvedores e especialistas do domínio, utilizada tanto nas conversas quanto no código-fonte.",
-            "C) O padrão internacional de documentação em diagramas UML exigido para sistemas corporativos.",
-            "D) Um framework de tradução automática de código legado para microsserviços modernos."
-        ],
-        a: "B",
-        e: "A Linguagem Ubíqua elimina a barreira de tradução entre negócios e tecnologia, garantindo que os termos do domínio apareçam diretamente nas classes, métodos e variáveis do software.",
-        t: "Se os especialistas de negócio chamam o conceito de 'Apólice', o código deve usar `Apolice`, e não termos genéricos como `Registro`."
-    },
-    {
-        q: "Qual é a principal diferença conceitual entre uma Entidade (Entity) e um Objeto de Valor (Value Object) no DDD?",
-        c: "Entidades vs Objetos de Valor",
-        o: [
-            "A) As entidades possuem identidade própria e única que persiste ao longo das mudanças de atributos, enquanto os objetos de valor são definidos exclusivamente pelos seus valores e são imutáveis.",
-            "B) Os objetos de valor salvam dados no banco relacional, e as entidades ficam apenas na memória RAM.",
-            "C) As entidades não podem conter regras de negócio, função exclusiva dos objetos de valor.",
-            "D) Não há diferença arquitetural; ambos são sinônimos para classes de domínio."
-        ],
-        a: "A",
-        e: "Uma Entidade (ex: `Cliente` com um ID único) continua sendo a mesma mesmo se o endereço mudar. Um Objeto de Valor (ex: `Endereco` ou `Dinheiro`) é comparado pelo conteúdo; se alterar um centavo, ele se torna outro objeto de valor.",
-        t: "Sempre que possível, prefira modelar conceitos como Objetos de Valor pela facilidade de manutenção e imutabilidade."
-    },
-    {
-        q: "O que define um 'Bounded Context' (Contexto Delimitado) e qual é a sua importância na arquitetura?",
-        c: "Contexto Delimitado",
-        o: [
-            "A) O limite físico de memória RAM que um microsserviço pode consumir em produção.",
-            "B) A demarcação explícita dentro da qual um modelo de domínio se aplica, garantindo que termos e conceitos tenham um significado preciso e isolado.",
-            "C) A restrição de segurança que impede acessos externos não autorizados via token JWT.",
-            "D) O tempo limite de resposta (timeout) para requisições HTTP entre diferentes servidores."
-        ],
-        a: "B",
-        e: "Em grandes sistemas, um termo como 'Produto' significa coisas totalmente diferentes para o setor de Vendas e para o setor de Logística. O Bounded Context isola esses modelos para que não haja contaminação conceitual.",
-        t: "Muitas vezes, cada Bounded Context corresponde diretamente a um microsserviço independente."
-    },
-    {
-        q: "No padrão de projeto tático do DDD, o que é um 'Aggregate' (Agregado) e uma 'Aggregate Root' (Raiz do Agregado)?",
-        c: "Agregados",
-        o: [
-            "A) Um banco de dados NoSQL utilizado para armazenar logs de auditoria em lote.",
-            "B) Um agrupamento de entidades e objetos de valor associados tratado como uma unidade única para mudanças de dados, sendo que a Raiz do Agregado é a única porta de entrada externa para acessá-los.",
-            "C) Uma biblioteca de relatórios estatísticos em tempo de execução.",
-            "D) O diagrama que une todas as tabelas do sistema em formato relacional."
-        ],
-        a: "B",
-        e: "O Agregado define limites de consistência transacional. Alterações em qualquer elemento interno devem passar obrigatoriamente pela Raiz do Agregado para garantir a integridade das regras de negócio.",
-        t: "Manter os agregados pequenos reduz conflitos de concorrência em sistemas distribuídos."
-    },
-    {
-        q: "Quando devemos utilizar um 'Domain Service' (Serviço de Domínio) no DDD?",
-        c: "Serviços de Domínio",
-        o: [
-            "A) Para realizar consultas SQL de infraestrutura diretamente na tabela de usuários.",
-            "B) Quando uma operação de negócio envolve múltiplos agregados ou conceitos que não pertencem de forma natural a nenhuma entidade ou objeto de valor isolado.",
-            "C) Para substituir completamente os controladores REST de uma API web.",
-            "D) Para gerenciar o roteamento de telas no frontend."
-        ],
-        a: "B",
-        e: "Embora a maioria da lógica de negócio deva residir dentro das Entidades e Objetos de Valor, algumas regras coordenam vários objetos diferentes (ex: uma transferência bancária entre duas contas distintas). Nesses casos, usa-se um Serviço de Domínio.",
-        t: "Serviços de domínio não devem conter estado (stateless) e focam puramente em comportamento."
-    },
-    {
-        q: "Qual é a principal função de um Repositório (Repository) na arquitetura orientada ao domínio?",
-        c: "Repositórios",
-        o: [
-            "A) Executar scripts de migração de banco de dados (Flyway ou Liquibase).",
-            "B) Forçar o desacoplamento entre a camada de domínio e a persistência, simulando uma coleção em memória para encontrar, adicionar e remover agregados inteiros.",
-            "C) Substituir os testes unitários por simulações reais de disco rígido.",
-            "D) Criptografar senhas de usuários antes de salvar no SGBD."
-        ],
-        a: "B",
-        e: "O repositório isola o domínio dos detalhes de infraestrutura (como ORMs, SQL ou NoSQL). Ele deve operar sempre em nível de Agregados, e não de tabelas individuais.",
-        t: "Em DDD, criamos repositórios apenas para Raízes de Agregados."
-    },
-    {
-        q: "O que distingue o 'Design Estratégico' (Strategic Design) do 'Design Tático' (Tactical Design) no DDD?",
-        c: "Estratégico vs Tático",
-        o: [
-            "A) O estratégico foca na organização de grandes sistemas, contextos delimitados e relacionamentos entre equipes; o tático foca nos padrões de código de implementação interna (entidades, objetos de valor, repositórios).",
-            "B) O estratégico é usado apenas em projetos legados, e o tático é exclusivo para arquiteturas serverless.",
-            "C) O estratégico é responsabilidade exclusiva dos testadores (QA), enquanto o tático é feito pelo Product Owner.",
-            "D) Não há distinção conceitual; ambos tratam da mesma granularidade de código."
-        ],
-        a: "A",
-        e: "O Design Estratégico ajuda a enxergar o 'panorama geral' da empresa e dividir o domínio em partes gerenciáveis (Bounded Contexts, Context Mapping). O Design Tático entra no nível microscópico do código-fonte.",
-        t: "Muitos desenvolvedores aplicam padrões táticos sem usar o design estratégico, perdendo os maiores benefícios do DDD."
-    },
-    {
-        q: "Para que serve uma 'Anti-Corruption Layer' (Camada Anticorrupção - ACL) quando integramos sistemas?",
-        c: "Camada Anticorrupção",
-        o: [
-            "A) Para bloquear tentativas de invasão e ataques de injeção de SQL na API.",
-            "B) Para traduzir e isolar o modelo de domínio moderno de sistemas legados ou de terceiros mal estruturados, impedindo que conceitos externos 'sujem' o código limpo da aplicação.",
-            "C) Para auditar a folha de pagamento e evitar fraudes financeiras internas.",
-            "D) Para compactar pacotes de dados antes de enviar via protocolo gRPC."
-        ],
-        a: "B",
-        e: "A ACL atua como uma ponte tradutora entre dois subsistemas com modelos diferentes. Assim, se o sistema legado usa termos confusos, a camada os traduz para a Linguagem Ubíqua do seu domínio atual.",
-        t: "É um padrão essencial ao modernizar sistemas legados de forma incremental."
-    },
-    {
-        q: "Qual é o papel de um 'Domain Event' (Evento de Domínio) em uma arquitetura DDD?",
-        c: "Eventos de Domínio",
-        o: [
-            "A) Registrar erros de sintaxe e exceções de NullPointer no arquivo de log do servidor.",
-            "B) Representar formalmente algo importante que aconteceu no domínio do negócio (ex: 'PedidoPago' ou 'ClienteCadastrado'), permitindo comunicação assíncrona e reativa entre agregados ou contextos.",
-            "C) Agendar reinicializações automáticas do servidor de aplicações toda meia-noite.",
-            "D) Controlar cliques de mouse e eventos de interface do usuário no front-end."
-        ],
-        a: "B",
-        e: "Eventos de Domínio capturam efeitos colaterais de negócios de forma desacoplada. Um agregado dispara um evento, e outros componentes ou contextos podem escutá-lo para reagir sem acoplamento direto.",
-        t: "São a base fundamental para arquiteturas orientadas a eventos (Event-Driven Architecture) e padrões como CQRS."
-    },
-    {
-        q: "No contexto de criação de objetos complexos no DDD, quando devemos utilizar o padrão 'Factory' (Fábrica)?",
-        c: "Fábricas",
-        o: [
-            "A) Para fabricar componentes físicos de hardware em linhas de montagem industrial.",
-            "B) Para encapsular a lógica complexa de criação de Agregados ou Entidades, garantindo que o objeto nasça sempre em um estado válido e consistente, sem poluir o construtor padrão.",
-            "C) Para gerar conexões simultâneas com bancos de dados relacionais.",
-            "D) Para compilar o código Java/C# para código de máquina nativo."
-        ],
-        a: "B",
-        e: "Quando a construção de um agregado exige validações complexas, regras de negócio ou montagem de sub-objetos, delegar essa responsabilidade a uma Factory mantém o domínio limpo e coeso.",
-        t: "Ajuda a evitar a criação de objetos 'incompletos' ou inválidos na aplicação."
-    }
-];
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que é a 'Linguagem Ubíqua' (Ubiquitous Language) no contexto do Domain-Driven Design (DDD)?", 
+    "Linguagem Ubíqua", 
+    [
+        "A) Uma linguagem de programação exclusiva desenvolvida para implementar regras de negócio complexas.",
+        "B) Uma linguagem rigorosamente compartilhada e comum entre desenvolvedores e especialistas do domínio, utilizada tanto nas conversas quanto no código-fonte.",
+        "C) O padrão internacional de documentação em diagramas UML exigido para sistemas corporativos.",
+        "D) Um framework de tradução automática de código legado para microsserviços modernos."
+    ], 
+    "B", 
+    "A Linguagem Ubíqua elimina a barreira de tradução entre negócios e tecnologia, garantindo que os termos do domínio apareçam diretamente nas classes, métodos e variáveis do software.", 
+    "Se os especialistas de negócio chamam o conceito de 'Apólice', o código deve usar `Apolice`, e não termos genéricos como `Registro`."
+);
 
-dddQuest.forEach(x => {
-    addQuestion("Domain-Driven Design (DDD)", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Qual é a principal diferença conceitual entre uma Entidade (Entity) e um Objeto de Valor (Value Object) no DDD?", 
+    "Entidades vs Objetos de Valor", 
+    [
+        "A) As entidades possuem identidade própria e única que persiste ao longo das mudanças de atributos, enquanto os objetos de valor são definidos exclusivamente pelos seus valores e são imutáveis.",
+        "B) Os objetos de valor salvam dados no banco relacional, e as entidades ficam apenas na memória RAM.",
+        "C) As entidades não podem conter regras de negócio, função exclusiva dos objetos de valor.",
+        "D) Não há diferença arquitetural; ambos são sinônimos para classes de domínio."
+    ], 
+    "A", 
+    "Uma Entidade (ex: `Cliente` com um ID único) continua sendo a mesma mesmo se o endereço mudar. Um Objeto de Valor (ex: `Endereco` ou `Dinheiro`) é comparado pelo conteúdo; se alterar um centavo, ele se torna outro objeto de valor.", 
+    "Sempre que possível, prefira modelar conceitos como Objetos de Valor pela facilidade de manutenção e imutabilidade."
+);
 
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que define um 'Bounded Context' (Contexto Delimitado) e qual é a sua importância na arquitetura?", 
+    "Contexto Delimitado", 
+    [
+        "A) O limite físico de memória RAM que um microsserviço pode consumir em produção.",
+        "B) A demarcação explícita dentro da qual um modelo de domínio se aplica, garantindo que termos e conceitos tenham um significado preciso e isolado.",
+        "C) A restrição de segurança que impede acessos externos não autorizados via token JWT.",
+        "D) O tempo limite de resposta (timeout) para requisições HTTP entre diferentes servidores."
+    ], 
+    "B", 
+    "Em grandes sistemas, um termo como 'Produto' significa coisas totalmente diferentes para o setor de Vendas e para o setor de Logística. O Bounded Context isola esses modelos para que não haja contaminação conceitual.", 
+    "Muitas vezes, cada Bounded Context corresponde diretamente a um microsserviço independente."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "No padrão de projeto tático do DDD, o que é um 'Aggregate' (Agregado) e uma 'Aggregate Root' (Raiz do Agregado)?", 
+    "Agregados", 
+    [
+        "A) Um banco de dados NoSQL utilizado para armazenar logs de auditoria em lote.",
+        "B) Um agrupamento de entidades e objetos de valor associados tratado como uma unidade única para mudanças de dados, sendo que a Raiz do Agregado é a única porta de entrada externa para acessá-los.",
+        "C) Uma biblioteca de relatórios estatísticos em tempo de execução.",
+        "D) O diagrama que une todas as tabelas do sistema em formato relacional."
+    ], 
+    "B", 
+    "O Agregado define limites de consistência transacional. Alterações em qualquer elemento interno devem passar obrigatoriamente pela Raiz do Agregado para garantir a integridade das regras de negócio.", 
+    "Manter os agregados pequenos reduz conflitos de concorrência em sistemas distribuídos."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Quando devemos utilizar um 'Domain Service' (Serviço de Domínio) no DDD?", 
+    "Serviços de Domínio", 
+    [
+        "A) Para realizar consultas SQL de infraestrutura diretamente na tabela de usuários.",
+        "B) Quando uma operação de negócio envolve múltiplos agregados ou conceitos que não pertencem de forma natural a nenhuma entidade ou objeto de valor isolado.",
+        "C) Para substituir completamente os controladores REST de uma API web.",
+        "D) Para gerenciar o roteamento de telas no frontend."
+    ], 
+    "B", 
+    "Embora a maioria da lógica de negócio deva residir dentro das Entidades e Objetos de Valor, algumas regras coordenam vários objetos diferentes (ex: uma transferência bancária entre duas contas distintas). Nesses casos, usa-se um Serviço de Domínio.", 
+    "Serviços de domínio não devem conter estado (stateless) e focam puramente em comportamento."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Qual é a principal função de um Repositório (Repository) na arquitetura orientada ao domínio?", 
+    "Repositórios", 
+    [
+        "A) Executar scripts de migração de banco de dados (Flyway ou Liquibase).",
+        "B) Forçar o desacoplamento entre a camada de domínio e a persistência, simulando uma coleção em memória para encontrar, adicionar e remover agregados inteiros.",
+        "C) Substituir os testes unitários por simulações reais de disco rígido.",
+        "D) Criptografar senhas de usuários antes de salvar no SGBD."
+    ], 
+    "B", 
+    "O repositório isola o domínio dos detalhes de infraestrutura (como ORMs, SQL ou NoSQL). Ele deve operar sempre em nível de Agregados, e não de tabelas individuais.", 
+    "Em DDD, criamos repositórios apenas para Raízes de Agregados."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que distingue o 'Design Estratégico' (Strategic Design) do 'Design Tático' (Tactical Design) no DDD?", 
+    "Estratégico vs Tático", 
+    [
+        "A) O estratégico foca na organização de grandes sistemas, contextos delimitados e relacionamentos entre equipes; o tático foca nos padrões de código de implementação interna (entidades, objetos de valor, repositórios).",
+        "B) O estratégico é usado apenas em projetos legados, e o tático é exclusivo para arquiteturas serverless.",
+        "C) O estratégico é responsabilidade exclusiva dos testadores (QA), enquanto o tático é feito pelo Product Owner.",
+        "D) Não há distinção conceitual; ambos tratam da mesma granularidade de código."
+    ], 
+    "A", 
+    "O Design Estratégico ajuda a enxergar o 'panorama geral' da empresa e dividir o domínio em partes gerenciáveis (Bounded Contexts, Context Mapping). O Design Tático entra no nível microscópico do código-fonte.", 
+    "Muitos desenvolvedores aplicam padrões táticos sem usar o design estratégico, perdendo os maiores benefícios do DDD."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Para que serve uma 'Anti-Corruption Layer' (Camada Anticorrupção - ACL) quando integramos sistemas?", 
+    "Camada Anticorrupção", 
+    [
+        "A) Para bloquear tentativas de invasão e ataques de injeção de SQL na API.",
+        "B) Para traduzir e isolar o modelo de domínio moderno de sistemas legados ou de terceiros mal estruturados, impedindo que conceitos externos 'sujem' o código limpo da aplicação.",
+        "C) Para auditar a folha de pagamento e evitar fraudes financeiras internas.",
+        "D) Para compactar pacotes de dados antes de enviar via protocolo gRPC."
+    ], 
+    "B", 
+    "A ACL atua como uma ponte tradutora entre dois subsistemas com modelos diferentes. Assim, se o sistema legado usa termos confusos, a camada os traduz para a Linguagem Ubíqua do seu domínio atual.", 
+    "É um padrão essencial ao modernizar sistemas legados de forma incremental."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Qual é o papel de um 'Domain Event' (Evento de Domínio) em uma arquitetura DDD?", 
+    "Eventos de Domínio", 
+    [
+        "A) Registrar erros de sintaxe e exceções de NullPointer no arquivo de log do servidor.",
+        "B) Representar formalmente algo importante que aconteceu no domínio do negócio (ex: 'PedidoPago' ou 'ClienteCadastrado'), permitindo comunicação assíncrona e reativa entre agregados ou contextos.",
+        "C) Agendar reinicializações automáticas do servidor de aplicações toda meia-noite.",
+        "D) Controlar cliques de mouse e eventos de interface do usuário no front-end."
+    ], 
+    "B", 
+    "Eventos de Domínio capturam efeitos colaterais de negócios de forma desacoplada. Um agregado dispara um evento, e outros componentes ou contextos podem escutá-lo para reagir sem acoplamento direto.", 
+    "São a base fundamental para arquiteturas orientadas a eventos (Event-Driven Architecture) e padrões como CQRS."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "No contexto de criação de objetos complexos no DDD, quando devemos utilizar o padrão 'Factory' (Fábrica)?", 
+    "Fábricas", 
+    [
+        "A) Para fabricar componentes físicos de hardware em linhas de montagem industrial.",
+        "B) Para encapsular a lógica complexa de criação de Agregados ou Entidades, garantindo que o objeto nasça sempre em um estado válido e consistente, sem poluir o construtor padrão.",
+        "C) Para gerar conexões simultâneas com bancos de dados relacionais.",
+        "D) Para compilar o código Java/C# para código de máquina nativo."
+    ], 
+    "B", 
+    "Quando a construção de um agregado exige validações complexas, regras de negócio ou montagem de sub-objetos, delegar essa responsabilidade a uma Factory mantém o domínio limpo e coeso.", 
+    "Ajuda a evitar a criação de objetos 'incompletos' ou inválidos na aplicação."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que significa a relação de 'Context Mapping' (Mapeamento de Contextos) no Design Estratégico do DDD?", 
+    "Context Mapping", 
+    [
+        "A) Mapear coordenadas geográficas de GPS para entrega de mercadorias em tempo real.",
+        "B) Identificar e documentar explicitamente as fronteiras, dependências e padrões de integração e comunicação entre diferentes Bounded Contexts de um sistema.",
+        "C) Criar tabelas de tradução de idiomas em aplicações multilíngues.",
+        "D) Mapear classes de modelo para tabelas relacionais via ORM."
+    ], 
+    "B", 
+    "O Context Mapping revela a topologia organizacional e técnica dos subsistemas, explicitando se a relação é de Parceria, Cliente-Servidor, Upstream-Downstream, entre outras.", 
+    "Essencial para evitar surpresas e acoplamentos ocultos entre equipes diferentes."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "No padrão de relacionamento entre contextos delimitados, o que caracteriza uma relação 'Upstream / Downstream' (Montante / Jusante)?", 
+    "Upstream / Downstream", 
+    [
+        "A) O Upstream é o sistema que consome dados, e o Downstream é o banco de dados principal.",
+        "B) O Upstream é o sistema provedor cujas mudanças afetam o Downstream; o Downstream é o consumidor que depende dos dados ou serviços fornecidos pelo Upstream.",
+        "C) Refere-se exclusivamente à direção do fluxo de água em sistemas de saneamento básico modelados via DDD.",
+        "D) Indica que o Downstream tem autoridade total para alterar o código do Upstream sem permissão."
+    ], 
+    "B", 
+    "Essa relação define dependências de direção. O time Downstream precisa estar atento às evoluções e contratos fornecidos pelo time Upstream.", 
+    "Pode ser suavizada com o uso de padrões como Translation layers ou Open Host Service."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que é o padrão de integração 'Open Host Service' (OHS) em arquiteturas DDD?", 
+    "Open Host Service", 
+    [
+        "A) Um servidor web aberto sem senha para acesso público na internet.",
+        "B) Um protocolo que define o Bounded Context como um provedor de serviços de acesso público bem estruturado e estável (como uma API REST documentada) para múltiplos clientes downstream.",
+        "C) Um serviço de hospedagem de código em nuvem semelhante ao GitHub.",
+        "D) Uma política de portas abertas no firewall corporativo."
+    ], 
+    "B", 
+    "O Open Host Service evita que o subsistema precise negociar integrações customizadas com cada consumidor diferente, oferecendo uma API padrão e bem mantida.", 
+    "Geralmente combinado com o padrão Published Language."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que significa 'Published Language' (Linguagem Publicada) quando associada ao Open Host Service?", 
+    "Published Language", 
+    [
+        "A) A publicação de livros técnicos sobre arquitetura de software.",
+        "B) A documentação de uma linguagem de modelagem de dados documentada e compartilhada (como JSON Schema, XML ou Protobuf) para que qualquer sistema downstream consiga entender os dados fornecidos.",
+        "C) Traduzir o código fonte para o inglês técnico.",
+        "D) Publicar artigos científicos em revistas acadêmicas."
+    ], 
+    "B", 
+    "A Published Language fornece um formato de intercâmbio de dados claro, estável e bem documentado, complementando o Open Host Service.", 
+    "Garante independência de modelos internos proprietários."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Qual é a característica do padrão de relacionamento 'Shared Kernel' (Núcleo Compartilhado) entre Bounded Contexts?", 
+    "Shared Kernel", 
+    [
+        "A) Compartilhar o mesmo servidor físico de produção entre dez aplicações diferentes.",
+        "B) Um subconjunto do modelo de domínio e do código que é explicitamente compartilhado e mantido em conjunto por duas ou mais equipes de contextos diferentes.",
+        "C) Uma biblioteca de componentes visuais de interface gráfica (Design System).",
+        "D) O banco de dados relacional monolítico compartilhado por todo o sistema legado."
+    ], 
+    "B", 
+    "O Shared Kernel exige forte alinhamento e comunicação contínua entre as equipes, pois qualquer alteração no código compartilhado afeta diretamente a todos os contextos envolvidos.", 
+    "Deve ser usado com cautela extrema para evitar acoplamento indesejado."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que define o padrão de relacionamento 'Customer-Supplier' (Cliente-Fornecedor) entre equipes em DDD?", 
+    "Customer-Supplier", 
+    [
+        "A) A relação comercial de venda de software B2B para o cliente final.",
+        "B) Uma relação onde o time Downstream (Cliente) depende diretamente do time Upstream (Fornecedor) para entregar suas funcionalidades, havendo negociação mútua de prazos e prioridades de entrega.",
+        "C) O modelo de cobrança por hora trabalhada em consultorias de TI.",
+        "D) A compra de licenças de software de terceiros."
+    ], 
+    "B", 
+    "Nesta relação, as necessidades do cliente influenciam o planejamento do fornecedor, existindo um acordo cooperativo de entregas.", 
+    "Diferente da relação unilateral 'Conformist'."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que caracteriza o padrão 'Conformist' (Conformista) em um mapa de contextos?", 
+    "Conformist", 
+    [
+        "A) Um desenvolvedor que aceita qualquer requisito sem questionar o product owner.",
+        "B) Uma relação onde o contexto Downstream aceita passivamente o modelo de domínio do contexto Upstream exatamente como ele é, sem capacidade de negociar mudanças ou criar camadas de tradução.",
+        "C) Um padrão de design visual baseado em temas escuros.",
+        "D) A conformidade estrita com as leis de proteção de dados (LGPD)."
+    ], 
+    "B", 
+    "O time downstream abre mão de ter seu próprio modelo adaptado e molda seu código diretamente ao modelo fornecido pelo upstream, reduzindo o custo de tradução ao custo de acoplamento.", 
+    "Útil quando o upstream possui alta autoridade ou o modelo dele já é excelente."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que significa o padrão 'Antisocial / Separate Ways' (Caminhos Separados) no Context Mapping?", 
+    "Separate Ways", 
+    [
+        "A) O divórcio jurídico entre sócios de uma empresa de tecnologia.",
+        "B) Uma decisão consciente de não estabelecer integração ou vínculo arquitetural entre dois subsistemas, pois o custo de integrá-los supera os benefícios, optando por processos manuais ou isolados.",
+        "C) Separar o front-end do back-end em repositórios distintos.",
+        "D) Dividir o banco de dados em partições geograficamente distribuídas."
+    ], 
+    "B", 
+    "Nem tudo precisa estar integrado. Se a integração não traz valor de negócio compensatório, seguir por caminhos separados é a escolha arquitetural correta.", 
+    "Evita a complexidade desnecessária de integrações de sistemas."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que é um 'Domain Primitive' (Primitivo de Domínio) no contexto de modelagem rica?", 
+    "Domain Primitive", 
+    [
+        "A) Uma linguagem de programação arcaica como Fortran ou Cobol.",
+        "B) A substituição de tipos primitivos genéricos da linguagem (como `String` ou `int`) por pequenos Objetos de Valor fortemente tipados que carregam validações de negócio (ex: `Email`, `CPF`, `Dinheiro`).",
+        "C) Funções matemáticas básicas em assembly.",
+        "D) O banco de dados relacional em sua forma mais simples."
+    ], 
+    "B", 
+    "Evita o anti-pattern de 'obsessão por tipos primitivos' (Primitive Obsession), garantindo que dados inválidos nunca circulem pelo domínio da aplicação.", 
+    "Exemplo: um método que recebe `Email` em vez de uma `String` genérica."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que caracteriza o anti-pattern do 'Anemic Domain Model' (Modelo de Domínio Anêmico)?", 
+    "Anemic Domain Model", 
+    [
+        "A) Classes de domínio que contêm apenas propriedades de dados (getters e setters) sem nenhuma regra de negócio, sendo toda a lógica concentrada em 'Serviços' externos.",
+        "B) Um modelo de dados que não utiliza chaves primárias em tabelas relacionais.",
+        "C) Sistemas que rodam em servidores com pouca memória RAM.",
+        "D) Classes totalmente protegidas por criptografia de ponta a ponta."
+    ], 
+    "A", 
+    "O modelo anêmico vai contra a essência do DDD e da Orientação a Objetos, transformando os objetos em meras estruturas de dados e centralizando o comportamento proceduralmente.", 
+    "Martin Fowler classificou o modelo anêmico como um anti-pattern clássico."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que é um 'Rich Domain Model' (Modelo de Domínio Rico)?", 
+    "Rich Domain Model", 
+    [
+        "A) Um sistema financeiro que movimenta bilhões de dólares por dia.",
+        "B) Um modelo onde Entidades e Objetos de Valor encapsulam tanto o estado (dados) quanto o comportamento (regras de negócio e invariantes), impedindo estados inválidos.",
+        "C) Uma arquitetura que utiliza bancos de dados NoSQL altamente custosos em nuvem.",
+        "D) Um código repleto de comentários explicativos em inglês."
+    ], 
+    "B", 
+    "No modelo rico, a própria entidade sabe validar suas regras e alterar seu estado de forma segura (ex: `pedido.aprovar()`), em vez de deixar isso para classes de serviço externas.", 
+    "É o padrão esperado e desejado ao aplicar Domain-Driven Design."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Qual é o papel das 'Invariantes' (Invariants) dentro de um Agregado no DDD?", 
+    "Invariantes", 
+    [
+        "A) Variáveis de ambiente que nunca mudam após o deploy em produção.",
+        "B) Regras de consistência de negócio que devem ser mantidas sempre verdadeiras dentro dos limites do agregado a cada transação concluída.",
+        "C) Constantes matemáticas utilizadas em algoritmos de criptografia de senhas.",
+        "D) Logs imutáveis de auditoria de sistema."
+    ], 
+    "B", 
+    "As invariantes protegem a integridade do domínio (ex: 'A soma dos itens do pedido deve ser igual ao valor total'). O agregado garante que essas regras nunca sejam violadas.", 
+    "Garantir consistência forte dentro do agregado é a principal justificativa para sua existência."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Por que uma boa prática do DDD recomenda manter os Agregados pequenos?", 
+    "Tamanho dos Agregados", 
+    [
+        "A) Para economizar espaço de armazenamento físico no disco rígido SSD.",
+        "B) Para evitar contenção de concorrência, deadlocks em banco de dados e garantir que transações sejam rápidas e focadas em uma única consistência de negócio.",
+        "C) Para permitir que o código seja lido em telas de smartphones.",
+        "D) Para reduzir o número de linhas de código compiladas."
+    ], 
+    "B", 
+    "Agregados grandes demais englobam muitas entidades, gerando conflitos de concorrência quando múltiplos usuários tentam alterá-los simultaneamente.", 
+    "A regra de ouro é: Agregados devem conter apenas a raiz e o estritamente necessário para manter as invariantes."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Como se faz a referência entre diferentes Agregados em DDD de forma correta?", 
+    "Referências entre Agregados", 
+    [
+        "A) Utilizando objetos de referência direta em memória (ponteiro de objeto completo).",
+        "B) Referenciando outros agregados exclusivamente através de seus Identificadores únicos (IDs), e nunca mantendo referências a objetos inteiros de outro agregado.",
+        "C) Utilizando views relacionais complexas no banco de dados SQL.",
+        "D) Copiando todos os atributos do agregado externo para dentro do agregado local."
+    ], 
+    "B", 
+    "O uso de IDs para referenciar outros agregados impede que um agregado acesse acidentalmente o estado interno de outro e evita o carregamento em cascata de grafos de objetos gigantescos.", 
+    "Mantém os limites de consistência rigidamente separados."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que é o conceito de 'Event Storming' amplamente utilizado em projetos DDD?", 
+    "Event Storming", 
+    [
+        "A) Uma tempestade de raios que derruba os servidores de computação em nuvem.",
+        "B) Uma oficina colaborativa de facilitação rápida envolvendo especialistas de negócio e desenvolvedores para descobrir e mapear eventos de domínio, fluxos e limites de contextos.",
+        "C) Um teste de estresse automatizado para medir vazão de requisições HTTP.",
+        "D) Uma metodologia ágil para reescrever código legado em 24 horas."
+    ], 
+    "B", 
+    "Criado por Alberto Brandolini, o Event Storming utiliza post-its coloridos para modelar visualmente o domínio de forma ágil e intuitiva.", 
+    "Excelente ponto de partida para iniciar o Design Estratégico de um sistema."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Qual é a relação entre Domain-Driven Design (DDD) e Arquitetura Limpa / Hexagonal (Ports and Adapters)?", 
+    "DDD e Arquitetura Limpa", 
+    [
+        "A) São concorrentes diretos; usar DDD impede o uso de Arquitetura Hexagonal.",
+        "B) Eles se complementam perfeitamente: a Arquitetura Hexagonal fornece a estrutura técnica de camadas e isolamento, enquanto o DDD fornece os padrões de modelagem para a camada de domínio.",
+        "C) A Arquitetura Hexagonal substitui completamente a necessidade de aplicar DDD.",
+        "D) O DDD funciona apenas em arquiteturas baseadas em microsserviços sem banco de dados."
+    ], 
+    "B", 
+    "A camada de domínio modelada com DDD fica no centro da Arquitetura Hexagonal, totalmente isolada de detalhes de infraestrutura, frameworks e bancos de dados.", 
+    "Essa combinação garante alta manutenibilidade e testabilidade."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "No contexto de persistência em DDD, o que significa a separação entre 'Modelos de Domínio' e 'Modelos de Persistência' (Data Models)?", 
+    "Modelos de Domínio vs Persistência", 
+    [
+        "A) Significa que o sistema não utiliza banco de dados.",
+        "B) A prática de utilizar classes separadas para o domínio (regras puras) e para o banco de dados (tabelas/ORM), mapeando-os explicitamente para evitar que detalhes de banco de dados poluam as regras de negócio.",
+        "C) O uso de duas linguagens de programação diferentes no mesmo projeto.",
+        "D) A replicação de dados em servidores geograficamente separados."
+    ], 
+    "B", 
+    "Permite que o modelo de domínio evolua livremente sem ficar engessado pelas limitações ou estruturas de um esquema relacional de banco de dados.", 
+    "Mapeadores customizados ou ORMs bem configurados ajudam nessa tradução."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que é uma 'Specification' (Especificação) no padrão de design tático do DDD?", 
+    "Specification Pattern", 
+    [
+        "A) Um documento técnico em formato PDF exigido para licitações públicas.",
+        "B) Um padrão de projeto que encapsula uma regra de negócio ou critério de filtragem em um objeto reutilizável, permitindo combinar regras complexas via operações lógicas (E, OU, NÃO).",
+        "C) O manual de instruções de uma biblioteca de código aberto.",
+        "D) Um contrato de API REST gerado automaticamente pelo Swagger."
+    ], 
+    "B", 
+    "O padrão Specification é muito útil para expressar regras de validação ou critérios de busca complexos que podem ser reutilizados tanto no domínio quanto nos repositórios.", 
+    "Promove legibilidade e testabilidade isolada de regras de negócio."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Qual é o principal objetivo do DDD ao lidar com a complexidade de software?", 
+    "Objetivo do DDD", 
+    [
+        "A) Reduzir o custo de infraestrutura de servidores em nuvem em até 90%.",
+        "B) Concentrar o esforço de desenvolvimento no núcleo do negócio (Core Domain), onde reside o verdadeiro valor competitivo da empresa.",
+        "C) Eliminar a necessidade de documentação escrita por analistas de sistemas.",
+        "D) Permitir que aplicações rodem sem conexão com a internet."
+    ], 
+    "B", 
+    "O DDD propõe direcionar foco e energia para o que realmente importa para a empresa (Core Domain), lidando com domínios genéricos ou de suporte de forma pragmática.", 
+    "Maximiza o retorno sobre o investimento em desenvolvimento de software."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que são Domínios 'Core', 'Supporting' (Suporte) e 'Generic' (Genéricos) no DDD?", 
+    "Tipos de Domínios", 
+    [
+        "A) Classificação de tipos de bancos de dados relacionais.",
+        "B) A categorização estratégica dos subsistemas de uma empresa: Core é o diferencial competitivo; Supporting apoia o core mas não é diferencial; Generic é padrão de mercado (ex: autenticação, faturamento).",
+        "C) Divisão de cargos e salários entre equipes de engenharia de software.",
+        "D) Níveis de segurança e criptografia de dados confidenciais."
+    ], 
+    "B", 
+    "Identificar a qual categoria cada parte do sistema pertence ajuda a decidir onde investir os melhores desenvolvedores e arquitetura (focando no Core Domain).", 
+    "Domínios genéricos podem ser comprados prontos ou terceirizados."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que significa dizer que um Objeto de Valor (Value Object) deve ser 'Imutável' (Immutable)?", 
+    "Imutabilidade", 
+    [
+        "A) Que ele nunca pode ser apagado da memória RAM pelo Garbage Collector.",
+        "B) Que após ser criado, seu estado interno não pode mais ser alterado; qualquer modificação deve resultar na criação de uma nova instância do objeto.",
+        "C) Que ele não pode ser convertido para formato JSON.",
+        "D) Que seu código fonte é protegido contra cópias não autorizadas."
+    ], 
+    "B", 
+    "A imutabilidade garante segurança em ambientes concorrentes, elimina efeitos colaterais indesejados e permite compartilhar instâncias de objetos de valor sem medo de alterações paralelas.", 
+    "Exemplo clássico: objetos de data (`LocalDate`) ou dinheiro (`Money`)."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Qual é a principal responsabilidade de uma camada de 'Application Service' (Serviço de Aplicação) em uma arquitetura DDD?", 
+    "Serviços de Aplicação", 
+    [
+        "A) Conter todas as regras de negócio complexas e cálculos fiscais da empresa.",
+        "B) Orquestrar o fluxo de tarefas técnicas da aplicação (como coordenar transações, disparar repositórios, chamar serviços de domínio e publicar eventos), sem conter lógica de negócio pura.",
+        "C) Renderizar componentes visuais de interface do usuário no navegador.",
+        "D) Executar scripts de migração de banco de dados."
+    ], 
+    "B", 
+    "O Serviço de Aplicação é um 'fino condutor' que recebe comandos da camada de interface (API), busca agregados via repositório, invoca o domínio e salva o resultado.", 
+    "Ele não toma decisões de negócio; apenas coordena o fluxo."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que é uma 'Domain Exception' (Exceção de Domínio) e como ela se diferencia de erros técnicos?", 
+    "Exceções de Domínio", 
+    [
+        "A) Um erro de sintaxe detectado pelo compilador da linguagem.",
+        "B) Uma exceção personalizada que representa a violação de uma regra de negócio (ex: `SaldoInsuficienteException`), comunicando falhas do modelo de forma clara e compreensível.",
+        "C) Uma falha física de hardware na placa-mãe do servidor.",
+        "D) Um erro de conexão com a rede Wi-Fi corporativa."
+    ], 
+    "B", 
+    "Exceções de domínio fazem parte da Linguagem Ubíqua e informam regras violadas, diferenciando-se de erros técnicos como falhas de conexão de banco ou estouro de memória.", 
+    "Permitem tratamento adequado de mensagens de erro para o usuário final."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Como o DDD lida com a consistência de dados em ambientes distribuídos (microsserviços)?", 
+    "Consistência em Microsserviços", 
+    [
+        "A) Utilizando bloqueios pessimistas globais em todas as tabelas de todos os microsserviços.",
+        "B) Adotando consistência eventual (eventual consistency) através de Eventos de Domínio e o padrão Sagas, já que transações ACID atômicas distribuídas são inviáveis.",
+        "C) Proibindo o uso de bancos de dados em nuvem.",
+        "D) Forçando o uso de um único banco de dados monolítico para todos os serviços."
+    ], 
+    "B", 
+    "Em arquiteturas modernas baseadas em Bounded Contexts independentes, a consistência forte ocorre dentro de cada agregado, enquanto entre contextos utiliza-se consistência eventual com eventos.", 
+    "Fundamental para escalabilidade horizontal."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que é o padrão 'Saga' frequentemente associado a arquiteturas DDD e Event-Driven?", 
+    "Padrão Saga", 
+    [
+        "A) Uma série épica de livros de ficção científica lida por programadores.",
+        "B) Um padrão de gerenciamento de transações distribuídas que coordena uma sequência de passos locais em diferentes microsserviços, executando ações compensatórias caso alguma etapa falhe.",
+        "C) Um framework de testes unitários para JavaScript.",
+        "D) Um algoritmo de criptografia de ponta a ponta."
+    ], 
+    "B", 
+    "Como não é possível usar transações de banco tradicionais entre microsserviços, a Saga garante a integridade de negócios complexos de forma assíncrona (orquestrada ou coreografada).", 
+    "Essencial em arquiteturas de domínios descentralizados."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Qual é o papel do 'Ubiquitous Language Dictionary' (Dicionário de Linguagem Ubíqua) em um projeto?", 
+    "Glossário de Linguagem Ubíqua", 
+    [
+        "A) Traduzir o código fonte para diferentes idiomas humanos.",
+        "B) Servir como fonte de verdade viva documentando todos os termos de negócio, conceitos e definições acordados entre desenvolvedores e especialistas do domínio.",
+        "C) Substituir a documentação de API do Swagger.",
+        "D) Listar todas as senhas de acesso ao servidor de homologação."
+    ], 
+    "B", 
+    "Manter um glossário atualizado evita ambiguidades e garante que todos os envolvidos usem exatamente os mesmos termos nas conversas e no código.", 
+    "É um artefato vivo fundamental do DDD."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "O que acontece quando os desenvolvedores ignoram o Design Estratégico do DDD e aplicam apenas o Design Tático?", 
+    "Riscos do DDD Parcial", 
+    [
+        "A) O sistema roda 50% mais rápido em servidores legados.",
+        "B) O código interno fica limpo, mas o sistema como um todo continua monolítico, caótico, com acoplamento indesejado entre contextos e forte contaminação conceitual de negócios.",
+        "C) O banco de dados relacional se converte automaticamente em NoSQL.",
+        "D) Os testes unitários deixam de funcionar completamente."
+    ], 
+    "B", 
+    "O Design Tático cuida das árvores, mas o Design Estratégico cuida da floresta. Ambos são necessários para colher os frutos do Domain-Driven Design.", 
+    "A divisão correta de Bounded Contexts é o coração do sucesso arquitetural."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)", 
+    "Média", 
+    "Por que o Domain-Driven Design é considerado mais do que uma simples 'ferramenta ou biblioteca de software'?", 
+    "Filosofia do DDD", 
+    [
+        "A) Porque ele exige a compra de licenças caras de softwares proprietários.",
+        "B) Porque é uma abordagem de modelagem e design centrada no entendimento profundo do negócio, exigindo colaboração humana estreita e mudança na cultura de desenvolvimento.",
+        "C) Porque ele funciona sem precisar escrever linhas de código.",
+        "D) Porque substitui metodologias ágeis como Scrum e Kanban."
+    ], 
+    "B", 
+    "O DDD conecta a estratégia de negócios da empresa diretamente à implementação técnica, unindo pessoas, linguagem e código em prol de um objetivo comum.", 
+    "O código é apenas o reflexo do modelo mental validado do negócio."
+);
 /* =====================================================
    SCRUM E EXTREME PROGRAMMING (XP)
 ===================================================== */
