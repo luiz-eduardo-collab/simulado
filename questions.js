@@ -2246,1234 +2246,725 @@ addQuestion(
     "Essencial em camadas de repositório ou tratamento centralizado de erros."
 );
 
-/* =====================================================
-   BLOCO 6 (CORRIGIDO): BANCO DE DADOS (CONCEITOS, NOSQL, ARQUITETURA) - 40 QUESTÕES
-===================================================== */
-
 addQuestion(
     "Banco de Dados", "Média",
     "O que preconiza o Teorema de CAP em sistemas distribuídos de bancos de dados?",
     "Teorema de CAP",
-    [
-        "A) Um sistema distribuído pode garantir simultaneamente e sem restrições a Consistência (Consistency), a Disponibilidade (Availability) e a Tolerância a Particionamento de Rede (Partition Tolerance).",
-        "B) Em caso de uma falha de rede (particionamento), um sistema distribuído pode escolher garantir Consistência ou Disponibilidade, mas nunca ambas simultaneamente.",
-        "C) Garante criptografia absoluta para dados em repouso e em trânsito.",
-        "D) Define o limite máximo de conexões simultâneas que um banco NoSQL suporta."
-    ],
+    ["A) Um sistema distribuído pode garantir simultaneamente e sem restrições a Consistência, Disponibilidade e Tolerância a Particionamento.", "B) Em caso de falha de rede (particionamento), um sistema distribuído pode escolher garantir Consistência ou Disponibilidade, mas nunca ambas simultaneamente.", "C) Garante criptografia absoluta para dados em trânsito.", "D) Define o limite máximo de conexões."],
     "B",
-    "O Teorema de CAP (Brewer) estabelece que redes distribuídas estão sujeitas a falhas de comunicação (partições). Portanto, a escolha em cenários de falha resume-se a CP (consistência ou parada) ou AP (disponibilidade com dados eventualmente consistentes).",
-    "Bancos relacionais tradicionais tendem a priorizar CP, enquanto muitos NoSQL focam em AP."
+    "O Teorema de CAP estabelece trade-offs em redes sujeitas a falhas de comunicação.", "Bancos relacionais tendem a priorizar CP, enquanto NoSQL costumam focar em AP."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "Qual é a principal diferença conceitual entre bancos de dados relacionais (SQL) e não relacionais (NoSQL)?",
+    "Qual é a principal diferença conceitual entre bancos de dados relacionais e não relacionais (NoSQL)?",
     "Relacional vs NoSQL",
-    [
-        "A) Bancos NoSQL não utilizam nenhum tipo de estrutura de dados e armazenam tudo em arquivos comprimidos.",
-        "B) Bancos relacionais estruturam dados em tabelas rígidas com esquemas fixos e fortes garantias ACID; bancos NoSQL oferecem alta escalabilidade horizontal e esquemas flexíveis (documentos, chave-valor, colunas ou grafos), priorizando performance e flexibilidade.",
-        "C) Bancos NoSQL são totalmente incompatíveis com arquiteturas de microsserviços.",
-        "D) Bancos relacionais rodam apenas em servidores Linux e NoSQL apenas em Windows."
-    ],
+    ["A) Bancos NoSQL não utilizam estrutura de dados.", "B) Bancos relacionais estruturam dados em tabelas rígidas com fortes garantias ACID; bancos NoSQL oferecem alta escalabilidade horizontal e esquemas flexíveis.", "C) Bancos NoSQL são incompatíveis com microsserviços.", "D) Bancos relacionais rodam apenas em Linux."],
     "B",
-    "O NoSQL surgiu para resolver problemas de grande volume e alta velocidade de dados (Big Data) onde a escalabilidade horizontal é mais crítica do que as junções relacionais complexas.",
-    "A escolha depende diretamente do domínio do problema e dos requisitos de consistência dos dados."
+    "O NoSQL resolve problemas de grande volume e alta velocidade onde a escalabilidade horizontal é crítica.", "A escolha depende do domínio do problema."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que caracteriza o modelo de Consistência Eventual (Eventual Consistency) comumente adotado em bancos NoSQL?",
+    "O que caracteriza o modelo de Consistência Eventual (Eventual Consistency) em NoSQL?",
     "Consistência Eventual",
-    [
-        "A) Os dados nunca são salvos permanentemente no disco rígido.",
-        "B) Se nenhuma nova atualização for feita em um dado item, todas as réplicas eventualmente retornarão o mesmo valor após um curto período de propagação na rede.",
-        "C) As transações exigem bloqueio síncrono absoluto em todas as máquinas do cluster.",
-        "D) O banco de dados apaga registros antigos automaticamente a cada meia-noite."
-    ],
+    ["A) Os dados nunca são salvos no disco.", "B) Se nenhuma nova atualização for feita, todas as réplicas eventualmente retornarão o mesmo valor após um curto período de propagação.", "C) As transações exigem bloqueio síncrono absoluto.", "D) O banco apaga registros antigos à meia-noite."],
     "B",
-    "A consistência eventual prioriza a alta disponibilidade e performance de gravação (modelo AP do CAP), aceitando que leituras imediatas após uma escrita possam retornar dados desatualizados por instantes.",
-    "Comum em sistemas de redes sociais, carrinhos de compras e contadores de visualizações."
+    "Prioriza a alta disponibilidade e performance de gravação (modelo AP do CAP).", "Comum em redes sociais e carrinhos de compras."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
     "Para que serve o processo de Normalização de Bancos de Dados (até a 3ª Forma Normal)?",
     "Normalização",
-    [
-        "A) Para duplicar dados intencionalmente e acelerar consultas complexas de leitura.",
-        "B) Para organizar as tabelas e colunas de forma a reduzir a redundância de dados e eliminar anomalias de inserção, atualização e exclusão, garantindo a integridade estrutural.",
-        "C) Para converter arquivos de texto em planilhas Excel formatadas.",
-        "D) Para criptografar senhas de usuários com algoritmos de hash."
-    ],
+    ["A) Para duplicar dados intencionalmente.", "B) Para organizar tabelas e colunas de forma a reduzir redundâncias e eliminar anomalias de inserção, atualização e exclusão.", "C) Para converter textos em planilhas.", "D) Para criptografar senhas."],
     "B",
-    "A normalização divide dados repetidos em tabelas relacionadas através de chaves estrangeiras, otimizando o armazenamento e evitando inconsistências lógicas.",
-    "Em contrapartida, excesso de normalização pode exigir muitos JOINs, motivando a desnormalização em cenários de alta leitura."
+    "A normalização divide dados repetidos em tabelas relacionadas por chaves estrangeiras.", "Evita inconsistências lógicas."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "Qual é a principal utilidade de um banco de dados em memória do tipo Chave-Valor (como Redis) em uma arquitetura de software moderna?",
+    "Qual é a principal utilidade de um banco de dados em memória do tipo Chave-Valor (como Redis)?",
     "Bancos Chave-Valor (Redis)",
-    [
-        "A) Armazenar logs históricos e backups em fitas magnéticas de longo prazo.",
-        "B) Atuar como cache de alta performance, gerenciamento de sessões, filas de mensagens rápidas e contadores em tempo real, devido ao acesso quase instantâneo na RAM.",
-        "C) Executar relatórios gerenciais complexos em SQL com milhões de linhas cruzadas.",
-        "D) Substituir totalmente o armazenamento persistente em disco em sistemas corporativos críticos."
-    ],
+    ["A) Armazenar backups em fitas magnéticas.", "B) Atuar como cache de alta performance, gerenciamento de sessões e filas de mensagens rápidas devido ao acesso na RAM.", "C) Executar relatórios gerenciais complexos.", "D) Substituir o armazenamento em disco."],
     "B",
-    "O Redis armazena dados diretamente na memória RAM, oferecendo tempos de resposta na ordem de microssegundos, o que alivia a carga de bancos relacionais em consultas frequentes.",
-    "Pode ser configurado com persistência em disco (RDB/AOF) para evitar perda total de dados em reinicializações."
+    "Oferece tempos de resposta na ordem de microssegundos.", "Alivia a carga de bancos relacionais."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que diferencia o Sharding (Fragmentação) da Replicação em bancos de dados distribuídos?",
+    "O que diferencia o Sharding (Fragmentação) da Replicação em bancos distribuídos?",
     "Sharding vs Replicação",
-    [
-        "A) Sharding duplica todos os dados em múltiplos servidores para redundância; replicação divide os dados particionando-os entre diferentes nós.",
-        "B) A replicação copia e sincroniza dados em múltiplos nós para garantir alta disponibilidade e leitura escalável; o sharding divide o banco de dados em partes menores (shards) distribuídas horizontalmente para suportar volumes massivos de escrita e armazenamento.",
-        "C) Não há diferença técnica; ambos são sinônimos de backups em nuvem.",
-        "D) Sharding é exclusivo de bancos relacionais e replicação de NoSQL."
-    ],
+    ["A) Sharding duplica todos os dados; replicação divide.", "B) A replicação copia dados em múltiplos nós para alta disponibilidade; o sharding divide o banco em partes menores distribuídas horizontalmente.", "C) Não há diferença técnica.", "D) Sharding é exclusivo de relacionais."],
     "B",
-    "Enquanto a replicação resolve problemas de disponibilidade e performance de leitura (nós Master-Slave), o sharding resolve problemas de limite físico de armazenamento e gargalos de escrita em bases gigantescas.",
-    "O roteamento de chaves de sharding exige planejamento cuidadoso para evitar desbalanceamento (hot spots)."
+    "A replicação resolve leitura e disponibilidade; o sharding resolve limites físicos de armazenamento e escrita.", "Exige planejamento de chaves."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que modela primariamente um banco de dados orientado a Grafos (Graph Database, como Neo4j)?",
+    "O que modela primariamente um banco de dados orientado a Grafos (como Neo4j)?",
     "Bancos de Grafos",
-    [
-        "A) Tabelas relacionais estritas com restrições de chaves primárias numéricas.",
-        "B) Dados altamente conectados compostos por Nós (Entidades), Arestas (Relacionamentos) e Propriedades, ideal para redes sociais, motores de recomendação e detecção de fraudes.",
-        "C) Arquivos binários planos sem estrutura relacional.",
-        "D) Séries temporais de métricas de CPU e temperatura."
-    ],
+    ["A) Tabelas relacionais estritas.", "B) Dados altamente conectados compostos por Nós, Arestas e Propriedades, ideal para redes sociais e detecção de fraudes.", "C) Arquivos binários planos.", "D) Séries temporais."],
     "B",
-    "Bancos de grafos calculam relacionamentos complexos de múltiplos graus de forma extremamente eficiente, sem a necessidade de operações custosas de JOIN em grandes tabelas relacionais.",
-    "Utilizam linguagens de consulta específicas, como o Cypher."
+    "Calcula relacionamentos complexos de múltiplos graus sem JOINs custosos.", "Utiliza linguagens como Cypher."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que é o modelo BASE em bancos de dados NoSQL distribuídos, em contraponto ao modelo ACID?",
+    "O que é o modelo BASE em bancos NoSQL distribuídos, em contraponto ao ACID?",
     "Modelo BASE",
-    [
-        "A) Um protocolo rígido de segurança bancária para senhas.",
-        "B) Um acrônimo para Basic Availability (Disponibilidade Básica), Soft-state (Estado Flexível) e Eventual consistency (Consistência Eventual), priorizando disponibilidade e escalabilidade sobre consistência imediata.",
-        "C) Um método para compactar tabelas SQL em formato binário.",
-        "D) Um padrão de arquitetura frontend para aplicações React."
-    ],
+    ["A) Um protocolo de segurança para senhas.", "B) Acrônimo para Basic Availability, Soft-state e Eventual consistency, priorizando disponibilidade e escalabilidade.", "C) Um método para compactar tabelas.", "D) Um padrão frontend."],
     "B",
-    "Enquanto o ACID busca rigidez transacional imediata, o modelo BASE aceita que o sistema flutue temporariamente em seu estado até atingir a consistência completa de forma assíncrona.",
-    "Reflete perfeitamente a filosofia de design dos sistemas NoSQL modernos orientados a microsserviços."
+    "Aceita que o sistema flutue temporariamente em seu estado até atingir consistência assíncrona.", "Filosofia de microsserviços modernos."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
     "Em que consiste a técnica de 'Desnormalização' em bancos de dados?",
     "Desnormalização",
-    [
-        "A) Corrigir erros de sintaxe em comandos SQL corrompidos.",
-        "B) Introduzir intencionalmente redundância de dados (como duplicar colunas ou tabelas) para eliminar a necessidade de JOINs complexos e acelerar drasticamente o tempo de leitura em consultas pesadas.",
-        "C) Apagar todas as chaves primárias de um banco relacional.",
-        "D) Converter um banco NoSQL em tabelas planas do Excel."
-    ],
+    ["A) Corrigir erros de sintaxe.", "B) Introduzir intencionalmente redundância de dados para eliminar JOINs complexos e acelerar a leitura.", "C) Apagar chaves primárias.", "D) Converter NoSQL em Excel."],
     "B",
-    "A desnormalização é um compromisso de design: sacrifica-se a pureza estrutural e a facilidade de escrita para obter ganhos expressivos de performance de leitura em ambientes de alta escala (como relatórios e dashboards).",
-    "Exige que a aplicação gerencie a consistência dos dados duplicados via código ou eventos."
+    "Sacrifica a pureza estrutural para obter ganhos de performance de leitura em alta escala.", "Exige gestão de consistência pela aplicação."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "Qual é a função de um banco de dados de Séries Temporais (Time-Series Database, como InfluxDB ou TimescaleDB)?",
+    "Qual é a função de um banco de dados de Séries Temporais (Time-Series, como InfluxDB)?",
     "Séries Temporais",
-    [
-        "A) Armazenar calendários de compromissos pessoais e agendas corporativas.",
-        "B) Otimizar a ingestão, armazenamento massivo e consulta de dados indexados por carimbos de data/hora (timestamps), como métricas de IoT, logs de servidores e cotações financeiras em tempo real.",
-        "C) Gerenciar versões de código fonte em repositórios Git.",
-        "D) Executar animações gráficas 3D em navegadores web."
-    ],
+    ["A) Armazenar agendas corporativas.", "B) Otimizar a ingestão e consulta de dados indexados por carimbos de data/hora, como métricas de IoT e logs.", "C) Gerenciar versões Git.", "D) Executar animações 3D."],
     "B",
-    "Dados de séries temporais chegam em alto volume e ordem cronológica estrita. Bancos especializados usam compressão agressiva de colunas por tempo e políticas automáticas de retenção (retention policies).",
-    "Essenciais para monitoramento de infraestrutura e observabilidade moderna."
+    "Usa compressão agressiva de colunas por tempo e políticas de retenção.", "Essencial para observabilidade."
 );
 
 addQuestion(
     "Banco de Dados", "Difícil",
-    "O que garantem as propriedades ACID em transações de bancos de dados relacionais?",
+    "O que garantem as propriedades ACID em transações relacionais?",
     "Propriedades ACID",
-    [
-        "A) Atomicidade, Consistência, Isolamento e Durabilidade: garantem que operações transacionais complexas sejam executadas de forma confiável e íntegra.",
-        "B) Agilidade, Conectividade, Indexação e Distribuição em nuvem.",
-        "C) Apenas a velocidade de leitura em consultas sem índices.",
-        "D) Criptografia avançada em repouso."
-    ],
+    ["A) Atomicidade, Consistência, Isolamento e Durabilidade: garantem execução confiável e íntegra.", "B) Agilidade e Distribuição em nuvem.", "C) Apenas velocidade de leitura.", "D) Criptografia avançada."],
     "A",
-    "A Atomicidade assegura que tudo ou nada seja executado; o Isolamento impede interferências entre transações concorrentes; a Durabilidade garante que dados confirmados não se percam em falhas.",
-    "Fundilaria de bancos relacionais tradicionais (OLTP)."
+    "Atomicidade assegura tudo ou nada; Isolamento impede interferências; Durabilidade previne perdas.", "Fundação de sistemas OLTP."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que é um Índice (Index) em um banco de dados e qual é o seu principal objetivo?",
-    "Índices em Bancos de Dados",
-    [
-        "A) Um arquivo de backup incremental gerado automaticamente a cada hora.",
-        "B) Uma estrutura de dados auxiliar (geralmente em árvore B-Tree) que melhora a velocidade de recuperação de registros em uma tabela, ao custo de espaço extra em disco e leve lentidão nas escritas.",
-        "C) Uma chave estrangeira que conecta tabelas diferentes.",
-        "D) Um comando para apagar dados duplicados."
-    ],
+    "O que é um Índice (Index) em um banco de dados e qual seu principal objetivo?",
+    "Índices",
+    ["A) Um arquivo de backup incremental.", "B) Uma estrutura auxiliar (B-Tree) que acelera a recuperação de registros, ao custo de espaço em disco e leve lentidão nas escritas.", "C) Uma chave estrangeira.", "D) Um comando de limpeza."],
     "B",
-    "Sem índices, o banco de dados precisaria fazer uma varredura completa na tabela (Full Table Scan) para encontrar registros, o que degrada a performance com grandes volumes de dados.",
-    "Devem ser criados estrategicamente nas colunas mais buscadas ou usadas em JOINs."
+    "Evita a varredura completa da tabela (Full Table Scan).", "Deve ser criado estrategicamente."
 );
 
 addQuestion(
     "Banco de Dados", "Difícil",
-    "O que caracteriza o nível de isolamento 'Serializable' em transações concorrentes?",
+    "O que caracteriza o nível de isolamento 'Serializable'?",
     "Níveis de Isolamento",
-    [
-        "A) Permite leituras sujas e fantasmas para priorizar desempenho máximo.",
-        "B) O nível mais rigoroso de isolamento, que garante que transações concorrentes executadas simultaneamente produzam exatamente o mesmo resultado que teriam se fossem executadas uma após a outra em série.",
-        "C) Bloqueia o banco de dados inteiro por 24 horas a cada comando.",
-        "D) É o padrão adotado por todos os bancos NoSQL em modo distribuído."
-    ],
+    ["A) Permite leituras sujas.", "B) O nível mais rigoroso, garantindo que transações concorrentes produzam o mesmo resultado de uma execução estritamente serial.", "C) Bloqueia o banco inteiro por 24 horas.", "D) É o padrão NoSQL."],
     "B",
-    "Evita anomalias como leitura suja, leitura não repetitiva e dados fantasmas, embora traga forte impacto de contenção de locks e concorrência.",
-    "Essencial para aplicações financeiras estritas."
+    "Evita leituras sujas, não repetitivas e fantasmas.", "Impacta a concorrência."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
     "O que é um banco de dados orientado a Documentos (Document Store, como MongoDB)?",
-    "Bancos Orientados a Documentos",
-    [
-        "A) Um software para gerenciar arquivos PDF e planilhas do Word.",
-        "B) Um banco NoSQL que armazena dados em estruturas semiestruturadas flexíveis, como JSON ou BSON, onde cada documento encapsula os dados e seus metadados sem necessidade de esquemas rígidos.",
-        "C) Um banco relacional restrito a tabelas normalizadas.",
-        "D) Um repositório de código fonte baseado em texto plano."
-    ],
+    "Bancos de Documentos",
+    ["A) Um software para gerenciar PDFs.", "B) Um NoSQL que armazena dados em estruturas flexíveis como JSON/BSON sem esquemas rígidos.", "C) Um banco relacional restrito.", "D) Um repositório de texto."],
     "B",
-    "Document Stores permitem que campos variem entre registros de uma mesma coleção, facilitando a modelagem de dados que mudam com frequência.",
-    "Permitem índices em subdocumentos e arrays."
+    "Permite que campos variem entre registros de uma mesma coleção.", "Facilita modelagem ágil."
 );
 
 addQuestion(
     "Banco de Dados", "Difícil",
-    "O que é o fenômeno conhecido como 'Leitura Fantasma' (Phantom Read) em bancos relacionais?",
+    "O que é o fenômeno da 'Leitura Fantasma' (Phantom Read)?",
     "Leitura Fantasma",
-    [
-        "A) Quando o usuário lê dados de uma tabela que foi completamente apagada.",
-        "B) Quando uma transação executa duas vezes a mesma consulta com intervalo de tempo e, no segundo resultado, percebe que novas linhas foram inseridas por outra transação concorrente que fez commit.",
-        "C) Um erro de hardware no disco rígido do servidor SQL.",
-        "D) A leitura de senhas criptografadas em texto plano."
-    ],
+    ["A) Ler dados de uma tabela apagada.", "B) Quando uma transação repete uma consulta e percebe que novas linhas foram inseridas por outra transação concorrente que fez commit.", "C) Erro de hardware.", "D) Leitura de senhas."],
     "B",
-    "Diferente da leitura não repetitiva (onde linhas existentes mudam), a leitura fantasma envolve o surgimento ou desaparecimento de linhas inteiras que satisfazem um critério de busca.",
-    "Prevenido com níveis de isolamento mais altos ou travamentos de intervalo (Next-Key Locks)."
+    "Envolve o surgimento ou desaparecimento de linhas inteiras que satisfazem um critério.", "Prevenido com isolamento alto."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "Qual é a utilidade do comando 'EXPLAIN' (ou 'EXPLAIN PLAN') em bancos de dados relacionais?",
-    "Otimização de Consultas (EXPLAIN)",
-    [
-        "A) Traduzir consultas SQL para a linguagem Python.",
-        "B) Exibir o plano de execução gerado pelo otimizador do banco de dados para uma query, mostrando se índices estão sendo usados e como as tabelas estão sendo varridas.",
-        "C) Excluir registros antigos para liberar espaço em disco.",
-        "D) Criar automaticamente novas chaves primárias."
-    ],
+    "Qual é a utilidade do comando 'EXPLAIN' em SGBDs relacionais?",
+    "EXPLAIN",
+    ["A) Traduzir queries para Python.", "B) Exibir o plano de execução gerado pelo otimizador, mostrando uso de índices e varreduras.", "C) Excluir registros antigos.", "D) Criar chaves primárias."],
     "B",
-    "O EXPLAIN é a ferramenta número um do desenvolvedor e DBA para diagnosticar consultas lentas e identificar gargalos de performance.",
-    "Permite ajustar índices e reescrever queries ineficientes."
+    "Ferramenta essencial para diagnosticar consultas lentas.", "Permite ajustar índices."
 );
 
 addQuestion(
     "Banco de Dados", "Fácil",
-    "O que representa a chave primária (Primary Key) em uma tabela de banco de dados relacional?",
+    "O que representa a chave primária (Primary Key)?",
     "Chave Primária",
-    [
-        "A) A senha de acesso administrativo do servidor.",
-        "B) Um identificador único para cada registro (linha) em uma tabela, que não pode ser nulo e não pode se repetir.",
-        "C) O arquivo de configuração principal do SGBD.",
-        "D) O endereço IP da máquina cliente."
-    ],
+    ["A) A senha do administrador.", "B) Um identificador único para cada linha, que não pode ser nulo nem se repetir.", "C) O arquivo de configuração.", "D) O IP do cliente."],
     "B",
-    "A chave primária garante a integridade de entidade, permitindo referenciar linhas específicas com precisão através de chaves estrangeiras.",
-    "Pode ser composta por uma única coluna ou por múltiplas colunas (chave composta)."
+    "Garante a integridade de entidade.", "Permite referenciamento via chaves estrangeiras."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que caracteriza um banco de dados Colunar (Column-Oriented Database, como Apache Cassandra ou Google Bigtable)?",
+    "O que caracteriza um banco de dados Colunar (Column-Oriented, como Cassandra/Bigtable)?",
     "Bancos Colunares",
-    [
-        "A) Armazenam dados em linhas contínuas na memória RAM, ideais para sistemas de e-commerce transacionais.",
-        "B) Armazenam dados organizados por colunas em vez de linhas, permitindo altíssima performance em agregações massivas e compressão extrema de dados em análises (OLAP).",
-        "C) Impedem o uso de chaves primárias compostas.",
-        "D) São incompatíveis com distribuições em cluster."
-    ],
+    ["A) Armazenam em linhas na RAM.", "B) Organizados por colunas em vez de linhas, permitindo altíssima performance em agregações massivas e compressão (OLAP).", "C) Impedem chaves compostas.", "D) Incompatíveis com clusters."],
     "B",
-    "Enquanto bancos relacionais tradicionais são orientados a linhas (ótimos para transações OLTP unitárias), bancos colunares brilham em consultas analíticas que leem apenas subconjuntos de colunas de bilhões de registros.",
-    "Amplamente usados em Data Warehouses e Big Data."
+    "Ideais para análises em grandes volumes de dados.", "Diferem dos sistemas OLTP tradicionais."
 );
 
 addQuestion(
     "Banco de Dados", "Difícil",
-    "O que significa o conceito de Deadlock (Impasse) em sistemas de banco de dados?",
+    "O que significa o conceito de Deadlock (Impasse)?",
     "Deadlock",
-    [
-        "A) A falha permanente do disco rígido principal do servidor.",
-        "B) Uma situação em que duas ou mais transações ficam permanentemente bloqueadas, cada uma aguardando a liberação de um recurso (lock) que está retido pela outra.",
-        "C) O encerramento abrupto de uma conexão de rede por timeout.",
-        "D) A corrupção de índices gerada por picos de energia."
-    ],
+    ["A) Falha permanente de disco.", "B) Situação em que duas ou mais transações ficam bloqueadas, cada uma aguardando um recurso retido pela outra.", "C) Queda de rede por timeout.", "D) Corrupção de índices."],
     "B",
-    "Para resolver deadlocks, o SGBD detecta o impasse automaticamente e aborta (rollback) uma das transações envolvidas, liberando seus recursos.",
-    "Aplicativos bem projetados devem tratar erros de deadlock realizando novas tentativas automáticas (retries)."
+    "O SGBD detecta o impasse e aborta uma das transações (rollback).", "Aplicações devem tratar com retries."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que é uma View (Visão) em bancos de dados relacionais?",
-    "Views em Banco de Dados",
-    [
-        "A) Uma cópia física estática da tabela armazenada em arquivo separado.",
-        "B) Uma consulta (query) SQL armazenada no banco de dados que é tratada como uma tabela virtual, cujos dados são dinamicamente calculados ou recuperados no momento do acesso.",
-        "C) A interface gráfica web usada para administrar o servidor PostgreSQL.",
-        "D) Um log de auditoria de acessos de usuários."
-    ],
+    "O que é uma View (Visão) em bancos relacionais?",
+    "Views",
+    ["A) Cópia física estática.", "B) Uma consulta SQL armazenada tratada como tabela virtual, com dados calculados dinamicamente no acesso.", "C) A interface gráfica web.", "D) Log de auditoria."],
     "B",
-    "Views ajudam a simplificar consultas complexas reutilizáveis e podem atuar como camada de segurança, ocultando colunas sensíveis (como senhas) dos usuários finais.",
-    "Existem também as Materialized Views, que persistem os dados em disco para acelerar leituras."
-);
-
-addQuestion(
-    "Banco de Dados", "Fácil",
-    "Qual é a função da instrução 'JOIN' em SQL?",
-    "Instrução JOIN",
-    [
-        "A) Apagar tabelas vazias do banco de dados.",
-        "B) Combinar registros de duas ou mais tabelas com base em uma condição lógica relacionada entre suas colunas (geralmente chave primária e estrangeira).",
-        "C) Inserir novos registros em lote.",
-        "D) Alterar o tipo de dado de uma coluna."
-    ],
-    "B",
-    "Os tipos mais comuns de JOIN incluem INNER JOIN, LEFT JOIN, RIGHT JOIN e FULL OUTER JOIN.",
-    "Fundilaria fundamental para resgatar dados relacionalmente normalizados."
+    "Simplifica consultas complexas e oculta colunas sensíveis.", "Existem também as Materialized Views."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que são Gatilhos (Triggers) em bancos de dados?",
+    "O que são Gatilhos (Triggers)?",
     "Triggers",
-    [
-        "A) Mensagens de erro enviadas por e-mail ao administrador.",
-        "B) Procedimentos armazenados (stored procedures) executados automaticamente pelo SGBD em resposta a determinados eventos de modificação de dados (INSERT, UPDATE, DELETE) em uma tabela.",
-        "C) Rotinas de backup executadas manualmente aos finais de semana.",
-        "D) Ferramentas de compactação de logs."
-    ],
+    ["A) Alertas de erro por e-mail.", "B) Procedimentos executados automaticamente pelo SGBD em resposta a eventos de modificação (INSERT, UPDATE, DELETE).", "C) Rotinas de fim de semana.", "D) Compactadores de log."],
     "B",
-    "Triggers são úteis para auditoria, validações complexas e manutenção de integridade derivada, embora possam dificultar o rastreamento da lógica de negócios se usados em excesso.",
-    "Devem ser empregados com parcimônia para evitar impactos de performance ocultos."
+    "Úteis para auditoria e validações complexas.", "Devem ser usados com parcimônia para evitar impactos ocultos."
 );
 
 addQuestion(
     "Banco de Dados", "Difícil",
-    "O que é um Índice Composto (Composite Index) e qual regra deve ser observada ao criá-lo?",
+    "O que é um Índice Composto e qual regra de uso deve ser observada?",
     "Índice Composto",
-    [
-        "A) Um índice que abrange múltiplas colunas; a ordem das colunas na definição do índice importa enormemente, pois o SGBD só consegue aproveitá-lo eficientemente se a consulta filtrar pela coluna mais à esquerda (prefixo mais à esquerda).",
-        "B) Um índice criado automaticamente para chaves estrangeiras sem restrições.",
-        "C) Um índice exclusivo para bancos de dados NoSQL chave-valor.",
-        "D) Um backup compactado de tabelas correlacionadas."
-    ],
+    ["A) Índice em múltiplas colunas; o SGBD só o aproveita eficientemente se a consulta filtrar pela coluna mais à esquerda.", "B) Índice automático para chaves estrangeiras.", "C) Exclusivo NoSQL.", "D) Backup compactado."],
     "A",
-    "Se você criar um índice composto em (coluna_a, coluna_b), consultas que filtram apenas por coluna_b não conseguirão usar o índice de forma ideal.",
-    "Conceito crucial para tuning de performance em grandes bases."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "O que diferencia os comandos 'TRUNCATE' e 'DELETE' em SQL?",
-    "TRUNCATE vs DELETE",
-    [
-        "A) TRUNCATE é uma operação de DDL que remove todos os registros de uma tabela rapidamente sem disparar triggers de linha e reiniciando contadores de auto-incremento; DELETE é uma operação de DML linha a linha que permite cláusula WHERE e dispara triggers.",
-        "B) Não há diferença; ambos removem dados da mesma exata forma.",
-        "C) DELETE apaga a estrutura da tabela e TRUNCATE apenas as colunas nulas.",
-        "D) TRUNCATE requer transações explícitas e DELETE não."
-    ],
-    "A",
-    "O TRUNCATE é muito mais rápido em grandes tabelas porque desaloca as páginas de dados de uma vez, mas não pode ser desfeito facilmente se executado sem transação (dependendo do SGBD).",
-    "O DELETE gera logs de desfazer (undo logs) para cada linha removida."
+    "A ordem das colunas na definição altera totalmente a capacidade de busca.", "Conceito vital de tuning."
 );
 
 addQuestion(
     "Banco de Dados", "Fácil",
     "O que é uma Chave Estrangeira (Foreign Key)?",
     "Chave Estrangeira",
-    [
-        "A) Uma senha de criptografia gerada por sistemas externos.",
-        "B) Uma coluna ou conjunto de colunas em uma tabela cujos valores correspondem à chave primária de outra tabela, estabelecendo um vínculo relacional entre elas.",
-        "C) Um índice temporário criado na memória RAM.",
-        "D) O identificador de backup em nuvem."
-    ],
+    ["A) Senha externa.", "B) Coluna cujos valores correspondem à chave primária de outra tabela, vinculando-as.", "C) Índice temporário de RAM.", "D) Identificador de nuvem."],
     "B",
-    "As chaves estrangeiras garantem a integridade referencial, impedindo que o banco de dados armazene registros órfãos que apontem para entidades inexistentes.",
-    "Podem ter regras de exclusão em cascata (ON DELETE CASCADE)."
+    "Garante a integridade referencial.", "Evita registros órfãos."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
     "O que é um ORM (Object-Relational Mapping)?",
     "ORM",
-    [
-        "A) Um protocolo de rede para comunicação entre microsserviços.",
-        "B) Uma técnica de programação que conecta o paradigma de orientação a objetos (classes e objetos) aos bancos de dados relacionais (tabelas e registros), permitindo manipular dados via código orientado a objetos.",
-        "C) Um banco de dados NoSQL orientado a memória.",
-        "D) Uma ferramenta de design gráfico para diagramas entidade-relacionamento."
-    ],
+    ["A) Protocolo de microsserviços.", "B) Técnica que conecta o paradigma orientado a objetos a bancos relacionais, permitindo manipular dados via classes.", "C) NoSQL de memória.", "D) Ferramenta de diagramas."],
     "B",
-    "Exemplos populares de ORM incluem Hibernate/JPA (Java), Entity Framework (.NET), Sequelize/Prisma (Node.js) e SQLAlchemy (Python).",
-    "Facilita o desenvolvimento, mas exige cuidado com consultas ineficientes geradas automaticamente (como o problema N+1)."
+    "Exemplos: Hibernate, Entity Framework, Prisma.", "Facilita o desenvolvimento, mas exige atenção ao desempenho."
 );
 
 addQuestion(
     "Banco de Dados", "Difícil",
-    "O que consiste o problema 'N+1 Selects' comum ao utilizar ORMs?",
+    "O que consiste o problema 'N+1 Selects' em ORMs?",
     "Problema N+1 Selects",
-    [
-        "A) Quando o banco de dados falha ao tentar executar mais de 1 conexões simultâneas.",
-        "B) Um problema de performance onde o ORM executa 1 consulta inicial para buscar uma lista de N registros, e em seguida executa N consultas adicionais separadas para buscar os dados relacionados de cada um deles.",
-        "C) Um erro de compilação em consultas SQL nativas.",
-        "D) A duplicação acidental de chaves primárias."
-    ],
+    ["A) Falha ao abrir conexões.", "B) Problema onde o ORM executa 1 query para buscar N registros, e depois N queries adicionais para buscar dados relacionados de cada um.", "C) Erro de compilação.", "D) Duplicação de chaves."],
     "B",
-    "Isso gera uma enxurrada desnecessária de requisições ao banco de dados, degradando severamente a performance.",
-    "É resolvido utilizando técnicas de carregamento ansioso (Eager Loading ou JOIN FETCH)."
+    "Gera tráfego excessivo e degrada a performance.", "Resolvido com Eager Loading / JOIN FETCH."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que caracteriza o modelo de armazenamento em Banco de Dados Orientado a Colunas (Wide-Column Store, como Apache Cassandra)?",
+    "O que caracteriza um banco Wide-Column Store (como Cassandra)?",
     "Wide-Column Store",
-    [
-        "A) Tabelas rígidas com junções complexas obrigatórias.",
-        "B) Armazenamento baseado em famílias de colunas onde as linhas podem ter conjuntos de colunas completamente diferentes entre si, otimizado para gravações massivas distribuídas.",
-        "C) Arquivos de texto plano sem indexação.",
-        "D) Exclusividade para ambientes embarcados IoT."
-    ],
+    ["A) Tabelas rígidas.", "B) Armazenamento baseado em famílias de colunas onde linhas podem ter conjuntos de colunas totalmente diferentes, otimizado para gravações massivas.", "C) Arquivos planos.", "D) Foco em IoT embarcado."],
     "B",
-    "Diferente de bancos relacionais, o modelo de colunas largas prioriza consultas baseadas na chave de partição e alta taxa de escrita (Write-heavy).",
-    "Altamente escalável horizontalmente."
+    "Prioriza consultas por chave de partição e alta taxa de escrita.", "Altamente escalável."
 );
 
 addQuestion(
     "Banco de Dados", "Difícil",
-    "O que é a técnica de Indexação Bitmap e em qual cenário ela é altamente recomendada?",
+    "O que é o Índice Bitmap e onde é recomendado?",
     "Índice Bitmap",
-    [
-        "A) Um índice que converte imagens em tabelas relacionais.",
-        "B) Uma estrutura de índice que utiliza matrizes de bits para representar a presença de valores em colunas, altamente eficiente em colunas com baixa cardinalidade (poucos valores distintos, como gênero ou estado civil) em consultas analíticas complexas.",
-        "C) Um método de criptografia para dados binários.",
-        "D) Um índice exclusivo para bancos NoSQL de documentos."
-    ],
+    ["A) Índice de imagens.", "B) Estrutura que usa matrizes de bits, eficiente em colunas de baixa cardinalidade (poucos valores distintos, como gênero) em análises.", "C) Criptografia binária.", "D) Índice de documentos."],
     "B",
-    "Enquanto B-Trees são excelentes para alta cardinalidade (muitos valores únicos), Bitmaps brilham combinando múltiplos filtros booleanos em Data Warehouses.",
-    "Pouco eficientes em ambientes com grande volume de atualizações simultâneas (OLTP)."
+    "Excelente para combinar filtros booleanos em Data Warehouses.", "Ineficiente em ambientes de alta atualização OLTP."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que é um Data Warehouse em arquitetura de dados?",
+    "O que é um Data Warehouse?",
     "Data Warehouse",
-    [
-        "A) O servidor físico onde ficam armazenados os cabos de rede da empresa.",
-        "B) Um sistema de banco de dados centralizado projetado especificamente para consultas analíticas (OLAP), consolidação, relatórios e inteligência de negócios a partir de múltiplas fontes de dados corporativos.",
-        "C) Um cache em memória RAM para sessões de usuários web.",
-        "D) Um repositório versionado de código fonte."
-    ],
+    ["A) O rack de servidores físicos.", "B) Sistema centralizado projetado para consultas analíticas (OLAP), consolidação e inteligência de negócios a partir de múltiplas fontes.", "C) Cache RAM.", "D) Repositório Git."],
     "B",
-    "Diferente dos bancos operacionais (OLTP) focados em transações rápidas do dia a dia, o Data Warehouse armazena dados históricos desnormalizados para suporte à tomada de decisão.",
-    "Exemplos modernos incluem Snowflake, Google BigQuery e Amazon Redshift."
-);
-
-addQuestion(
-    "Banco de Dados", "Fácil",
-    "Qual é a função da cláusula 'GROUP BY' em comandos SQL?",
-    "Cláusula GROUP BY",
-    [
-        "A) Agrupar tabelas diferentes em um único arquivo compactado.",
-        "B) Agrupar linhas que possuem valores idênticos nas colunas especificadas em conjuntos resumidos, permitindo a aplicação de funções de agregação (como SUM, AVG, COUNT).",
-        "C) Ordenar os resultados da consulta em ordem alfabética.",
-        "D) Filtrar registros antes de realizar qualquer junção."
-    ],
-    "B",
-    "É sempre usada em conjunto com funções estatísticas para extrair métricas agrupadas por categorias.",
-    "O filtro pós-agrupamento é feito com a cláusula HAVING."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "O que é a desnormalização controlada em sistemas de alta performance?",
-    "Desnormalização Controlada",
-    [
-        "A) Apagar colunas aleatórias para economizar memória.",
-        "B) A prática deliberada de adicionar redundância estrutural (como armazenar valores calculados ou duplicar dados) para evitar JOINs custosos e atingir tempos de resposta em tempo real.",
-        "C) Ignorar regras de chave primária em bancos relacionais.",
-        "D) Converter arquivos JSON em planilhas CSV."
-    ],
-    "B",
-    "Embora aumente o risco de anomalias de atualização se não for bem gerenciada, é indispensável em sistemas de altíssimo tráfego.",
-    "Exige que a aplicação mantenha a sincronia dos dados redundantes."
+    "Armazena dados históricos desnormalizados para tomada de decisão.", "Exemplos: Snowflake, BigQuery."
 );
 
 addQuestion(
     "Banco de Dados", "Difícil",
-    "O que é o conceito de 'Write-Ahead Logging' (WAL) em SGBDs?",
-    "Write-Ahead Logging (WAL)",
-    [
-        "A) Um método de escrever logs de acesso de usuários em arquivos de texto.",
-        "B) Uma técnica de durabilidade e recuperação onde todas as modificações de dados são gravadas em um arquivo de log sequencial no disco *antes* de serem aplicadas às páginas de dados principais.",
-        "C) Um algoritmo para encriptar senhas em trânsito.",
-        "D) Uma ferramenta de versionamento de código integrada ao SGBD."
-    ],
+    "O que é o Write-Ahead Logging (WAL)?",
+    "Write-Ahead Logging",
+    ["A) Log de texto de usuários.", "B) Técnica onde modificações são gravadas em log sequencial no disco antes de irem para as páginas principais.", "C) Encriptação.", "D) Versionamento."],
     "B",
-    "O WAL garante que, em caso de queda abrupta de energia ou falha no servidor, o banco de dados consiga recuperar o estado consistente aplicando ou desfazendo transações pendentes durante o processo de crash recovery.",
-    "Fundamental para garantir a propriedade de Durabilidade do ACID."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "O que significa a propriedade de Atomicidade em transações ACID?",
-    "Atomicidade (ACID)",
-    [
-        "A) Que os dados devem ser armazenados em átomos criptografados.",
-        "B) Que todas as operações de uma transação são tratadas como uma única unidade indivisível: ou todas são executadas com sucesso e confirmadas (commit), ou todas são revertidas (rollback) em caso de falha.",
-        "C) Que o banco de dados roda em uma única thread de processador.",
-        "D) Que os registros nunca podem ser apagados."
-    ],
-    "B",
-    "Evita que o banco de dados fique em estados intermediários inconsistentes (por exemplo, debitar de uma conta bancária sem creditar na outra).",
-    "Base da confiabilidade transacional."
-);
-
-addQuestion(
-    "Banco de Dados", "Fácil",
-    "Qual comando SQL é utilizado para inserir novos registros em uma tabela?",
-    "Comando INSERT",
-    [
-        "A) ADD INTO",
-        "B) INSERT INTO",
-        "C) CREATE RECORD",
-        "D) UPDATE TABLE"
-    ],
-    "B",
-    "O comando `INSERT INTO nome_tabela (colunas) VALUES (valores);` é o padrão fundamental de DML para popular bases relacionais.",
-    "Pode inserir uma única linha ou múltiplas linhas em uma única execução."
+    "Garante recuperação em quedas de energia (crash recovery).", "Fundamental para a Durabilidade ACID."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
     "O que são Stored Procedures (Procedimentos Armazenados)?",
     "Stored Procedures",
-    [
-        "A) Rotinas de salvamento automático de arquivos na nuvem.",
-        "B) Sub-rotinas ou blocos de código SQL compilados e armazenados diretamente no servidor de banco de dados, que podem ser executados por aplicações clientes.",
-        "C) Arquivos de configuração de hardware do servidor.",
-        "D) Códigos de criptografia de senhas."
-    ],
+    ["A) Rotinas de salvamento em nuvem.", "B) Sub-rotinas SQL compiladas e armazenadas diretamente no servidor de banco de dados.", "C) Arquivos de hardware.", "D) Códigos de hash."],
     "B",
-    "Stored procedures ajudam a centralizar a lógica de negócios no banco de dados, reduzir o tráfego de rede e reforçar a segurança.",
-    "Em contrapartida, podem dificultar o controle de versionamento de código e testes automatizados se usados em excesso."
+    "Centralizam lógica de negócios e reduzem tráfego de rede.", "Devem ser usados com equilíbrio."
 );
 
 addQuestion(
-    "Banco de Dados", "Difícil",
-    "O que é o Teorema PACELC para sistemas distribuídos?",
+    "Banco de Dados", "Média",
+    "O que é o Teorema PACELC?",
     "Teorema PACELC",
-    [
-        "A) Uma extensão do Teorema CAP que estipula que, se houver uma Partição (P), um sistema deve escolher entre Disponibilidade (A) ou Consistência (C); caso contrário (E), quando o sistema estiver rodando normalmente sem partições, ele deve escolher entre Latência (L) ou Consistência (C).",
-        "B) Um protocolo de segurança para redes sem fio.",
-        "C) Um método para calcular o desempenho de servidores NoSQL.",
-        "D) Uma regra de normalização de bancos NoSQL."
-    ],
+    ["A) Extensão do CAP: se há Partição (P), escolhe A ou C; caso contrário (E), escolhe entre Latência (L) ou Consistência (C).", "B) Protocolo Wi-Fi.", "C) Desempenho NoSQL.", "D) Normalização NoSQL."],
     "A",
-    "O CAP cobre apenas o comportamento durante falhas de rede (partições); o PACELC complementa a análise explicando o compromisso de design (Trade-off) entre Latência e Consistência mesmo quando a rede está funcionando perfeitamente.",
-    "Muitos sistemas NoSQL escolhem AP/EL (Disponibilidade em partição, Latência menor em operação normal)."
+    "Complementa o CAP analisando o trade-off de latência em operação normal.", "Muitos NoSQL escolhem AP/EL."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que é um banco de dados poliglota (Polyglot Persistence)?",
-    "Polyglot Persistence",
-    [
-        "A) Um banco de dados que suporta apenas a língua inglesa e espanhola.",
-        "B) O padrão de arquitetura moderna onde uma aplicação utiliza diferentes tipos de bancos de dados (relacionais, NoSQL de documentos, grafos, chave-valor) combinados, escolhendo a ferramenta ideal para cada subdomínio específico.",
-        "C) Um banco que armazena dados em múltiplos servidores geograficamente isolados.",
-        "D) Uma linguagem de programação para consultas SQL universais."
-    ],
+    "Qual é a utilidade do particionamento de tabelas (Table Partitioning)?",
+    "Particionamento",
+    ["A) Deletar dados antigos.", "B) Dividir uma tabela grande lógica em partes físicas menores com base em critérios, melhorando performance e manutenção.", "C) Criptografar colunas.", "D) Sincronizar com planilhas."],
     "B",
-    "Reconhece que 'uma única tecnologia de banco de dados não serve para resolver todos os problemas de forma ideal'.",
-    "Exemplo: usar PostgreSQL para dados transacionais críticos, Redis para cache e Neo4j para recomendações."
-);
-
-addQuestion(
-    "Banco de Dados", "Fácil",
-    "Qual comando SQL é utilizado para alterar a estrutura de uma tabela existente (como adicionar uma nova coluna)?",
-    "Comando ALTER TABLE",
-    [
-        "A) MODIFY TABLE",
-        "B) ALTER TABLE",
-        "C) UPDATE STRUCTURE",
-        "D) CHANGE COLUMN"
-    ],
-    "B",
-    "O comando `ALTER TABLE` faz parte da DDL (Data Definition Language) e permite modificar colunas, restrições e índices sem precisar recriar a tabela do zero.",
-    "Deve ser usado com cuidado em tabelas de grande porte em produção."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "O que significa a propriedade de Isolamento (Isolation) em transações ACID?",
-    "Isolamento (ACID)",
-    [
-        "A) Que o banco de dados deve ser mantido em uma sala isolada fisicamente.",
-        "B) Que a execução simultânea de múltiplas transações deve resultar em um estado do sistema equivalente ao de sua execução sequencial, impedindo que transações concorrentes vejam dados intermediários não confirmados.",
-        "C) Que o servidor não pode se conectar à internet.",
-        "D) Que cada tabela deve ficar em um disco rígido separado."
-    ],
-    "B",
-    "O nível de isolamento garante que o trabalho de uma transação não seja interferido por outras ocorrendo ao mesmo tempo.",
-    "Equilibra consistência e concorrência através de travas (locks) ou controle de versão multiversão (MVCC)."
+    "Facilita operações de limpeza (drop partition) e acelera varreduras por data.", "Comum em grandes bases temporais."
 );
 
 addQuestion(
     "Banco de Dados", "Difícil",
-    "O que é o mecanismo MVCC (Multi-Version Concurrency Control) em SGBDs?",
+    "O que são Lock Manager e Lock Escalation?",
+    "Gerenciamento de Locks",
+    ["A) Ferramentas de tranca física de racks.", "B) Mecanismos onde o SGBD converte vários locks de nível de linha em um único lock de nível de tabela para economizar memória.", "C) Senhas de root.", "D) Criptografia de rede."],
+    "B",
+    "Evita estouro de memória de locks, mas pode reduzir a concorrência severamente.", "Ocorre sob alta pressão transacional."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que significa 'Dirty Read' (Leitura Suja)?",
+    "Dirty Read",
+    ["A) Ler dados corrompidos por vírus.", "B) Quando uma transação lê dados modificados por outra transação concorrente que ainda não fez commit (e pode sofrer rollback).", "C) Ler tabelas sem índices.", "D) Arquivos temporários."],
+    "B",
+    "Anomalia evitada a partir do nível Read Committed.", "Compromete a integridade se houver desfazimento."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que é um banco de dados relacional objeto-relacional (ORDBMS)?",
+    "ORDBMS",
+    ["A) Banco exclusivo para planilhas.", "B) SGBD relacional estendido com suporte a conceitos de orientação a objetos, como tipos definidos pelo usuário, herança e métodos.", "C) NoSQL puro.", "D) Arquivo binário."],
+    "B",
+    "Exemplo clássico: PostgreSQL.", "Une a robustez relacional com flexibilidade estrutural."
+);
+
+addQuestion(
+    "Banco de Dados", "Difícil",
+    "O que é MVCC (Multi-Version Concurrency Control)?",
     "MVCC",
-    [
-        "A) Um antivírus para bancos de dados relacionais.",
-        "B) Um controle de concorrência onde o banco de dados mantém múltiplas versões físicas dos mesmos dados, permitindo que leitores não bloqueiem escritores e escritores não bloqueiem leitores.",
-        "C) Um protocolo de replicação em nuvem multirregião.",
-        "D) Uma ferramenta de backup em fita magnética."
-    ],
+    ["A) Controle de versão de código.", "B) Técnica onde leituras não bloqueiam escritas e escritas não bloqueiam leituras, mantendo múltiplas versões dos dados simultaneamente.", "C) Replicação Master-Slave.", "D) Criptografia AES."],
     "B",
-    "O MVCC é o padrão adotado por modernos SGBDs relacionais (como PostgreSQL e MySQL/InnoDB) para garantir alta concorrência e escalabilidade de leitura sem travar tabelas inteiras.",
-    "Exige processos de limpeza em segundo plano (como VACUUM no Postgres) para remover versões antigas obsoletas."
-);
-
-/* =====================================================
-   BLOCO 7 (COMPLETO - 40 QUESTÕES): BANCO DE DADOS E SQL
-===================================================== */
-
-// --- 1 a 30: Conceitos, NoSQL, Arquitetura e SGBD ---
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "O que preconiza o Teorema de CAP em sistemas distribuídos de bancos de dados?",
-    "Teorema de CAP",
-    [
-        "A) Um sistema distribuído pode garantir simultaneamente e sem restrições a Consistência (Consistency), a Disponibilidade (Availability) e a Tolerância a Particionamento de Rede (Partition Tolerance).",
-        "B) Em caso de uma falha de rede (particionamento), um sistema distribuído pode escolher garantir Consistência ou Disponibilidade, mas nunca ambas simultaneamente.",
-        "C) Garante criptografia absoluta para dados em repouso e em trânsito.",
-        "D) Define o limite máximo de conexões simultâneas que um banco NoSQL suporta."
-    ],
-    "B",
-    "O Teorema de CAP (Brewer) estabelece que redes distribuídas estão sujeitas a falhas de comunicação (partições). Portanto, a escolha em cenários de falha resume-se a CP (consistência ou parada) ou AP (disponibilidade com dados eventualmente consistentes).",
-    "Bancos relacionais tradicionais tendem a priorizar CP, enquanto muitos NoSQL focam em AP."
+    "Adotado por PostgreSQL e MySQL/InnoDB para alta concorrência.", "Garante isolamento sem locks excessivos."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "Qual é a principal diferença conceitual entre bancos de dados relacionais (SQL) e não relacionais (NoSQL)?",
-    "Relacional vs NoSQL",
-    [
-        "A) Bancos NoSQL não utilizam nenhum tipo de estrutura de dados e armazenam tudo em arquivos comprimidos.",
-        "B) Bancos relacionais estruturam dados em tabelas rígidas com esquemas fixos e fortes garantias ACID; bancos NoSQL oferecem alta escalabilidade horizontal e esquemas flexíveis (documentos, chave-valor, colunas ou grafos), priorizando performance e flexibilidade.",
-        "C) Bancos NoSQL são totalmente incompatíveis com arquiteturas de microsserviços.",
-        "D) Bancos relacionais rodam apenas em servidores Linux e NoSQL apenas em Windows."
-    ],
+    "O que é um Schema em bancos de dados relacionais (como PostgreSQL)?",
+    "Schemas",
+    ["A) O disco rígido do servidor.", "B) Um namespace lógico que agrupa objetos de banco de dados (tabelas, views, funções) dentro de um mesmo database.", "C) O arquivo de log.", "D) Uma chave primária."],
     "B",
-    "O NoSQL surgiu para resolver problemas de grande volume e alta velocidade de dados (Big Data) onde a escalabilidade horizontal é mais crítica do que as junções relacionais complexas.",
-    "A escolha depende diretamente do domínio do problema e dos requisitos de consistência dos dados."
+    "Permite organizar objetos por módulos ou permissões.", "Evita conflitos de nomes."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "O que caracteriza o modelo de Consistência Eventual (Eventual Consistency) comumente adotado em bancos NoSQL?",
-    "Consistência Eventual",
-    [
-        "A) Os dados nunca são salvos permanentemente no disco rígido.",
-        "B) Se nenhuma nova atualização for feita em um dado item, todas as réplicas eventualmente retornarão o mesmo valor após um curto período de propagação na rede.",
-        "C) As transações exigem bloqueio síncrono absoluto em todas as máquinas do cluster.",
-        "D) O banco de dados apaga registros antigos automaticamente a cada meia-noite."
-    ],
+    "Qual é a função do checkpoint em um motor de banco de dados?",
+    "Checkpoints",
+    ["A) Validar senhas de usuários.", "B) Escrever periodicamente páginas de dados modificadas da memória RAM para o armazenamento persistente em disco.", "C) Fazer backup completo na nuvem.", "D) Apagar logs."],
     "B",
-    "A consistência eventual prioriza a alta disponibilidade e performance de gravação (modelo AP do CAP), aceitando que leituras imediatas após uma escrita possam retornar dados desatualizados por instantes.",
-    "Comum em sistemas de redes sociais, carrinhos de compras e contadores de visualizações."
+    "Reduz o tempo de recuperação (crash recovery) aplicando o WAL.", "Gerencia o fluxo de escrita em disco."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "Para que serve o processo de Normalização de Bancos de Dados (até a 3ª Forma Normal)?",
-    "Normalização",
-    [
-        "A) Para duplicar dados intencionalmente e acelerar consultas complexas de leitura.",
-        "B) Para organizar as tabelas e colunas de forma a reduzir a redundância de dados e eliminar anomalias de inserção, atualização e exclusão, garantindo a integridade estrutural.",
-        "C) Para converter arquivos de texto em planilhas Excel formatadas.",
-        "D) Para criptografar senhas de usuários com algoritmos de hash."
-    ],
+    "O que é um Data Mart?",
+    "Data Marts",
+    ["A) Lojas virtuais de dados.", "B) Subconjunto focado de um Data Warehouse, voltado para as necessidades analíticas de um departamento específico (ex: Vendas ou RH).", "C) Tabela temporária.", "D) Cache Redis."],
     "B",
-    "A normalização divide dados repetidos em tabelas relacionadas através de chaves estrangeiras, otimizando o armazenamento e evitando inconsistências lógicas.",
-    "Em contrapartida, excesso de normalização pode exigir muitos JOINs, motivando a desnormalização em cenários de alta leitura."
+    "Mais ágil e enxuto que um Data Warehouse corporativo global.", "Facilita relatórios setoriais."
 );
 
 addQuestion(
     "Banco de Dados", "Média",
-    "Qual é a principal utilidade de um banco de dados em memória do tipo Chave-Valor (como Redis) em uma arquitetura de software moderna?",
-    "Bancos Chave-Valor (Redis)",
-    [
-        "A) Armazenar logs históricos e backups em fitas magnéticas de longo prazo.",
-        "B) Atuar como cache de alta performance, gerenciamento de sessões, filas de mensagens rápidas e contadores em tempo real, devido ao acesso quase instantâneo na RAM.",
-        "C) Executar relatórios gerenciais complexos em SQL com milhões de linhas cruzadas.",
-        "D) Substituir totalmente o armazenamento persistente em disco em sistemas corporativos críticos."
-    ],
+    "O que é a integridade referencial?",
+    "Integridade Referencial",
+    ["A) Criptografia forte de colunas.", "B) Regra que garante que chaves estrangeiras sempre apontem para registros válidos e existentes na tabela relacionada.", "C) Garantia de que a senha é forte.", "D) Backup diário."],
     "B",
-    "O Redis armazena dados diretamente na memória RAM, oferecendo tempos de resposta na ordem de microssegundos, o que alivia a carga de bancos relacionais em consultas frequentes.",
-    "Pode ser configurado com persistência em disco (RDB/AOF) para evitar perda total de dados em reinicializações."
+    "Impossibilita dados órfãos.", "Gerenciada por restrições de Foreign Key."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "O que diferencia o Sharding (Fragmentação) da Replicação em bancos de dados distribuídos?",
-    "Sharding vs Replicação",
-    [
-        "A) Sharding duplica todos os dados em múltiplos servidores para redundância; replicação divide os dados particionando-os entre diferentes nós.",
-        "B) A replicação copia e sincroniza dados em múltiplos nós para garantir alta disponibilidade e leitura escalável; o sharding divide o banco de dados em partes menores (shards) distribuídas horizontalmente para suportar volumes massivos de escrita e armazenamento.",
-        "C) Não há diferença técnica; ambos são sinônimos de backups em nuvem.",
-        "D) Sharding é exclusivo de bancos relacionais e replicação de NoSQL."
-    ],
+    "SQL", "Média",
+    "Qual é a principal diferença entre `DELETE`, `TRUNCATE` e `DROP`?",
+    "Comandos SQL",
+    ["A) Todos fazem a mesma coisa.", "B) DELETE é DML (remove linhas específicas com WHERE e gera log linha a linha); TRUNCATE é DDL (limpa tudo rapidamente sem log individual); DROP apaga a tabela inteira.", "C) DROP apaga uma linha.", "D) TRUNCATE cria tabelas."],
     "B",
-    "Enquanto a replicação resolve problemas de disponibilidade e performance de leitura (nós Master-Slave), o sharding resolve problemas de limite físico de armazenamento e gargalos de escrita em bases gigantescas.",
-    "O roteamento de chaves de sharding exige planejamento cuidadoso para evitar desbalanceamento (hot spots)."
+    "Compreender DDL vs DML é fundamental para segurança e performance.", "Sempre cheque FKs antes de TRUNCATE/DROP."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "O que modela primariamente um banco de dados orientado a Grafos (Graph Database, como Neo4j)?",
-    "Bancos de Grafos",
-    [
-        "A) Tabelas relacionais estritas com restrições de chaves primárias numéricas.",
-        "B) Dados altamente conectados compostos por Nós (Entidades), Arestas (Relacionamentos) e Propriedades, ideal para redes sociais, motores de recomendação e detecção de fraudes.",
-        "C) Arquivos binários planos sem estrutura relacional.",
-        "D) Séries temporais de métricas de CPU e temperatura."
-    ],
+    "SQL", "Média",
+    "Qual é o comportamento padrão de um `INNER JOIN`?",
+    "JOINS",
+    ["A) Retorna tudo da esquerda.", "B) Retorna apenas os registros que possuem correspondência exata em ambas as tabelas envolvidas.", "C) Produto cartesiano absoluto.", "D) Apenas exclusivos."],
     "B",
-    "Bancos de grafos calculam relacionamentos complexos de múltiplos graus de forma extremamente eficiente, sem a necessidade de operações custosas de JOIN em grandes tabelas relacionais.",
-    "Utilizam linguagens de consulta específicas, como o Cypher."
+    "Linhas sem correspondência na condição ON são descartadas.", "Diferente de LEFT/RIGHT JOIN."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "O que é o modelo BASE em bancos de dados NoSQL distribuídos, em contraponto ao modelo ACID?",
-    "Modelo BASE",
-    [
-        "A) Um protocolo rígido de segurança bancária para senhas.",
-        "B) Um acrônimo para Basic Availability (Disponibilidade Básica), Soft-state (Estado Flexível) e Eventual consistency (Consistência Eventual), priorizando disponibilidade e escalabilidade sobre consistência imediata.",
-        "C) Um método para compactar tabelas SQL em formato binário.",
-        "D) Um padrão de arquitetura frontend para aplicações React."
-    ],
+    "SQL", "Média",
+    "Para que servem as funções de agregação (`COUNT`, `SUM`, `AVG`) com `GROUP BY`?",
+    "Agregação",
+    ["A) Ordenar alfabeticamente.", "B) Realizar cálculos estatísticos e resumir conjuntos de dados agrupados por colunas específicas.", "C) Criar chaves primárias.", "D) Filtrar antes da query."],
     "B",
-    "Enquanto o ACID busca rigidez transacional imediata, o modelo BASE aceita que o sistema flutue temporariamente em seu estado até atingir a consistência completa de forma assíncrona.",
-    "Reflete perfeitamente a filosofia de design dos sistemas NoSQL modernos orientados a microsserviços."
+    "Condensa múltiplos registros em linhas de resumo por categoria.", "Filtros posteriores usam HAVING."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "Em que consiste a técnica de 'Desnormalização' em bancos de dados?",
-    "Desnormalização",
-    [
-        "A) Corrigir erros de sintaxe em comandos SQL corrompidos.",
-        "B) Introduzir intencionalmente redundância de dados (como duplicar colunas ou tabelas) para eliminar a necessidade de JOINs complexos e acelerar drasticamente o tempo de leitura em consultas pesadas.",
-        "C) Apagar todas as chaves primárias de um banco relacional.",
-        "D) Converter um banco NoSQL em tabelas planas do Excel."
-    ],
+    "SQL", "Média",
+    "Qual é a função da cláusula `HAVING`?",
+    "HAVING vs WHERE",
+    ["A) Filtrar linhas antes do GROUP BY.", "B) Filtrar os resultados gerados após a aplicação de funções de agregação e agrupamento.", "C) Ordenar decrescente.", "D) Unir tabelas."],
     "B",
-    "A desnormalização é um compromisso de design: sacrifica-se a pureza estrutural e a facilidade de escrita para obter ganhos expressivos de performance de leitura em ambientes de alta escala (como relatórios e dashboards).",
-    "Exige que a aplicação gerencie a consistência dos dados duplicados via código ou eventos."
+    "O WHERE filtra linhas brutas; o HAVING filtra grupos agregados.", "Fica após o GROUP BY."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "Qual é a função de um banco de dados de Séries Temporais (Time-Series Database, como InfluxDB ou TimescaleDB)?",
-    "Séries Temporais",
-    [
-        "A) Armazenar calendários de compromissos pessoais e agendas corporativas.",
-        "B) Otimizar a ingestão, armazenamento massivo e consulta de dados indexados por carimbos de data/hora (timestamps), como métricas de IoT, logs de servidores e cotações financeiras em tempo real.",
-        "C) Gerenciar versões de código fonte em repositórios Git.",
-        "D) Executar animações gráficas 3D em navegadores web."
-    ],
-    "B",
-    "Dados de séries temporais chegam em alto volume e ordem cronológica estrita. Bancos especializados usam compressão agressiva de colunas por tempo e políticas automáticas de retenção (retention policies).",
-    "Essenciais para monitoramento de infraestrutura e observabilidade moderna."
-);
-
-addQuestion(
-    "Banco de Dados", "Difícil",
-    "O que garantem as propriedades ACID em transações de bancos de dados relacionais?",
-    "Propriedades ACID",
-    [
-        "A) Atomicidade, Consistência, Isolamento e Durabilidade: garantem que operações transacionais complexas sejam executadas de forma confiável e íntegra.",
-        "B) Agilidade, Conectividade, Indexação e Distribuição em nuvem.",
-        "C) Apenas a velocidade de leitura em consultas sem índices.",
-        "D) Criptografia avançada em repouso."
-    ],
+    "SQL", "Média",
+    "Qual é a diferença entre `UNION` e `UNION ALL`?",
+    "UNION vs UNION ALL",
+    ["A) UNION remove duplicatas e ordena; UNION ALL inclui tudo de forma direta e mais rápida.", "B) UNION une bancos diferentes.", "C) São idênticos.", "D) UNION ALL apaga dados."],
     "A",
-    "A Atomicidade assegura que tudo ou nada seja executado; o Isolamento impede interferências entre transações concorrentes; a Durabilidade garante que dados confirmados não se percam em falhas.",
-    "Fundilaria de bancos relacionais tradicionais (OLTP)."
+    "O UNION consome mais CPU por causa do DISTINCT implícito.", "Ambos exigem compatibilidade de colunas."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "O que é um Índice (Index) em um banco de dados e qual é o seu principal objetivo?",
-    "Índices em Bancos de Dados",
-    [
-        "A) Um arquivo de backup incremental gerado automaticamente a cada hora.",
-        "B) Uma estrutura de dados auxiliar (geralmente em árvore B-Tree) que melhora a velocidade de recuperação de registros em uma tabela, ao custo de espaço extra em disco e leve lentidão nas escritas.",
-        "C) Uma chave estrangeira que conecta tabelas diferentes.",
-        "D) Um comando para apagar dados duplicados."
-    ],
+    "SQL", "Média",
+    "Qual é a função de uma Subconsulta (Subquery)?",
+    "Subconsultas",
+    ["A) Limpeza de logs.", "B) Permitir que uma consulta seja colocada dentro de outra instrução, servindo como filtro dinâmico ou fonte de dados.", "C) Imprimir relatórios.", "D) Criptografar dados."],
     "B",
-    "Sem índices, o banco de dados precisaria fazer uma varredura completa na tabela (Full Table Scan) para encontrar registros, o que degrada a performance com grandes volumes de dados.",
-    "Devem ser criados estrategicamente nas colunas mais buscadas ou usadas em JOINs."
+    "Subconsultas podem ser escalares, de linha ou de tabela.", "Correlacionadas rodam para cada linha externa."
 );
 
 addQuestion(
-    "Banco de Dados", "Difícil",
-    "O que caracteriza o nível de isolamento 'Serializable' em transações concorrentes?",
-    "Níveis de Isolamento",
-    [
-        "A) Permite leituras sujas e fantasmas para priorizar desempenho máximo.",
-        "B) O nível mais rigoroso de isolamento, que garante que transações concorrentes executadas simultaneamente produzam exatamente o mesmo resultado que teriam se fossem executadas uma após a outra em série.",
-        "C) Bloqueia o banco de dados inteiro por 24 horas a cada comando.",
-        "D) É o padrão adotado por todos os bancos NoSQL em modo distribuído."
-    ],
+    "SQL", "Difícil",
+    "O que são Funções de Janela (Window Functions)?",
+    "Window Functions",
+    ["A) Abrir janelas gráficas.", "B) Funções que calculam em um conjunto de linhas relacionadas à atual, permitindo agregações (ROW_NUMBER, SUM) sem colapsar o detalhe.", "C) Apagar janelas de manutenção.", "D) Dividir arquivos."],
     "B",
-    "Evita anomalias como leitura suja, leitura não repetitiva e dados fantasmas, embora traga forte impacto de contenção de locks e concorrência.",
-    "Essencial para aplicações financeiras estritas."
+    "Mantêm a granularidade individual das linhas.", "Utilizam a cláusula OVER."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "O que é um banco de dados orientado a Documentos (Document Store, como MongoDB)?",
-    "Bancos Orientados a Documentos",
-    [
-        "A) Um software para gerenciar arquivos PDF e planilhas do Word.",
-        "B) Um banco NoSQL que armazena dados em estruturas semiestruturadas flexíveis, como JSON ou BSON, onde cada documento encapsula os dados e seus metadados sem necessidade de esquemas rígidos.",
-        "C) Um banco relacional restrito a tabelas normalizadas.",
-        "D) Um repositório de código fonte baseado em texto plano."
-    ],
+    "SQL", "Média",
+    "Qual é o propósito da cláusula `LIMIT` (ou `TOP` / `ROWNUM`)?",
+    "LIMIT",
+    ["A) Limitar tamanho do disco.", "B) Restringir o número máximo de linhas retornadas, ideal para paginação e controle de tráfego.", "C) Limitar conexões.", "D) Impedir DELETE."],
     "B",
-    "Document Stores permitem que campos variem entre registros de uma mesma coleção, facilitando a modelagem de dados que mudam com frequência.",
-    "Permitem índices em subdocumentos e arrays."
+    "Combinada com OFFSET, viabiliza a paginação web.", "Otimiza a visualização."
 );
 
 addQuestion(
-    "Banco de Dados", "Difícil",
-    "O que é o fenômeno conhecido como 'Leitura Fantasma' (Phantom Read) em bancos relacionais?",
-    "Leitura Fantasma",
-    [
-        "A) Quando o usuário lê dados de uma tabela que foi completamente apagada.",
-        "B) Quando uma transação executa duas vezes a mesma consulta com intervalo de tempo e, no segundo resultado, percebe que novas linhas foram inseridas por outra transação concorrente que fez commit.",
-        "C) Um erro de hardware no disco rígido do servidor SQL.",
-        "D) A leitura de senhas criptografadas em texto plano."
-    ],
+    "SQL", "Fácil",
+    "Qual é a função da instrução `JOIN` em SQL?",
+    "JOIN",
+    ["A) Apagar tabelas vazias.", "B) Combinar registros de duas ou mais tabelas com base em uma condição lógica relacionada.", "C) Inserir em lote.", "D) Alterar tipo de dado."],
     "B",
-    "Diferente da leitura não repetitiva (onde linhas existentes mudam), a leitura fantasma envolve o surgimento ou desaparecimento de linhas inteiras que satisfazem um critério de busca.",
-    "Prevenido com níveis de isolamento mais altos ou travamentos de intervalo (Next-Key Locks)."
+    "Base fundamental para recuperar dados normalizados.", "Inclui INNER, LEFT, RIGHT, FULL."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "Qual é a utilidade do comando 'EXPLAIN' (ou 'EXPLAIN PLAN') em bancos de dados relacionais?",
-    "Otimização de Consultas (EXPLAIN)",
-    [
-        "A) Traduzir consultas SQL para a linguagem Python.",
-        "B) Exibir o plano de execução gerado pelo otimizador do banco de dados para uma query, mostrando se índices estão sendo usados e como as tabelas estão sendo varridas.",
-        "C) Excluir registros antigos para liberar espaço em disco.",
-        "D) Criar automaticamente novas chaves primárias."
-    ],
-    "B",
-    "O EXPLAIN é a ferramenta número um do desenvolvedor e DBA para diagnosticar consultas lentas e identificar gargalos de performance.",
-    "Permite ajustar índices e reescrever queries ineficientes."
-);
-
-addQuestion(
-    "Banco de Dados", "Fácil",
-    "O que representa a chave primária (Primary Key) em uma tabela de banco de dados relacional?",
-    "Chave Primária",
-    [
-        "A) A senha de acesso administrativo do servidor.",
-        "B) Um identificador único para cada registro (linha) em uma tabela, que não pode ser nulo e não pode se repetir.",
-        "C) O arquivo de configuração principal do SGBD.",
-        "D) O endereço IP da máquina cliente."
-    ],
-    "B",
-    "A chave primária garante a integridade de entidade, permitindo referenciar linhas específicas com precisão através de chaves estrangeiras.",
-    "Pode ser composta por uma única coluna ou por múltiplas colunas (chave composta)."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "O que caracteriza um banco de dados Colunar (Column-Oriented Database, como Apache Cassandra ou Google Bigtable)?",
-    "Bancos Colunares",
-    [
-        "A) Armazenam dados em linhas contínuas na memória RAM, ideais para sistemas de e-commerce transacionais.",
-        "B) Armazenam dados organizados por colunas em vez de linhas, permitindo altíssima performance em agregações massivas e compressão extrema de dados em análises (OLAP).",
-        "C) Impedem o uso de chaves primárias compostas.",
-        "D) São incompatíveis com distribuições em cluster."
-    ],
-    "B",
-    "Enquanto bancos relacionais tradicionais são orientados a linhas (ótimos para transações OLTP unitárias), bancos colunares brilham em consultas analíticas que leem apenas subconjuntos de colunas de bilhões de registros.",
-    "Amplamente usados em Data Warehouses e Big Data."
-);
-
-addQuestion(
-    "Banco de Dados", "Difícil",
-    "O que significa o conceito de Deadlock (Impasse) em sistemas de banco de dados?",
-    "Deadlock",
-    [
-        "A) A falha permanente do disco rígido principal do servidor.",
-        "B) Uma situação em que duas ou mais transações ficam permanentemente bloqueadas, cada uma aguardando a liberação de um recurso (lock) que está retido pela outra.",
-        "C) O encerramento abrupto de uma conexão de rede por timeout.",
-        "D) A corrupção de índices gerada por picos de energia."
-    ],
-    "B",
-    "Para resolver deadlocks, o SGBD detecta o impasse automaticamente e aborta (rollback) uma das transações envolvidas, liberando seus recursos.",
-    "Aplicativos bien projetados devem tratar erros de deadlock realizando novas tentativas automáticas (retries)."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "O que é uma View (Visão) em bancos de dados relacionais?",
-    "Views em Banco de Dados",
-    [
-        "A) Uma cópia física estática da tabela armazenada em arquivo separado.",
-        "B) Uma consulta (query) SQL armazenada no banco de dados que é tratada como uma tabela virtual, cujos dados são dinamicamente calculados ou recuperados no momento do acesso.",
-        "C) A interface gráfica web usada para administrar o servidor PostgreSQL.",
-        "D) Um log de auditoria de acessos de usuários."
-    ],
-    "B",
-    "Views ajudam a simplificar consultas complexas reutilizáveis e podem atuar como camada de segurança, ocultando colunas sensíveis (como senhas) dos usuários finais.",
-    "Existem também as Materialized Views, que persistem os dados em disco para acelerar leituras."
-);
-
-addQuestion(
-    "Banco de Dados", "Fácil",
-    "Qual é a função da instrução 'JOIN' em SQL?",
-    "Instrução JOIN",
-    [
-        "A) Apagar tabelas vazias do banco de dados.",
-        "B) Combinar registros de duas ou mais tabelas com base em uma condição lógica relacionada entre suas colunas (geralmente chave primária e estrangeira).",
-        "C) Inserir novos registros em lote.",
-        "D) Alterar o tipo de dado de uma coluna."
-    ],
-    "B",
-    "Os tipos mais comuns de JOIN incluem INNER JOIN, LEFT JOIN, RIGHT JOIN e FULL OUTER JOIN.",
-    "Fundilaria fundamental para resgatar dados relacionalmente normalizados."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "O que são Gatilhos (Triggers) em bancos de dados?",
-    "Triggers",
-    [
-        "A) Mensagens de erro enviadas por e-mail ao administrador.",
-        "B) Procedimentos armazenados (stored procedures) executados automaticamente pelo SGBD em resposta a determinados eventos de modificação de dados (INSERT, UPDATE, DELETE) em uma tabela.",
-        "C) Rotinas de backup executadas manualmente aos finais de semana.",
-        "D) Ferramentas de compactação de logs."
-    ],
-    "B",
-    "Triggers são úteis para auditoria, validações complexas e manutenção de integridade derivada, embora possam dificultar o rastreamento da lógica de negócios se usados em excesso.",
-    "Devem ser empregados com parcimônia para evitar impactos de performance ocultos."
-);
-
-addQuestion(
-    "Banco de Dados", "Difícil",
-    "O que é um Índice Composto (Composite Index) e qual regra deve ser observada ao criá-lo?",
+    "SQL", "Difícil",
+    "O que é um Índice Composto e qual regra de prefixo possui?",
     "Índice Composto",
-    [
-        "A) Um índice que abrange múltiplas colunas; a ordem das colunas na definição do índice importa enormemente, pois o SGBD só consegue aproveitá-lo eficientemente se a consulta filtrar pela coluna mais à esquerda (prefixo mais à esquerda).",
-        "B) Um índice criado automaticamente para chaves estrangeiras sem restrições.",
-        "C) Um índice exclusivo para bancos de dados NoSQL chave-valor.",
-        "D) Um backup compactado de tabelas correlacionadas."
-    ],
+    ["A) Índice em várias colunas; o SGBD só o aproveita bem se a query filtrar pela coluna mais à esquerda.", "B) Chave estrangeira automática.", "C) Exclusivo NoSQL.", "D) Backup de tabelas."],
     "A",
-    "Se você criar um índice composto em (coluna_a, coluna_b), consultas que filtram apenas por coluna_b não conseguirão usar o índice de forma ideal.",
-    "Conceito crucial para tuning de performance em grandes bases."
+    "Filtrar apenas pela segunda coluna inutiliza o uso otimizado do índice.", "Conceito essencial de otimização."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "O que diferencia os comandos 'TRUNCATE' e 'DELETE' em SQL?",
-    "TRUNCATE vs DELETE",
-    [
-        "A) TRUNCATE é uma operação de DDL que remove todos os registros de uma tabela rapidamente sem disparar triggers de linha e reiniciando contadores de auto-incremento; DELETE é uma operação de DML linha a linha que permite cláusula WHERE e dispara triggers.",
-        "B) Não há diferença; ambos removem dados da mesma exata forma.",
-        "C) DELETE apaga a estrutura da tabela e TRUNCATE apenas as colunas nulas.",
-        "D) TRUNCATE requer transações explícitas e DELETE não."
-    ],
-    "A",
-    "O TRUNCATE é muito mais rápido em grandes tabelas porque desaloca as páginas de dados de uma vez, mas não pode ser desfeito facilmente se executado sem transação (dependendo do SGBD).",
-    "O DELETE gera logs de desfazer (undo logs) para cada linha removida."
-);
-
-addQuestion(
-    "Banco de Dados", "Fácil",
+    "SQL", "Fácil",
     "O que é uma Chave Estrangeira (Foreign Key)?",
-    "Chave Estrangeira",
-    [
-        "A) Uma senha de criptografia gerada por sistemas externos.",
-        "B) Uma coluna ou conjunto de colunas em uma tabela cujos valores correspondem à chave primária de outra tabela, estabelecendo um vínculo relacional entre elas.",
-        "C) Um índice temporário criado na memória RAM.",
-        "D) O identificador de backup em nuvem."
-    ],
+    "Foreign Key",
+    ["A) Senha de criptografia.", "B) Coluna cujos valores correspondem à chave primária de outra tabela, unindo-as.", "C) Índice de RAM.", "D) ID de nuvem."],
     "B",
-    "As chaves estrangeiras garantem a integridade referencial, impedindo que o banco de dados armazene registros órfãos que apontem para entidades inexistentes.",
-    "Podem ter regras de exclusão em cascata (ON DELETE CASCADE)."
+    "Garante integridade referencial.", "Evita registros órfãos."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
+    "SQL", "Média",
     "O que é um ORM (Object-Relational Mapping)?",
     "ORM",
-    [
-        "A) Um protocolo de rede para comunicação entre microsserviços.",
-        "B) Uma técnica de programação que conecta o paradigma de orientação a objetos (classes e objetos) aos bancos de dados relacionais (tabelas e registros), permitindo manipular dados via código orientado a objetos.",
-        "C) Um banco de dados NoSQL orientado a memória.",
-        "D) Uma ferramenta de design gráfico para diagramas entidade-relacionamento."
-    ],
+    ["A) Protocolo de rede.", "B) Técnica que conecta classes orientadas a objetos a tabelas relacionais, permitindo gerenciar dados via código.", "C) NoSQL em memória.", "D) Ferramenta visual."],
     "B",
-    "Exemplos populares de ORM incluem Hibernate/JPA (Java), Entity Framework (.NET), Sequelize/Prisma (Node.js) e SQLAlchemy (Python).",
-    "Facilita o desenvolvimento, mas exige cuidado com consultas ineficientes geradas automaticamente (como o problema N+1)."
+    "Exemplos: Hibernate, Prisma, Sequelize.", "Exige cuidado com queries automáticas ineficientes."
 );
 
 addQuestion(
-    "Banco de Dados", "Difícil",
-    "O que consiste o problema 'N+1 Selects' comum ao utilizar ORMs?",
+    "SQL", "Difícil",
+    "O que consiste o problema 'N+1 Selects'?",
     "Problema N+1 Selects",
-    [
-        "A) Quando o banco de dados falha ao tentar executar mais de 1 conexões simultâneas.",
-        "B) Um problema de performance onde o ORM executa 1 consulta inicial para buscar uma lista de N registros, e em seguida executa N consultas adicionais separadas para buscar os dados relacionados de cada um deles.",
-        "C) Um erro de compilação em consultas SQL nativas.",
-        "D) A duplicação acidental de chaves primárias."
-    ],
+    ["A) Falha de conexões.", "B) Problema onde o ORM executa 1 query para buscar N registros, e depois N queries extras para buscar relações de cada um.", "C) Erro de compilação.", "D) Duplicação de chaves."],
     "B",
-    "Isso gera uma enxurrada desnecessária de requisições ao banco de dados, degradando severamente a performance.",
-    "É resolvido utilizando técnicas de carregamento ansioso (Eager Loading ou JOIN FETCH)."
+    "Degrada drasticamente a performance da aplicação.", "Resolvido com carregamento ansioso."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "O que caracteriza o modelo de armazenamento em Banco de Dados Orientado a Colunas (Wide-Column Store, como Apache Cassandra)?",
-    "Wide-Column Store",
-    [
-        "A) Tabelas rígidas com junções complexas obrigatórias.",
-        "B) Armazenamento baseado em famílias de colunas onde as linhas podem ter conjuntos de colunas completamente diferentes entre si, otimizado para gravações massivas distribuídas.",
-        "C) Arquivos de texto plano sem indexação.",
-        "D) Exclusividade para ambientes embarcados IoT."
-    ],
+    "SQL", "Fácil",
+    "Qual é a função da cláusula `GROUP BY`?",
+    "GROUP BY",
+    ["A) Agrupar tabelas em arquivo.", "B) Agrupar linhas com valores idênticos em conjuntos resumidos para aplicação de funções estatísticas.", "C) Ordenar alfabeticamente.", "D) Filtrar antes do JOIN."],
     "B",
-    "Diferente de bancos relacionais, o modelo de colunas largas prioriza consultas baseadas na chave de partição e alta taxa de escrita (Write-heavy).",
-    "Altamente escalável horizontalmente."
+    "Sempre associada a funções de agregação.", "Filtros posteriores usam HAVING."
 );
 
 addQuestion(
-    "Banco de Dados", "Difícil",
-    "O que é a técnica de Indexação Bitmap e em qual cenário ela é altamente recomendada?",
-    "Índice Bitmap",
-    [
-        "A) Um índice que converte imagens em tabelas relacionais.",
-        "B) Uma estrutura de índice que utiliza matrizes de bits para representar a presença de valores em colunas, altamente eficiente em colunas com baixa cardinalidade (poucos valores distintos, como gênero ou estado civil) em consultas analíticas complexas.",
-        "C) Um método de criptografia para dados binários.",
-        "D) Um índice exclusivo para bancos NoSQL de documentos."
-    ],
+    "SQL", "Fácil",
+    "Qual comando SQL insere novos registros?",
+    "INSERT",
+    ["A) ADD INTO", "B) INSERT INTO", "C) CREATE RECORD", "D) UPDATE TABLE"],
     "B",
-    "Enquanto B-Trees são excelentes para alta cardinalidade (muitos valores únicos), Bitmaps brilham combinando múltiplos filtros booleanos em Data Warehouses.",
-    "Pouco eficientes em ambientes com grande volume de atualizações simultâneas (OLTP)."
+    "Comando DML padrão para popular tabelas.", "Pode inserir uma ou múltiplas linhas."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "O que é um Data Warehouse em arquitetura de dados?",
-    "Data Warehouse",
-    [
-        "A) O servidor físico onde ficam armazenados os cabos de rede da empresa.",
-        "B) Um sistema de banco de dados centralizado projetado especificamente para consultas analíticas (OLAP), consolidação, relatórios e inteligência de negócios a partir de múltiplas fontes de dados corporativos.",
-        "C) Um cache em memória RAM para sessões de usuários web.",
-        "D) Um repositório versionado de código fonte."
-    ],
+    "SQL", "Média",
+    "O que são Stored Procedures?",
+    "Stored Procedures",
+    ["A) Rotinas de salvamento.", "B) Sub-rotinas SQL compiladas e armazenadas diretamente no servidor de banco de dados.", "C) Arquivos de hardware.", "D) Hashes de senha."],
     "B",
-    "Diferente dos bancos operacionais (OLTP) focados em transações rápidas do dia a dia, o Data Warehouse armazena dados históricos desnormalizados para suporte à tomada de decisão.",
-    "Exemplos modernos incluem Snowflake, Google BigQuery e Amazon Redshift."
-);
-
-
-// --- 31 a 40: Questões Práticas e Avançadas de SQL ---
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "Qual é a principal diferença entre os comandos `DELETE`, `TRUNCATE` e `DROP` em bancos de dados relacionais?",
-    "Comandos DDL e DML",
-    [
-        "A) Todos fazem exatamente a mesma coisa, apagando dados e estruturas de forma idêntica.",
-        "B) `DELETE` é um comando DML que remove linhas específicas (permitindo filtro WHERE e rollback de transação); `TRUNCATE` é um comando DDL que remove todas as linhas rapidamente reiniciando contadores de identidade sem registrar cada linha individualmente no log de transações; `DROP` exclui permanentemente a estrutura inteira da tabela do banco de dados.",
-        "C) `DROP` apaga apenas uma linha específica e `DELETE` destrói o servidor físico.",
-        "D) `TRUNCATE` é utilizado exclusivamente para criar novas tabelas e visões."
-    ],
-    "B",
-    "Compreender a diferença entre DML (Data Manipulation Language) e DDL (Data Definition Language) é crucial para performance e segurança operacional em bancos relacionais.",
-    "Sempre verifique se há chaves estrangeiras ativas antes de executar comandos como `TRUNCATE` ou `DROP`."
+    "Centralizam regras de negócio e reduzem tráfego de rede.", "Devem ser usadas com bom senso."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "Qual é o comportamento padrão de um `INNER JOIN` ao combinar duas tabelas em uma consulta SQL?",
-    "Junções (Joins)",
-    [
-        "A) Retorna todos os registros da tabela à esquerda, mesmo que não haja correspondência na tabela à direita.",
-        "B) Retorna apenas os registros que possuem correspondência (valores correspondentes) em ambas as tabelas envolvidas na junção.",
-        "C) Retorna o produto cartesiano absoluto, combinando todas as linhas de ambas as tabelas sem restrições.",
-        "D) Retorna apenas os registros exclusivos que não possuem correspondência em nenhuma das tabelas."
-    ],
-    "B",
-    "O `INNER JOIN` é a junção mais comum. Linhas que não encontram correspondência na condição de igualdade (ON) são descartadas do resultado final.",
-    "Diferencia-se de `LEFT JOIN` e `RIGHT JOIN`, que preservam registros da tabela base mesmo sem correspondência."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "Para que servem as funções de agregação no SQL, como `COUNT`, `SUM`, `AVG`, `MAX` e `MIN`, quando combinadas com a cláusula `GROUP BY`?",
-    "Funções de Agregação e Agrupamento",
-    [
-        "A) Para ordenar o resultado final da consulta alfabeticamente.",
-        "B) Para realizar cálculos estatísticos e resumir conjuntos de dados agrupados por colunas específicas, condensando múltiplos registros em linhas de resumo.",
-        "C) Para criar chaves primárias automáticas em novas tabelas.",
-        "D) Para filtrar registros individuais antes que a consulta seja executada."
-    ],
-    "B",
-    "O `GROUP BY` divide o conjunto de resultados em subgrupos, permitindo aplicar funções de agregação (como somar valores de vendas ou contar clientes) por cada categoria específica.",
-    "Para filtrar resultados após a agregação, deve-se utilizar a cláusula `HAVING` em vez de `WHERE`."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "Qual é a função da cláusula `HAVING` em uma consulta SQL agregada?",
-    "Cláusula HAVING vs WHERE",
-    [
-        "A) Filtrar linhas individuais da tabela antes que o agrupamento (`GROUP BY`) seja realizado.",
-        "B) Filtrar os resultados gerados após a aplicação de funções de agregação e agrupamento (`GROUP BY`), atuando como um filtro para os grupos formados.",
-        "C) Ordenar os dados em ordem decrescente de forma automática.",
-        "D) Unir duas tabelas diferentes sem precisar da palavra-chave JOIN."
-    ],
-    "B",
-    "A confusão entre `WHERE` e `HAVING` é clássica: o `WHERE` filtra linhas brutas antes da agregação, enquanto o `HAVING` filtra os resultados já agregados (ex: `HAVING COUNT(*) > 5`).",
-    "O `HAVING` vem sempre após o `GROUP BY` na estrutura sintática da query."
-);
-
-addQuestion(
-    "Banco de Dados", "Média",
-    "Qual é a diferença funcional entre os operadores `UNION` e `UNION ALL` ao combinar consultas SQL?",
-    "Operadores de Conjuntos",
-    [
-        "A) `UNION` remove duplicatas dos resultados combinados e executa uma ordenação implícita; `UNION ALL` inclui todos os registros (inclusive duplicados) de forma direta e mais rápida.",
-        "B) `UNION` une tabelas de bancos de dados diferentes e `UNION ALL` junta apenas uma tabela consigo mesma.",
-        "C) Não há diferença; ambos funcionam de maneira idêntica em qualquer SGBD.",
-        "D) `UNION ALL` apaga os dados originais e `UNION` cria um backup."
-    ],
+    "SQL", "Difícil",
+    "O que é o Teorema PACELC?",
+    "PACELC",
+    ["A) Extensão do CAP considerando Latência vs Consistência em operação normal.", "B) Protocolo Wi-Fi.", "C) Desempenho NoSQL.", "D) Normalização."],
     "A",
-    "Como o `UNION` padrão exige a remoção de duplicatas (processo de distinct), ele consome mais CPU e memória. Se você sabe que não há duplicatas ou quer mantê-las, o `UNION ALL` é consideravelmente mais performático.",
-    "Ambos exigem que as consultas combinadas tenham o mesmo número de colunas e tipos de dados compatíveis."
+    "Descreve trade-offs fora de cenários de falha de rede.", "Fundamental em sistemas distribuídos."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "Qual é a função de uma Subconsulta (Subquery ou Consulta Aninhada) no SQL?",
-    "Subconsultas",
-    [
-        "A) Executar tarefas de manutenção e limpeza física de logs no servidor.",
-        "B) Permitir que uma consulta SQL seja colocada dentro de outra instrução (`SELECT`, `INSERT`, `UPDATE` ou `DELETE`), servindo como filtro dinâmico ou fonte de dados derivada.",
-        "C) Submeter relatórios gerenciais diretamente para a impressora padrão.",
-        "D) Criptografar colunas sensíveis em formato binário."
-    ],
+    "SQL", "Média",
+    "O que são Triggers (Gatilhos) em SQL?",
+    "Triggers",
+    ["A) Alertas por e-mail.", "B) Procedimentos executados automaticamente pelo SGBD em eventos de DML (INSERT, UPDATE, DELETE).", "C) Rotinas de fim de semana.", "D) Compactadores."],
     "B",
-    "Subconsultas podem ser escalares (retornando um único valor) ou correlacionadas (quando dependem da linha avaliada na consulta externa). São poderosas para resolver lógicas complexas de filtragem.",
-    "Em muitos cenários modernos, o uso de CTEs (`WITH`) substitui subconsultas complexas com ganho de legibilidade."
+    "Úteis para auditoria e regras complexas.", "Podem ocultar lógicas importantes se abusados."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "O que caracteriza uma Visão (View) em um banco de dados relacional?",
-    "Views (Visões)",
-    [
-        "A) Um arquivo físico duplicado que copia todos os dados para uma máquina de backup na nuvem.",
-        "B) Uma consulta SQL armazenada no banco de dados que atua como uma tabela virtual, permitindo encapsular consultas complexas, simplificar a segurança de acesso a colunas e reutilizar lógicas de negócio.",
-        "C) Uma interface gráfica web para visualização de relatórios em PDF.",
-        "D) Um índice temporário gerado apenas durante reinicializações do sistema."
-    ],
+    "SQL", "Média",
+    "O que significa a propriedade de Atomicidade em transações SQL?",
+    "Atomicidade",
+    ["A) Dados atômicos criptografados.", "B) Unidade indivisível: ou todas as operações da transação passam (commit) ou todas falham e são revertidas (rollback).", "C) Execução em única thread.", "D) Registros imutáveis."],
     "B",
-    "As views não armazenam os dados fisicamente por padrão (exceto em materialized views); elas recalculam o resultado a cada acesso, servindo como uma camada de abstração e segurança sobre as tabelas base.",
-    "Úteis para ocultar colunas sensíveis de usuários comuns em grandes bases de dados."
+    "Evita estados inconsistentes intermediários.", "Base da confiabilidade transacional."
 );
 
 addQuestion(
-    "Banco de Dados", "Média",
-    "O que significa a propriedade de Atomicidade em transações ACID?",
-    "Atomicidade (ACID)",
-    [
-        "A) Que os dados devem ser armazenados em átomos criptografados.",
-        "B) Que todas as operações de uma transação são tratadas como uma única unidade indivisível: ou todas são executadas com sucesso e confirmadas (commit), ou todas são revertidas (rollback) em caso de falha.",
-        "C) Que o banco de dados roda em uma única thread de processador.",
-        "D) Que os registros nunca podem ser apagados."
-    ],
+    "SQL", "Difícil",
+    "O que é Write-Ahead Logging (WAL) em motores relacionais?",
+    "WAL",
+    ["A) Log de texto.", "B) Técnica onde modificações são gravadas em log sequencial em disco antes de serem aplicadas nas páginas principais.", "C) Criptografia.", "D) Versionamento."],
     "B",
-    "Evita que o banco de dados fique em estados intermediários inconsistentes (por exemplo, debitar de uma conta bancária sem creditar na outra).",
-    "Base da confiabilidade transacional."
+    "Garante recuperação contra quedas de energia.", "Assegura a durabilidade ACID."
 );
 
 addQuestion(
-    "Banco de Dados", "Fácil",
-    "Qual comando SQL é utilizado para inserir novos registros em uma tabela?",
-    "Comando INSERT",
-    [
-        "A) ADD INTO",
-        "B) INSERT INTO",
-        "C) CREATE RECORD",
-        "D) UPDATE TABLE"
-    ],
+    "SQL", "Média",
+    "Qual é a utilidade do operador `LIKE` em consultas SQL?",
+    "Operador LIKE",
+    ["A) Somar valores numéricos.", "B) Realizar buscas por padrão de texto usando curingas como `%` (vários caracteres) e `_` (um caractere).", "C) Unir tabelas.", "D) Agrupar resultados."],
     "B",
-    "O comando `INSERT INTO nome_tabela (colunas) VALUES (valores);` é o padrão fundamental de DML para popular bases relacionais.",
-    "Pode inserir uma única linha ou múltiplas linhas em uma única execução."
+    "Fundamental para pesquisas textuais parciais.", "Ex: `WHERE nome LIKE 'A%'`."
 );
 
 addQuestion(
-    "Banco de Dados", "Difícil",
-    "O que é o Teorema PACELC para sistemas distribuídos?",
-    "Teorema PACELC",
-    [
-        "A) Uma extensão do Teorema CAP que estipula que, se houver uma Partição (P), um sistema deve escolher entre Disponibilidade (A) ou Consistência (C); caso contrário (E), quando o sistema estiver rodando normalmente sem partições, ele deve escolher entre Latência (L) ou Consistência (C).",
-        "B) Um protocolo de segurança para redes sem fio.",
-        "C) Um método para calcular o desempenho de servidores NoSQL.",
-        "D) Uma regra de normalização de bancos NoSQL."
-    ],
-    "A",
-    "O CAP cobre apenas o comportamento durante falhas de rede (partições); o PACELC complementa a análise explicando o compromisso de design (Trade-off) entre Latência e Consistência mesmo quando a rede está funcionando perfeitamente.",
-    "Muitos sistemas NoSQL escolhem AP/EL (Disponibilidade em partição, Latência menor em operação normal)."
+    "SQL", "Média",
+    "Para que serve a cláusula `ORDER BY`?",
+    "ORDER BY",
+    ["A) Agrupar dados.", "B) Ordenar o conjunto de resultados de uma consulta com base em uma ou mais colunas, de forma ascendente (ASC) ou descendente (DESC).", "C) Limitar linhas.", "D) Filtrar grupos."],
+    "B",
+    "Organiza visualmente a saída dos dados.", "Pode causar impacto de performance se houver muitos dados sem índice."
 );
 
+addQuestion(
+    "SQL", "Média",
+    "O que é uma Restrição `UNIQUE`?",
+    "Restrição UNIQUE",
+    ["A) Uma chave primária temporária.", "B) Uma regra que garante que todos os valores em uma coluna (ou grupo de colunas) sejam distintos entre si, permitindo apenas um valor nulo dependendo do SGBD.", "C) Um índice de texto.", "D) Um tipo de JOIN."],
+    "B",
+    "Evita duplicação indesejada em colunas de negócio (como e-mail ou CPF).", "Diferencia-se da PK por aceitar nulos em alguns motores."
+);
+
+addQuestion(
+    "SQL", "Fácil",
+    "Qual comando SQL é utilizado para modificar dados existentes em uma tabela?",
+    "Comando UPDATE",
+    ["A) MODIFY", "B) UPDATE", "C) CHANGE", "D) ALTER"],
+    "B",
+    "Comando DML essencial para atualizar valores em linhas específicas usando o WHERE.", "Cuidado para não omitir o WHERE e alterar toda a tabela."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "O que faz a restrição `CHECK` em uma tabela SQL?",
+    "Restrição CHECK",
+    ["A) Checa se o servidor está online.", "B) Garante que os valores inseridos em uma coluna atendam a uma condição lógica específica (ex: idade > 18).", "C) Verifica vírus.", "D) Faz backup automático."],
+    "B",
+    "Adiciona validação de domínio diretamente no nível do banco de dados.", "Garante integridade dos dados inseridos."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "O que é o operador `BETWEEN` em SQL?",
+    "Operador BETWEEN",
+    ["A) Um comando para dividir tabelas.", "B) Um operador lógico que filtra resultados dentro de um intervalo inclusivo de valores (mínimo e máximo).", "C) Uma função de string.", "D) Um tipo de JOIN."],
+    "B",
+    "Facilita consultas com datas, números ou faixas textuais.", "Equivalente a usar `>=` e `<=` combinados com AND."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "Qual é a função do operador `IN` em uma consulta SQL?",
+    "Operador IN",
+    ["A) Inserir dados.", "B) Verificar se um valor corresponde a qualquer valor dentro de uma lista especificada de constantes ou subconsulta.", "C) Criar índices.", "D) Apagar registros."],
+    "B",
+    "Simplifica consultas que exigiriam múltiplos operadores OR.", "Ex: `WHERE status IN ('Ativo', 'Pendente')`."
+);
+
+addQuestion(
+    "SQL", "Difícil",
+    "O que é uma CTE (Common Table Expression) e como é introduzida?",
+    "CTE",
+    ["A) Uma tabela física permanente.", "B) Um resultado temporário nomeado, introduzido pela cláusula `WITH`, que existe apenas durante a execução de uma única query.", "C) Um tipo de erro SQL.", "D) Uma criptografia de dados."],
+    "B",
+    "Melhora drasticamente a legibilidade de consultas complexas e recursivas.", "Alternativa moderna a subqueries aninhadas."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "O que faz a função de agregação `COUNT(*)` comparada a `COUNT(coluna)`?",
+    "Função COUNT",
+    ["A) São idênticas.", "B) `COUNT(*)` conta todas as linhas do resultado (incluindo nulos); `COUNT(coluna)` conta apenas as linhas onde o valor daquela coluna não é nulo.", "C) `COUNT(*)` apaga dados.", "D) Contam apenas chaves primárias."],
+    "B",
+    "Diferença crucial ao lidar com dados incompletos ou valores NULL.", "Afeta diretamente o resultado estatístico."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "O que é uma Consulta Cruzada ou Pivotagem em SQL?",
+    "Pivotagem",
+    ["A) Girar o monitor do computador.", "B) Transformar linhas de dados em colunas para facilitar a leitura de relatórios analíticos.", "C) Apagar tabelas cruzadas.", "D) Criar chaves estrangeiras."],
+    "B",
+    "Muito usada em relatórios gerenciais e Data Warehouses.", "Pode ser feita via CASE WHEN ou funções nativas de alguns SGBDs."
+);
+
+addQuestion(
+    "SQL", "Difícil",
+    "O que é uma CTE Recursiva e para que serve?",
+    "CTE Recursiva",
+    ["A) Uma query que entra em loop infinito e trava o servidor.", "B) Uma CTE que chama a si mesma, usada para consultar dados hierárquicos ou em formato de árvore (como organogramas e categorias pai-filho).", "C) Um comando DDL.", "D) Um tipo de backup."],
+    "B",
+    "Permite navegar por estruturas de dados relacionais auto-referenciadas.", "Exige uma condição de parada (anchor member e recursive member)."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "Qual é a função da cláusula `DISTINCT` em uma consulta SQL?",
+    "Cláusula DISTINCT",
+    ["A) Destruir dados duplicados permanentemente.", "B) Omitir linhas duplicadas no conjunto de resultados retornado, exibindo apenas valores únicos.", "C) Ordenar os dados.", "D) Filtrar valores nulos."],
+    "B",
+    "Útil para extrair listas de categorias ou itens únicos de uma coluna repetitiva.", "Pode impactar a performance em grandes volumes se usado sem índices."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "O que são Funções de Manipulação de Strings em SQL (como `CONCAT`, `SUBSTRING`, `UPPER`)?",
+    "Funções de String",
+    ["A) Funções matemáticas para cálculo de juros.", "B) Funções embutidas para formatar, recortar, unir ou transformar dados textuais diretamente nas consultas.", "C) Comandos para criar tabelas.", "D) Ferramentas de rede."],
+    "B",
+    "Permitem padronizar a exibição de textos sem alterar os dados brutos salvos.", "Variam ligeiramente de sintaxe entre SGBDs."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "O que é a função `COALESCE` em SQL?",
+    "Função COALESCE",
+    ["A) Uma função para fundir duas tabelas físicas.", "B) Uma função que retorna o primeiro valor não nulo de uma lista de expressões passadas como argumento.", "C) Um comando para apagar valores nulos.", "D) Um operador de criptografia."],
+    "B",
+    "Excelente para tratar valores NULL substituindo-os por padrões legíveis (ex: `COALESCE(telefone, 'Não informado')`).", "Suportada pela grande maioria dos SGBDs."
+);
+
+addQuestion(
+    "SQL", "Difícil",
+    "O que é uma Transação Explícita e como ela é controlada?",
+    "Transações Explícitas",
+    ["A) Uma query sem filtro WHERE.", "B) Um bloco de comandos controlado manualmente por instruções como `BEGIN TRANSACTION`, `COMMIT` e `ROLLBACK`.", "C) Um comando DDL automático.", "D) Um erro de sintaxe."],
+    "B",
+    "Permite agrupar múltiplas operações sob a mesma garantia ACID.", "Se algo falha, o desenvolvedor decide desfazer tudo com ROLLBACK."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "O que faz o operador `EXISTS` em uma subconsulta SQL?",
+    "Operador EXISTS",
+    ["A) Verifica se a tabela existe no disco.", "B) Retorna verdadeiro se a subconsulta associada retornar pelo menos uma linha, encerrando a busca antecipadamente por otimização.", "C) Apaga dados duplicados.", "D) Cria um índice."],
+    "B",
+    "Altamente performático para checar a existência de relacionamentos em subqueries.", "Diferencia-se do IN por focar na existência lógica e não nos dados em si."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "Qual é o papel da função condicional `CASE` em SQL?",
+    "Função CASE",
+    ["A) Criar casos de teste de software.", "B) Aplicar lógica condicional do tipo SE-ENTÃO (If-Then-Else) diretamente nas consultas, permitindo retornar valores customizados com base em condições.", "C) Gerenciar conexões.", "D) Tratar erros de sintaxe."],
+    "B",
+    "Extremamente versátil para transformar dados dinamicamente no SELECT ou em regras de ordenação.", "Substitui estruturas complexas de código de aplicação."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "O que faz a restrição `DEFAULT` em uma coluna de tabela SQL?",
+    "Restrição DEFAULT",
+    ["A) Define a coluna como chave primária padrão.", "B) Atribui automaticamente um valor pré-determinado a uma coluna caso nenhum valor seja explicitamente fornecido durante uma inserção.", "C) Apaga dados padrão.", "D) Criptografa o campo."],
+    "B",
+    "Útil para campos de controle como data de criação (`CURRENT_TIMESTAMP`) ou status iniciais.", "Evita falhas de inserção por falta de dados opcionais."
+);
+
+addQuestion(
+    "SQL", "Média",
+    "O que é um Índice Parcial (Partial Index) em SQL?",
+    "Índice Parcial",
+    ["A) Um índice corrompido pela metade.", "B) Um índice construído apenas para um subconjunto de linhas de uma tabela, definido por uma condição WHERE (ex: `WHERE ativo = true`).", "C) Um índice sem chave primária.", "D) Um backup parcial."],
+    "B",
+    "Economiza muito espaço em disco e acelera buscas filtradas focadas.", "Disponível em SGBDs avançados como PostgreSQL."
+);
+
+addQuestion(
+    "SQL", "Difícil",
+    "O que é uma `MATERIALIZED VIEW` (Visão Materializada) e qual sua diferença para uma View comum?",
+    "Materialized View",
+    ["A) Não há diferença.", "B) Enquanto a View comum executa a query dinamicamente a cada acesso, a Materialized View persiste fisicamente o resultado em disco, exigindo atualização (refresh) periódica para acelerar leituras pesadas.", "C) É exclusiva para bancos NoSQL.", "D) Apaga dados automaticamente."],
+    "B",
+    "Estratégia clássica de otimização em Data Warehouses e relatórios complexos.", "Ganha performance de leitura sacrificando a atualização em tempo real."
+);
 /* =====================================================
    BLOCO 8 (COMPLETO - 40 QUESTÕES): DESENVOLVIMENTO WEB (HTML, CSS E JAVASCRIPT)
 ===================================================== */
