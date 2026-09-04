@@ -20,10 +20,9 @@ function addQuestion(area, difficulty, question, code, options, answer, explanat
 }
 
 /* =====================================================
-   BLOCO 1: LÓGICA DE PROGRAMAÇÃO
+    BLOCO 1: LÓGICA DE PROGRAMAÇÃO
 ===================================================== */
 
-// Questões automáticas convertidas para chamadas individuais
 addQuestion(
     "Lógica de Programação", "Fácil",
     "Considere o algoritmo abaixo. Qual será o valor final de x?",
@@ -54,7 +53,6 @@ addQuestion(
     "Acompanhe cada linha do algoritmo; a banca costuma explorar atribuições sequenciais."
 );
 
-// Questões novas manuais
 addQuestion(
     "Lógica de Programação", "Difícil",
     "Qual será o valor final impresso para a variável 'res' ao término do algoritmo abaixo?",
@@ -77,7 +75,7 @@ addQuestion(
 
 addQuestion(
     "Lógica de Programação", "Fácil",
-    "Em lógica booleana, qual é o resultado da expressão: `(true AND false) OR (true AND true)`?",
+    "Em lógica booleana, qual é o resultado da expressão abaixo?",
     "boolean v = (true && false) || (true && true);",
     ["A) true", "B) false", "C) null", "D) undefined"],
     "A",
@@ -98,7 +96,7 @@ addQuestion(
 addQuestion(
     "Lógica de Programação", "Média",
     "O que faz um algoritmo de ordenação do tipo Bubble Sort ao varrer um vetor?",
-    "Troca adjacentes fora de ordem repetidamente",
+    "// Conceito teórico de Bubble Sort",
     ["A) Divide o vetor recursivamente ao meio", "B) Compara elementos adjacentes e os troca de posição se estiverem na ordem errada", "C) Cria uma tabela hash temporária", "D) Seleciona sempre o menor elemento restante"],
     "B",
     "O Bubble Sort flutua os maiores elementos para o final do vetor através de sucessivas trocas de elementos vizinhos.",
@@ -108,7 +106,7 @@ addQuestion(
 addQuestion(
     "Lógica de Programação", "Fácil",
     "Qual estrutura de controle condicional é mais recomendada para tratar múltiplas ramificações discretas de uma mesma variável inteira ou caractere?",
-    "Estruturas condicionais de seleção",
+    "// Seleção múltipla por valor",
     ["A) if-else encadeado profundo", "B) switch-case", "C) do-while", "D) recursão terminal"],
     "B",
     "O comando switch-case melhora a legibilidade e a performance em testes de igualdade múltiplos para uma única variável.",
@@ -117,7 +115,7 @@ addQuestion(
 
 addQuestion(
     "Lógica de Programação", "Difícil",
-    "Qual será o valor de x ao final da execução?",
+    "Qual será o valor de x ao final da execução do código abaixo?",
     "int x = 10;\nif(x > 5) x *= 2;\nif(x > 15) x -= 5;\nelse x += 5;",
     ["A) 20", "B) 15", "C) 25", "D) 10"],
     "B",
@@ -137,8 +135,8 @@ addQuestion(
 
 addQuestion(
     "Lógica de Programação", "Fácil",
-    "Qual operador lógico representa a negação (inclusão de inverso lógico) na maioria das linguagens de programação?",
-    "Expressão booleana com inversão",
+    "Qual operador lógico representa a negação (inversão do valor booleano) na maioria das linguagens de programação?",
+    "// Operador unário de inversão",
     ["A) &&", "B) ||", "C) !", "D) =="],
     "C",
     "O ponto de exclamação (!) inverte o valor booleano (true vira false, e vice-versa).",
@@ -147,15 +145,13 @@ addQuestion(
 
 addQuestion(
     "Lógica de Programação", "Difícil",
-    "Qual será o resultado da operação de módulo (resto da divisão) para: `-7 % 3` na grande maioria das linguagens baseadas em C/Java?",
+    "Qual será o resultado da operação de módulo (resto da divisão) para a expressão abaixo em Java/C?",
     "int r = -7 % 3;",
     ["A) -1", "B) 1", "C) -2", "D) 2"],
     "A",
     "Em Java e C, o operador de módulo preserva o sinal do dividendo (o primeiro operando). Portanto, -7 % 3 resulta em -1.",
     "Fique atento às especificidades matemáticas versus a implementação de linguagens de programação."
 );
-
-console.log("Total de questões cadastradas:", questions.length);
 
 /* =====================================================
    QUESTÕES DE LÓGICA DE PROGRAMAÇÃO
