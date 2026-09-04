@@ -4067,147 +4067,649 @@ addQuestion(
     "Utilizados frequentemente em geradores de funções e callbacks avançados."
 );
 
-
 /* =====================================================
-   SPRING FRAMEWORK (SPRING BOOT, DATA, SECURITY)
+   BLOCO 09: SPRING FRAMEWORK (SPRING BOOT, DATA, SECURITY, CLOUD E ARQUITETURA)
 ===================================================== */
 
-const springQuest = [
-    {
-        q: "O que é o conceito de Inversão de Controle (IoC) e Injeção de Dependência (DI) no Spring Framework?",
-        c: "IoC e Injeção de Dependência",
-        o: [
-            "A) O Spring obriga o desenvolvedor a instanciar manualmente todas as classes com o operador `new` em tempo de execução.",
-            "B) O framework (Container IoC) assume a responsabilidade de criar, gerenciar o ciclo de vida e injetar automaticamente os objetos (beans) onde forem necessários, promovendo o desacoplamento.",
-            "C) É um mecanismo de segurança para criptografar senhas de usuários no banco de dados.",
-            "D) Um padrão de roteamento de requisições HTTP para microsserviços."
-        ],
-        a: "B",
-        e: "Em vez da classe controlar a criação de suas próprias dependências, o container do Spring faz essa injeção (geralmente via `@Autowired` ou construtor), facilitando testes e manutenção.",
-        t: "A injeção via construtor é atualmente a prática recomendada em detrimento da injeção direta em campos (`@Autowired` em atributos)."
-    },
-    {
-        q: "Qual é o principal objetivo do Spring Boot na simplificação do desenvolvimento de aplicações Java?",
-        c: "Spring Boot",
-        o: [
-            "A) Substituir a linguagem Java por JavaScript no backend.",
-            "B) Eliminar a necessidade de configurações XML complexas e Boilerplate, oferecendo auto-configuração (autoconfigure), dependências empacotadas (starters) e um servidor embutido (como Tomcat).",
-            "C) Executar o código exclusivamente no navegador web do cliente.",
-            "D) Fornecer um banco de dados relacional em memória com persistência infinita."
-        ],
-        a: "B",
-        e: "O Spring Boot automatiza a configuração inicial de bibliotecas com base no classpath e nas dependências declaradas (os famosos `spring-boot-starter-*`), permitindo subir uma aplicação pronta para produção em minutos.",
-        t: "Permite focar nas regras de negócio em vez de gastar horas configurando servidores de aplicação."
-    },
-    {
-        q: "Como o Spring Data JPA simplifica a camada de persistência de dados em aplicações Java?",
-        c: "Spring Data JPA",
-        o: [
-            "A) Exigindo que o desenvolvedor escreva manualmente todas as consultas SQL brutas para operações básicas de CRUD.",
-            "B) Permitindo a criação automática de repositórios através de interfaces que estendem `JpaRepository`, gerando consultas dinâmicas baseadas no nome dos métodos e implementando o mapeamento objeto-relacional (ORM).",
-            "C) Substituindo o banco de dados por arquivos de texto plano em formato CSV.",
-            "D) Executando migrações de esquema via linha de comando do terminal."
-        ],
-        a: "B",
-        e: "Com o Spring Data JPA, você cria uma interface como `interface UsuarioRepository extends JpaRepository<Usuario, Long>` e o framework implementa automaticamente operações como `save`, `findById`, `delete`, além de parser de nomes como `findByEmail`.",
-        t: "Reduz drasticamente o código repetitivo (boilerplate) de acesso a dados."
-    },
-    {
-        q: "Qual é a função das anotações `@Controller` e `@RestController` no Spring MVC / Spring Boot?",
-        c: "Spring MVC e REST",
-        o: [
-            "A) `@Controller` lida com requisições HTTP retornando visualizações (como páginas HTML via Thymeleaf), enquanto `@RestController` é uma combinação de `@Controller` com `@ResponseBody`, serializando os retornos automaticamente para JSON ou XML.",
-            "B) `@RestController` é usado apenas para conectar o sistema ao banco de dados Oracle.",
-            "C) Não há diferença técnica; ambas executam exatamente o mesmo comportamento de serialização.",
-            "D) `@Controller` gerencia transações de segurança e `@RestController` gerencia rotas de arquivos estáticos."
-        ],
-        a: "A",
-        e: "A anotação `@RestController` é o padrão para desenvolvimento de APIs REST modernas, pois garante que o objeto retornado por um método seja convertido diretamente em JSON para consumo pelo frontend.",
-        t: "Facilita a construção de arquiteturas desacopladas."
-    },
-    {
-        q: "O que o Spring Security gerencia em uma aplicação web corporativa?",
-        c: "Spring Security",
-        o: [
-            "A) O balanceamento de carga entre servidores na nuvem AWS.",
-            "B) O framework abrangente e altamente customizável de autenticação (quem você é) e controle de autorização (o que você pode fazer), além de proteção contra vulnerabilidades comuns como CSRF e XSS.",
-            "C) A compactação de arquivos estáticos de imagem e JavaScript.",
-            "D) A execução de testes unitários automatizados."
-        ],
-        a: "B",
-        e: "O Spring Security intercepta requisições HTTP através de uma cadeia de filtros (Security Filter Chain), garantindo que apenas usuários autenticados e com as devidas roles/permissões acessem endpoints protegidos.",
-        t: "É amplamente integrado com padrões modernos como OAuth2, JWT e autenticação baseada em sessão."
-    },
-    {
-        q: "Para que serve a anotação `@Transactional` no Spring?",
-        c: "Gerenciamento de Transações",
-        o: [
-            "A) Para registrar logs de erro no arquivo console da aplicação.",
-            "B) Para gerenciar automaticamente o limite de conexões simultâneas com o servidor.",
-            "C) Para declarar que um método ou classe deve executar dentro de uma transação de banco de dados, garantindo atomicidade (ACID) — ou seja, se ocorrer uma exceção não tratada, todas as operações são revertidas (rollback).",
-            "D) Para criptografar dados sensíveis trafegados na rede."
-        ],
-        a: "C",
-        e: "O Spring gerencia transações de forma declarativa através de proxies. Se um método anotado com `@Transactional` lança uma RuntimeException, o framework executa o rollback automático no banco.",
-        t: "Fundamental para manter a consistência de dados em operações complexas que envolvem múltiplos passos."
-    },
-    {
-        q: "O que são e para que servem os 'Spring Boot Actuator' em uma aplicação de produção?",
-        c: "Spring Boot Actuator",
-        o: [
-            "A) Ferramentas para gerar diagramas UML da arquitetura da aplicação.",
-            "B) Endpoints prontos de monitoramento e gerenciamento que expõem métricas de saúde da aplicação (`/actuator/health`), uso de memória, threads, ambiente e informações de build.",
-            "C) Um compilador de código Java para binários nativos.",
-            "D) Um framework de testes de aceitação em interface gráfica."
-        ],
-        a: "B",
-        e: "O Actuator é essencial em ambientes de microsserviços e produção, permitindo que ferramentas de observabilidade (como Prometheus, Grafana ou Kubernetes) monitorem a saúde do serviço em tempo real.",
-        t: "Endpoints sensíveis devem ser devidamente protegidos via Spring Security."
-    },
-    {
-        q: "Qual é a utilidade do ecossistema 'Spring Cloud' no desenvolvimento de software?",
-        c: "Spring Cloud",
-        o: [
-            "A) Fornecer ferramentas e padrões para o desenvolvimento e gerenciamento de arquiteturas baseadas em microsserviços (como Service Discovery, API Gateway, Config Server e Circuit Breaker).",
-            "B) Hospedar arquivos estáticos de imagens na nuvem da Google.",
-            "C) Substituir o framework Spring Boot por servidores web tradicionais legados.",
-            "D) Otimizar consultas SQL em bancos de dados relacionais locais."
-        ],
-        a: "A",
-        e: "O Spring Cloud resolve os problemas complexos inerentes a sistemas distribuídos, como descoberta dinâmica de serviços (Eureka), centralização de configurações e tolerância a faltas.",
-        t: "Facilita a transição de monólitos para ambientes resilientes baseados em nuvem."
-    },
-    {
-        q: "Como o Spring lida com o tratamento global de exceções em APIs REST?",
-        c: "Tratamento de Exceções",
-        o: [
-            "A) Deixando a aplicação quebrar e exibir stack traces em HTML para o usuário final.",
-            "B) Utilizando classes anotadas com `@ControllerAdvice` (ou `@RestControllerAdvice`) combinadas com `@ExceptionHandler` para capturar exceções de forma centralizada e retornar respostas HTTP padronizadas.",
-            "C) Forçando o reinício automático do servidor web a cada erro encontrado.",
-            "D) Convertendo erros de banco de dados diretamente em arquivos PDF."
-        ],
-        a: "B",
-        e: "O `@ControllerAdvice` atua como um interceptor global de erros, permitindo mapear exceções de negócio (ex: `RecursoNaoEncontradoException`) para códigos de status HTTP apropriados (`404 Not Found`) de forma limpa.",
-        t: "Evita duplicação de blocos `try-catch` espalhados por todos os controllers."
-    },
-    {
-        q: "O que o Spring Profiles (`application-{profile}.properties` ou `.yml`) permite configurar em uma aplicação?",
-        c: "Spring Profiles",
-        o: [
-            "A) Os perfis de acesso e permissões dos usuários administradores do sistema.",
-            "B) Conjuntos de configurações customizadas e isoladas para diferentes ambientes de execução (como `dev`, `test`, `prod`), permitindo alternar facilmente conexões de banco de dados e portas sem alterar o código fonte.",
-            "C) A paleta de cores e temas visuais do framework.",
-            "D) As credenciais de acesso ao repositório GitHub."
-        ],
-        a: "B",
-        e: "Os profiles ajudam a separar parâmetros que mudam conforme o ambiente onde a aplicação está rodando (ex: banco H2 em memória para desenvolvimento e PostgreSQL corporativo para produção).",
-        t: "Pode ser ativado via propriedade `spring.profiles.active=prod`."
-    }
-];
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que é o conceito de Inversão de Controle (IoC) e Injeção de Dependência (DI) no Spring Framework?",
+    "IoC e Injeção de Dependência",
+    [
+        "A) O Spring obriga o desenvolvedor a instanciar manualmente todas as classes com o operador `new` em tempo de execução.",
+        "B) O framework (Container IoC) assume a responsabilidade de criar, gerenciar o ciclo de vida e injetar automaticamente os objetos (beans) onde forem necessários, promovendo o desacoplamento.",
+        "C) É um mecanismo de segurança para criptografar senhas de usuários no banco de dados.",
+        "D) Um padrão de roteamento de requisições HTTP para microsserviços."
+    ],
+    "B",
+    "Em vez da classe controlar a criação de suas próprias dependências, o container do Spring faz essa injeção (geralmente via `@Autowired` ou construtor), facilitando testes e manutenção.",
+    "A injeção via construtor é atualmente a prática recomendada em detrimento da injeção direta em campos (`@Autowired` em atributos)."
+);
 
-springQuest.forEach(x => {
-    addQuestion("Spring Framework", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Qual é o principal objetivo do Spring Boot na simplificação do desenvolvimento de aplicações Java?",
+    "Spring Boot",
+    [
+        "A) Substituir a linguagem Java por JavaScript no backend.",
+        "B) Eliminar a necessidade de configurações XML complexas e Boilerplate, oferecendo auto-configuração (autoconfigure), dependências empacotadas (starters) e um servidor embutido (como Tomcat).",
+        "C) Executar o código exclusivamente no navegador web do cliente.",
+        "D) Fornecer um banco de dados relacional em memória com persistência infinita."
+    ],
+    "B",
+    "O Spring Boot automatiza a configuração inicial de bibliotecas com base no classpath e nas dependências declaradas (os famosos `spring-boot-starter-*`), permitindo subir uma aplicação pronta para produção em minutos.",
+    "Permite focar nas regras de negócio em vez de gastar horas configurando servidores de aplicação."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Como o Spring Data JPA simplifica a camada de persistência de dados em aplicações Java?",
+    "Spring Data JPA",
+    [
+        "A) Exigindo que o desenvolvedor escreva manualmente todas as consultas SQL brutas para operações básicas de CRUD.",
+        "B) Permitindo a criação automática de repositórios através de interfaces que estendem `JpaRepository`, gerando consultas dinâmicas baseadas no nome dos métodos e implementando o mapeamento objeto-relacional (ORM).",
+        "C) Substituindo o banco de dados por arquivos de texto plano em formato CSV.",
+        "D) Executando migrações de esquema via linha de comando do terminal."
+    ],
+    "B",
+    "Com o Spring Data JPA, você cria uma interface como `interface UsuarioRepository extends JpaRepository<Usuario, Long>` e o framework implementa automaticamente operações como `save`, `findById`, `delete`, além de parser de nomes como `findByEmail`.",
+    "Reduz drasticamente o código repetitivo (boilerplate) de acesso a dados."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Qual é a função das anotações `@Controller` e `@RestController` no Spring MVC / Spring Boot?",
+    "Spring MVC e REST",
+    [
+        "A) `@Controller` lida com requisições HTTP retornando visualizações (como páginas HTML via Thymeleaf), enquanto `@RestController` é uma combinação de `@Controller` com `@ResponseBody`, serializando os retornos automaticamente para JSON ou XML.",
+        "B) `@RestController` é usado apenas para conectar o sistema ao banco de dados Oracle.",
+        "C) Não há diferença técnica; ambas executam exatamente o mesmo comportamento de serialização.",
+        "D) `@Controller` gerencia transações de segurança e `@RestController` gerencia rotas de arquivos estáticos."
+    ],
+    "A",
+    "A anotação `@RestController` é o padrão para desenvolvimento de APIs REST modernas, pois garante que o objeto retornado por um método seja convertido diretamente em JSON para consumo pelo frontend.",
+    "Facilita a construção de arquiteturas desacopladas."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que o Spring Security gerencia em uma aplicação web corporativa?",
+    "Spring Security",
+    [
+        "A) O balanceamento de carga entre servidores na nuvem AWS.",
+        "B) O framework abrangente e altamente customizável de autenticação (quem você é) e controle de autorização (o que você pode fazer), além de proteção contra vulnerabilidades comuns como CSRF e XSS.",
+        "C) A compactação de arquivos estáticos de imagem e JavaScript.",
+        "D) A execução de testes unitários automatizados."
+    ],
+    "B",
+    "O Spring Security intercepta requisições HTTP através de uma cadeia de filtros (Security Filter Chain), garantindo que apenas usuários autenticados e com as devidas roles/permissões acessem endpoints protegidos.",
+    "É amplamente integrado com padrões modernos como OAuth2, JWT e autenticação baseada em sessão."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Para que serve a anotação `@Transactional` no Spring?",
+    "Gerenciamento de Transações",
+    [
+        "A) Para registrar logs de erro no arquivo console da aplicação.",
+        "B) Para gerenciar automaticamente o limite de conexões simultâneas com o servidor.",
+        "C) Para declarar que um método ou classe deve executar dentro de uma transação de banco de dados, garantindo atomicidade (ACID) — ou seja, se ocorrer uma exceção não tratada, todas as operações são revertidas (rollback).",
+        "D) Para criptografar dados sensíveis trafegados na rede."
+    ],
+    "C",
+    "O Spring gerencia transações de forma declarativa através de proxies. Se um método anotado com `@Transactional` lança uma RuntimeException, o framework executa o rollback automático no banco.",
+    "Fundamental para manter a consistência de dados em operações complexas que envolvem múltiplos passos."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que são e para que servem os 'Spring Boot Actuator' em uma aplicação de produção?",
+    "Spring Boot Actuator",
+    [
+        "A) Ferramentas para gerar diagramas UML da arquitetura da aplicação.",
+        "B) Endpoints prontos de monitoramento e gerenciamento que expõem métricas de saúde da aplicação (`/actuator/health`), uso de memória, threads, ambiente e informações de build.",
+        "C) Um compilador de código Java para binários nativos.",
+        "D) Um framework de testes de aceitação em interface gráfica."
+    ],
+    "B",
+    "O Actuator é essencial em ambientes de microsserviços e produção, permitindo que ferramentas de observabilidade (como Prometheus, Grafana ou Kubernetes) monitorem a saúde do serviço em tempo real.",
+    "Endpoints sensíveis devem ser devidamente protegidos via Spring Security."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Qual é a utilidade do ecossistema 'Spring Cloud' no desenvolvimento de software?",
+    "Spring Cloud",
+    [
+        "A) Fornecer ferramentas e padrões para o desenvolvimento e gerenciamento de arquiteturas baseadas em microsserviços (como Service Discovery, API Gateway, Config Server e Circuit Breaker).",
+        "B) Hospedar arquivos estáticos de imagens na nuvem da Google.",
+        "C) Substituir o framework Spring Boot por servidores web tradicionais legados.",
+        "D) Otimizar consultas SQL em bancos de dados relacionais locais."
+    ],
+    "A",
+    "O Spring Cloud resolve os problemas complexos inerentes a sistemas distribuídos, como descoberta dinâmica de serviços (Eureka), centralização de configurações e tolerância a faltas.",
+    "Facilita a transição de monólitos para ambientes resilientes baseados em nuvem."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Como o Spring lida com o tratamento global de exceções em APIs REST?",
+    "Tratamento de Exceções",
+    [
+        "A) Deixando a aplicação quebrar e exibir stack traces em HTML para o usuário final.",
+        "B) Utilizando classes anotadas com `@ControllerAdvice` (ou `@RestControllerAdvice`) combinadas com `@ExceptionHandler` para capturar exceções de forma centralizada e retornar respostas HTTP padronizadas.",
+        "C) Forçando o reinício automático do servidor web a cada erro encontrado.",
+        "D) Convertendo erros de banco de dados diretamente em arquivos PDF."
+    ],
+    "B",
+    "O `@ControllerAdvice` atua como um interceptor global de erros, permitindo mapear exceções de negócio (ex: `RecursoNaoEncontradoException`) para códigos de status HTTP apropriados (`404 Not Found`) de forma limpa.",
+    "Evita duplicação de blocos `try-catch` espalhados por todos os controllers."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que o Spring Profiles (`application-{profile}.properties` ou `.yml`) permite configurar em uma aplicação?",
+    "Spring Profiles",
+    [
+        "A) Os perfis de acesso e permissões dos usuários administradores do sistema.",
+        "B) Conjuntos de configurações customizadas e isoladas para diferentes ambientes de execução (como `dev`, `test`, `prod`), permitindo alternar facilmente conexões de banco de dados e portas sem alterar o código fonte.",
+        "C) A paleta de cores e temas visuais do framework.",
+        "D) As credenciais de acesso ao repositório GitHub."
+    ],
+    "B",
+    "Os profiles ajudam a separar parâmetros que mudam conforme o ambiente onde a aplicação está rodando (ex: banco H2 em memória para desenvolvimento e PostgreSQL corporativo para produção).",
+    "Pode ser ativado via propriedade `spring.profiles.active=prod`."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Qual é a função da anotação `@Component` e suas especializações (`@Service`, `@Repository`, `@Controller`) no Spring?",
+    "Estereótipos do Spring",
+    [
+        "A) Indicar classes que devem ser ignoradas pelo container IoC.",
+        "B) Marcar classes para que o Spring faça a varredura automática (Component Scanning) e as registre como beans gerenciados no container.",
+        "C) Definir rotas de conexão exclusiva com o protocolo FTP.",
+        "D) Configurar regras de formatação de moeda para internacionalização."
+    ],
+    "B",
+    "O Spring detecta automaticamente classes anotadas com `@Component` e seus derivados semânticos, instanciando-as e tornando-as disponíveis para injeção de dependência.",
+    "`@Repository` também adiciona tradução automática de exceções de banco de dados para DataAccessExceptions do Spring."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que significa o escopo de um Bean no Spring (`singleton`, `prototype`, `request`, `session`)?",
+    "Escopo de Beans",
+    [
+        "A) A quantidade de linhas de código que a classe possui.",
+        "B) O tempo de vida e a forma como o container do Spring gerencia e compartilha instâncias daquele bean (por exemplo, `singleton` cria apenas uma instância para toda a aplicação; `prototype` cria uma nova instância a cada injeção ou solicitação).",
+        "C) O nível de criptografia da classe contra engenharia reversa.",
+        "D) A prioridade com que o compilador executa a classe."
+    ],
+    "B",
+    "O escopo padrão no Spring é `singleton`. Beans com estado mutável compartilhados em threads concorrentes sob escopo singleton podem gerar problemas de concorrência (thread-safety).",
+    "Escopos web como `request` e `session` só estão disponíveis em aplicações web integradas."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Para que servem as anotações `@PostConstruct` e `@PreDestroy` em um bean gerenciado pelo Spring?",
+    "Ciclo de Vida do Bean",
+    [
+        "A) Para registrar logs de erro críticos no console do sistema.",
+        "B) Para executar métodos específicos logo após a construção e injeção de dependências do bean (`@PostConstruct`) e antes que o bean seja destruído pelo container (`@PreDestroy`).",
+        "C) Para testar a velocidade de resposta do banco de dados.",
+        "D) Para abrir e fechar conexões de rede via Bluetooth."
+    ],
+    "B",
+    "Esses ganchos (hooks) permitem inicializar recursos (como carregar caches ou abrir pools dedicados) e realizar limpezas adequadas antes do encerramento da aplicação.",
+    "Faziam parte do pacote padrão `javax.annotation` (agora `jakarta.annotation`)."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que é o conceito de Spring Boot Starters e qual a sua principal vantagem?",
+    "Spring Boot Starters",
+    [
+        "A) Atalhos de teclado para compilar o código mais rápido na IDE.",
+        "B) Descritores de dependências prontos que reúnem todas as bibliotecas necessárias para um tipo específico de projeto (ex: `spring-boot-starter-web`, `spring-boot-starter-data-jpa`), eliminando o gerenciamento manual de versões.",
+        "C) Ferramentas para iniciar o sistema operacional a partir do disco rígido externo.",
+        "D) Plugins para converter código Java para Python."
+    ],
+    "B",
+    "Os starters garantem compatibilidade entre versões de bibliotecas correlatas (como Hibernate, Jackson e Tomcat), poupando desenvolvedores de conflitos de dependências no Maven ou Gradle.",
+    "Basta adicionar o starter correto para habilitar uma pilha tecnológica inteira."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Qual é o papel da anotação `@SpringBootApplication` nas classes principais do Spring Boot?",
+    "Anotação Principal",
+    [
+        "A) É uma anotação meta que combina três outras anotações cruciais: `@SpringBootConfiguration`, `@EnableAutoConfiguration` e `@ComponentScan`.",
+        "B) Força a aplicação a rodar exclusivamente em modo de homologação.",
+        "C) Desativa todos os filtros de segurança do Spring Security.",
+        "D) Cria tabelas físicas no banco de dados automaticamente semânticas."
+    ],
+    "A",
+    "Essa única anotação inicializa o contexto da aplicação, ativa a varredura de componentes a partir do pacote atual e aciona a auto-configuração inteligente do Spring Boot.",
+    "Geralmente colocada na classe que contém o método `main`."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Como o Spring Boot determina quais configurações automáticas aplicar ao iniciar (Auto-Configuration)?",
+    "Auto-Configuration",
+    [
+        "A) Lendo arquivos de texto gerados aleatoriamente pelo sistema operacional.",
+        "B) Analisando o classpath da aplicação (quais dependências foram adicionadas no projeto) e as propriedades definidas no `application.properties` ou `application.yml` através de condicionais como `@ConditionalOnClass`.",
+        "C) Consultando um servidor de inteligência artificial em nuvem em tempo real.",
+        "D) Verificando a quantidade de memória RAM disponível na placa de vídeo."
+    ],
+    "B",
+    "Se o driver do H2 e o Spring Data JPA estiverem no classpath, o Spring Boot auto-configura uma fonte de dados (DataSource) em memória sem que você precise escrever código para isso.",
+    "Pode ser desativada pontualmente usando o atributo `exclude` na anotação principal."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Para que serve a anotação `@Configuration` combinada com `@Bean` em classes Java do Spring?",
+    "Java-based Configuration",
+    [
+        "A) Para definir classes de configuração que registram manualmente beans no container IoC quando bibliotecas externas não possuem anotações de estereótipo.",
+        "B) Para conectar a aplicação diretamente a impressoras locais via USB.",
+        "C) Para criar telas de interface gráfica em desktop.",
+        "D) Para compactar arquivos binários em formato ZIP."
+    ],
+    "A",
+    "É a forma padrão para instanciar e configurar beans de terceiros (como um `ObjectMapper` customizado ou um cliente HTTP) cujas classes você não pode alterar para adicionar `@Component`.",
+    "Os métodos anotados com `@Bean` são interceptados pelo container para garantir o comportamento Singleton."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que o Spring Expression Language (SpEL) permite fazer em aplicações Spring?",
+    "SpEL",
+    [
+        "A) Compilar código Java diretamente para linguagem de máquina Assembly.",
+        "B) Avaliar expressões dinâmicas em tempo de execução para consultar e manipular o grafo de objetos do container, sendo amplamente usado em injeções com `@Value` e regras de segurança.",
+        "C) Escrever consultas SQL otimizadas para bancos NoSQL.",
+        "D) Traduzir textos da interface para múltiplos idiomas automaticamente."
+    ],
+    "B",
+    "Permite injetar propriedades usando sintaxe como `@Value(\"${app.nome:Padrao}\")` ou realizar operações lógicas complexas diretamente nas anotações.",
+    "Oferece forte integração com o ecossistema Spring."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que é o Spring Native e qual problema ele busca resolver?",
+    "Spring Native",
+    [
+        "A) Uma versão do Spring que roda exclusivamente em dispositivos móveis Android antigos.",
+        "B) Uma tecnologia que permite compilar aplicações Spring Boot em executáveis nativos usando o GraalVM, reduzindo drasticamente o tempo de inicialização (startup time) e o consumo de memória RAM.",
+        "C) Um driver para conectar o Spring diretamente a sistemas operacionais Linux legados.",
+        "D) Uma biblioteca para criar jogos em 2D usando Java."
+    ],
+    "B",
+    "A compilação nativa via GraalVM elimina a necessidade de carregar a máquina virtual Java tradicional em tempo de execução, ideal para ambientes serverless e Kubernetes.",
+    "Integrado nativamente a partir do Spring Framework 6 / Spring Boot 3."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Como funcionam as propriedades externas (Externalized Configuration) no Spring Boot?",
+    "Externalized Configuration",
+    [
+        "A) Obrigando o desenvolvedor a recompilar o arquivo JAR toda vez que mudar uma URL de conexão.",
+        "B) Permitindo separar o código das configurações por meio de arquivos (`application.properties`, `application.yml`), variáveis de ambiente, argumentos de linha de comando (`--server.port=9090`) e JNDI.",
+        "C) Armazenando senhas em texto puro diretamente no código fonte do repositório.",
+        "D) Sincronizando dados através de disquetes de 3.5 polegadas."
+    ],
+    "B",
+    "O Spring Boot possui uma ordem estrita de precedência para carregar propriedades, permitindo sobrescrever configurações locais facilmente via variáveis de ambiente em produção.",
+    "Variáveis de ambiente em formato maiúsculo com sublinhados (ex: `SPRING_DATASOURCE_URL`) são mapeadas automaticamente."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que é o mecanismo de Derived Query Methods (Consultas Derivadas) no Spring Data JPA?",
+    "Derived Query Methods",
+    [
+        "A) Um gerador de relatórios visuais em PDF.",
+        "B) A capacidade de criar consultas SQL/JPQL automaticamente com base puramente na assinatura e nomenclatura dos métodos da interface de repositório (ex: `findByNomeAndEmail`).",
+        "C) Um otimizador de índices para bancos de dados relacionais.",
+        "D) Um sistema de cache em memória para requisições HTTP."
+    ],
+    "B",
+    "O Spring analisa o nome do método (`findBy`, `readBy`, `countBy`, `deleteBy`) combinando com propriedades da entidade para gerar a consulta correspondente sem necessidade de código manual.",
+    "Evita escrever consultas JPQL simples repetidamente."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Para que serve a anotação `@Query` no Spring Data JPA?",
+    "Anotação @Query",
+    [
+        "A) Para disparar alertas sonoros quando o banco de dados cair.",
+        "B) Para escrever consultas personalizadas utilizando JPQL (Java Persistence Query Language) ou SQL nativo diretamente nos métodos dos repositórios.",
+        "C) Para gerar dados fakes de teste automaticamente.",
+        "D) Para mapear relacionamentos de chave estrangeira entre tabelas."
+    ],
+    "B",
+    "Quando as consultas derivadas se tornam complexas demais ou exigem junções avançadas (JOINs), a anotação `@Query` permite escrever o comando personalizado. Pode usar `nativeQuery = true` para SQL puro.",
+    "Suporta parâmetros nomeados com `@Param`."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que são e para que servem as Paginations e Sortings através das interfaces `Pageable` e `Page` no Spring Data JPA?",
+    "Paginação e Ordenação",
+    [
+        "A) Para redimensionar o tamanho das janelas de código na IDE.",
+        "B) Para buscar grandes volumes de dados do banco de dados divididos em páginas controladas e ordenadas, otimizando o uso de memória e a performance da API.",
+        "C) Para criar animações de rolagem infinita no frontend.",
+        "D) Para limitar a quantidade de linhas em arquivos de log."
+    ],
+    "B",
+    "Passando um objeto `Pageable` (geralmente construído via `PageRequest.of(page, size, sort)`) no método do repositório, o Spring gera automaticamente as cláusulas LIMIT e OFFSET no SQL subjacente.",
+    "Retorna um objeto `Page<T>` contendo metadados úteis como total de elementos e total de páginas."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Qual é a diferença entre carregamento EAGER (ocioso/imediato) e LAZY (preguiçoso) em mapeamentos JPA (`@OneToMany`, `@ManyToOne`)?",
+    "EAGER vs LAZY",
+    [
+        "A) EAGER carrega os dados associados apenas quando acessados explicitamente; LAZY carrega tudo imediatamente junto com a entidade principal.",
+        "B) LAZY carrega os dados relacionados sob demanda (apenas quando o getter correspondente é chamado), economizando recursos; EAGER carrega os dados associados imediatamente na mesma consulta inicial.",
+        "C) Não há diferença de desempenho entre ambos.",
+        "D) LAZY funciona apenas com bancos de dados NoSQL."
+    ],
+    "B",
+    "O padrão para coleções (`@OneToMany`, `@ManyToMany`) no JPA é `LAZY` para evitar consultas pesadas desnecessárias. O acesso fora de uma transação ativa pode gerar a famosa exceção `LazyInitializationException`.",
+    "Associações para um (`@ManyToOne`, `@OneToOne`) vêm por padrão como `EAGER`."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que o Flyway ou Liquibase realizam quando integrados a uma aplicação Spring Boot?",
+    "Database Migrations",
+    [
+        "A) Gerenciam o versionamento e a evolução estrutural do banco de dados (criação de tabelas, colunas, scripts de migração SQL) de forma automatizada e controlada entre diferentes ambientes.",
+        "B) Converte arquivos de texto em planilhas Excel na nuvem.",
+        "C) Realizam backups automáticos do disco rígido local.",
+        "D) Otimizam loops de repetição em Java."
+    ],
+    "A",
+    "Eles evitam o risco de usar `spring.jpa.hibernate.ddl-auto=create-drop` ou `update` em produção, garantindo que o esquema do banco evolua de forma previsível e auditável via scripts versionados.",
+    "Os scripts são executados ordenadamente assim que a aplicação sobe."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que é o conceito de Projections (Projeções) no Spring Data JPA?",
+    "Projections",
+    [
+        "A) Ferramentas de inteligência artificial para projetar telas em 3D.",
+        "B) Um mecanismo que permite buscar apenas um subconjunto específico de colunas de uma entidade usando interfaces (Interface-based Projections) ou classes DTO, evitando o tráfego desnecessário de dados.",
+        "C) Um padrão de design para criar animações em HTML5.",
+        "D) Um formato de compactação de imagens."
+    ],
+    "B",
+    "Em vez de carregar a entidade inteira com dezenas de colunas, você pode definir uma interface com getters específicos (`interface NomeEmailOnly { String getNome(); String getEmail(); }`) e o Spring otimiza a query.",
+    "Melhora a performance em consultas de leitura intensiva."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que ocorre quando uma operação de banco de dados lança uma exceção e o método está anotado com `@Transactional`?",
+    "Rollback Transactional",
+    [
+        "A) A transação é mantida aberta indefinidamente até o servidor reiniciar.",
+        "B) O Spring realiza o rollback automático da transação caso ocorra uma `RuntimeException` (ou subclasses de `Error`), desfazendo todas as alterações feitas no banco de dados durante o escopo.",
+        "C) O erro é ignorado silenciosamente e o fluxo continua.",
+        "D) O sistema deleta todas as tabelas do banco de segurança."
+    ],
+    "B",
+    "Por padrão, exceções checadas (`Checked Exceptions`, como `IOException`) não disparam rollback automático a menos que explicitamente configurado (`@Transactional(rollbackFor = Exception.class)`).",
+    "Garante a integridade dos dados transacionais."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Para que serve a anotação `@Modifying` combinada com `@Query` no Spring Data JPA?",
+    "@Modifying",
+    [
+        "A) Para modificar o estilo visual dos botões no front-end.",
+        "B) Para indicar ao Spring Data que a consulta personalizada (`@Query`) é uma operação de alteração de dados (como UPDATE, DELETE ou INSERT), exigindo uma transação ativa.",
+        "C) Para alterar dinamicamente o tipo de banco de dados em tempo de execução.",
+        "D) Para modificar permissões de acesso de usuários no Spring Security."
+    ],
+    "B",
+    "Por padrão, o Spring Data assume que consultas `@Query` são do tipo SELECT. Sem o `@Modifying`, operações de escrita em consultas JPQL nativas geram erros.",
+    "Deve ser usado obrigatoriamente dentro de métodos transacionais."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que é o cache de primeiro nível (First-Level Cache) gerenciado pelo EntityManager / Hibernate no JPA?",
+    "Hibernate Cache",
+    [
+        "A) Um cache compartilhado por todos os servidores do cluster em nuvem.",
+        "B) Um cache associado ao ciclo de vida da transação (EntityManager/Session), que armazena entidades já carregadas para evitar consultas repetidas ao banco de dados dentro da mesma transação.",
+        "C) O cache do navegador web do usuário final.",
+        "D) Um armazenamento temporário na memória ROM do processador."
+    ],
+    "B",
+    "Se você buscar o mesmo ID duas vezes dentro do mesmo escopo de persistência, a segunda chamada retorna a instância em memória sem ir ao banco.",
+    "Existe também o cache de segundo nível (Second-Level Cache), que opera no nível da fábrica de sessões (SessionFactory)."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Qual é a utilidade da anotação `@EntityListeners` em entidades JPA?",
+    "Entity Listeners",
+    [
+        "A) Para escutar eventos de cliques de mouse em formulários web.",
+        "B) Para interceptar o ciclo de vida da entidade no banco de dados (como antes de persistir `@PrePersist`, após carregar `@PostLoad`, antes de atualizar `@PreUpdate`), permitindo auditorias automáticas.",
+        "C) Para escutar requisições HTTP vindas de APIs externas.",
+        "D) Para monitorar o uso de CPU do servidor."
+    ],
+    "B",
+    "Muito utilizada para preencher automaticamente campos de data de criação e atualização (`createdAt`, `updatedAt`) sem precisar repassá-los manualmente em todos os serviços.",
+    "Comum em classes de auditoria com `@EntityListeners(AuditingEntityListener.class)`."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Como o Spring Security gerencia a autenticação em APIs REST modernas utilizando tokens JWT (JSON Web Token)?",
+    "Spring Security & JWT",
+    [
+        "A) O Spring Security armazena o token permanentemente na memória RAM do roteador Wi-Fi.",
+        "B) Através da criação de um filtro customizado (que estende `OncePerRequestFilter`) inserido na Security Filter Chain para interceptar requisições, validar o token no cabeçalho Authorization e autenticar o contexto de segurança.",
+        "C) Substituindo completamente o protocolo HTTP por sockets criptografados.",
+        "D) Criptografando arquivos de código fonte em tempo de compilação."
+    ],
+    "B",
+    "Em APIs REST sem estado (stateless), o JWT substitui as sessões tradicionais baseadas em cookies. O filtro valida a assinatura do token e popula o `SecurityContextHolder`.",
+    "O servidor não precisa manter estado de sessão dos usuários conectados."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Para que serve a anotação `@EnableWebSecurity` e o uso de beans do tipo `SecurityFilterChain` nas versões modernas do Spring Security (6+ / Boot 3+)?",
+    "SecurityFilterChain",
+    [
+        "A) Para bloquear completamente o acesso de qualquer usuário à aplicação.",
+        "B) Para configurar de forma declarativa e fluida as regras de segurança HTTP, como quais endpoints são públicos, quais exigem autenticação, regras de CORS, CSRF e o gerenciamento da sessão stateless.",
+        "C) Para criptografar senhas usando algoritmos obsoletos como MD5.",
+        "D) Para gerar certificados SSL autoassinados."
+    ],
+    "B",
+    "Substituiu a antiga classe adaptadora `WebSecurityConfigurerAdapter` (que foi descontinuada), adotando uma abordagem baseada estritamente em componentes e builder fluídos.",
+    "Garante controle granular sobre o fluxo de requisições."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que é o Service Discovery (Descoberta de Serviços) no ecossistema Spring Cloud, utilizando ferramentas como Netflix Eureka?",
+    "Spring Cloud Eureka",
+    [
+        "A) Um mecanismo para descobrir vírus e malwares em servidores Java.",
+        "B) Um registro centralizado onde microsserviços dinâmicos se registram ao inicializar e consultam uns aos outros por nome lógico, dispensando endereços IP estáticos em ambientes elásticos de nuvem.",
+        "C) Uma ferramenta para buscar arquivos perdidos no disco rígido.",
+        "D) Um banco de dados NoSQL distribuído."
+    ],
+    "B",
+    "Em arquiteturas de microsserviços onde instâncias sobem e descem dinamicamente (ex: containers Kubernetes), o Service Discovery resolve o problema de comunicação entre serviços sem configuração manual de IPs.",
+    "Composto por um servidor de registro (Eureka Server) e clientes (Eureka Clients)."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Qual é a função do Spring Cloud Gateway em uma arquitetura de microsserviços?",
+    "Spring Cloud Gateway",
+    [
+        "A) Gerenciar portas físicas de roteamento de rede no switch da empresa.",
+        "B) Atuar como ponto de entrada único (API Gateway) para todas as requisições externas, gerenciando roteamento dinâmico, filtros de segurança globais, limitação de taxa (rate limiting) e balanceamento de carga.",
+        "C) Compilar arquivos Java para aplicações móveis iOS.",
+        "D) Substituir bancos de dados relacionais por proxies reversos."
+    ],
+    "B",
+    "O Gateway centraliza responsabilidades transversais que antes estariam duplicadas em cada microsserviço, servindo como a porta da frente segura para clientes web e mobile.",
+    "Construído sobre o ecossistema reativo Project Reactor (WebFlux)."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Como o Spring Boot facilita a realização de testes de integração com banco de dados usando a anotação `@DataJpaTest`?",
+    "Testes com @DataJpaTest",
+    [
+        "A) Iniciando um servidor Tomcat completo e abrindo telas no navegador.",
+        "B) Configurando automaticamente um ambiente de teste focado na camada JPA (carregando apenas repositórios, entidades e configurando por padrão um banco de dados em memória como H2), executando os testes de forma isolada e transacional.",
+        "C) Executando testes unitários puramente em JavaScript.",
+        "D) Conectando-se obrigatoriamente ao banco de dados de produção da empresa."
+    ],
+    "B",
+    "O `@DataJpaTest` desativa a auto-configuração completa e carrega apenas os componentes essenciais para testar persistência, garantindo alta velocidade nos testes de repositórios.",
+    "Cada teste é executado dentro de uma transação que sofre rollback automático ao final."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Para que serve a anotação `@SpringBootTest` em testes automatizados?",
+    "@SpringBootTest",
+    [
+        "A) Para testar apenas funções matemáticas isoladas sem carregar o Spring.",
+        "B) Para carregar o ApplicationContext completo do Spring Boot (incluindo todos os beans, serviços e controladores), permitindo testes de integração ponta a ponta (E2E).",
+        "C) Para testar a velocidade de download de arquivos da internet.",
+        "D) Para gerar relatórios de cobertura de código em formato gráfico."
+    ],
+    "B",
+    "É a anotação mais abrangente para testes, simulando o ambiente real de execução da aplicação. Como carrega todo o contexto, tende a ser mais pesada que testes focados (@WebMvcTest, @DataJpaTest).",
+    "Pode ser combinada com `WebEnvironment.RANDOM_PORT` para testar requisições HTTP reais via `TestRestTemplate` ou `WebTestClient`."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que é o Circuit Breaker (Disjuntor) provido pelo Resilience4j integrado ao Spring Cloud?",
+    "Circuit Breaker",
+    [
+        "A) Um dispositivo físico de proteção contra curtos-circuitos elétricos no servidor.",
+        "B) Um padrão de resiliência que monitora falhas em chamadas a serviços externos; se o número de erros ultrapassar um limite, o circuito 'abre', bloqueando novas chamadas imediatas e retornando uma resposta padrão (fallback) para evitar efeito cascata de indisponibilidade.",
+        "C) Um mecanismo para desligar a aplicação quando o uso de memória atinge 100%.",
+        "D) Um sistema de criptografia de senhas para APIs."
+    ],
+    "B",
+    "Evita que a queda de um microsserviço secundário derrube toda a cadeia de microsserviços dependentes por esgotamento de threads (thread starvation).",
+    "Possui estados: Closed, Open e Half-Open."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "O que o Spring Cloud Config Server resolve em ambientes corporativos distribuídos?",
+    "Spring Cloud Config",
+    [
+        "A) A formatação de arquivos de texto em planilhas.",
+        "B) A centralização do gerenciamento de arquivos de configuração de todos os microsserviços em um repositório remoto (como Git), permitindo atualizar parâmetros em tempo de execução sem recompilar as aplicações.",
+        "C) O controle de acesso físico aos servidores em data centers.",
+        "D) A tradução automática de códigos Java para C#."
+    ],
+    "B",
+    "Em vez de cada microsserviço ter seus próprios application.properties espalhados, o Config Server centraliza e serve as configurações de forma segura e versionada.",
+    "Suporta atualização dinâmica de propriedades via endpoint `/actuator/refresh` (quando combinado com `@RefreshScope`)."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Qual é a função da anotação `@WebMvcTest` em testes unitários do Spring Boot?",
+    "@WebMvcTest",
+    [
+        "A) Testar diretamente queries SQL complexas no banco de dados Oracle.",
+        "B) Focar o teste estritamente na camada web (Controllers), carregando apenas os componentes necessários do Spring MVC (como `@Controller`, `@ControllerAdvice`, conversores) sem subir o banco de dados ou serviços de negócio reais.",
+        "C) Executar testes de estresse em servidores de nuvem.",
+        "D) Compilar arquivos HTML para React."
+    ],
+    "B",
+    "Permite testar rotas, validações de payload e códigos de status HTTP rapidamente com o auxílio do `MockMvc`, mockando as dependências de serviço (`@MockBean`).",
+    "Isola o teste da camada de persistência."
+);
+
+addQuestion(
+    "Spring Framework",
+    "Média",
+    "Como o Spring lida com agendamento de tarefas (Task Scheduling) de forma declarativa?",
+    "Spring Scheduling",
+    [
+        "A) Exigindo a instalação de servidores de fila externos complexos obrigatórios.",
+        "B) Através da anotação `@EnableScheduling` na classe de configuração e `@Scheduled(cron = '0 0 12 * * ?')` nos métodos que devem executar periodicamente.",
+        "C) Executando código exclusivamente quando o usuário clica em um botão na interface.",
+        "D) Lendo arquivos do Excel em segundo plano."
+    ],
+    "B",
+    "O Spring disponibiliza um agendador de tarefas embutido baseado em pool de threads, suportando tanto intervalos fixos (`fixedRate`, `fixedDelay`) quanto expressões Cron completas.",
+    "Ideal para rotas de limpeza de cache, envio de e-mails em lote ou relatórios agendados simples."
+);
 
 
 /* =====================================================
