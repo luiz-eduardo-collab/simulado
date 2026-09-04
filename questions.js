@@ -8607,6 +8607,21 @@ addQuestion(
     "Muitas empresas adotam as cerimônias do Scrum superficialmente (chamado de 'ScrumBut'), mas falham em abraçar a cultura ágil subjacente.", 
     "Dominar o Scrum exige resiliência, transparência e melhoria contínua genuína."
 );
+addQuestion(
+    "Scrum e XP",
+    "Média",
+    "Como o Extreme Programming (XP) aplica o conceito de feedback rápido na prática?",
+    "Filosofia do XP",
+    [
+        "A) Aguardando o término total do projeto de dois anos para só então entregar ao cliente.",
+        "B) Através de testes automatizados executados a cada alteração, pequenas liberações frequentes em produção, programação em par e feedback contínuo do cliente no local.",
+        "C) Fazendo pesquisas de satisfação por e-mail anualmente.",
+        "D) Contratando gerentes para fiscalizar o tempo de pausa dos programadores."
+    ],
+    "B",
+    "O ciclo de feedback rápido do XP permite detectar e corrigir erros em minutos ou horas, em vez de semanas ou meses, garantindo o alinhamento constante com as necessidades reais do negócio.",
+    "Reduz drasticamente o retrabalho e o risco de falhas em produção."
+);
 
 /* =====================================================
     Blcoo 16: TESTES DE SOFTWARE - 40 QUESTÕES COMPLETAS
