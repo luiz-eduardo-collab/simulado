@@ -823,9 +823,10 @@ addQuestion(
 );
 
 /* =====================================================
-   PROGRAMAÇÃO ORIENTADA A OBJETOS (POO)
+   BLOCO 3: PROGRAMAÇÃO ORIENTADA A OBJETOS (40 QUESTÕES)
 ===================================================== */
 
+// --- Questões Originais Ajustadas ---
 addQuestion(
     "POO", "Fácil",
     "Observe o código Java. Qual conceito está representado pela criação do objeto?",
@@ -964,6 +965,268 @@ addQuestion(
     "B",
     "O encapsulamento protege os dados contra alterações inválidas diretas, utilizando métodos de acesso controlados.",
     "Atributos private + métodos getters/setters públicos."
+);
+
+// --- Novas Questões Adicionadas para Completar 40 ---
+
+addQuestion(
+    "POO", "Fácil",
+    "O que é uma classe em Programação Orientada a Objetos?",
+    "// Conceito básico",
+    ["A) Um objeto instanciado na memória RAM", "B) Um molde ou projeto que define os atributos e métodos comuns a um grupo de objetos", "C) Uma função isolada sem relação com dados", "D) Um banco de dados relacional"],
+    "B",
+    "A classe funciona como a planta baixa (blueprint) para a criação posterior de instâncias (objetos).",
+    "Define o tipo estrutural dos objetos gerados."
+);
+
+addQuestion(
+    "POO", "Fácil",
+    "Qual é o operador utilizado em Java para instanciar novos objetos a partir de uma classe?",
+    "// Instanciação",
+    ["A) allocate", "B) new", "C) create", "D) instance"],
+    "B",
+    "O operador 'new' aloca memória dinamicamente para o novo objeto e chama o construtor correspondente.",
+    "Exemplo: `Pessoa p = new Pessoa();`"
+);
+
+addQuestion(
+    "POO", "Fácil",
+    "Como são chamadas as variáveis declaradas dentro de uma classe que representam as características dos objetos?",
+    "// Atributos",
+    ["A) Métodos", "B) Atributos (ou Variáveis de Instância)", "C) Pacotes", "D) Construtores"],
+    "B",
+    "Atributos definem o estado de um objeto em POO.",
+    "Exemplo: nome, idade, cor."
+);
+
+addQuestion(
+    "POO", "Fácil",
+    "Qual é a função de um construtor em uma classe?",
+    "// Construtores",
+    ["A) Apagar o objeto da memória ao final da execução", "B) Inicializar o estado do objeto no momento de sua criação", "C) Sobrescrever métodos herdados", "D) Conectar o sistema a um banco de dados externo"],
+    "B",
+    "O construtor possui o mesmo nome da classe e é executado automaticamente no uso do operador new.",
+    "Pode receber parâmetros para configurar valores iniciais."
+);
+
+addQuestion(
+    "POO", "Fácil",
+    "Qual palavra-chave em Java é utilizada para referenciar o objeto atual dentro de seus próprios métodos ou construtores?",
+    "// Referência interna",
+    ["A) super", "B) this", "C) base", "D) self"],
+    "B",
+    "A palavra-chave 'this' aponta para a instância corrente da classe, útil para resolver ambiguidades de nomes de parâmetros.",
+    "Diferente de 'super', que referencia a superclasse."
+);
+
+addQuestion(
+    "POO", "Fácil",
+    "Qual modificador de acesso torna um atributo ou método visível para qualquer outra classe do projeto sem restrições?",
+    "// Modificadores",
+    ["A) private", "B) protected", "C) public", "D) default"],
+    "C",
+    "O modificador 'public' abre a visibilidade globalmente.",
+    "O oposto mais restritivo é o 'private'."
+);
+
+addQuestion(
+    "POO", "Fácil",
+    "O que significa a sigla SOLID no contexto de design de software orientado a objetos?",
+    "// Princípios SOLID",
+    ["A) Cinco princípios fundamentais de design e arquitetura limpa em POO", "B) Uma biblioteca padrão de banco de dados em Java", "C) Um conjunto de regras estritas de formatação de código CSS", "D) Um padrão de arquitetura de redes"],
+    "A",
+    "SOLID agrupa 5 princípios de orientação a objetos criados para facilitar manutenção e testabilidade.",
+    "Inclui SRP, OCP, LSP, ISP e DIP."
+);
+
+addQuestion(
+    "POO", "Fácil",
+    "Qual é o principal objetivo da Abstração em POO?",
+    "// Pilares da POO",
+    ["A) Esconder detalhes complexos de implementação e expor apenas os aspectos essenciais de um objeto", "B) Criar cópias idênticas de classes", "C) Impedir a herança de métodos", "D) Aumentar o consumo de processamento"],
+    "A",
+    "A abstração simplifica o modelo do mundo real focando no que é relevante para o sistema atual.",
+    "Um dos quatro pilares fundamentais."
+);
+
+addQuestion(
+    "POO", "Fácil",
+    "O que ocorre quando uma classe implementa uma Interface em Java?",
+    "// Interfaces",
+    ["A) Ela herda obrigatoriamente os atributos estáticos da interface", "B) Ela se compromete a fornecer uma implementação concreta para todos os métodos abstratos declarados na interface", "C) Ela perde o direito de usar construtores", "D) Ela se torna automaticamente uma classe abstrata"],
+    "B",
+    "Implementar uma interface exige cumprir o contrato definindo os corpos de seus métodos.",
+    "Garante padronização de comportamento."
+);
+
+addQuestion(
+    "POO", "Média",
+    "Qual é a diferença fundamental entre Sobrescrita (Override) e Sobrecarga (Overload)?",
+    "// Polimorfismo",
+    ["A) Override ocorre na mesma classe com parâmetros iguais; Overload ocorre na subclasse", "B) Override substitui o comportamento de um método herdado na subclasse mantendo a assinatura; Overload cria múltiplos métodos com mesmo nome mas assinaturas diferentes na mesma classe", "C) Não há diferença conceitual", "D) Override é exclusivo de variáveis estáticas"],
+    "B",
+    "Override exige herança e mesma assinatura; Overload ocorre na mesma classe alterando os parâmetros.",
+    "Pilares centrais do polimorfismo."
+);
+
+addQuestion(
+    "POO", "Média",
+    "O que estabelece o Princípio da Substituição de Liskov (LSP) do SOLID?",
+    "// Princípio LSP",
+    ["A) Objetos de uma superclasse devem poder ser substituídos por objetos de suas subclasses sem quebrar a corretude do programa", "B) Subclasses nunca podem sobrescrever métodos herdados", "C) Classes abstratas não podem ter subclasses concretas", "D) Herança deve ser evitada em favor de switch-cases"],
+    "A",
+    "O LSP garante que a herança seja utilizada corretamente, preservando contratos e comportamentos esperados.",
+    "O 'L' do acrônimo SOLID."
+);
+
+addQuestion(
+    "POO", "Média",
+    "O que define o Princípio da Segregação de Interfaces (ISP) do SOLID?",
+    "// Princípio ISP",
+    ["A) Uma classe deve implementar uma única interface gigante com todos os métodos do sistema", "B) É melhor ter várias interfaces específicas para clientes específicos do que uma interface única e genérica", "C) Interfaces não podem estender outras interfaces", "D) Métodos em interfaces devem ser sempre privados"],
+    "B",
+    "O ISP evita que classes sejam forçadas a implementar métodos vazios ou desnecessários que não utilizam.",
+    "Promove interfaces coesas e enxutas."
+);
+
+addQuestion(
+    "POO", "Média",
+    "O que é coesão em um sistema orientado a objetos?",
+    "// Coesão vs Acoplamento",
+    ["A) O grau em que os elementos de um módulo ou classe pertencem juntos e trabalham para um único propósito bem definido", "B) A dependência direta entre duas classes distintas", "C) O número de classes instanciadas na memória", "D) A herança múltipla de atributos"],
+    "A",
+    "Deseja-se alta coesão nas classes, significando que cada classe possui responsabilidades focadas e claras.",
+    "O oposto de classes 'faz-tudo'."
+);
+
+addQuestion(
+    "POO", "Média",
+    "Qual é a utilidade do modificador 'static' aplicado a um atributo em uma classe Java?",
+    "// Membros estáticos",
+    ["A) Torna o atributo constante e imutável", "B) Faz com que o atributo pertença à classe como um todo, sendo compartilhado por todas as instâncias, e não exclusivo de cada objeto", "C) Oculta o atributo de subclasses", "D) Permite acesso apenas via reflexão"],
+    "B",
+    "Membros estáticos são associados à classe em vez de objetos individuais.",
+    "Acessados diretamente via NomeDaClasse.atributo."
+);
+
+addQuestion(
+    "POO", "Média",
+    "O que é uma classe concreta em POO?",
+    "// Classes Concretas",
+    ["A) Uma classe que possui métodos abstratos e não pode ser instanciada", "B) Uma classe completa que possui todas as implementações de seus métodos e pode ser instanciada diretamente com new", "C) Uma interface sem métodos", "D) Uma classe usada apenas para testes unitários"],
+    "B",
+    "Classes concretas implementam todos os contratos necessários e geram objetos reais.",
+    "Oposição direta às classes abstratas."
+);
+
+addQuestion(
+    "POO", "Média",
+    "Qual é o comportamento do operador 'instanceof' em Java?",
+    "// Operador instanceof",
+    ["A) Cria uma nova instância de um objeto na memória", "B) Testa se um objeto é uma instância de uma classe específica ou implementa uma dada interface, retornando um valor booleano", "C) Compara os valores internos de dois objetos", "D) Destrói um objeto alocado"],
+    "B",
+    "Utilizado em checagens de tipo em tempo de execução antes de realizar casts seguros.",
+    "Retorna true ou false."
+);
+
+addQuestion(
+    "POO", "Média",
+    "O que caracteriza o polimorfismo em tempo de execução (dinâmico)?",
+    "// Polimorfismo Dinâmico",
+    ["A) A resolução de qual método sobrescrito executar é feita em tempo de execução com base no tipo real do objeto instanciado", "B) A escolha do método ocorre estaticamente pelo compilador", "C) Ocorre exclusivamente em métodos privados", "D) Não existe em linguagens como Java"],
+    "A",
+    "Através de referências da superclasse apontando para subclasses, o método correto é despachado dinamicamente.",
+    "Base da flexibilidade orientada a objetos."
+);
+
+addQuestion(
+    "POO", "Média",
+    "O que é uma exceção (Exception) em Java e como a POO lida com erros?",
+    "// Tratamento de Exceções",
+    ["A) Um erro de hardware irrecuperável", "B) Um objeto que representa uma condição anormal de execução, o qual pode ser lançado (throw) e tratado (try-catch)", "C) Um tipo especial de interface gráfica", "D) Uma variável global estática"],
+    "B",
+    "Em Java, exceções são classes que herdam de Throwable, permitindo tratamento robusto de falhas.",
+    "Promove confiabilidade no sistema."
+);
+
+addQuestion(
+    "POO", "Difícil",
+    "Qual é a restrição principal em relação à herança de classes em Java?",
+    "// Restrições de Herança",
+    ["A) Uma classe pode herdar diretamente de múltiplas classes (herança múltipla de implementação)", "B) Java não suporta herança múltipla de classes, permitindo apenas herança simples de classe (extends único)", "C) Classes filhas não podem acessar métodos públicos da mãe", "D) Subclasses devem obrigatoriamente ser abstratas"],
+    "B",
+    "Para evitar o 'problema do diamante' e complexidades estruturais, Java restringe extends a uma única classe por vez.",
+    "A múltipla herança de comportamento é simulada via interfaces."
+);
+
+addQuestion(
+    "POO", "Difícil",
+    "O que caracteriza uma classe marcada com a palavra-chave 'final' em Java?",
+    "// Modificador final",
+    ["A) Ela se torna abstrata e ganha métodos automáticos", "B) Ela não pode ser estendida (não aceita subclasses), prevenindo herança", "C) Seus atributos passam a ser salvos em banco de dados", "D) Ela não pode ser instanciada"],
+    "B",
+    "Classes final (como String) fecham a hierarquia, impedindo criação de subclasses por razões de segurança ou design.",
+    "Métodos final não podem ser sobrescritos."
+);
+
+addQuestion(
+    "POO", "Difícil",
+    "Em um cenário de design orientado a objetos, qual é a principal motivação para aplicar o princípio da Injeção de Dependência (DI)?",
+    "// Injeção de Dependência",
+    ["A) Acoplar firmemente os componentes concretos dentro das classes de negócio", "B) Desacoplar a criação de dependências da classe que as utiliza, facilitando a substituição de implementações e testes unitários", "C) Aumentar o consumo de memória RAM", "D) Impedir o uso de interfaces"],
+    "B",
+    "A DI transfere a responsabilidade de instanciar dependências para containers ou classes externas, promovendo flexibilidade.",
+    "Pilar essencial para arquiteturas desacopladas."
+);
+
+addQuestion(
+    "POO", "Difícil",
+    "Qual é o comportamento do método `equals()` e do operador `==` quando comparamos dois objetos distintos em Java que possuem o mesmo conteúdo nos atributos?",
+    "// Comparação de Objetos",
+    ["A) Ambos retornam true", "B) O operador '==' compara referências de memória (retornando false), enquanto o 'equals()', se não sobrescrito, também compara referências, mas costuma ser implementado para comparar o conteúdo lógico dos atributos", "C) O operador '==' compara o conteúdo e equals compara referências", "D) Ambos geram erro de compilação"],
+    "B",
+    "Comparar objetos com '==` checa se apontam para o mesmo endereço na heap; equals() avalia a igualdade lógica quando implementado corretamente.",
+    "Cuidado clássico em provas de programação."
+);
+
+addQuestion(
+    "POO", "Difícil",
+    "O que é uma Interface Funcional em Java (introduzida no Java 8) e qual anotação opcional a caracteriza?",
+    "// Interfaces Funcionais",
+    ["A) Uma interface que possui múltiplos métodos abstratos e usa a anotação @Multi", "B) Uma interface que possui exatamente um único método abstrato, permitindo o uso de expressões Lambda, caracterizada pela anotação @FunctionalInterface", "C) Uma interface que executa apenas funções matemáticas", "D) Uma classe abstrata sem métodos"],
+    "B",
+    "Interfaces funcionais servem como base para expressões lambda e programação funcional em Java.",
+    "Exemplos nativos: Runnable, Comparator."
+);
+
+addQuestion(
+    "POO", "Difícil",
+    "O que significa o conceito de Imutabilidade (Immutable Objects) em POO e quais são suas vantagens?",
+    "// Objetos Imutáveis",
+    ["A) Objetos cujos estados internos não podem ser alterados após a sua criação, garantindo segurança em ambientes concorrentes (threads-safe) e previsibilidade", "B) Objetos que mudam de valor aleatoriamente", "C) Objetos que não podem ser instanciados com new", "D) Classes que não possuem métodos getters"],
+    "A",
+    "Objetos imutáveis (como String e LocalDate) eliminam efeitos colaterais indesejados e problemas de concorrência em multithreading.",
+    "Atributos tipicamente marcados como private final."
+);
+
+addQuestion(
+    "POO", "Difícil",
+    "Como o conceito de Encapsulamento se relaciona com o princípio de Ocultamento de Informação (Information Hiding) de David Parnas?",
+    "// Encapsulamento Avançado",
+    ["A) São conceitos opostos; encapsulamento expõe tudo e ocultamento esconde tudo", "B) O encapsulamento fornece os mecanismos sintáticos (como modificadores private) para aplicar o ocultamento de informações, protegendo o design interno contra mudanças externas", "C) Ocultamento de informação refere-se apenas a arquivos em disco", "D) Não há relação conceitual"],
+    "B",
+    "Ocultar detalhes internos reduz o impacto de mudanças, permitindo alterar a implementação sem quebrar o código cliente.",
+    "Fundamento de projetos de software modulares."
+);
+
+addQuestion(
+    "POO", "Difícil",
+    "Em padrões de projeto (Design Patterns), o que caracteriza o padrão Criacional Singleton?",
+    "// Padrões de Projeto",
+    ["A) Permite criar qualquer quantidade ilimitada de objetos concorrentes", "B) Garante que uma classe tenha apenas uma única instância em toda a aplicação e fornece um ponto global de acesso a ela", "C) Subdivide objetos complexos em partes menores", "D) Converte interfaces incompatíveis"],
+    "B",
+    "O Singleton restringe a instanciação a um único objeto, controlando o acesso centralizado (ex: conexões de banco de dados ou loggers).",
+    "Construtor privado + método estático getInstance()."
 );
 
 /* =====================================================
