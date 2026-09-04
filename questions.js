@@ -821,6 +821,15 @@ addQuestion(
     "A ordenação topológica lineariza dependências (como pré-requisitos de matérias ou compilação de tarefas), exigindo ausência de ciclos (DAG).",
     "Pode ser implementada via DFS ou algoritmo de Kahn."
 );
+addQuestion(
+    "Estruturas de Dados", "Difícil",
+    "Qual estrutura de dados do tipo árvore balanceada é uma árvore de busca multiway (com múltiplos filhos por nó), amplamente utilizada em sistemas de arquivos e bancos de dados para minimizar acessos a disco?",
+    "Nós com múltiplas chaves e ponteiros",
+    ["A) Árvore AVL", "B) Árvore B (B-Tree)", "C) Árvore Binária de Busca", "D) Heap Binária"],
+    "B",
+    "As Árvores B e suas variantes (como B+ e B*) mantêm os dados ordenados e permitem buscas, inserções e exclusões em tempo logarítmico, otimizando blocos de leitura em disco.",
+    "Padrão em bancos de dados relacionais e sistemas de arquivos modernos."
+);
 
 /* =====================================================
    BLOCO 3: PROGRAMAÇÃO ORIENTADA A OBJETOS (40 QUESTÕES)
