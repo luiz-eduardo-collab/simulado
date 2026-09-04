@@ -7949,6 +7949,37 @@ addQuestion(
     "O DDD conecta a estratégia de negócios da empresa diretamente à implementação técnica, unindo pessoas, linguagem e código em prol de um objetivo comum.", 
     "O código é apenas o reflexo do modelo mental validado do negócio."
 );
+addQuestion(
+    "Domain-Driven Design (DDD)",
+    "Média",
+    "Como funciona a coordenação em um padrão Saga baseado em orquestração (Orchestration-based Saga)?",
+    "Padrão Saga",
+    [
+        "A) Cada microsserviço ouve eventos de forma descentralizada e decide autonomamente o próximo passo sem um controlador central.",
+        "B) Um componente centralizador (o Orquestrador) gerencia explicitamente o fluxo de transações, enviando comandos para os serviços envolvidos e acionando transações compensatórias em caso de falha.",
+        "C) O banco de dados bloqueia todas as tabelas globalmente até que o usuário feche o navegador.",
+        "D) As requisições são convertidas em código assembly para execução direta no processador."
+    ],
+    "B",
+    "No modelo por orquestração, há um coordenador central que dita o fluxo e sabe exatamente qual passo executar a seguir e quais compensações disparar se houver erro.",
+    "Facilita a visualização do fluxo de negócios complexos comparado à coreografia pura."
+);
+
+addQuestion(
+    "Domain-Driven Design (DDD)",
+    "Média",
+    "O que diferencia um padrão Saga baseado em coreografia (Choreography-based Saga) da orquestração?",
+    "Padrão Saga",
+    [
+        "A) A coreografia exige licenças de software comercial muito mais caras.",
+        "B) Na coreografia não há um coordenador central; cada serviço executa sua tarefa local e publica um evento de domínio, e os demais serviços interessados escutam e reagem a esses eventos de forma descentralizada.",
+        "C) A coreografia é usada exclusivamente para interfaces gráficas em React.",
+        "D) Na coreografia as transações são sempre síncronas e bloqueantes."
+    ],
+    "B",
+    "Na coreografia, os serviços comunicam-se de forma reativa por meio de eventos, reduzindo o acoplamento de controle, embora possa dificultar o rastreio visual de fluxos muito longos.",
+    "Ideal para sistemas altamente desacoplados e orientados a eventos."
+);
 /* =====================================================
    Bloco 15: SCRUM E EXTREME PROGRAMMING (XP) - 40 QUESTÕES COMPLETAS
 ===================================================== */
