@@ -2847,7 +2847,7 @@ addQuestion(
 );
 
 /* =====================================================
-   BLOCO 6 (COMPLETO - 40 QUESTÕES): BANCO DE DADOS E SQL
+   BLOCO 7 (COMPLETO - 40 QUESTÕES): BANCO DE DADOS E SQL
 ===================================================== */
 
 // --- 1 a 30: Conceitos, NoSQL, Arquitetura e SGBD ---
@@ -3455,273 +3455,618 @@ addQuestion(
     "Muitos sistemas NoSQL escolhem AP/EL (Disponibilidade em partição, Latência menor em operação normal)."
 );
 
-
 /* =====================================================
-DESENVOLVIMENTO WEB (HTML, CSS E JAVASCRIPT)
+   BLOCO 8 (COMPLETO - 40 QUESTÕES): DESENVOLVIMENTO WEB (HTML, CSS E JAVASCRIPT)
 ===================================================== */
 
-addQuestion(
-    'Desenvolvimento Web', 'Fácil',
-    'Qual tag HTML é utilizada para criar um hiperlink para outra página ou site?',
-    '<a href="https://www.exemplo.com">Link</a>',
-    ['A)', 'B)', 'C)', 'D)'],
-    'B',
-    'A tag <a> (anchor) combinada com o atributo href define hiperlinks na web.',
-    'A tag é usada para carregar folhas de estilo no HTML.'
-);
+// --- 1 a 15: HTML e Fundamentos Web ---
 
 addQuestion(
-    "Desenvolvimento Web",
-    "Fácil",
+    "Desenvolvimento Web", "Fácil",
     "Qual tag HTML é utilizada para criar um hiperlink para outra página ou site?",
     "<a href=\"https://www.exemplo.com\">Link</a>",
-    ["A)", "B)", "C)", "D)"],
+    [
+        "A) <link href=\"...\">",
+        "B) <a href=\"...\">Link</a>",
+        "C) <hyperlink>...</hyperlink>",
+        "D) <url>...</url>"
+    ],
     "B",
     "A tag <a> (anchor) combinada com o atributo href define hiperlinks na web.",
-    "A tag é usada para carregar folhas de estilo no HTML."
+    "A tag <link> é usada tipicamente para carregar folhas de estilo no HTML."
 );
 
 addQuestion(
-    "Desenvolvimento Web",
-    "Fácil",
+    "Desenvolvimento Web", "Fácil",
+    "Qual tag HTML é semanticamente a mais adequada para representar o cabeçalho principal de uma página ou seção?",
+    "<header>",
+    [
+        "A) <head>",
+        "B) <top>",
+        "C) <header>",
+        "D) <h1>"
+    ],
+    "C",
+    "A tag <header> representa conteúdo introdutório ou um grupo de elementos de navegação.",
+    "A tag <head> fica oculta e guarda metadados da página, enquanto <h1> define um título de nível 1."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
+    "Qual tag HTML é utilizada para criar uma lista não ordenada (com marcadores em bolinhas)?",
+    "<ul>",
+    [
+        "A) <ol>",
+        "B) <list>",
+        "C) <ul>",
+        "D) <li>"
+    ],
+    "C",
+    "A tag <ul> (unordered list) agrupa itens de lista que utilizam a tag <li>.",
+    "A tag <ol> cria listas ordenadas (numeradas)."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
+    "Qual tag HTML é utilizada para inserir um arquivo JavaScript externo em um documento?",
+    "<script src=\"script.js\"></script>",
+    [
+        "A) <javascript src=\"script.js\">",
+        "B) <script href=\"script.js\">",
+        "C) <script src=\"script.js\"></script>",
+        "D) <js file=\"script.js\">"
+    ],
+    "C",
+    "A tag <script> com o atributo src vincula scripts externos à página.",
+    "Geralmente colocada no final do corpo (body) ou no head com defer."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Média",
+    "Qual é a finalidade do atributo async ou defer em tags <script> no HTML?",
+    "Controlar o carregamento e execução assíncrona de scripts externos",
+    [
+        "A) Comprimir o tamanho do arquivo JavaScript para baixar mais rápido",
+        "B) Permitir o carregamento não bloqueante do script em paralelo com a análise do HTML",
+        "C) Criptografar o código JavaScript contra inspeção",
+        "D) Forçar a execução imediata travando a renderização"
+    ],
+    "B",
+    "Scripts sem async/defer pausam o parsing do HTML até que o script seja baixado e executado. Com defer, o script executa após o documento estar pronto.",
+    "Melhora consideravelmente a performance de carregamento da página."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
+    "Qual elemento HTML é utilizado para agrupar conteúdos de forma genérica em nível de bloco (block-level), muito usado para estilização com CSS?",
+    "<div>",
+    [
+        "A) <span>",
+        "B) <section>",
+        "C) <div>",
+        "D) <block>"
+    ],
+    "C",
+    "A tag <div> não possui significado semântico específico por si só, servindo como container em bloco genérico.",
+    "Para elementos em linha (inline), utiliza-se frequentemente a tag <span>."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
+    "Qual atributo HTML é obrigatório na tag <img> para garantir acessibilidade a leitores de tela e descrever a imagem caso ela não carregue?",
+    "alt",
+    [
+        "A) title",
+        "B) alt",
+        "C) description",
+        "D) src-desc"
+    ],
+    "B",
+    "O atributo alt fornece um texto alternativo essencial para a acessibilidade web (WCAG).",
+    "O atributo src define o caminho do arquivo de imagem."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Média",
+    "O que são elementos HTML Semânticos e qual a sua principal vantagem?",
+    "Elementos que dão significado claro ao seu conteúdo para navegadores e desenvolvedores",
+    [
+        "A) Elementos que rodam códigos executáveis diretamente no navegador",
+        "B) Tags que transmitem claramente o seu significado estrutural tanto para o navegador quanto para leitores de tela e mecanismos de busca (SEO)",
+        "C) Tags exclusivas para estilização de fontes e cores sem uso de CSS",
+        "D) Atalhos de teclado para navegação rápida"
+    ],
+    "B",
+    "Exemplos de tags semânticas incluem <article>, <section>, <nav> e <footer>, substituindo o uso excessivo de divs genéricas.",
+    "Melhoram significativamente a acessibilidade e o SEO das páginas."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
+    "Qual tag HTML é utilizada para criar um campo de entrada de dados interativo (como texto, senha ou checkbox) em um formulário?",
+    "<input>",
+    [
+        "A) <form-field>",
+        "B) <input>",
+        "C) <text-box>",
+        "D) <field>"
+    ],
+    "B",
+    "A tag <input> altera seu comportamento com base no atributo type (ex: type='text', type='password', type='checkbox').",
+    "Deve ser associada a um elemento <label> para boa acessibilidade."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Média",
+    "Qual é a diferença entre as tags <section>, <article> e <div> em HTML5?",
+    "Contexto e semântica de agrupamento",
+    [
+        "A) Não há nenhuma diferença; todas geram exatamente o mesmo comportamento visual",
+        "B) <article> representa um conteúdo independente e distribuível; <section> agrupa conteúdos temáticos relacionados; <div> é um container puramente genérico sem significado semântico",
+        "C) <section> é usada apenas para rodapés e <article> para cabeçalhos",
+        "D) <div> é moderna e substitui completamente <section> e <article>"
+    ],
+    "B",
+    "A escolha correta da tag semântica enriquece a árvore do documento para leitores de tela e indexadores de busca.",
+    "Divs continuam úteis para fins de estilização pura quando nenhum significado se aplica."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
+    "Qual tag HTML é utilizada para estruturar a tabela propriamente dita, contendo linhas e células de dados?",
+    "<table>",
+    [
+        "A) <grid>",
+        "B) <table>",
+        "C) <tab>",
+        "D) <data-grid>"
+    ],
+    "B",
+    "A tag <table> é combinada com <tr> (linha), <th> (cabeçalho da célula) e <td> (célula de dado).",
+    "Não deve ser utilizada para estruturar o layout geral da página."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Média",
+    "O que significa a especificação HTML5 em termos de multimídia?",
+    "Suporte nativo a elementos de áudio e vídeo sem plugins externos",
+    [
+        "A) A exigência de instalar o Adobe Flash Player para rodar animações",
+        "B) A introdução de tags nativas como <audio> e <video>, dispensando plugins proprietários de terceiros",
+        "C) A conversão automática de imagens JPG para arquivos vetoriais",
+        "D) A remoção completa de imagens do ecossistema web"
+    ],
+    "B",
+    "Com o HTML5, tags como <video> e <audio> tornaram a reprodução de mídia nativa e universal nos navegadores.",
+    "Reduziu drasticamente falhas de segurança e dependência de softwares legados."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
+    "Qual tag HTML é utilizada para definir metadados sobre o documento, como codificação de caracteres, título da aba e links de estilo?",
+    "<head>",
+    [
+        "A) <meta-data>",
+        "B) <head>",
+        "C) <header>",
+        "D) <body>"
+    ],
+    "B",
+    "O elemento <head> abriga informações que não são exibidas diretamente na página visível, como <title>, <meta> e <link>.",
+    "Diferente do <body>, que engloba todo o conteúdo visualizado pelo usuário."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Média",
+    "Qual é a função da tag <meta charset=\"UTF-8\"> no cabeçalho de uma página HTML?",
+    "Definir a codificação de caracteres para suportar acentos e símbolos universais",
+    [
+        "A) Definir a velocidade de carregamento do servidor",
+        "B) Especificar o conjunto de caracteres UTF-8, garantindo a correta exibição de acentos, cedilhas e caracteres internacionais",
+        "C) Criptografar o código fonte contra cópias piratas",
+        "D) Definir a linguagem padrão da interface do navegador"
+    ],
+    "B",
+    "O UTF-8 é o padrão mundial de codificação de caracteres na web.",
+    "Sua ausência pode causar problemas de exibição de caracteres especiais (gerando símbolos corrompidos)."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
+    "Qual tag HTML é utilizada para criar uma caixa de texto de múltiplas linhas (área de texto) em um formulário?",
+    "<textarea>",
+    [
+        "A) <input type=\"multiline\">",
+        "B) <textarea>",
+        "C) <text-input lines=\"multiple\">",
+        "D) <box-text>"
+    ],
+    "B",
+    "A tag <textarea> permite que os usuários insiram blocos extensos de texto livre.",
+    "Diferente do <input type='text'>, que é limitado a uma única linha."
+);
+
+
+// --- 16 a 27: CSS e Estilização Avançada ---
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
     "Qual propriedade CSS é utilizada para alterar a cor de fundo de um elemento?",
     "background-color: #ffffff;",
-    ["A) color", "B) background-color", "C) fill-color", "D) bg-style"],
+    [
+        "A) color",
+        "B) background-color",
+        "C) fill-color",
+        "D) bg-style"
+    ],
     "B",
     "A propriedade background-color define a cor de fundo, enquanto color altera a cor do texto.",
     "Essencial para estilização visual básica."
 );
 
 addQuestion(
-    "Desenvolvimento Web",
-    "Média",
+    "Desenvolvimento Web", "Difícil",
+    "Qual é a diferença principal entre position: absolute e position: fixed em CSS?",
+    "Contexto de referência e rolagem da página",
+    [
+        "A) Absolute posiciona em relação à tela, enquanto fixed posiciona em relação ao corpo",
+        "B) Absolute posiciona em relação ao ancestral posicionado mais próximo, enquanto fixed posiciona em relação à janela de visualização (viewport) e não se move com o scroll",
+        "C) Fixed funciona apenas em dispositivos móveis",
+        "D) Não há diferença prática de comportamento"
+    ],
+    "B",
+    "Elementos com position: fixed ficam fixos na tela mesmo quando o usuário rola a página (scroll), ao contrário de absolute.",
+    "Fundamentais para criar menus fixos e layouts complexos."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Média",
+    "O que caracteriza o modelo de layout CSS Flexbox?",
+    "Alinhamento unidimensional de itens",
+    [
+        "A) Um sistema de grade bidimensional focado em colunas e linhas complexas",
+        "B) Um modelo unidimensional projetado para distribuir espaço e alinhar itens em linha ou coluna",
+        "C) Um método obsoleto substituído por tabelas HTML",
+        "D) Uma ferramenta exclusiva para animações 3D"
+    ],
+    "B",
+    "O Flexbox é ideal para layouts onde os itens precisam se ajustar dinamicamente em uma única direção (linha ou coluna).",
+    "Para layouts complexos em grade de duas dimensões, usa-se CSS Grid."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
+    "Qual propriedade CSS define a opacidade (transparência) de um elemento?",
+    "opacity: 0.5;",
+    [
+        "A) transparency",
+        "B) opacity",
+        "C) alpha",
+        "D) visibility"
+    ],
+    "B",
+    "A propriedade opacity aceita valores de 0 (totalmente transparente) a 1 (totalmente opaco).",
+    "Diferente de visibility: hidden, a opacidade ainda mantém a interatividade do elemento se não for ajustada."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Difícil",
+    "No contexto de CSS Grid, o que significa a unidade fracionária fr?",
+    "Fração do espaço disponível no container da grade",
+    [
+        "A) Uma unidade fixa baseada em fontes tipográficas",
+        "B) Uma fração do espaço livre disponível dentro do container grid",
+        "C) Pixels flutuantes responsivos",
+        "D) Porcentagem baseada na altura da tela"
+    ],
+    "B",
+    "A unidade fr facilita criar layouts flexíveis onde o espaço é distribuído proporcionalmente (ex: 1fr 2fr).",
+    "Elimina o cálculo manual complexo de porcentagens com margens."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Média",
+    "O que é o conceito de CSS Specificity (Especificidade)?",
+    "Regra de peso que define qual estilo CSS será aplicado quando há conflitos",
+    [
+        "A) A velocidade com que o navegador interpreta o arquivo de estilos",
+        "B) O peso calculado de seletores CSS para determinar qual regra prevalece em caso de conflito de regras sobre o mesmo elemento",
+        "C) A quantidade de linhas de código em um arquivo CSS",
+        "D) O suporte a navegadores antigos"
+    ],
+    "B",
+    "IDs têm mais peso que classes, que por sua vez têm mais peso que seletores de tag.",
+    "O uso excessivo de !important sobrescreve a especificidade normal."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
+    "Qual propriedade CSS define o espaçamento interno entre o conteúdo de um elemento e suas bordas?",
+    "padding: 15px;",
+    [
+        "A) margin",
+        "B) spacing",
+        "C) padding",
+        "D) border-gap"
+    ],
+    "C",
+    "O padding define o espaço interno. O margin define o espaço externo ao redor da borda.",
+    "Componentes fundamentais do CSS Box Model."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Difícil",
+    "O que define o comportamento de seletores CSS combinadores, como o seletor de irmão adjacente (+)?",
+    "Seleciona o elemento imediatamente após o especificado",
+    [
+        "A) Seleciona todos os descendentes diretos ou indiretos",
+        "B) Seleciona o elemento que vem imediatamente após o primeiro elemento especificado, desde que compartilhem o mesmo pai",
+        "C) Seleciona apenas elementos que possuem classes idênticas",
+        "D) Seleciona elementos pais recursivamente"
+    ],
+    "B",
+    "O combinador + atinge o próximo irmão imediato. O combinador ~ atinge todos os irmãos seguintes.",
+    "Útil para estilizações condicionais baseadas na ordem estrutural do HTML."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Média",
+    "O que são Media Queries em CSS e qual é o seu principal caso de uso?",
+    "Regras condicionais para aplicar estilos baseados nas características do dispositivo (como largura da tela)",
+    [
+        "A) Funções para carregar vídeos e mídias em alta definição",
+        "B) Ferramentas de estilização condicional que aplicam regras CSS específicas dependendo do tamanho da tela, resolução ou orientação do dispositivo (essencial para Design Responsivo)",
+        "C) Consultas de banco de dados feitas diretamente no arquivo de estilos",
+        "D) Comandos de animação vetorial"
+    ],
+    "B",
+    "As media queries formam a base do design responsivo moderno, permitindo adaptar interfaces de desktops para celulares e tablets.",
+    "Exemplo: @media (max-width: 768px) { ... }"
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Fácil",
+    "Qual propriedade CSS é utilizada para alterar a cor do texto de um elemento?",
+    "color: #ff0000;",
+    [
+        "A) text-color",
+        "B) font-color",
+        "C) color",
+        "D) text-style"
+    ],
+    "C",
+    "A propriedade color define a cor do texto, diferentemente de background-color.",
+    "Pode receber valores em HEX, RGB, HSL ou nomes de cores diretos."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Média",
+    "Qual é a diferença entre unidades de medida relativas (como em, rem, %) e absolutas (como px) em CSS?",
+    "Escalabilidade em relação a contextos ou dispositivos",
+    [
+        "A) Unidades relativas só funcionam em navegadores mobile",
+        "B) Unidades absolutas (px) possuem tamanho fixo invariável; unidades relativas (rem, em, %) escalam dinamicamente com base no elemento pai, raiz ou viewport, facilitando a acessibilidade e responsividade",
+        "C) Unidades relativas não aceitam casas decimais",
+        "D) Não há diferença prática na renderização moderna"
+    ],
+    "B",
+    "O uso de rem (relativo à fonte raiz <html>) é altamente recomendado para tipografia responsiva e acessibilidade (zoom de tela).",
+    "Pixels (px) continuam úteis para bordas finas e detalhes de layout estritos."
+);
+
+addQuestion(
+    "Desenvolvimento Web", "Difícil",
+    "O que faz a propriedade CSS `box-sizing: border-box;`?",
+    "Inclui padding e border na largura e altura totais declaradas do elemento",
+    [
+        "A) Adiciona sombras tridimensionais automáticas nas bordas do elemento",
+        "B) Faz com que o padding e a borda sejam incluídos dentro das dimensões de largura (width) e altura (height) especificadas, evitando que o elemento expanda além do esperado",
+        "C) Converte caixas retangulares em círculos perfeitos",
+        "D) Remove completamente as bordas de tabelas"
+    ],
+    "B",
+    "Por padrão (content-box), o padding e a border somam-se à largura declarada, quebrando layouts frequentemente. Border-box resolve esse problema intuitivamente.",
+    "É amplamente aplicada como reset universal em folhas de estilo modernas (* { box-sizing: border-box; })."
+);
+
+
+// --- 28 a 40: JavaScript, DOM e Assincronicidade ---
+
+addQuestion(
+    "Desenvolvimento Web", "Média",
     "O que significa a sigla DOM no contexto de desenvolvimento web com JavaScript?",
     "Document Object Model",
-    ["A) Data Object Management", "B) Document Object Model", "C) Digital Oriented Markup", "D) Dynamic Opacity Module"],
+    [
+        "A) Data Object Management",
+        "B) Document Object Model",
+        "C) Digital Oriented Markup",
+        "D) Dynamic Opacity Module"
+    ],
     "B",
     "O DOM é a representação em árvore estruturada do documento HTML que permite ao JavaScript interagir e modificar elementos da página.",
     "Permite manipulação dinâmica de conteúdo, classes e estilos."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Difícil",
-"Qual é a diferença principal entre position: absolute e position: fixed em CSS?",
-"Contexto de referência e rolagem da página",
-["A) Absolute posiciona em relação à tela, enquanto fixed posiciona em relação ao corpo", "B) Absolute posiciona em relação ao ancestral posicionado mais próximo, enquanto fixed posiciona em relação à janela de visualização (viewport) e não se move com o scroll", "C) Fixed funciona apenas em dispositivos móveis", "D) Não há diferença prática de comportamento"],
-"B",
-"Elementos com position: fixed ficam fixos na tela mesmo quando o usuário rola a página (scroll), ao contrário de absolute.",
-"Fundamentais para criar menus fixos e layouts complexos."
+    "Desenvolvimento Web", "Fácil",
+    "Qual método JavaScript é utilizado para selecionar um único elemento do DOM utilizando um seletor CSS (como uma classe ou ID)?",
+    "document.querySelector('#meuId');",
+    [
+        "A) document.getElementById() apenas",
+        "B) document.querySelector()",
+        "C) document.selectElement()",
+        "D) document.findElement()"
+    ],
+    "B",
+    "O querySelector retorna o primeiro elemento que corresponde ao seletor CSS especificado.",
+    "Para retornar todos os elementos correspondentes, usa-se querySelectorAll()."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Fácil",
-"Qual método JavaScript é utilizado para selecionar um único elemento do DOM utilizando um seletor CSS (como uma classe ou ID)?",
-"document.querySelector('#meuId');",
-["A) document.getElementById() apenas", "B) document.querySelector()", "C) document.selectElement()", "D) document.findElement()"],
-"B",
-"O querySelector retorna o primeiro elemento que corresponde ao seletor CSS especificado.",
-"Para retornar todos os elementos correspondentes, usa-se querySelectorAll()."
+    "Desenvolvimento Web", "Difícil",
+    "O que é o mecanismo de Event Bubbling (Borbulhamento de Eventos) em JavaScript?",
+    "Propagação de eventos do elemento mais interno para os mais externos",
+    [
+        "A) A criação de eventos duplicados por falha de sintaxe",
+        "B) O fluxo onde um evento disparado em um elemento filho é propagado para cima através de seus ancestrais na árvore DOM",
+        "C) O cancelamento automático de requisições AJAX simultâneas",
+        "D) A execução assíncrona de funções em background"
+    ],
+    "B",
+    "Quando um evento ocorre em um elemento, ele primeiro roda os ouvintes do próprio elemento e depois sobe propagando-se para os elementos pai.",
+    "Pode ser interrompido usando o método event.stopPropagation()."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Média",
-"O que caracteriza o modelo de layout CSS Flexbox?",
-"Alinhamento unidimensional de itens",
-["A) Um sistema de grade bidimensional focado em colunas e linhas complexas", "B) Um modelo unidimensional projetado para distribuir espaço e alinhar itens em linha ou coluna", "C) Um método obsoleto substituído por tabelas HTML", "D) Uma ferramenta exclusiva para animações 3D"],
-"B",
-"O Flexbox é ideal para layouts onde os itens precisam se ajustar dinamicamente em uma única direção (linha ou coluna).",
-"Para layouts complexos em grade de duas dimensões, usa-se CSS Grid."
+    "Desenvolvimento Web", "Média",
+    "O que são Promises em JavaScript?",
+    "Objetos que representam a conclusão ou falha de uma operação assíncrona",
+    [
+        "A) Variáveis constantes que nunca mudam de valor",
+        "B) Objetos que representam o resultado eventual (sucesso ou erro) de uma operação assíncrona",
+        "C) Funções matemáticas de alta precisão",
+        "D) Atalhos para criar loops for otimizados"
+    ],
+    "B",
+    "Promises possuem estados: pending (pendente), fulfilled (realizada) e rejected (rejeitada).",
+    "Facilitam o tratamento de código assíncrono em comparação a callbacks aninhados."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Difícil",
-"O que é o mecanismo de Event Bubbling (Borbulhamento de Eventos) em JavaScript?",
-"Propagação de eventos do elemento mais interno para os mais externos",
-["A) A criação de eventos duplicados por falha de sintaxe", "B) O fluxo onde um evento disparado em um elemento filho é propagado para cima através de seus ancestrais na árvore DOM", "C) O cancelamento automático de requisições AJAX simultâneas", "D) A execução assíncrona de funções em background"],
-"B",
-"Quando um evento ocorre em um elemento, ele primeiro roda os ouvintes do próprio elemento e depois sobe propagando-se para os elementos pai.",
-"Pode ser interrompido usando o método event.stopPropagation()."
+    "Desenvolvimento Web", "Média",
+    "O que o operador await faz dentro de uma função assíncrona (async function) em JavaScript?",
+    "Pausa a execução da função até que a Promise seja resolvida",
+    [
+        "A) Interrompe a execução de todo o navegador",
+        "B) Faz a função aguardar de forma assíncrona a resolução de uma Promise antes de prosseguir com a próxima linha",
+        "C) Converte tipos primitivos em objetos",
+        "D) Dispara um erro síncrono proposital"
+    ],
+    "B",
+    "O await torna o código assíncrono muito mais legível, parecendo um código síncrono linear.",
+    "Só pode ser utilizado dentro de funções declaradas com a palavra-chave async."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Fácil",
-"Qual tag HTML é semanticamente a mais adequada para representar o cabeçalho principal de uma página ou seção?",
-"",
-["A) ", "B) ", "C) ", "D) "],
-"C",
-"A tag  representa conteúdo introdutório ou um grupo de links de navegação.",
-"A tag  fica oculta e guarda metadados da página."
+    "Desenvolvimento Web", "Fácil",
+    "Qual comando JavaScript converte um objeto ou array JavaScript em uma string JSON?",
+    "JSON.stringify(objeto);",
+    [
+        "A) JSON.parse()",
+        "B) JSON.stringify()",
+        "C) JSON.toText()",
+        "D) JSON.convert()"
+    ],
+    "B",
+    "JSON.stringify serializa dados para o formato de texto JSON, enquanto JSON.parse faz o inverso (texto para objeto).",
+    "Fundamental para enviar dados via fetch para APIs."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Média",
-"O que são Promises em JavaScript?",
-"Objetos que representam a conclusão ou falha de uma operação assíncrona",
-["A) Variáveis constantes que nunca mudam de valor", "B) Objetos que representam o resultado eventual (sucesso ou erro) de uma operação assíncrona", "C) Funções matemáticas de alta precisão", "D) Atalhos para criar loops for otimizados"],
-"B",
-"Promises possuem estados: pending (pendente), fulfilled (realizada) e rejected (rejeitada).",
-"Facilitam o tratamento de código assíncrono em comparação a callbacks aninhados."
+    "Desenvolvimento Web", "Difícil",
+    "O que é o CORS (Cross-Origin Resource Sharing) em aplicações web?",
+    "Mecanismo de segurança baseado em cabeçalhos HTTP",
+    [
+        "A) Um protocolo de criptografia de ponta a ponta para senhas",
+        "B) Um mecanismo de segurança implementado por navegadores que restringe requisições HTTP feitas a partir de um domínio diferente daquele que serviu o recurso original",
+        "C) Uma biblioteca JavaScript para requisições assíncronas",
+        "D) Um padrão de rotas para Single Page Applications"
+    ],
+    "B",
+    "O CORS protege contra requisições maliciosas entre origens distintas, exigindo cabeçalhos específicos no servidor para liberar o acesso.",
+    "Erros de CORS ocorrem frequentemente ao testar APIs locais sem configuração de permissão."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Difícil",
-"Qual é a finalidade do atributo async ou defer em tags  no HTML?",
-"Controlar o carregamento e execução assíncrona de scripts externos",
-["A) Comprimir o tamanho do arquivo JavaScript para baixar mais rápido", "B) Permitir o carregamento não bloqueante do script em paralelo com a análise do HTML", "C) Criptografar o código JavaScript contra inspeção", "D) Forçar a execução imediata travando a renderização"],
-"B",
-"Scripts sem async/defer pausam o parsing do HTML até que o script seja baixado e executado. Com defer, o script executa após o documento estar pronto.",
-"Melhora consideravelmente a performance de carregamento da página."
+    "Desenvolvimento Web", "Média",
+    "Qual é a principal utilidade do localStorage em navegadores web?",
+    "Armazenamento persistente de dados chave-valor no navegador",
+    [
+        "A) Enviar dados criptografados diretamente para um banco de dados em nuvem",
+        "B) Armazenar dados no navegador do usuário de forma persistente, mesmo após fechar a aba ou o navegador",
+        "C) Guardar arquivos temporários que expiram ao fechar a sessão",
+        "D) Gerenciar o histórico de navegação avançado"
+    ],
+    "B",
+    "Diferente do sessionStorage (que apaga ao fechar a aba), o localStorage armazena dados sem data de expiração explícita.",
+    "Armazena apenas strings. Objetos precisam ser convertidos com JSON.stringify."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Fácil",
-"Qual propriedade CSS define a opacidade (transparência) de um elemento?",
-"opacity: 0.5;",
-["A) transparency", "B) opacity", "C) alpha", "D) visibility"],
-"B",
-"A propriedade opacity aceita valores de 0 (totalmente transparente) a 1 (totalmente opaco).",
-"Diferente de visibility: hidden, a opacidade ainda mantém a interatividade do elemento se não for ajustada."
+    "Desenvolvimento Web", "Difícil",
+    "O que é o Virtual DOM utilizado em bibliotecas como o React?",
+    "Cópia leve do DOM real mantida na memória",
+    [
+        "A) Um navegador web rodando em servidores na nuvem",
+        "B) Uma representação leve em memória do DOM real, permitindo calcular o diff e atualizar apenas os nós alterados de forma otimizada",
+        "C) Um emulador de dispositivos móveis para testes",
+        "D) Uma extensão de segurança para JavaScript"
+    ],
+    "B",
+    "O Virtual DOM minimiza manipulações diretas e lentas do DOM real, melhorando drasticamente a performance de renderização.",
+    "O algoritmo de reconciliação compara o estado anterior com o atual."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Média",
-"O que o operador await faz dentro de uma função assíncrona (async function) em JavaScript?",
-"Pausa a execução da função até que a Promise seja resolvida",
-["A) Interrompe a execução de todo o navegador", "B) Faz a função aguardar de forma assíncrona a resolução de uma Promise antes de prosseguir com a próxima linha", "C) Converte tipos primitivos em objetos", "D) Dispara um erro síncrono proposital"],
-"B",
-"O await torna o código assíncrono muito mais legível, parecendo um código síncrono linear.",
-"Só pode ser utilizado dentro de funções declaradas com a palavra-chave async."
+    "Desenvolvimento Web", "Média",
+    "O que significa dizer que o JavaScript é uma linguagem de programação single-threaded?",
+    "Executa apenas uma instrução por vez na thread principal",
+    [
+        "A) Não suporta nenhum tipo de operação assíncrona",
+        "B) Possui apenas uma linha de execução principal na thread, processando tarefas sequencialmente",
+        "C) Roda estritamente em processadores de um único núcleo",
+        "D) É uma linguagem exclusiva para servidores monousuário"
+    ],
+    "B",
+    "Embora seja single-threaded, o JavaScript gerencia operações assíncronas eficientemente através do Event Loop e callbacks.",
+    "Evita problemas complexos de concorrência comum em multithreading tradicional."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Difícil",
-"No contexto de CSS Grid, o que significa a unidade fracionária fr?",
-"Fração do espaço disponível no container da grade",
-["A) Uma unidade fixa baseada em fontes tipográficas", "B) Uma fração do espaço livre disponível dentro do container grid", "C) pixels flutuantes responsivos", "D) Porcentagem baseada na altura da tela"],
-"B",
-"A unidade fr facilita criar layouts flexíveis onde o espaço é distribuído proporcionalmente (ex: 1fr 2fr).",
-"Elimina o cálculo manual complexo de porcentagens com margens."
+    "Desenvolvimento Web", "Difícil",
+    "O que são Web Workers em JavaScript?",
+    "Scripts executados em background em threads separadas",
+    [
+        "A) Robôs de indexação de motores de busca",
+        "B) Um mecanismo que permite executar scripts JavaScript em threads de segundo plano separadas da thread principal da interface",
+        "C) Ferramentas de automação de testes end-to-end",
+        "D) Servidores web embutidos no navegador"
+    ],
+    "B",
+    "Web Workers evitam que tarefas pesadas de processamento travem a interface gráfica do usuário na thread principal.",
+    "Eles não têm acesso direto ao DOM da página."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Fácil",
-"Qual comando JavaScript converte um objeto ou array JavaScript em uma string JSON?",
-"JSON.stringify(objeto);",
-["A) JSON.parse()", "B) JSON.stringify()", "C) JSON.toText()", "D) JSON.convert()"],
-"B",
-"JSON.stringify serializa dados para o formato de texto JSON, enquanto JSON.parse faz o inverso (texto para objeto).",
-"Fundamental para enviar dados via fetch para APIs."
+    "Desenvolvimento Web", "Média",
+    "Qual é a utilidade do método fetch() em JavaScript moderno?",
+    "Realizar requisições HTTP assíncronas para servidores (APIs)",
+    [
+        "A) Buscar elementos no DOM usando tags HTML",
+        "B) Realizar requisições de rede assíncronas (como GET e POST) para buscar recursos ou APIs",
+        "C) Baixar arquivos compactados em formato ZIP localmente",
+        "D) Recarregar a página web automaticamente"
+    ],
+    "B",
+    "O fetch() substituiu o antigo XMLHttpRequest, retornando Promises de forma nativa.",
+    "Facilita a comunicação com serviços web e APIs RESTful."
 );
 
 addQuestion(
-"Desenvolvimento Web", "Média",
-"O que é o conceito de CSS Specificity (Especificidade)?",
-"Regra de peso que define qual estilo CSS será aplicado quando há conflitos",
-["A) A velocidade com que o navegador interpreta o arquivo de estilos", "B) O peso calculado de seletores CSS para determinar qual regra prevalece em caso de conflito de regras sobre o mesmo elemento", "C) A quantidade de linhas de código em um arquivo CSS", "D) O suporte a navegadores antigos"],
-"B",
-"IDs têm mais peso que classes, que por sua vez têm mais peso que seletores de tag.",
-"O uso excessivo de !important sobrescreve a especificidade normal."
+    "Desenvolvimento Web", "Difícil",
+    "O que é um Closure (Fechamento) em JavaScript?",
+    "Uma função que se lembra do seu escopo léxico mesmo quando executada fora dele",
+    [
+        "A) Um comando para encerrar conexões abertas de rede",
+        "B) A capacidade de uma função interna acessar e lembrar das variáveis de sua função externa (escopo léxico), mesmo após a função externa já ter retornado",
+        "C) Uma estrutura de dados para criptografar senhas locais",
+        "D) Um erro de sintaxe gerado por variáveis não declaradas"
+    ],
+    "B",
+    "Closures são fundamentais em JavaScript para criar variáveis privadas e emular encapsulamento de dados.",
+    "Utilizados frequentemente em geradores de funções e callbacks avançados."
 );
 
-addQuestion(
-"Desenvolvimento Web", "Difícil",
-"O que é o CORS (Cross-Origin Resource Sharing) em aplicações web?",
-"Mecanismo de segurança baseado em cabeçalhos HTTP",
-["A) Um protocolo de criptografia de ponta a ponta para senhas", "B) Um mecanismo de segurança implementado por navegadores que restringe requisições HTTP feitas a partir de um domínio diferente daquele que serviu o recurso original", "C) Uma biblioteca JavaScript para requisições assíncronas", "D) Um padrão de rotas para Single Page Applications"],
-"B",
-"O CORS protege contra requisições maliciosas entre origens distintas, exigindo cabeçalhos específicos no servidor para liberar o acesso.",
-"Erros de CORS ocorrem frequentemente ao testar APIs locais sem configuração de permissão."
-);
-
-addQuestion(
-"Desenvolvimento Web", "Fácil",
-"Qual tag HTML é utilizada para inserir um arquivo JavaScript externo em um documento?",
-"<script src=script.js>",
-["A) <javascript src=script.js>", "B) <script href=script.js>", "C) <script src=script.js>", "D) <js file=script.js>"],
-"C",
-"A tag  com o atributo src vincula scripts externos à página.",
-"Geralmente colocada no final do corpo (body) ou no head com defer."
-);
-
-addQuestion(
-"Desenvolvimento Web", "Média",
-"Qual é a principal utilidade do localStorage em navegadores web?",
-"Armazenamento persistente de dados chave-valor no navegador",
-["A) Enviar dados criptografados diretamente para um banco de dados em nuvem", "B) Armazenar dados no navegador do usuário de forma persistente, mesmo após fechar a aba ou o navegador", "C) Guardar arquivos temporários que expiram ao fechar a sessão", "D) Gerenciar o histórico de navegação avançado"],
-"B",
-"Diferente do sessionStorage (que apaga ao fechar a aba), o localStorage armazena dados sem data deexpiração explícita.",
-"Armazena apenas strings. Objetos precisam ser convertidos com JSON.stringify."
-);
-
-addQuestion(
-"Desenvolvimento Web", "Difícil",
-"O que é o Virtual DOM utilizado em bibliotecas como o React?",
-"Cópia leve do DOM real mantida na memória",
-["A) Um navegador web rodando em servidores na nuvem", "B) Uma representação leve em memória do DOM real, permitindo calcular o diff e atualizar apenas os nós alterados de forma otimizada", "C) Um emulador de dispositivos móveis para testes", "D) Uma extensão de segurança para JavaScript"],
-"B",
-"O Virtual DOM minimiza manipulações diretas e lentas do DOM real, melhorando drasticamente a performance de renderização.",
-"O algoritmo de reconciliação compara o estado anterior com o atual."
-);
-
-addQuestion(
-"Desenvolvimento Web", "Fácil",
-"Qual propriedade CSS define o espaçamento interno entre o conteúdo de um elemento e suas bordas?",
-"padding: 15px;",
-["A) margin", "B) spacing", "C) padding", "D) border-gap"],
-"C",
-"O padding define o espaço interno. O margin define o espaço externo ao redor da borda.",
-"Componentes fundamentais do CSS Box Model."
-);
-
-addQuestion(
-"Desenvolvimento Web", "Média",
-"O que significa dizer que o JavaScript é uma linguagem de programação single-threaded?",
-"Executa apenas uma instrução por vez na thread principal",
-["A) Não suporta nenhum tipo de operação assíncrona", "B) Possui apenas uma linha de execução principal na thread, processando tarefas sequencialmente", "C) Roda estritamente em processadores de um único núcleo", "D) É uma linguagem exclusiva para servidores monousuário"],
-"B",
-"Embora seja single-threaded, o JavaScript gerencia operações assíncronas eficientemente através do Event Loop e callbacks.",
-"Evita problemas complexos de concorrência comum em multithreading tradicional."
-);
-
-addQuestion(
-"Desenvolvimento Web", "Difícil",
-"O que são Web Workers em JavaScript?",
-"Scripts executados em background em threads separadas",
-["A) Robôs de indexação de motores de busca", "B) Um mecanismo que permite executar scripts JavaScript em threads de segundo plano separadas da thread principal da interface", "C) Ferramentas de automação de testes end-to-end", "D) Servidores web embutidos no navegador"],
-"B",
-"Web Workers evitam que tarefas pesadas de processamento travem a interface gráfica do usuário na thread principal.",
-"Eles não têm acesso direto ao DOM da página."
-);
-
-addQuestion(
-"Desenvolvimento Web", "Fácil",
-"Qual tag HTML é utilizada para criar uma lista não ordenada (com marcadores em bolinhas)?",
-"",
-["A) ", "B) ", "C) ", "D) "],
-"C",
-"A tag  (unordered list) agrupa itens de lista que utilizam a tag .",
-"A tag  cria listas ordenadas (numeradas)."
-);
-
-addQuestion(
-"Desenvolvimento Web", "Média",
-"Qual é a utilidade do método fetch() em JavaScript moderno?",
-"Realizar requisições HTTP assíncronas para servidores (APIs)",
-["A) Buscar elementos no DOM usando tags HTML", "B) Realizar requisições de rede assíncronas (como GET e POST) para buscar recursos ou APIs", "C) Baixar arquivos compactados em formato ZIP localmente", "D) Recarregar a página web automaticamente"],
-"B",
-"O fetch() substituiu o antigo XMLHttpRequest, retornando Promises de forma nativa.",
-"Facilita a comunicação com serviços web e APIs RESTful."
-);
-
-addQuestion(
-"Desenvolvimento Web", "Difícil",
-"O que define o comportamento de seletores CSS combinadores, como o seletor de irmão adjacente (+)?",
-"Seleciona o elemento imediatamente após o especificado",
-["A) Seleciona todos os descendentes diretos ou indiretos", "B) Seleciona o elemento que vem imediatamente após o primeiro elemento especificado, desde que compartilhem o mesmo pai", "C) Selecionado apenas elementos que possuem classes idênticas", "D) Seleciona elementos pais recursivamente"],
-"B",
-"O combinador + atinge o próximo irmão imediato. O combinador ~ atinge todos os irmãos seguintes.",
-"Útil para estilizações condicionais baseadas na ordem estrutural do HTML."
-);
 
 /* =====================================================
    SPRING FRAMEWORK (SPRING BOOT, DATA, SECURITY)
