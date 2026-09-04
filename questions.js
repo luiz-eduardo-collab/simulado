@@ -7915,145 +7915,632 @@ addQuestion(
     "O código é apenas o reflexo do modelo mental validado do negócio."
 );
 /* =====================================================
-   SCRUM E EXTREME PROGRAMMING (XP)
+    SCRUM E EXTREME PROGRAMMING (XP) - 40 QUESTÕES COMPLETAS
 ===================================================== */
 
-const scrumXp = [
-    {
-        q: "Qual é a principal responsabilidade do Product Owner (PO) no framework Scrum?",
-        c: "Papéis no Scrum",
-        o: [
-            "A) Garantir que o time siga rigorosamente os processos tradicionais de gerenciamento de projetos em cascata.",
-            "B) Representar os interesses dos stakeholders, gerenciar, detalhar e priorizar o Product Backlog (Fila do Produto).",
-            "C) Atuar como líder servente removendo impedimentos técnicos e facilitando os eventos diários.",
-            "D) Escrever e executar os testes automatizados de aceitação de código."
-        ],
-        a: "B",
-        e: "O Product Owner é o único dono do Product Backlog e responsável por maximizar o valor do produto, decidindo o que entra na fila e qual a ordem de prioridade com base no retorno de valor para o negócio.",
-        t: "O PO responde pelo 'quê' deve ser feito, enquanto o time de desenvolvimento decide o 'como'."
-    },
-    {
-        q: "O que ocorre tipicamente durante a reunião de Sprint Retrospective (Retrospectiva da Sprint) no Scrum?",
-        c: "Eventos do Scrum",
-        o: [
-            "A) O time apresenta o incremento de software pronto para os clientes e stakeholders externos.",
-            "B) O time de desenvolvimento inspeciona a si próprio, avaliando pessoas, relacionamentos, processos e ferramentas, criando um plano de melhorias para a próxima Sprint.",
-            "C) O Scrum Master distribui as tarefas da semana seguinte para cada desenvolvedor.",
-            "D) O Product Owner cancela a Sprint caso as metas financeiras não tenham sido atingidas."
-        ],
-        a: "B",
-        e: "A Retrospectiva é um evento focado em melhoria contínua interna do time, onde se discute o que funcionou bem, o que falhou e o que pode ser aprimorado no processo de trabalho.",
-        t: "Diferencia-se da Sprint Review, que foca na inspeção do produto entregue."
-    },
-    {
-        q: "No Extreme Programming (XP), o que caracteriza a prática de 'Programação em Par' (Pair Programming)?",
-        c: "Práticas do XP",
-        o: [
-            "A) Dois desenvolvedores trabalham juntos na mesma estação de trabalho, onde um escreve o código (piloto) e o outro revisa e pensa criticamente em tempo real (observador/copiloto), invertendo os papéis frequentemente.",
-            "B) Cada desenvolvedor trabalha em um branch separado e faz um merge ao final do dia.",
-            "C) Os desenvolvedores competem para ver quem entrega a mesma feature mais rápido.",
-            "D) A equipe se divide em duplas para realizar testes de carga em servidores remotos."
-        ],
-        a: "A",
-        e: "A programação em par melhora a qualidade do código, reduz a quantidade de defeitos de forma instantânea e promove a disseminação de conhecimento técnico entre os membros da equipe.",
-        t: "É uma das práticas mais icônicas e debatidas do desenvolvimento ágil."
-    },
-    {
-        q: "O que compõe o chamado 'Sprint Backlog' em um projeto Scrum?",
-        c: "Artefatos do Scrum",
-        o: [
-            "A) A lista completa de todos os requisitos desejados para o software ao longo de todo o ciclo de vida do produto.",
-            "B) O conjunto de itens do Product Backlog selecionados para a Sprint atual, juntamente com o plano de desenvolvimento necessário para entregar o incremento.",
-            "C) O relatório de desempenho financeiro apresentado aos investidores da empresa.",
-            "D) A lista de bugs críticos encontrados pelo setor de qualidade em produção."
-        ],
-        a: "B",
-        e: "O Sprint Backlog pertence exclusivamente ao time de desenvolvimento e detalha o trabalho que a equipe realizará para atingir a Meta da Sprint (Sprint Goal).",
-        t: "Ele é dinâmico e evolui ao longo da Sprint conforme o time descobre mais sobre o trabalho."
-    },
-    {
-        q: "Quais são os cinco valores fundamentais propostos pelo Extreme Programming (XP)?",
-        c: "Valores do XP",
-        o: [
-            "A) Custo, Escopo, Prazo, Qualidade e Hierarquia.",
-            "B) Comunicação, Simplicidade, Feedback, Coragem e Respeito.",
-            "C) Planejamento, Execução, Controle, Monitoramento e Encerramento.",
-            "D) Transparência, Inspeção, Adaptação, Velocidade e Previsibilidade."
-        ],
-        a: "B",
-        e: "Os cinco valores do XP guiam as atitudes e comportamentos da equipe técnica, criando um ambiente colaborativo e altamente adaptável a mudanças.",
-        t: "Esses valores sustentam as 12 práticas clássicas do XP."
-    },
-    {
-        q: "Qual melhor descreve o papel do Scrum Master em um projeto ágil?",
-        c: "Papéis no Scrum",
-        o: [
-            "A) Um gerente de projeto tradicional que cobra prazos, delega tarefas e controla horas trabalhadas.",
-            "B) Um líder servente (servant leader) que ajuda a remover impedimentos, protege a equipe de interferências externas e promove a adoção do Scrum.",
-            "C) O responsável técnico supremo pela arquitetura de código e banco de dados.",
-            "D) O representante oficial dos clientes que valida cada linha de código escrita."
-        ],
-        a: "B",
-        e: "O Scrum Master não manda na equipe; ele serve ao time, facilitando os eventos, garantindo que o Scrum seja compreendido e ajudando a eliminar bloqueios que atrapalham a produtividade.",
-        t: "Ele atua como um facilitador e guardião do processo ágil."
-    },
-    {
-        q: "No contexto do Extreme Programming (XP), qual é o objetivo da prática de Refatoração Contínua (Refactoring)?",
-        c: "Práticas do XP",
-        o: [
-            "A) Reescrever completamente o software do zero a cada seis meses para usar novas linguagens.",
-            "B) Melhorar a estrutura interna do código existente sem alterar o seu comportamento externo, mantendo-o limpo, legível e livre de dívidas técnicas.",
-            "C) Aumentar artificialmente o número de linhas de código para impressionar os gestores.",
-            "D) Traduzir comentários em inglês para o idioma nativo da equipe."
-        ],
-        a: "B",
-        e: "A refatoração constante evita o acúmulo de complexidade desnecessária (dívida técnica), tornando o sistema mais fácil de manter e estender ao longo do tempo.",
-        t: "No XP, refatorar é uma atividade diária e integrada ao desenvolvimento."
-    },
-    {
-        q: "O que significa a 'Definição de Pronto' (Definition of Done - DoD) no Scrum?",
-        c: "Conceitos do Scrum",
-        o: [
-            "A) O momento exato em que o cliente paga a fatura mensal do contrato de software.",
-            "B) Uma compreensão compartilhada e formal de todos os critérios de qualidade que um incremento de software deve atender para ser considerado completo e liberável.",
-            "C) A quantidade de horas semanais que os desenvolvedores passam na empresa.",
-            "D) A autorização dada pelo gerente para iniciar uma nova Sprint."
-        ],
-        a: "B",
-        e: "A DoD garante transparência e qualidade. Se um item do backlog não atende aos critérios da DoD (ex: código revisado, testes unitários passando, documentado), ele não pode ser considerado pronto nem entregue.",
-        t: "Diferencia-se da 'Definition of Ready' (DoR), que define quando um item está pronto para entrar na Sprint."
-    },
-    {
-        q: "O que significa o conceito de 'Timebox' aplicado aos eventos do Scrum?",
-        c: "Eventos do Scrum",
-        o: [
-            "A) Um cronograma flexível que pode ser estendido caso a reunião não termine.",
-            "B) Uma duração máxima fixa alocada para cada evento ou atividade, ajudando a focar, evitar reuniões longas e promover a pontualidade.",
-            "C) O prazo de entrega estipulado pelo contrato com o cliente final.",
-            "D) Uma ferramenta de controle de ponto dos funcionários."
-        ],
-        a: "B",
-        e: "Os eventos do Scrum (como a Daily de 15 minutos ou a Planning de até 8 horas para Sprints de um mês) possuem duração máxima estrita (Timebox) para otimizar o tempo e evitar desperdícios.",
-        t: "Uma vez esgotado o tempo de um evento timeboxed, ele é encerrado."
-    },
-    {
-        q: "Qual prática do Extreme Programming (XP) enfatiza a integração frequente de código várias vezes ao dia, combinada com testes automatizados?",
-        c: "Práticas do XP",
-        o: [
-            "A) Integração Contínua (Continuous Integration)",
-            "B) Cascata Estendida (Extended Waterfall)",
-            "C) Planejamento de Longo Prazo (Long-Term Planning)",
-            "D) Controle Manual de Mudanças (Change Control Board)"
-        ],
-        a: "A",
-        e: "A Integração Contínua no XP exige que os desenvolvedores integrem seu código ao repositório principal com alta frequência, rodando suítes de testes automatizados para detectar conflitos e bugs imediatamente.",
-        t: "Minimiza o pesadelo de integrar códigos divergentes após semanas de trabalho isolado."
-    }
-];
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Qual é a principal responsabilidade do Product Owner (PO) no framework Scrum?", 
+    "Papéis no Scrum", 
+    [
+        "A) Garantir que o time siga rigorosamente os processos tradicionais de gerenciamento de projetos em cascata.",
+        "B) Representar os interesses dos stakeholders, gerenciar, detalhar e priorizar o Product Backlog (Fila do Produto).",
+        "C) Atuar como líder servente removendo impedimentos técnicos e facilitando os eventos diários.",
+        "D) Escrever e executar os testes automatizados de aceitação de código."
+    ], 
+    "B", 
+    "O Product Owner é o único dono do Product Backlog e responsável por maximizar o valor do produto, decidindo o que entra na fila e qual a ordem de prioridade com base no retorno de valor para o negócio.", 
+    "O PO responde pelo 'quê' deve ser feito, enquanto o time de desenvolvimento decide o 'como'."
+);
 
-scrumXp.forEach(x => {
-    addQuestion("Scrum e XP", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que ocorre tipicamente durante a reunião de Sprint Retrospective (Retrospectiva da Sprint) no Scrum?", 
+    "Eventos do Scrum", 
+    [
+        "A) O time apresenta o incremento de software pronto para os clientes e stakeholders externos.",
+        "B) O time de desenvolvimento inspeciona a si próprio, avaliando pessoas, relacionamentos, processos e ferramentas, criando um plano de melhorias para a próxima Sprint.",
+        "C) O Scrum Master distribui as tarefas da semana seguinte para cada desenvolvedor.",
+        "D) O Product Owner cancela a Sprint caso as metas financeiras não tenham sido atingidas."
+    ], 
+    "B", 
+    "A Retrospectiva é um evento focado em melhoria contínua interna do time, onde se discute o que funcionou bem, o que falhou e o que pode ser aprimorado no processo de trabalho.", 
+    "Diferencia-se da Sprint Review, que foca na inspeção do produto entregue."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "No Extreme Programming (XP), o que caracteriza a prática de 'Programação em Par' (Pair Programming)?", 
+    "Práticas do XP", 
+    [
+        "A) Dois desenvolvedores trabalham juntos na mesma estação de trabalho, onde um escreve o código (piloto) e o outro revisa e pensa criticamente em tempo real (observador/copiloto), invertendo os papéis frequentemente.",
+        "B) Cada desenvolvedor trabalha em um branch separado e faz um merge ao final do dia.",
+        "C) Os desenvolvedores competem para ver quem entrega a mesma feature mais rápido.",
+        "D) A equipe se divide em duplas para realizar testes de carga em servidores remotos."
+    ], 
+    "A", 
+    "A programação em par melhora a qualidade do código, reduz a quantidade de defeitos de forma instantânea e promove a disseminação de conhecimento técnico entre os membros da equipe.", 
+    "É uma das práticas mais icônicas e debatidas do desenvolvimento ágil."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que compõe o chamado 'Sprint Backlog' em um projeto Scrum?", 
+    "Artefatos do Scrum", 
+    [
+        "A) A lista completa de todos os requisitos desejados para o software ao longo de todo o ciclo de vida do produto.",
+        "B) O conjunto de itens do Product Backlog selecionados para a Sprint atual, juntamente com o plano de desenvolvimento necessário para entregar o incremento.",
+        "C) O relatório de desempenho financeiro apresentado aos investidores da empresa.",
+        "D) A lista de bugs críticos encontrados pelo setor de qualidade em produção."
+    ], 
+    "B", 
+    "O Sprint Backlog pertence exclusivamente ao time de desenvolvimento e detalha o trabalho que a equipe realizará para atingir a Meta da Sprint (Sprint Goal).", 
+    "Ele é dinâmico e evolui ao longo da Sprint conforme o time descobre mais sobre o trabalho."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Quais são os cinco valores fundamentais propostos pelo Extreme Programming (XP)?", 
+    "Valores do XP", 
+    [
+        "A) Custo, Escopo, Prazo, Qualidade e Hierarquia.",
+        "B) Comunicação, Simplicidade, Feedback, Coragem e Respeito.",
+        "C) Planejamento, Execução, Controle, Monitoramento e Encerramento.",
+        "D) Transparência, Inspeção, Adaptação, Velocidade e Previsibilidade."
+    ], 
+    "B", 
+    "Os cinco valores do XP guiam as atitudes e comportamentos da equipe técnica, criando um ambiente colaborativo e altamente adaptável a mudanças.", 
+    "Esses valores sustentam as 12 práticas clássicas do XP."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Qual melhor descreve o papel do Scrum Master em um projeto ágil?", 
+    "Papéis no Scrum", 
+    [
+        "A) Um gerente de projeto tradicional que cobra prazos, delega tarefas e controla horas trabalhadas.",
+        "B) Um líder servente (servant leader) que ajuda a remover impedimentos, protege a equipe de interferências externas e promove a adoção do Scrum.",
+        "C) O responsable técnico supremo pela arquitetura de código e banco de dados.",
+        "D) O representante oficial dos clientes que valida cada linha de código escrita."
+    ], 
+    "B", 
+    "O Scrum Master não manda na equipe; ele serve ao time, facilitando os eventos, garantindo que o Scrum seja compreendido e ajudando a eliminar bloqueios que atrapalham a produtividade.", 
+    "Ele atua como um facilitador e guardião do processo ágil."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "No contexto do Extreme Programming (XP), qual é o objetivo da prática de Refatoração Contínua (Refactoring)?", 
+    "Práticas do XP", 
+    [
+        "A) Reescrever completamente o software do zero a cada seis meses para usar novas linguagens.",
+        "B) Melhorar a estrutura interna do código existente sem alterar o seu comportamento externo, mantendo-o limpo, legível e livre de dívidas técnicas.",
+        "C) Aumentar artificialmente o número de linhas de código para impressionar os gestores.",
+        "D) Traduzir comentários em inglês para o idioma nativo da equipe."
+    ], 
+    "B", 
+    "A refatoração constante evita o acúmulo de complexidade desnecessária (dívida técnica), tornando o sistema mais fácil de manter e estender ao longo do tempo.", 
+    "No XP, refatorar é uma atividade diária e integrada ao desenvolvimento."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que significa a 'Definição de Pronto' (Definition of Done - DoD) no Scrum?", 
+    "Conceitos do Scrum", 
+    [
+        "A) O momento exato em que o cliente paga a fatura mensal do contrato de software.",
+        "B) Uma compreensão compartilhada e formal de todos os critérios de qualidade que um incremento de software deve atender para ser considerado completo e liberável.",
+        "C) A quantidade de horas semanais que os desenvolvedores passam na empresa.",
+        "D) A autorização dada pelo gerente para iniciar uma nova Sprint."
+    ], 
+    "B", 
+    "A DoD garante transparência e qualidade. Se um item do backlog não atende aos critérios da DoD (ex: código revisado, testes unitários passando, documentado), ele não pode ser considerado pronto nem entregue.", 
+    "Diferencia-se da 'Definition of Ready' (DoR), que define quando um item está pronto para entrar na Sprint."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que significa o conceito de 'Timebox' aplicado aos eventos do Scrum?", 
+    "Eventos do Scrum", 
+    [
+        "A) Um cronograma flexível que pode ser estendido caso a reunião não termine.",
+        "B) Uma duração máxima fixa alocada para cada evento ou atividade, ajudando a focar, evitar reuniões longas e promover a pontualidade.",
+        "C) O prazo de entrega estipulado pelo contrato com o cliente final.",
+        "D) Uma ferramenta de controle de ponto dos funcionários."
+    ], 
+    "B", 
+    "Os eventos do Scrum (como a Daily de 15 minutos ou a Planning de até 8 horas para Sprints de um mês) possuem duração máxima estrita (Timebox) para otimizar o tempo e evitar desperdícios.", 
+    "Uma vez esgotado o tempo de um evento timeboxed, ele é encerrado."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Qual prática do Extreme Programming (XP) enfatiza a integração frequente de código várias vezes ao dia, combinada com testes automatizados?", 
+    "Práticas do XP", 
+    [
+        "A) Integração Contínua (Continuous Integration)",
+        "B) Cascata Estendida (Extended Waterfall)",
+        "C) Planejamento de Longo Prazo (Long-Term Planning)",
+        "D) Controle Manual de Mudanças (Change Control Board)"
+    ], 
+    "A", 
+    "A Integração Contínua no XP exige que os desenvolvedores integrem seu código ao repositório principal com alta frequência, rodando suítes de testes automatizados para detectar conflitos e bugs imediatamente.", 
+    "Minimiza o pesadelo de integrar códigos divergentes após semanas de trabalho isolado."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que é a prática de 'Desenvolvimento Orientado a Testes' (Test-Driven Development - TDD) no Extreme Programming?", 
+    "Práticas do XP", 
+    [
+        "A) Escrever os testes automatizados somente após todo o código do sistema estar em produção.",
+        "B) Escrever o teste automatizado falho antes de escrever o código de produção, implementando apenas o código necessário para passar no teste e depois refatorando.",
+        "C) Contratar uma equipe exclusiva de testadores manuais para validar as telas.",
+        "D) Testar o software apenas quando o cliente solicitar."
+    ], 
+    "B", 
+    "O ciclo do TDD resume-se em: Vermelho (escreve teste que falha), Verde (escreve código para passar) e Refatorar (limpa o código), garantindo alta testabilidade e design limpo.", 
+    "É um dos pilares técnicos mais fortes do XP."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Qual é o propósito da reunião de 'Sprint Planning' (Planejamento da Sprint) no Scrum?", 
+    "Eventos do Scrum", 
+    [
+        "A) Definir os salários e bônus anuais da equipe de desenvolvimento.",
+        "B) Planejar o trabalho a ser realizado na Sprint através de colaboração de todo o Scrum Team, definindo a Meta da Sprint e selecionando os itens do Product Backlog.",
+        "C) Avaliar o desempenho individual de cada funcionário da empresa.",
+        "D) Apresentar o software finalizado para diretores e clientes externos."
+    ], 
+    "B", 
+    "A Planning estabelece o foco da Sprint. O PO apresenta o que tem mais valor, e o time decide o quanto consegue entregar e como fará o trabalho.", 
+    "É um evento timeboxed com duração proporcional ao tamanho da Sprint."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que é o 'Product Backlog' (Fila do Produto) no framework Scrum?", 
+    "Artefatos do Scrum", 
+    [
+        "A) Um documento estático em PDF criado no início do projeto que nunca mais pode ser alterado.",
+        "B) Uma lista emergente e ordenada de tudo o que é necessário para o produto, sendo a única fonte de requisitos para quaisquer mudanças a serem feitas.",
+        "C) A lista de tarefas técnicas que os programadores executam escondidos do PO.",
+        "D) O registro de todos os erros de sistema ocorridos em servidores de produção."
+    ], 
+    "B", 
+    "O Product Backlog é vivo e dinâmico. Ele muda constantemente para refletir o que o produto precisa para ser competitivo e útil.", 
+    "Gerenciado exclusivamente pelo Product Owner."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que caracteriza a prática de 'Small Releases' (Pequenas Lançamentos) no Extreme Programming?", 
+    "Práticas do XP", 
+    [
+        "A) Lançar uma nova versão grande do software apenas a cada dois anos.",
+        "B) Colocar versões funcionais do software em produção com alta frequência (semanalmente ou até diariamente), reduzindo o escopo de cada entrega.",
+        "C) Escrever códigos com o mínimo de linhas possíveis para economizar espaço em disco.",
+        "D) Reduzir o salário dos desenvolvedores proporcionalmente ao tamanho do projeto."
+    ], 
+    "B", 
+    "Pequenas liberações garantem feedback rápido dos usuários reais, reduzem riscos de grandes falhas de deploy e geram valor contínuo para o negócio.", 
+    "Permite adaptações rápidas baseadas no uso real."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que ocorre durante o evento de 'Sprint Review' (Revisão da Sprint) no Scrum?", 
+    "Eventos do Scrum", 
+    [
+        "A) O time revisa as políticas internas de recursos humanos e férias da empresa.",
+        "B) O Scrum Team e os stakeholders inspecionam o incremento de software resultante da Sprint e adaptam o Product Backlog se necessário.",
+        "C) O Scrum Master aplica uma prova teórica de Scrum para os desenvolvedores.",
+        "D) Os desenvolvedores votam em quem trabalhou mais horas na semana."
+    ], 
+    "B", 
+    "A Review é uma sessão de colaboração e inspeção do produto, onde se demonstra o que foi feito, discute-se o andamento do projeto e ajustam-se os próximos passos com os stakeholders.", 
+    "Não deve ser uma reunião puramente formal de aprovação, mas sim um espaço de troca."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que significa a prática de 'On-Site Customer' (Cliente no Local / Presente) no Extreme Programming?", 
+    "Práticas do XP", 
+    [
+        "A) Um cliente misterioso que testa a segurança física da empresa.",
+        "B) Ter um especialista de domínio (ou representante real do cliente) disponível em tempo integral junto à equipe de desenvolvimento para esclarecer dúvidas de negócio instantaneamente.",
+        "C) Instalar câmeras de segurança na casa dos clientes finais.",
+        "D) Realizar reuniões quinzenais por videoconferência com o patrocinador do projeto."
+    ], 
+    "B", 
+    "A presença contínua do cliente elimina atrasos na especificação de requisitos, reduz mal-entendidos e garante que o software construído atenda exatamente às necessidades reais.", 
+    "Um dos grandes diferenciais para evitar o desenvolvimento de funcionalidades inúteis."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que é a 'Daily Scrum' (Reunião Diária) e qual é o seu principal objetivo?", 
+    "Eventos do Scrum", 
+    [
+        "A) Uma reunião de 4 horas onde o gerente cobra relatórios individuais de produtividade.",
+        "B) Um evento timeboxed de 15 minutos para o time de desenvolvimento inspecionar o progresso em direção à Meta da Sprint e planejar o trabalho para as próximas 24 horas.",
+        "C) Uma palestra motivacional obrigatória antes de iniciar o expediente.",
+        "D) O momento onde o cliente aprova ou rejeita o código do dia anterior."
+    ], 
+    "B", 
+    "A Daily é para o time de desenvolvimento sincronizar atividades e criar um plano para o dia, ajustando o rumo caso estejam desviando da Meta da Sprint.", 
+    "Não é um relatório de status para o chefe, mas sim uma ferramenta de planejamento diário da equipe."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "No Extreme Programming, o que significa a prática de 'Coding Standards' (Padrões de Código)?", 
+    "Práticas do XP", 
+    [
+        "A) Todos os programadores devem usar a mesma marca de computador e teclado mecânico.",
+        "B) Acordar e seguir regras consistentes de formatação, nomenclatura e estilo de código em toda a equipe para que qualquer membro possa ler e manter qualquer parte do sistema facilmente.",
+        "C) Escrever comentários exclusivamente no idioma latim clássico.",
+        "D) Utilizar apenas linguagem de montagem (Assembly) em projetos web."
+    ], 
+    "B", 
+    "Com padrões de código claros, o software parece ter sido escrito por uma única pessoa, facilitando a refatoração e a programação em par.", 
+    "Geralmente automatizada com linters e formatadores de código."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que é o 'Incremento' (Increment) no contexto do framework Scrum?", 
+    "Artefatos do Scrum", 
+    [
+        "A) O aumento salarial concedido aos desenvolvedores após entregarem uma versão.",
+        "B) Um passo concreto em direção ao objetivo do produto, consistindo em todas as Sprints anteriores somadas ao trabalho concluído na Sprint atual, devendo atender à Definição de Pronto.",
+        "C) O acréscimo de novos bugs encontrados pela equipe de testes.",
+        "D) O aumento percentual no escopo inicial exigido pelo cliente."
+    ], 
+    "B", 
+    "Cada incremento deve estar utilizável, independentemente de o Product Owner decidir liberá-lo comercialmente ou não.", 
+    "Representa a soma de valor funcional entregue."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "No Extreme Programming, o que prega a prática de 'Simple Design' (Design Simples)?", 
+    "Práticas do XP", 
+    [
+        "A) Desenvolver sistemas sem banco de dados e sem interface gráfica.",
+        "B) Construir o sistema da forma mais simples possível que atenda aos requisitos atuais, evitando over-engineering (projetar funcionalidades complexas para o 'futuro').",
+        "C) Copiar códigos prontos da internet sem entender o funcionamento.",
+        "D) Utilizar apenas variáveis de uma única letra nos algoritmos."
+    ], 
+    "B", 
+    "O design simples passa em todos os testes, não contém duplicação, expressa todas as ideias importantes da equipe e minimiza o número de classes e métodos.", 
+    "O mantra é: 'Faça a coisa mais simples que possa funcionar'."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Qual é a atitude correta do Scrum Team em relação ao escopo de uma Sprint após ela ter sido iniciada?", 
+    "Conceitos do Scrum", 
+    [
+        "A) O escopo pode ser alterado livremente pelo Product Owner a qualquer momento do dia.",
+        "B) A Sprint Goal não deve ser colocada em risco; o escopo pode ser clarificado e renegociado entre o PO e o Time de Desenvolvimento à medida que mais aprendizados surgem, mantendo a meta.",
+        "C) O escopo é totalmente congelado e proibido de sofrer qualquer ajuste sob nenhuma hipótese.",
+        "D) O Scrum Master tem poder absoluto para dobrar o escopo na metade da Sprint."
+    ], 
+    "B", 
+    "Flexibilidade com responsabilidade: a meta da Sprint permanece protegida, mas há diálogo contínuo caso detalhes precisem ser ajustados.", 
+    "Garante foco sem perder a agilidade."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que caracteriza a prática de 'Metaphor' (Metáfora) no Extreme Programming?", 
+    "Práticas do XP", 
+    [
+        "A) O uso excessivo de figuras de linguagem poéticas na documentação técnica.",
+        "B) Encontrar uma história ou vocabulário compartilhado simples que descreva como o sistema funciona, unificando a arquitetura e facilitando a comunicação (semelhante ao conceito de Linguagem Ubíqua do DDD).",
+        "C) Utilizar metáforas corporativas para pressionar os funcionários.",
+        "D) Criptografar senhas usando mitos gregos."
+    ], 
+    "B", 
+    "A metáfora guia o design do sistema para que todos na equipe tenham uma visão intuitiva de onde cada componente se encaixa.", 
+    "Ajuda novos membros a entenderem o sistema rapidamente."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que significa 'Scrum Team' (Time Scrum) e quais papéis o compõem?", 
+    "Papéis no Scrum", 
+    [
+        "A) Apenas os programadores seniores e o gerente financeiro da empresa.",
+        "B) Uma unidade coesa composta pelo Product Owner, pelo Scrum Master e pelos Desenvolvedores (Developers), sem sub-equipes ou hierarquias internas.",
+        "C) Os consultores externos contratados para auditar a empresa.",
+        "D) Apenas o Scrum Master e o Product Owner."
+    ], 
+    "B", 
+    "O Scrum Team é multidisciplinar e auto-organizável, possuindo todas as habilidades necessárias para criar valor a cada Sprint.", 
+    "Não existem cargos formais de 'Analista' ou 'Testador' no Scrum; todos são chamados de Desenvolvedores."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "No Extreme Programming, o que significa a prática de 'Collective Code Ownership' (Propriedade Coletiva de Código)?", 
+    "Práticas do XP", 
+    [
+        "A) Nenhum programador é dono de nenhum arquivo; qualquer desenvolvedor pode alterar qualquer linha de código em qualquer parte do sistema a qualquer momento.",
+        "B) O código-fonte pertence legalmente a todos os clientes da empresa.",
+        "C) Cada desenvolvedor tem direito a apenas um arquivo por projeto.",
+        "D) O código só pode ser modificado com autorização expressa do diretor de TI."
+    ], 
+    "B", 
+    "Todos são responsáveis por todo o código. Se alguém encontrar um bug em um módulo feito por outro colega, tem a liberdade e o dever de corrigi-lo.", 
+    "Elimina silos de conhecimento na equipe."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Qual é o significado de 'Velocity' (Velocidade) em projetos que utilizam metodologias ágeis?", 
+    "Métricas Ágeis", 
+    [
+        "A) A velocidade de clock dos processadores dos computadores da equipe.",
+        "B) Uma medida da quantidade de trabalho (geralmente em story points) que o time entrega como 'Pronto' em uma Sprint.",
+        "C) O tempo médio que um servidor leva para responder a uma requisição HTTP.",
+        "D) A rapidez com que o gerente consegue demitir funcionários improdutivos."
+    ], 
+    "B", 
+    "A velocidade ajuda o time a planejar previsivelmente quantas funcionalidades conseguem puxar nas próximas Sprints com base no histórico real.", 
+    "Não deve ser usada como métrica de competição entre equipes."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que prega a prática de 'Sustainable Pace' (Ritmo Sustentável / 40-hour week) no Extreme Programming?", 
+    "Práticas do XP", 
+    [
+        "A) Trabalhar 80 horas por semana para entregar o projeto mais rápido.",
+        "B) Manter um ritmo de trabalho constante e saudável (geralmente cerca de 40 horas semanais), evitando horas extras excessivas que geram fadiga, esgotamento e queda na qualidade do software.",
+        "C) Reduzir o ritmo de entrega para uma linha de código por dia.",
+        "D) Parar totalmente o desenvolvimento durante os meses de inverno."
+    ], 
+    "B", 
+    "Profissionais cansados cometem mais erros. O XP defende que equipes descansadas produzem software de muito mais qualidade a longo prazo.", 
+    "O lema é: 'Trabalhe como um profissional, durma bem'."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que acontece se uma Sprint for cancelada antes do seu término no Scrum?", 
+    "Conceitos do Scrum", 
+    [
+        "A) Todos os desenvolvedores são demitidos por justa causa.",
+        "B) Apenas o Product Owner tem o poder de cancelar a Sprint caso a meta tenha tornado-se obsoleta, reiniciando o processo com um novo planejamento.",
+        "C) O projeto inteiro é encerrado definitivamente.",
+        "D) O Scrum Master assume o controle do escopo por tempo indeterminado."
+    ], 
+    "B", 
+    "Cancelamentos de Sprint são raros e drásticos, ocorrendo tipicamente se a direção da empresa mudar radicalmente ou se o negócio perder o sentido daquela meta.", 
+    "Itens 'prontos' são revisados; os inacabados voltam para o Product Backlog."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Qual é a relação entre o Scrum e o Extreme Programming (XP) quando aplicados juntos no desenvolvimento de software?", 
+    "Scrum e XP", 
+    [
+        "A) São totalmente incompatíveis; usar Scrum proíbe o uso de práticas do XP.",
+        "B) Eles se complementam excelentemente: o Scrum fornece o arcabouço de gestão, papéis e governança do projeto, enquanto o XP fornece as práticas técnicas de engenharia de software (TDD, refatoração, par).",
+        "C) O Scrum substitui o código fonte por planilhas e o XP cuida do design visual.",
+        "D) O XP é usado apenas por analistas de suporte e o Scrum por diretores."
+    ], 
+    "B", 
+    "Muitas equipes utilizam o que chamam de 'ScrumBan' ou processos ágeis híbridos, onde o Scrum organiza o fluxo de gestão e o XP garante a excelência técnica do código.", 
+    "Uma combinação clássica e altamente recomendada na indústria."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que significa 'User Story' (História de Usuário) utilizada no planejamento ágil?", 
+    "Planejamento Ágil", 
+    [
+        "A) Um conto de fadas lido para a equipe relaxar nas sextas-feiras.",
+        "B) Uma descrição curta e simples de uma funcionalidade contada a partir da perspectiva do usuário final, focando no valor que ela entrega ('Como [usuário], eu quero [ação], para que [benefício]').",
+        "C) Um relatório financeiro anual apresentado aos acionistas.",
+        "D) Um manual técnico de engenharia de rede em formato PDF."
+    ], 
+    "B", 
+    "As histórias de usuário servem como base para conversas e estimativas, substituindo os antigos e burocráticos documentos de requisitos detalhados.", 
+    "Focam sempre no valor entregue ao cliente."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que é a técnica de estimativa conhecida como 'Planning Poker' (Pôquer de Planejamento)?", 
+    "Planejamento Ágil", 
+    [
+        "A) Um jogo de azar apostando dinheiro real durante as reuniões da empresa.",
+        "B) Uma técnica de estimativa colaborativa baseada em consenso, onde os desenvolvedores utilizam cartas numeradas (geralmente com a sequência de Fibonacci) para estimar o esforço de histórias de usuário.",
+        "C) Um torneio de videogame realizado após o término de cada Sprint.",
+        "D) Uma ferramenta estatística para calcular impostos corporativos."
+    ], 
+    "B", 
+    "O Planning Poker evita o viés de ancoragem (onde o mais sênior fala primeiro), estimulando discussões ricas sobre a complexidade técnica dos itens do backlog.", 
+    "Amplamente utilizada em equipes ágeis."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que define o conceito de 'Empirismo' no coração do framework Scrum?", 
+    "Pilares do Scrum", 
+    [
+        "A) Tomar decisões baseadas em intuição pessoal, astrologia e achismos gerenciais.",
+        "B) O processo de tomar decisões com base no que é conhecido, na experiência passada e na observação direta dos fatos, sustentado pelos pilares de Transparência, Inspeção e Adaptação.",
+        "C) Seguir cegamente manuais teóricos escritos há 50 anos.",
+        "D) Controlar rigorosamente cada minuto de trabalho dos funcionários via spyware."
+    ], 
+    "B", 
+    "Como o desenvolvimento de software ocorre em ambientes incertos e complexos, o Scrum usa o controle de processo empírico para testar e adaptar ciclos curtos.", 
+    "Transparência, Inspeção e Adaptação são inegociáveis."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Qual é o papel da 'Transparência' dentro dos pilares empíricos do Scrum?", 
+    "Pilares do Scrum", 
+    [
+        "A) Permitir que portas de vidro sejam instaladas em todas as salas de reunião.",
+        "B) Exigir que os aspectos significativos do processo sejam visíveis para aqueles responsáveis pelos resultados, utilizando um vocabulário e padrões compartilhados.",
+        "C) Publicar o código-fonte de propriedade intelectual na internet aberta.",
+        "D) Divulgar os salários individuais de todos os funcionários publicamente."
+    ], 
+    "B", 
+    "Sem transparência, a inspeção e a adaptação tornam-se cegas e ineficazes, gerando falsas impressões sobre o andamento do projeto.", 
+    "Artefatos como o Product Backlog e o Sprint Backlog devem ser totalmente visíveis."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que significa o pilar de 'Inspeção' no Scrum?", 
+    "Pilares do Scrum", 
+    [
+        "A) Fiscalizar o crachá de entrada dos funcionários na catraca da empresa.",
+        "B) Examinar com frequência os artefatos do Scrum e o progresso em direção à Meta da Sprint para detectar variações indesejadas ou problemas no processo.",
+        "C) Contratar auditores fiscais externos para verificar os impostos.",
+        "D) Realizar testes toxicológicos surpresa nos programadores."
+    ], 
+    "B", 
+    "A inspeção não deve ser tão frequente a ponto de atrapalhar o trabalho, mas deve ocorrer regularmente nos eventos oficiais do Scrum (Daily, Review, Retrospective).", 
+    "Permite identificar desvios precocemente."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Qual é o papel da 'Adaptação' no ciclo empírico do Scrum?", 
+    "Pilares do Scrum", 
+    [
+        "A) Adaptar o escritório para climas frios ou quentes.",
+        "B) Ajustar um processo ou o material sob trabalho o mais rápido possível caso a inspeção aponte que um ou mais aspectos de um processo desviaram dos limites aceitáveis.",
+        "C) Mudar a linguagem de programação do projeto toda semana.",
+        "D) Demitir a equipe caso ocorra um único erro em produção."
+    ], 
+    "B", 
+    "A adaptação é a ação corretiva imediata tomada com base nos insights gerados durante a inspeção (frequentemente tratada na Retrospectiva).", 
+    "Fecha o ciclo do empirismo: Transparência -> Inspeção -> Adaptação."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que significa a prática de 'Refactoring' combinada com 'Automated Tests' no XP?", 
+    "Práticas do XP", 
+    [
+        "A) Que podemos alterar o código com total segurança sabendo que os testes automatizados avisarão imediatamente se alguma funcionalidade existente quebrou.",
+        "B) Que os testes devem ser reescritos do zero toda vez que o código for salvo.",
+        "C) Que o cliente é quem deve executar os testes de refatoração manualmente.",
+        "D) Que o compilador se encarrega de reescrever o código otimizado."
+    ], 
+    "A", 
+    "Testes automatizados robustos são a rede de segurança indispensável para realizar refatorações profundas sem medo de introduzir regressões no sistema.", 
+    "Código limpo sem testes é frágil; testes sem código limpo são insustentáveis."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Qual é a duração máxima recomendada para uma Sprint no framework Scrum oficial?", 
+    "Duração das Sprints", 
+    [
+        "A) Exatamente um ano civil.",
+        "B) Um mês ou menos, sendo um período fixo durante o qual um incremento de produto 'pronto', utilizável e liberável é criado.",
+        "C) Exatamente três dias úteis.",
+        "D) O tempo que o cliente demorar para pagar o projeto."
+    ], 
+    "B", 
+    "Sprints curtas limitam o risco a um escopo menor e fornecem feedback frequente. Uma vez iniciada uma Sprint, sua duração é fixa e não pode ser alterada.", 
+    "Sprints de 2 semanas são as mais comuns na indústria."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que caracteriza o conceito de 'Auto-organização' (Self-Organization) do Time de Desenvolvimento no Scrum?", 
+    "Conceitos do Scrum", 
+    [
+        "A) Cada desenvolvedor escolhe se quer trabalhar ou ficar em casa dormindo.",
+        "B) A equipe decide internamente quem faz o quê, como o trabalho é executado e como transformar o Product Backlog em Incremento, sem precisar de ordens de gerentes externos.",
+        "C) O Scrum Master define todas as tarefas diárias de cada membro.",
+        "D) Os clientes controlam diretamente as tarefas de programação de cada hora."
+    ], 
+    "B", 
+    "Times auto-organizados possuem autonomia e responsabilidade coletiva, resultando em maior motivação, criatividade e produtividade na entrega de software.", 
+    "O Scrum dá autonomia sobre o 'como', mantendo alinhamento no 'quê'."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "Por que o Extreme Programming (XP) é considerado uma metodologia focada em feedback rápido?", 
+    "Filosofia do XP", 
+    [
+        "A) Porque utiliza microfones de alta sensibilidade nas estações de trabalho.",
+        "B) Porque incentiva testes automatizados constantes, integrações diárias, pequenas liberações frequentes e a presença contínua do cliente, encurtando o ciclo entre escrever código e saber se ele funciona e agrega valor.",
+        "C) Porque os gerentes aplicam pesquisas de satisfação diárias aos funcionários.",
+        "D) Porque o software avisa por voz toda vez que há um erro de sintaxe."
+    ], 
+    "B", 
+    "O feedback rápido é o antídoto contra o desperdício em desenvolvimento de software, permitindo corrigir falhas de entendimento ou de código em minutos, e não em meses.", 
+    "Um dos pilares fundamentais da filosofia ágil."
+);
+
+addQuestion(
+    "Scrum e XP", 
+    "Média", 
+    "O que significa dizer que o Scrum é 'leve' e 'fácil de entender, mas difícil de dominar'?", 
+    "Filosofia do Scrum", 
+    [
+        "A) Que ele exige o uso de equipamentos leves de informática e mesas portáteis.",
+        "B) Que suas regras e guias oficiais são concisos, mas sua aplicação prática exige mudança cultural profunda, disciplina comportamental e maturidade organizacional para lidar com pessoas e processos complexos.",
+        "C) Que qualquer estagiário consegue gerenciar projetos complexos sem treinamento.",
+        "D) Que o framework ocupa pouco espaço de armazenamento em servidores web."
+    ], 
+    "B", 
+    "Muitas empresas adotam as cerimônias do Scrum superficialmente (chamado de 'ScrumBut'), mas falham em abraçar a cultura ágil subjacente.", 
+    "Dominar o Scrum exige resiliência, transparência e melhoria contínua genuína."
+);
 /* =====================================================
    TESTES DE SOFTWARE
 ===================================================== */
