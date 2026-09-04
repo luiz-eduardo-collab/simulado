@@ -1632,6 +1632,16 @@ addQuestion(
     "Não afeta o comportamento em tempo de execução, servindo para checagem estática."
 );
 
+addQuestion(
+    "Java", "Difícil",
+    "No contexto da API de Streams do Java, qual é a diferença fundamental entre operações intermediárias (intermediate) e operações terminais (terminal)?",
+    "Avaliação tardia (lazy evaluation) versus execução imediata",
+    ["A) Operações intermediárias executam imediatamente, enquanto as terminais são opcionais", "B) Operações intermediárias são lazy (retornam um novo Stream e só executam quando uma operação terminal é acionada), enquanto as terminais acionam o processamento e produzem um resultado ou efeito colateral", "C) Operações terminais servem apenas para filtrar dados em paralelo", "D) Não existe diferença técnica de desempenho entre elas"],
+    "B",
+    "As streams do Java usam avaliação tardia (lazy evaluation). Nenhuma operação de filtro ou mapeamento roda até que uma operação terminal (como collect, forEach ou reduce) seja invocada.",
+    "Isso permite otimizações importantes de encadeamento pelo compilador e JVM."
+);
+
 /* =====================================================
    BLOCO 5: DART E FLUTTER (40 QUESTÕES)
 ===================================================== */
