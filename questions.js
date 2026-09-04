@@ -4711,6 +4711,633 @@ addQuestion(
     "Ideal para rotas de limpeza de cache, envio de e-mails em lote ou relatórios agendados simples."
 );
 
+/* =====================================================
+   REST E SOAP (ARQUITETURAS DE APIS E SERVIÇOS WEB)
+===================================================== */
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é a principal diferença arquitetural e de protocolo entre os estilos REST e SOAP?",
+    "Conceitos Básicos",
+    [
+        "A) O REST é um protocolo estrito baseado em XML padronizado pela W3C, enquanto o SOAP é um estilo arquitetural flexível restrito apenas ao método GET.",
+        "B) O SOAP é um protocolo rígido baseado estritamente em XML com envelope próprio e contratos WSDL rígidos; o REST é um estilo arquitetural leve que utiliza verbos HTTP padrão (GET, POST, PUT, DELETE) e suporta múltiplos formatos de dados como JSON.",
+        "C) O REST funciona exclusivamente sobre redes locais sem fio, enquanto o SOAP opera somente via Bluetooth.",
+        "D) Não há diferenças técnicas; ambos são sinônimos para chamadas de procedimentos remotos (RPC)."
+    ],
+    "B",
+    "O SOAP (Simple Object Access Protocol) é um protocolo pesado com especificações rígidas de segurança e transações (WS-Security). O REST (Representational State Transfer) foca em recursos, escalabilidade e simplicidade usando os princípios nativos da web.",
+    "O REST tornou-se o padrão dominante para APIs web modernas devido à sua leveza e facilidade de consumo com JSON."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Como o REST lida com o conceito de 'Stateless' (Sem Estado) em suas requisições?",
+    "Princípios do REST",
+    [
+        "A) O servidor armazena todas as senhas e históricos de navegação dos clientes em memória RAM.",
+        "B) Cada requisição do cliente para o servidor deve conter todas as informações necessárias para entender e processar a solicitação, sem depender de contextos ou sessões armazenadas previamente no servidor.",
+        "C) O estado da aplicação é mantido permanentemente em cookies criptografados no banco de dados relacional.",
+        "D) O servidor gerencia o fluxo temporal das telas do usuário através de conexões TCP persistentes."
+    ],
+    "B",
+    "A restrição Stateless melhora drasticamente a escalabilidade dos servidores REST, pois qualquer instância do servidor pode atender a qualquer requisição de forma independente.",
+    "A autenticação baseada em tokens (como JWT) encaixa-se perfeitamente nessa premissa."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é o papel do arquivo WSDL (Web Services Description Language) no ecossistema SOAP?",
+    "Contratos SOAP",
+    [
+        "A) Servir como um documento de estilos CSS para renderizar páginas HTML no navegador.",
+        "B) Descrever formalmente o contrato do serviço SOAP, especificando as operações disponíveis, os formatos XML esperados, os tipos de dados e os endpoints de comunicação.",
+        "C) Criptografar o payload da mensagem contra ataques de negação de serviço (DDoS).",
+        "D) Substituir o banco de dados relacional no armazenamento de logs de erro."
+    ],
+    "B",
+    "O WSDL atua como um contrato rígido baseado em XML. Ferramentas de desenvolvimento podem ler esse arquivo automaticamente para gerar stubs e classes de cliente capazes de consumir a API SOAP.",
+    "Garante alta tipagem e validação estricta, embora adicione complexidade de configuração."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Quais são os verbos HTTP padrão mais comumente utilizados em uma API RESTful para mapear operações CRUD (Create, Read, Update, Delete)?",
+    "Verbos HTTP no REST",
+    [
+        "A) `FETCH`, `SEND`, `CHANGE`, `REMOVE`",
+        "B) `GET` (Ler), `POST` (Criar), `PUT`/`PATCH` (Atualizar), `DELETE` (Remover)",
+        "C) `SELECT`, `INSERT`, `UPDATE`, `DROP`",
+        "D) `REQUEST`, `RESPONSE`, `VALIDATE`, `EXECUTE`"
+    ],
+    "B",
+    "O REST explora a semântica nativa dos métodos HTTP. O `GET` recupera recursos, `POST` cria novos recursos, `PUT`/`PATCH` atualizam e `DELETE` os remove.",
+    "O uso correto dos verbos e códigos de status HTTP (200, 201, 400, 404, 500) é essencial para uma API REST bem projetada."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Por que o protocolo SOAP é frequentemente escolhido em ambientes corporativos bancários ou governamentais legados?",
+    "Uso do SOAP",
+    [
+        "A) Porque ele consome menos largura de banda que o formato JSON.",
+        "B) Devido aos seus padrões nativos robustos de segurança avançada (WS-Security), confiabilidade transacional (ACID/WS-AtomicTransaction) e contratos contratuais rígidos.",
+        "C) Porque os navegadores web modernos executam SOAP de forma nativa sem bibliotecas adicionais.",
+        "D) Porque ele não exige o uso de endereços IP para comunicação."
+    ],
+    "B",
+    "Embora mais pesado e complexo que o REST, o SOAP oferece recursos de segurança corporativa de nível empresarial integrados e garantias rígidas de entrega de mensagens.",
+    "Ainda é muito comum em sistemas legados corporativos e integrações B2B (Business-to-Business)."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que significa o conceito de 'HATEOAS' (Hypermedia As The Engine Of Application State) no nível mais avançado de maturidade REST (Modelo de Maturidade de Richardson)?",
+    "HATEOAS no REST",
+    [
+        "A) Um sistema de criptografia de ponta a ponta para proteger dados contra ataques de man-in-the-middle.",
+        "B) A prática de incluir links de hipermídia nas respostas da API, permitindo que o cliente navegue dinamicamente pelas próximas ações possíveis sem precisar hardcodar URLs.",
+        "C) Uma biblioteca de compressão de arquivos JSON para otimizar o tráfego de rede.",
+        "D) Um framework de injeção de dependência para microsserviços Java."
+    ],
+    "B",
+    "Com HATEOAS, a resposta da API não traz apenas os dados, mas também os links de navegação disponíveis (ex: links para pagar, cancelar ou atualizar o recurso), tornando o cliente altamente desacoplado da estrutura de URLs.",
+    "Representa o Nível 3 do Modelo de Maturidade de Leonard Richardson para APIs REST."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é a principal desvantagem técnica associada ao uso do protocolo SOAP?",
+    "Limitações do SOAP",
+    [
+        "A) A incapacidade total de trafegar dados em formato numérico.",
+        "B) O alto overhead de processamento e banda devido à obrigatoriedade de serialização e parsing de estruturas XML complexas (Envelopes SOAP), além do acoplamento rígido.",
+        "C) A falta absoluta de padrões de segurança e criptografia.",
+        "D) A impossibilidade de ser executado sobre o protocolo HTTP."
+    ],
+    "B",
+    "O XML do SOAP é verboso e pesado. Processar envelopes SOAP exige mais recursos computacionais de CPU e memória em comparação com o formato JSON leve utilizado pelo REST.",
+    "Isso tornou o SOAP impopular para aplicações móveis e arquiteturas de alta escala orientadas a microsserviços."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Como o REST gerencia a identificação dos recursos disponibilizados na web?",
+    "Recursos no REST",
+    [
+        "A) Através de nomes de métodos remotos encapsulados em um arquivo XML.",
+        "B) Através de URIs (Uniform Resource Identifiers) claros e orientados a substantivos (ex: `/clientes/123/pedidos`).",
+        "C) Através de números de portas TCP exclusivos para cada cliente conectado.",
+        "D) Através de comandos SQL diretos enviados na URL."
+    ],
+    "B",
+    "No REST, tudo é tratado como um 'recurso'. As URIs devem identificar os recursos de forma intuitiva, focando em substantivos no plural em vez de verbos de ação.",
+    "Exemplo correto: `GET /produtos` em vez de `GET /obterProdutos`."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Em termos de transporte e flexibilidade de protocolos, qual é a grande vantagem do REST sobre o SOAP?",
+    "Transporte no REST",
+    [
+        "A) O REST opera exclusivamente via protocolo FTP.",
+        "B) O SOAP está preso obrigatoriamente ao protocolo HTTP, enquanto o REST pode usar qualquer protocolo de rede.",
+        "C) O SOAP é altamente acoplado ao protocolo HTTP (e dependente de extensões rígidas), enquanto o REST tira proveito universal de qualquer recurso web baseado em HTTP, podendo também transitar facilmente sobre JSON, XML, HTML ou texto puro.",
+        "D) O REST exige conexões dedicadas via cabo de fibra ótica."
+    ],
+    "C",
+    "Embora o SOAP possa teoricamente rodar sobre SMTP ou TCP, ele é fortemente atrelado ao HTTP com regras complexas de envelopamento. O REST aproveita diretamente a infraestrutura nativa da web (cache, proxies, gateways HTTP).",
+    "A flexibilidade de formatos de payload (JSON, XML, YAML) também favorece o REST."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual formato de serialização de dados é o mais universal e amplamente associado ao desenvolvimento de APIs REST modernas?",
+    "Formatos de Dados no REST",
+    [
+        "A) XML estrito com validação XSD obrigatória.",
+        "B) JSON (JavaScript Object Notation), devido à sua leveza, legibilidade humana e facilidade de parsing nativo em linguagens web.",
+        "C) Arquivos binários compactados em formato ZIP.",
+        "D) Textos estruturados em planilhas CSV."
+    ],
+    "B",
+    "Embora o REST suporte múltiplos formatos (conteúdo negociado via header `Accept`), o JSON tornou-se o padrão de fato da indústria por sua simplicidade e baixo consumo de banda comparado ao XML.",
+    "Acelera o desenvolvimento tanto no backend quanto no frontend."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que caracteriza o componente UDDI (Universal Description, Discovery, and Integration) na arquitetura tradicional de Web Services SOAP?",
+    "UDDI no SOAP",
+    [
+        "A) Um banco de dados relacional para cache de imagens.",
+        "B) Um diretório centralizado onde provedores registram seus serviços WSDL para que clientes possam descobri-los dinamicamente.",
+        "C) Um mecanismo de criptografia de senhas para o protocolo HTTP.",
+        "D) Uma ferramenta de testes automatizados de front-end."
+    ],
+    "B",
+    "O UDDI formava a tríade clássica do SOAP junto com WSDL e o próprio protocolo SOAP, funcionando como um catálogo corporativo de serviços.",
+    "Atualmente é pouco utilizado, tendo sido substituído por abordagens mais modernas em nuvem."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que significa a restrição de 'Uniform Interface' (Interface Uniforme) no estilo arquitetural REST?",
+    "Interface Uniforme",
+    [
+        "A) Que todas as respostas da API devem usar a mesma paleta de cores CSS.",
+        "B) Que as interações entre cliente e servidor seguem um conjunto padronizado de regras (identificação de recursos via URIs, manipulação via representações, mensagens auto-descritivas e HATEOAS), simplificando a arquitetura.",
+        "C) Que o servidor deve aceitar apenas comandos escritos em linguagem C.",
+        "D) Que o tamanho de todas as respostas JSON deve ser exatamente o mesmo."
+    ],
+    "B",
+    "A interface uniforme desacopla os clientes das implementações dos servidores, permitindo que cada parte evolua de forma independente.",
+    "É um dos pilares fundamentais definidos por Roy Fielding em sua tese."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Como o protocolo SOAP lida com a confiabilidade e transações distribuídas?",
+    "WS-ReliableMessaging",
+    [
+        "A) Através de extensões de especificação conhecidas como WS-ReliableMessaging e WS-AtomicTransaction, que garantem entrega garantida de mensagens sobre redes instáveis.",
+        "B) Deixando o pacote de dados ser descartado sem aviso prévio caso ocorra perda de sinal.",
+        "C) Utilizando comandos de rollback automáticos no navegador do usuário.",
+        "D) Criptografando o disco rígido do servidor de aplicação."
+    ],
+    "A",
+    "O ecossistema WS-* (Web Services Standards) adiciona funcionalidades de nível empresarial que o HTTP puro do REST não possui nativamente.",
+    "Exige implementações robustas tanto no cliente quanto no servidor."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é a finalidade principal do cabeçalho HTTP `Cache-Control` em uma API RESTful?",
+    "Cache no REST",
+    [
+        "A) Definir a senha de acesso root ao banco de dados.",
+        "B) Instruir clientes, proxies e servidores intermediários sobre como e por quanto tempo uma resposta de recurso pode ser armazenada em cache.",
+        "C) Forçar o navegador a reiniciar a cada 5 segundos.",
+        "D) Compactar o código JavaScript do front-end."
+    ],
+    "B",
+    "O uso correto de cache (ex: `Cache-Control: max-age=3600`) reduz drasticamente a carga no servidor e melhora a latência para os clientes.",
+    "Aproveita a infraestrutura nativa da web que o SOAP não consegue utilizar com a mesma facilidade."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que representa o Nível 1 (Recursos) no Modelo de Maturidade de Richardson para APIs REST?",
+    "Maturidade Richardson",
+    [
+        "A) O uso de um único endpoint genérico para todas as operações do sistema.",
+        "B) A divisão do sistema em múltiplos URIs distintos para cada recurso específico (ex: `/usuarios`, `/produtos`), em vez de enviar tudo para um único túnel RPC.",
+        "C) A implementação completa de HATEOAS com links hipermídia.",
+        "D) A remoção total do protocolo HTTP."
+    ],
+    "B",
+    "No Nível 1, a API começa a tratar conceitos orientados a recursos, separando os pontos de entrada por entidades do domínio.",
+    "O Nível 0 foca em chamadas de método remoto via URI única (Tunneling)."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que representa o Nível 2 (Verbos HTTP) no Modelo de Maturidade de Richardson para APIs REST?",
+    "Maturidade Richardson",
+    [
+        "A) Usar sempre o método POST para qualquer operação de leitura ou escrita.",
+        "B) Utilizar corretamente os métodos HTTP (GET para leitura, POST para criação, PUT para atualização, DELETE para remoção) e códigos de status apropriados.",
+        "C) Substituir o protocolo HTTP por sockets TCP brutos.",
+        "D) Encriptar payloads com chaves simétricas de 512 bits."
+    ],
+    "B",
+    "Este nível explora a semântica dos verbos HTTP e códigos de status, tornando a API compreensível e padronizada.",
+    "É o nível adotado pela imensa maioria das APIs REST comerciais do mercado."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é o comportamento esperado de um método RESTful que retorna o código de status HTTP `201 Created`?",
+    "Códigos HTTP",
+    [
+        "A) A requisição falhou por falta de parâmetros.",
+        "B) O recurso foi criado com sucesso no servidor, e normalmente a resposta inclui um cabeçalho `Location` apontando para a URI do novo recurso criado.",
+        "C) O servidor encontrou um erro interno inesperado.",
+        "D) O recurso foi deletado permanentemente."
+    ],
+    "B",
+    "O código `201` é a resposta padrão para operações bem-sucedidas de criação de recursos via POST ou PUT.",
+    "Ajuda a manter o contrato semântico claro com o consumidor da API."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Como o SOAP lida com a segurança em nível de mensagem em comparação com a segurança baseada em transporte do REST (como HTTPS/TLS)?",
+    "Segurança SOAP",
+    [
+        "A) O SOAP não possui nenhum mecanismo de segurança, sendo totalmente vulnerável.",
+        "B) Enquanto o REST confia majoritariamente na segurança de transporte (HTTPS), o SOAP utiliza a especificação WS-Security para assinar e criptografar partes específicas do documento XML, garantindo segurança de ponta a ponta mesmo passando por múltiplos intermediários.",
+        "C) O SOAP exige o uso de senhas escritas em cartões perfurados.",
+        "D) O REST criptografa apenas arquivos de imagem."
+    ],
+    "B",
+    "A segurança de mensagem do WS-Security protege o payload mesmo que ele transite por proxies ou barramentos corporativos (ESB) intermediários que decodifiquem o HTTPS.",
+    "Torna o SOAP atraente para corporações com políticas estritas de auditoria de dados."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que significa a propriedade de 'Idempotência' em métodos HTTP no REST (como PUT, DELETE e GET)?",
+    "Idempotência no REST",
+    [
+        "A) Que o método altera dados aleatórios a cada execução.",
+        "B) Que realizar várias requisições idênticas consecutivas produz exatamente o mesmo efeito colateral no servidor do que realizar apenas uma única requisição.",
+        "C) Que o servidor rejeitará qualquer requisição enviada após o meio-dia.",
+        "D) Que a API funciona apenas em modo offline."
+    ],
+    "B",
+    "Métodos como `GET`, `PUT` e `DELETE` são idempotentes (fazer um DELETE duas vezes no mesmo ID resulta no mesmo estado final: recurso inexistente). O `POST` por padrão não é idempotente.",
+    "Fundamental para projetar sistemas tolerantes a falhas de rede e retentativas (retries)."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é a principal diferença entre os métodos HTTP `PUT` e `PATCH` em uma API REST?",
+    "PUT vs PATCH",
+    [
+        "A) Não há diferença; ambos criam novos usuários no sistema.",
+        "B) O `PUT` substitui integralmente o recurso existente pelos dados enviados (atualização completa), enquanto o `PATCH` aplica apenas modificações parciais nos campos especificados.",
+        "C) O `PATCH` funciona apenas via protocolo FTP.",
+        "D) O `PUT` é utilizado exclusivamente para consultas de leitura."
+    ],
+    "B",
+    "Se você enviar um objeto com apenas 2 campos via PUT em um recurso que possui 5 campos, os outros 3 podem ser apagados ou setados como nulos. No PATCH, apenas os 2 campos enviados são modificados.",
+    "Ajuda a economizar banda e evitar sobrescritas acidentais."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que são os contratos XSD (XML Schema Definition) associados a serviços SOAP?",
+    "XSD no SOAP",
+    [
+        "A) Arquivos de folha de estilo para formatação de texto em negrito.",
+        "B) Documentos que definem a estrutura formal, os tipos de dados permitidos e a validação dos elementos XML trafidados nas mensagens SOAP.",
+        "C) Senhas mestras de acesso ao banco de dados Oracle.",
+        "D) Bibliotecas de animação gráfica para interfaces desktop."
+    ],
+    "B",
+    "O XSD garante estritamente que nenhum dado fora do formato esperado entre ou saia do serviço SOAP, provendo validação rígida de tipos.",
+    "Garante altíssima previsibilidade em integrações corporativas complexas."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Por que as APIs REST são consideradas mais escaláveis para aplicações web de alto volume de tráfego?",
+    "Escalabilidad do REST",
+    [
+        "A) Porque exigem servidores físicos caríssimos dedicados a cada usuário.",
+        "B) Devido à restrição Stateless, uso eficiente de cache HTTP intermediário e payloads leves em JSON, permitindo distribuir requisições facilmente entre múltiplos nós de servidores.",
+        "C) Porque bloqueiam o acesso de robôs indexadores de busca.",
+        "D) Porque utilizam conexões de linha discada."
+    ],
+    "B",
+    "A capacidade de armazenar respostas em cache na rede (CDNs, proxies) e a ausência de estado de sessão no servidor reduzem gargalos de processamento.",
+    "É a base arquitetural da web moderna de grande escala."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que indica o código de status HTTP `401 Unauthorized` em uma resposta de API REST?",
+    "Códigos HTTP",
+    [
+        "A) O servidor está temporariamente desligado para manutenção.",
+        "B) A requisição carece de credenciais de autenticação válidas; o cliente precisa se identificar (ex: enviar um token ou fazer login) antes de acessar o recurso.",
+        "C) O recurso solicitado foi permanentemente apagado.",
+        "D) O formato do JSON enviado está corrompido."
+    ],
+    "B",
+    "Diferente do 403 (Forbidden, onde o usuário é conhecido mas não tem permissão), o 401 significa que o cliente não está autenticado.",
+    "Indica que falta identificação válida na requisição."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que indica o código de status HTTP `403 Forbidden` em uma resposta de API REST?",
+    "Códigos HTTP",
+    [
+        "A) O usuário precisa digitar a senha novamente porque ela expirou.",
+        "B) O servidor entendeu a requisição e a identidade do cliente, mas este não possui as permissões (autorização/roles) necessárias para acessar o recurso solicitado.",
+        "C) O endereço URL digitado não existe no servidor.",
+        "D) O banco de dados relacional atingiu o limite de conexões."
+    ],
+    "B",
+    "O servidor sabe quem é o cliente (autenticado), mas o perfil dele não tem privilégios suficientes para executar aquela ação.",
+    "Distinção crucial em relação ao código 401."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é a função do cabeçalho HTTP `Content-Type` em uma requisição ou resposta RESTful?",
+    "Cabeçalhos HTTP",
+    [
+        "A) Determinar a velocidade máxima da conexão de internet em megabits.",
+        "B) Indicar o tipo de mídia (MIME type) do corpo da mensagem enviado ou retornado (ex: `application/json`, `application/xml`, `text/plain`), permitindo que o receptor interprete os dados corretamente.",
+        "C) Criptografar o IP do cliente contra rastreamento.",
+        "D) Armazenar o histórico de navegação do usuário."
+    ],
+    "B",
+    "Sem o `Content-Type: application/json`, o servidor pode não saber como fazer o parsing do corpo da requisição enviada pelo cliente.",
+    "Essencial para a negociação de conteúdo (Content Negotiation)."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é a função do cabeçalho HTTP `Accept` em uma requisição enviada por um cliente REST?",
+    "Negociação de Conteúdo",
+    [
+        "A) Aceitar os termos de uso e política de privacidade do site.",
+        "B) Informar ao servidor quais tipos de mídia (formatos de dados) o cliente é capaz de processar e prefere receber na resposta (ex: `Accept: application/json`).",
+        "C) Permitir conexões automáticas via Bluetooth.",
+        "D) Validar a assinatura digital do certificado SSL."
+    ],
+    "B",
+    "Permite que o servidor decida dinamicamente se responderá em JSON, XML ou outro formato com base nas preferências declaradas pelo cliente.",
+    "Fundamental para arquiteturas flexíveis orientadas a múltiplos clientes (web, mobile, desktop)."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Como o SOAP realiza a comunicação subjacente caso não utilize diretamente o protocolo HTTP?",
+    "Transporte SOAP",
+    [
+        "A) Ele só pode rodar em disquetes de 3.5 polegadas.",
+        "B) Embora o HTTP seja o mais comum, o envelope SOAP é independente de transporte, podendo ser transmitido via SMTP (e-mail), TCP puro ou JMS (Java Message Service).",
+        "C) Através de sinais de rádio AM/FM analógicos.",
+        "D) Por meio de conexões físicas diretas via porta serial RS-232."
+    ],
+    "B",
+    "Essa flexibilidade de transporte era muito valorizada em ambientes corporativos antigos de integração assíncrona por filas de mensagens.",
+    "No entanto, na prática moderna, quase todo SOAP roda sobre HTTP/HTTPS."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que significa a sigla REST e quem a cunhou?",
+    "Origem do REST",
+    [
+        "A) Remote Execution System Transfer, cunhado por Alan Turing em 1950.",
+        "B) Representational State Transfer, cunhado por Roy Fielding em sua tese de doutorado em 2000.",
+        "C) Rapid Enterprise Service Technology, cunhado pela Microsoft em 2008.",
+        "D) Reliable Secure Transmission, cunhado pelo W3C em 1999."
+    ],
+    "B",
+    "Roy Fielding definiu o conjunto de restrições arquiteturais que moldaram a forma como a web e as APIs modernas funcionam.",
+    "O REST descreve o comportamento de sistemas distribuídos baseados em hipermídia."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que é um 'Envelope' na estrutura de uma mensagem SOAP?",
+    "Envelope SOAP",
+    [
+        "A) Um envelope físico de papel despachado pelos Correios.",
+        "B) O elemento raiz obrigatório de qualquer documento XML SOAP, que divide a mensagem em duas partes lógicas opcionais/obrigatórias: o Header (cabeçalho) e o Body (corpo).",
+        "C) Um algoritmo de criptografia simétrica de chave única.",
+        "D) Um arquivo compactado em formato ZIP."
+    ],
+    "B",
+    "O Envelope define o início e o fim da mensagem SOAP, contendo metadados de roteamento e segurança no Header e a carga útil de negócio no Body.",
+    "É a assinatura estrutural inconfundível do protocolo SOAP."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é o comportamento de um método RESTful que retorna o código de status HTTP `204 No Content`?",
+    "Códigos HTTP",
+    [
+        "A) A requisição falhou porque o servidor está sem conexão com a internet.",
+        "B) A requisição foi processada com sucesso pelo servidor, mas não há dados de corpo (payload) para retornar na resposta (comum em operações bem-sucedidas de exclusão via DELETE).",
+        "C) O servidor encontrou um loop infinito de execução.",
+        "D) O recurso solicitado foi duplicado incorretamente."
+    ],
+    "B",
+    "Muito útil em endpoints de exclusão (`DELETE`) ou atualização sem retorno de dados, economizando banda de rede.",
+    "Informa ao cliente que a ação ocorreu perfeitamente, embora nada precise ser exibido."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que caracteriza uma arquitetura de API orientada a recursos no REST em contraste com RPC (Remote Procedure Call)?",
+    "REST vs RPC",
+    [
+        "A) No REST você foca em entidades/substantivos expostos por URIs (`/clientes`), enquanto no RPC você foca em invocar métodos/verbos remotos abstratos (`/deletarCliente?id=5`).",
+        "B) O RPC utiliza exclusivamente JSON leve, enquanto o REST usa apenas XML pesado.",
+        "C) O REST funciona apenas sem fio e o RPC via cabo.",
+        "D) Não há diferença conceitual entre ambos."
+    ],
+    "A",
+    "O RPC expõe funções ou procedimentos do backend como se fossem locais. O REST expõe o modelo de domínio da aplicação estruturado em recursos interconectados.",
+    "O REST aproveita melhor a semântica e a infraestrutura nativa da web."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que significa o código de status HTTP `500 Internal Server Error` em uma API REST?",
+    "Códigos HTTP",
+    [
+        "A) O cliente errou ao digitar a URL da API.",
+        "B) O servidor encontrou uma condição inesperada que o impediu de atender à solicitação (ex: uma exceção Java não tratada, falha de conexão com o banco de dados).",
+        "C) A senha do usuário foi alterada com sucesso.",
+        "D) O navegador do cliente precisa ser atualizado."
+    ],
+    "B",
+    "Indica um problema grave do lado do servidor, e não um erro de envio por parte do cliente.",
+    "Exige análise de logs do backend para correção."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Como o SOAP lida com tratamento de erros em suas respostas XML?",
+    "Fault SOAP",
+    [
+        "A) Retornando códigos de status numéricos HTTP genéricos como 404.",
+        "B) Utilizando um elemento estruturado especial chamado `Fault` dentro do Body da resposta XML, contendo códigos de erro padronizados (`faultcode`, `faultstring`) para descrever o problema detalhadamente.",
+        "C) Desligando o servidor imediatamente para proteger os dados.",
+        "D) Convertendo o erro em um arquivo de áudio."
+    ],
+    "B",
+    "O mecanismo de Fault do SOAP padroniza a forma como falhas e exceções são comunicadas de volta ao cliente em XML.",
+    "Diferente do REST, que usa códigos de status HTTP variados, o SOAP frequentemente retorna HTTP 200 ou 500 trazendo o XML estruturado de Fault no corpo."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é a relação entre microsserviços modernos e o estilo arquitetural REST?",
+    "Microsserviços e REST",
+    [
+        "A) Microsserviços proíbem totalmente o uso de REST, exigindo apenas SOAP.",
+        "B) O REST (junto com JSON) tornou-se o meio de comunicação síncrona predominante entre microsserviços devido à sua simplicidade, baixo acoplamento e independência de linguagem.",
+        "C) O REST obriga todos os microsserviços a rodarem na mesma máquina física.",
+        "D) O REST substitui completamente a necessidade de bancos de dados nos microsserviços."
+    ],
+    "B",
+    "A leveza do REST facilita a comunicação HTTP leve entre diferentes serviços desenvolvidos em linguagens distintas (ex: Java falando com Python ou Node.js).",
+    "É a espinha dorsal de muitas arquiteturas modernas baseadas em nuvem."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que indica o código de status HTTP `400 Bad Request` em uma resposta de API REST?",
+    "Códigos HTTP",
+    [
+        "A) O servidor não conseguiu encontrar o recurso solicitado.",
+        "B) O servidor não pôde processar a requisição devido a um erro do cliente (ex: sintaxe JSON inválida, parâmetros obrigatórios ausentes ou falha de validação de payload).",
+        "C) O servidor foi invadido por hackers.",
+        "D) O arquivo solicitado é grande demais."
+    ],
+    "B",
+    "Indica que a requisição está mal formatada ou viola regras de validação de entrada, impedindo o processamento pelo backend.",
+    "Um dos códigos de erro mais comuns no desenvolvimento de APIs."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que indica o código de status HTTP `404 Not Found` em uma API REST?",
+    "Códigos HTTP",
+    [
+        "A) A operação foi concluída com sucesso absoluto.",
+        "B) O servidor não encontrou nenhum recurso correspondente à URI fornecida ou o recurso foi removido.",
+        "C) O usuário digitou a senha correta.",
+        "D) O banco de dados relacional está sobrecarregado."
+    ],
+    "B",
+    "Um dos códigos mais tradicionais da web, usado quando o identificador de um recurso buscado (ex: `/clientes/99999`) não existe no sistema.",
+    "Ajuda a sinalizar claramente a ausência da entidade consultada."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Por que o SOAP exige o uso de ferramentas geradoras de código (stubs/proxies) enquanto o REST é consumido mais facilmente de forma nativa?",
+    "Consumo de APIs",
+    [
+        "A) Porque o SOAP não pode ser lido por humanos, exigindo parsers complexos baseados em WSDL, enquanto o REST lida com JSON simples que qualquer linguagem consome nativamente sem contratos rígidos obrigatórios.",
+        "B) Porque o REST é proibido em computadores corporativos.",
+        "C) Porque o SOAP roda apenas em computadores quânticos.",
+        "D) Não há diferenças na facilidade de consumo."
+    ],
+    "B",
+    "A rigidez dos contratos WSDL e a verbosidade do XML do SOAP tornam quase inviável escrever clientes manualmente sem o auxílio de ferramentas automáticas.",
+    "O REST foca na flexibilidade e no consumo ágil por clientes web e mobile."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "O que é a negociação de conteúdo (Content Negotiation) em uma API REST?",
+    "Content Negotiation",
+    [
+        "A) Um acordo salarial entre desenvolvedores backend e frontend.",
+        "B) O mecanismo pelo qual o cliente e o servidor entram em acordo sobre o formato de representação dos dados a ser trocado (ex: JSON vs XML), utilizando cabeçalhos como `Accept` e `Content-Type`.",
+        "C) Um protocolo de criptografia de senhas em tempo de execução.",
+        "D) Um sistema de controle de versão de código fonte."
+    ],
+    "B",
+    "Permite que o mesmo endpoint sirva diferentes formatos de dados dependendo exclusivamente do que o cabeçalho da requisição do cliente solicitar.",
+    "Aumenta a versatilidade e interoperabilidade dos serviços RESTful."
+);
+
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é o impacto do uso de Proxies e CDNs intermediários em arquiteturas RESTful comparado ao SOAP?",
+    "Proxies e CDNs no REST",
+    [
+        "A) Proxies e CDNs bloqueiam totalmente o tráfego REST.",
+        "B) Como o REST utiliza verbos HTTP padronizados e semântica de recursos, proxies e CDNs podem armazenar respostas em cache de forma inteligente, reduzindo a latência global; o SOAP encapsula tudo em POSTs genéricos, dificultando esse cache intermediário.",
+        "C) O SOAP aproveita muito melhor CDNs do que o REST.",
+        "D) Não há impacto na performance de rede."
+    ],
+    "B",
+    "O fato de requisições `GET` no REST serem seguras e idempotentes permite que a infraestrutura da internet faça cache agressivo das respostas, otimizando drasticamente a performance.",
+    "Isso torna o REST incomparavelmente superior para distribuição de conteúdo web global."
+);
 
 /* =====================================================
    ARQUITETURA DE SOFTWARE
@@ -4852,146 +5479,7 @@ const arquiteturaSoftware = [
 arquiteturaSoftware.forEach(x => {
     addQuestion("Arquitetura de Software", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
-/* =====================================================
-   REST E SOAP (ARQUITETURAS DE APIS E SERVIÇOS WEB)
-===================================================== */
 
-const restSoapQuest = [
-    {
-        q: "Qual é a principal diferença arquitetural e de protocolo entre os estilos REST e SOAP?",
-        c: "Conceitos Básicos",
-        o: [
-            "A) O REST é um protocolo estrito baseado em XML padronizado pela W3C, enquanto o SOAP é um estilo arquitetural flexível restrito apenas ao método GET.",
-            "B) O SOAP é um protocolo rígido baseado estritamente em XML com envelope próprio e contratos WSDL rígidos; o REST é um estilo arquitetural leve que utiliza verbos HTTP padrão (GET, POST, PUT, DELETE) e suporta múltiplos formatos de dados como JSON.",
-            "C) O REST funciona exclusivamente sobre redes locais sem fio, enquanto o SOAP opera somente via Bluetooth.",
-            "D) Não há diferenças técnicas; ambos são sinônimos para chamadas de procedimentos remotos (RPC)."
-        ],
-        a: "B",
-        e: "O SOAP (Simple Object Access Protocol) é um protocolo pesado com especificações rígidas de segurança e transações (WS-Security). O REST (Representational State Transfer) foca em recursos, escalabilidade e simplicidade usando os princípios nativos da web.",
-        t: "O REST tornou-se o padrão dominante para APIs web modernas devido à sua leveza e facilidade de consumo com JSON."
-    },
-    {
-        q: "Como o REST lida com o conceito de 'Stateless' (Sem Estado) em suas requisições?",
-        c: "Princípios do REST",
-        o: [
-            "A) O servidor armazena todas as senhas e históricos de navegação dos clientes em memória RAM.",
-            "B) Cada requisição do cliente para o servidor deve conter todas as informações necessárias para entender e processar a solicitação, sem depender de contextos ou sessões armazenadas previamente no servidor.",
-            "C) O estado da aplicação é mantido permanentemente em cookies criptografados no banco de dados relacional.",
-            "D) O servidor gerencia o fluxo temporal das telas do usuário através de conexões TCP persistentes."
-        ],
-        a: "B",
-        e: "A restrição Stateless melhora drasticamente a escalabilidade dos servidores REST, pois qualquer instância do servidor pode atender a qualquer requisição de forma independente.",
-        t: "A autenticação baseada em tokens (como JWT) encaixa-se perfeitamente nessa premissa."
-    },
-    {
-        q: "Qual é o papel do arquivo WSDL (Web Services Description Language) no ecossistema SOAP?",
-        c: "Contratos SOAP",
-        o: [
-            "A) Servir como um documento de estilos CSS para renderizar páginas HTML no navegador.",
-            "B) Descrever formalmente o contrato do serviço SOAP, especificando as operações disponíveis, os formatos XML esperados, os tipos de dados e os endpoints de comunicação.",
-            "C) Criptografar o payload da mensagem contra ataques de negação de serviço (DDoS).",
-            "D) Substituir o banco de dados relacional no armazenamento de logs de erro."
-        ],
-        a: "B",
-        e: "O WSDL atua como um contrato rígido baseado em XML. Ferramentas de desenvolvimento podem ler esse arquivo automaticamente para gerar stubs e classes de cliente capazes de consumir a API SOAP.",
-        t: "Garante alta tipagem e validação estricta, embora adicione complexidade de configuração."
-    },
-    {
-        q: "Quais são os verbos HTTP padrão mais comumente utilizados em uma API RESTful para mapear operações CRUD (Create, Read, Update, Delete)?",
-        c: "Verbos HTTP no REST",
-        o: [
-            "A) `FETCH`, `SEND`, `CHANGE`, `REMOVE`",
-            "B) `GET` (Ler), `POST` (Criar), `PUT`/`PATCH` (Atualizar), `DELETE` (Remover)",
-            "C) `SELECT`, `INSERT`, `UPDATE`, `DROP`",
-            "D) `REQUEST`, `RESPONSE`, `VALIDATE`, `EXECUTE`"
-        ],
-        a: "B",
-        e: "O REST explora a semântica nativa dos métodos HTTP. O `GET` recupera recursos, `POST` cria novos recursos, `PUT`/`PATCH` atualizam e `DELETE` os remove.",
-        t: "O uso correto dos verbos e códigos de status HTTP (200, 201, 400, 404, 500) é essencial para uma API REST bem projetada."
-    },
-    {
-        q: "Por que o protocolo SOAP é frequentemente escolhido em ambientes corporativos bancários ou governamentais legados?",
-        c: "Uso do SOAP",
-        o: [
-            "A) Porque ele consome menos largura de banda que o formato JSON.",
-            "B) Devido aos seus padrões nativos robustos de segurança avançada (WS-Security), confiabilidade transacional (ACID/WS-AtomicTransaction) e contratos contratuais rígidos.",
-            "C) Porque os navegadores web modernos executam SOAP de forma nativa sem bibliotecas adicionais.",
-            "D) Porque ele não exige o uso de endereços IP para comunicação."
-        ],
-        a: "B",
-        e: "Embora mais pesado e complexo que o REST, o SOAP oferece recursos de segurança corporativa de nível empresarial integrados e garantias rígidas de entrega de mensagens.",
-        t: "Ainda é muito comum em sistemas legados corporativos e integrações B2B (Business-to-Business)."
-    },
-    {
-        q: "O que significa o conceito de 'HATEOAS' (Hypermedia As The Engine Of Application State) no nível mais avançado de maturidade REST (Modelo de Maturidade de Richardson)?",
-        c: "HATEOAS no REST",
-        o: [
-            "A) Um sistema de criptografia de ponta a ponta para proteger dados contra ataques de man-in-the-middle.",
-            "B) A prática de incluir links de hipermídia nas respostas da API, permitindo que o cliente navegue dinamicamente pelas próximas ações possíveis sem precisar hardcodar URLs.",
-            "C) Uma biblioteca de compressão de arquivos JSON para otimizar o tráfego de rede.",
-            "D) Um framework de injeção de dependência para microsserviços Java."
-        ],
-        a: "B",
-        e: "Com HATEOAS, a resposta da API não traz apenas os dados, mas também os links de navegação disponíveis (ex: links para pagar, cancelar ou atualizar o recurso), tornando o cliente altamente desacoplado da estrutura de URLs.",
-        t: "Representa o Nível 3 do Modelo de Maturidade de Leonard Richardson para APIs REST."
-    },
-    {
-        q: "Qual é a principal desvantagem técnica associada ao uso do protocolo SOAP?",
-        c: "Limitações do SOAP",
-        o: [
-            "A) A incapacidade total de trafegar dados em formato numérico.",
-            "B) O alto overhead de processamento e banda devido à obrigatoriedade de serialização e parsing de estruturas XML complexas (Envelopes SOAP), além do acoplamento rígido.",
-            "C) A falta absoluta de padrões de segurança e criptografia.",
-            "D) A impossibilidade de ser executado sobre o protocolo HTTP."
-        ],
-        a: "B",
-        e: "O XML do SOAP é verboso e pesado. Processar envelopes SOAP exige mais recursos computacionais de CPU e memória em comparação com o formato JSON leve utilizado pelo REST.",
-        t: "Isso tornou o SOAP impopular para aplicações móveis e arquiteturas de alta escala orientadas a microsserviços."
-    },
-    {
-        q: "Como o REST gerencia a identificação dos recursos disponibilizados na web?",
-        c: "Recursos no REST",
-        o: [
-            "A) Através de nomes de métodos remotos encapsulados em um arquivo XML.",
-            "B) Através de URIs (Uniform Resource Identifiers) claros e orientados a substantivos (ex: `/clientes/123/pedidos`).",
-            "C) Através de números de portas TCP exclusivos para cada cliente conectado.",
-            "D) Através de comandos SQL diretos enviados na URL."
-        ],
-        a: "B",
-        e: "No REST, tudo é tratado como um 'recurso'. As URIs devem identificar os recursos de forma intuitiva, focando em substantivos no plural em vez de verbos de ação.",
-        t: "Exemplo correto: `GET /produtos` em vez de `GET /obterProdutos`."
-    },
-    {
-        q: "Em termos de transporte e flexibilidade de protocolos, qual é a grande vantagem do REST sobre o SOAP?",
-        c: "Transporte no REST",
-        o: [
-            "A) O REST opera exclusivamente via protocolo FTP.",
-            "B) O SOAP está preso obrigatoriamente ao protocolo HTTP, enquanto o REST pode usar qualquer protocolo de rede.",
-            "C) O SOAP é altamente acoplado ao protocolo HTTP (e dependente de extensões rígidas), enquanto o REST tira proveito universal de qualquer recurso web baseado em HTTP, podendo também transitar facilmente sobre JSON, XML, HTML ou texto puro.",
-            "D) O REST exige conexões dedicadas via cabo de fibra ótica."
-        ],
-        a: "C",
-        e: "Embora o SOAP possa teoricamente rodar sobre SMTP ou TCP, ele é fortemente atrelado ao HTTP com regras complexas de envelopamento. O REST aproveita diretamente a infraestrutura nativa da web (cache, proxies, gateways HTTP).",
-        t: "A flexibilidade de formatos de payload (JSON, XML, YAML) também favorece o REST."
-    },
-    {
-        q: "Qual formato de serialização de dados é o mais universal e amplamente associado ao desenvolvimento de APIs REST modernas?",
-        c: "Formatos de Dados no REST",
-        o: [
-            "A) XML estrito com validação XSD obrigatória.",
-            "B) JSON (JavaScript Object Notation), devido à sua leveza, legibilidade humana e facilidade de parsing nativo em linguagens web.",
-            "C) Arquivos binários compactados em formato ZIP.",
-            "D) Textos estruturados em planilhas CSV."
-        ],
-        a: "B",
-        e: "Embora o REST suporte múltiplos formatos (conteúdo negociado via header `Accept`), o JSON tornou-se o padrão de fato da indústria por sua simplicidade e baixo consumo de banda comparado ao XML.",
-        t: "Acelera o desenvolvimento tanto no backend quanto no frontend."
-    }
-];
-
-restSoapQuest.forEach(x => {
-    addQuestion("REST e SOAP", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
 /* =====================================================
    UML (LINGUAGEM DE MODELAGEM UNIFICADA)
 ===================================================== */
