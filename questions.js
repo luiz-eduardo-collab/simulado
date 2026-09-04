@@ -1624,278 +1624,1228 @@ addQuestion(
 );
 
 /* =====================================================
-   ESTRUTURAS DE DADOS
+   BLOCO 5: DART E FLUTTER (40 QUESTÕES)
 ===================================================== */
 
 addQuestion(
-    "Estruturas de Dados", "Fácil",
-    "Qual elemento será removido?",
-    "Stack<Integer> pilha = new Stack<>();\n\npilha.push(10);\npilha.push(20);\npilha.push(30);\n\npilha.pop();",
-    ["A) 10", "B) 20", "C) 30", "D) Nenhum"],
+    "Dart/Flutter", "Fácil",
+    "No ecossistema Dart e Flutter, qual é a principal diferença entre os tipos de widgets 'StatelessWidget' e 'StatefulWidget'?",
+    "Stateless vs StatefulWidget",
+    [
+        "A) O StatelessWidget mantém estado interno mutável, enquanto o StatefulWidget é imutável após renderizado.",
+        "B) O StatelessWidget é imutável e não mantém estado interno mutável ao longo do ciclo de vida, enquanto o StatefulWidget pode gerenciar e alterar estado interno.",
+        "C) O StatefulWidget executa exclusivamente em servidores web, enquanto o StatelessWidget é exclusivo para aplicativos móveis nativos.",
+        "D) Não há diferença arquitetural; ambos utilizam o mesmo gerenciador de estado nativo do Dart."
+    ],
+    "B",
+    "Widgets sem estado (Stateless) dependem apenas de suas configurações iniciais, enquanto widgets com estado (Stateful) possuem um objeto State associado que pode sofrer alterações e redesenhar a tela (setState).",
+    "Sempre dê preferência a StatelessWidget quando o componente for estático para otimizar a performance."
+);
+
+addQuestion(
+    "Dart/Flutter", "Média",
+    "Qual modificador de palavra-chave na linguagem Dart é utilizado para declarar variáveis que podem ser calculadas em tempo de execução, mas cujo valor é atribuído uma única vez e permanece imutável após a inicialização?",
+    "final vs const",
+    [
+        "A) var",
+        "B) dynamic",
+        "C) final",
+        "D) static"
+    ],
     "C",
-    "A pilha segue LIFO. O último elemento inserido é removido primeiro.",
-    "LIFO = Last In First Out."
+    "A palavra-chave `final` define uma variável que só pode ser configurada uma vez. Já o `const` define uma constante estática avaliada obrigatoriamente em tempo de compilação.",
+    "Cuidado para não confundir: `const` é mais restrito que `final` por exigir valor conhecido antes mesmo de rodar o aplicativo."
 );
 
 addQuestion(
-    "Estruturas de Dados", "Fácil",
-    "Qual elemento será atendido primeiro?",
-    "Queue<Integer> fila = new LinkedList<>();\n\nfila.add(10);\nfila.add(20);\nfila.add(30);\n\nfila.poll();",
-    ["A) 10", "B) 20", "C) 30", "D) Erro"],
-    "A",
-    "A fila segue FIFO. O primeiro inserido sai primeiro.",
-    "FIFO = First In First Out."
+    "Dart/Flutter", "Difícil",
+    "No Flutter, qual é o papel fundamental do motor gráfico de renderização (como o Impeller ou o antigo Skia) na arquitetura do framework?",
+    "Motor gráfico e renderização",
+    [
+        "A) Traduzir diretamente o código Dart para componentes nativos específicos de UI (como botões nativos do Android e iOS).",
+        "B) Desenhar os pixels diretamente na tela utilizando gráficos acelerados por hardware, ignorando a árvore de widgets nativa do sistema operacional.",
+        "C) Gerenciar exclusivamente as requisições de rede HTTP e a persistência local via SQLite.",
+        "D) Executar a máquina virtual Dart em segundo plano em um thread separado de I/O."
+    ],
+    "B",
+    "O Flutter utiliza uma abordagem de renderização própria (cross-platform non-native components), desenhando os elementos usando seu próprio motor gráfico, o que garante alta performance e consistência visual entre diferentes plataformas.",
+    "Isso explica por que um botão no Flutter se parece exatamente igual no iOS e no Android por padrão."
 );
 
 addQuestion(
-    "Estruturas de Dados", "Fácil",
-    "Qual estrutura representa melhor uma hierarquia?",
-    "        Diretor\n        /       \\\n   Gerente A   Gerente B",
-    ["A) Fila", "B) Pilha", "C) Árvore", "D) Vetor"],
+    "Dart/Flutter", "Fácil",
+    "Qual método é obrigatório em qualquer classe que herda de StatelessWidget ou StatefulWidget em Flutter?",
+    "Método build",
+    [
+        "A) initState()",
+        "B) render()",
+        "C) build()",
+        "D) create()"
+    ],
     "C",
-    "Estruturas hierárquicas são representadas por árvores.",
-    "Árvore possui raiz e nós."
+    "O método build(BuildContext context) é obrigatório e descreve a parte da interface do usuário representada por este widget.",
+    "O método build é chamado sempre que o widget precisa ser renderizado novamente."
 );
 
 addQuestion(
-    "Estruturas de Dados", "Média",
-    "Qual é a principal propriedade de uma estrutura de dados do tipo Pilha (Stack)?",
-    "Operações push e pop",
-    ["A) FIFO (First In, First Out)", "B) LIFO (Last In, First Out)", "C) Acesso direto por índice O(1)", "D) Ordenação automática alfabética"],
+    "Dart/Flutter", "Fácil",
+    "O que o operador de segurança contra nulos (null-safety) '??' faz em Dart?",
+    "Operador de coalescência nula",
+    [
+        "A) Lança uma exceção se a variável for nula.",
+        "B) Retorna o operando à esquerda se ele não for nulo; caso contrário, retorna o operando à direita.",
+        "C) Força o compilador a ignorar erros de nulidade.",
+        "D) Converte um tipo inteiro para string de forma segura."
+    ],
     "B",
-    "A pilha opera no modelo LIFO, onde o último elemento inserido é obrigatoriamente o primeiro a ser retirado.",
-    "Pilha = pratos empilhados (último a entrar sai primeiro)."
+    "O operador de coalescência nula (??) retorna a expressão à esquerda se ela não for nula; se for, avalia e retorna a expressão à direita.",
+    "É ideal para definir valores padrão de forma concisa."
 );
 
 addQuestion(
-    "Estruturas de Dados", "Difícil",
-    "Em uma Lista Simplesmente Encadeada, qual é a complexidade de tempo para inserir um novo elemento diretamente no início da lista (cabeça)?",
-    "Head -> [Nó 1] -> [Nó 2]",
-    ["A) O(1)", "B) O(n)", "C) O(log n)", "D) O(n log n)"],
-    "A",
-    "Como mantemos a referência direta para a cabeça (head), a inserção no início requer apenas atualizar os ponteiros, custando tempo constante O(1).",
-    "Inserir no final sem ponteiro de cauda exigiria varrer toda a lista O(n)."
-);
-
-addQuestion(
-    "Estruturas de Dados", "Fácil",
-    "Qual estrutura de dados não linear organiza elementos em uma relação hierárquica de pai e filhos, contendo uma raiz única?",
-    "Nós conectados por arestas hierárquicas",
-    ["A) Fila", "B) Pilha", "C) Árvore", "D) Vetor estático"],
+    "Dart/Flutter", "Média",
+    "Qual componente do Flutter é mais indicado para criar uma lista longa e dinâmica de itens de forma eficiente, carregando apenas os elementos visíveis na tela sob demanda?",
+    "ListView.builder",
+    [
+        "A) Column",
+        "B) ListView",
+        "C) ListView.builder",
+        "D) Stack"
+    ],
     "C",
-    "Árvores modelam hierarquias corporativas, sistemas de arquivos e sintaxes de compiladores.",
-    "Possuem nós raiz, ramos e folhas."
+    "O ListView.builder constrói os itens sob demanda, conforme eles entram na área visível da tela, otimizando o uso de memória em listas extensas.",
+    "Nunca utilize Column para listas grandes com muitos elementos para evitar problemas de desempenho."
 );
 
 addQuestion(
-    "Estruturas de Dados", "Média",
-    "O que caracteriza uma Árvore Binária de Busca (BST)?",
-    "Filho esquerdo menor / Filho direito maior",
-    ["A) Cada nó pode ter no máximo 4 filhos", "B) Os nós à esquerda são menores que a raiz, e os à direita são maiores", "C) Os dados são armazenados estritamente de forma linear", "D) Não existem chaves duplicadas em hipótese alguma"],
+    "Dart/Flutter", "Difícil",
+    "O que são Isolate em Dart?",
+    "Concorrência e Isolates",
+    [
+        "A) Componentes visuais isolados que não afetam o layout principal.",
+        "B) Threads independentes que possuem sua própria memória heap, permitindo processamento concorrente sem bloquear a thread principal (UI thread).",
+        "C) Funções assíncronas baseadas em Future e async/await.",
+        "D) Bibliotecas de terceiros para gerenciar requisições HTTP seguras."
+    ],
     "B",
-    "A propriedade fundamental da BST garante buscas eficientes comparando valores recursivamente.",
-    "Busca em árvore balanceada custa O(log n)."
+    "Em Dart, o código roda na thread principal (event loop). Para tarefas pesadas de CPU, usam-se Isolates, que rodam em paralelo com memórias separadas.",
+    "Isolates ajudam a manter a interface fluida mesmo durante cálculos complexos."
 );
 
 addQuestion(
-    "Estruturas de Dados", "Difícil",
-    "Qual método de resolução de colisões em Tabelas Hash armazena múltiplos elementos que caíram no mesmo índice em uma lista encadeada interna?",
-    "Índice Hash -> [Elemento A -> Elemento B]",
-    ["A) Endereçamento aberto por sondagem linear", "B) Encadeamento separado (Chaining)", "C) Redimensionamento estático", "D) Dupla Hifenação"],
+    "Dart/Flutter", "Fácil",
+    "Como é chamada a linguagem de programação principal utilizada para desenvolver aplicativos em Flutter?",
+    "Linguagem Dart",
+    [
+        "A) JavaScript",
+        "B) TypeScript",
+        "C) Kotlin",
+        "D) Dart"
+    ],
+    "D",
+    "Flutter utiliza a linguagem Dart, desenvolvida pelo Google, que suporta compilação JIT (Just-In-Time) para desenvolvimento rápido e AOT (Ahead-Of-Time) para produção.",
+    "Dart possui tipagem forte e suporta orientação a objetos."
+);
+
+addQuestion(
+    "Dart/Flutter", "Fácil",
+    "Qual é a utilidade do arquivo pubspec.yaml em um projeto Flutter?",
+    "Arquivo pubspec.yaml",
+    [
+        "A) Configurar as regras de estilização CSS do aplicativo.",
+        "B) Gerenciar dependências do projeto, fontes, ativos (imagens) e metadados gerais.",
+        "C) Compilar o código nativo para iOS e Android simultaneamente.",
+        "D) Executar os testes unitários automatizados."
+    ],
     "B",
-    "No encadeamento separado, cada posição da tabela aponta para uma lista ligada que abriga as colisões.",
-    "Evita perda de dados e estouro de índice."
+    "O arquivo pubspec.yaml é o manifesto do projeto, onde declaramos pacotes externos, fontes locais e assets de imagens.",
+    "Qualquer alteração de dependência exige a execução do comando pub get."
 );
 
 addQuestion(
-    "Estruturas de Dados", "Média",
-    "Qual é a complexidade de tempo no pior caso para buscar um elemento em um Vetor Desordenado de tamanho n?",
-    "Busca linear em array comum",
-    ["A) O(1)", "B) O(log n)", "C) O(n)", "D) O(n²)"],
+    "Dart/Flutter", "Média",
+    "No contexto de programação assíncrona em Dart, qual é a diferença essencial entre um Future e um Stream?",
+    "Future vs Stream",
+    [
+        "A) Future lida com um único valor assíncrono futuro, enquanto Stream lida com uma sequência de eventos ou múltiplos valores ao longo do tempo.",
+        "B) Future roda em uma thread separada, enquanto Stream roda na thread principal.",
+        "C) Stream é síncrono e Future é assíncrono.",
+        "D) Não há diferença prática; ambos são sinônimos para Promises."
+    ],
+    "A",
+    "Um Future representa a computação de um único valor que estará disponível no futuro. Um Stream é como uma tubulação de dados que pode emitir múltiplos eventos ao longo do tempo.",
+    "Streams são amplamente utilizados para manipulação de dados em tempo real."
+);
+
+addQuestion(
+    "Dart/Flutter", "Fácil",
+    "Qual é a função do operador de acesso condicional '?.', também conhecido como safe navigation operator, em Dart?",
+    "Navegação segura contra nulos",
+    [
+        "A) Força a conversão de um objeto para nulo.",
+        "B) Evita o lançamento de NullPointerException caso o objeto à esquerda seja nulo, retornando nulo em vez de quebrar a execução.",
+        "C) Compara se duas variáveis apontam para o mesmo endereço de memória.",
+        "D) Cria uma nova instância estática da classe."
+    ],
+    "B",
+    "O operador `?.` verifica se o objeto é nulo antes de tentar acessar uma propriedade ou método, evitando falhas em tempo de execução.",
+    "Recurso essencial introduzido com o sound null-safety."
+);
+
+addQuestion(
+    "Dart/Flutter", "Média",
+    "O que significa dizer que o Dart possui suporte a tipagem opcional (ou inferência de tipos avançada) através de palavras-chave como var?",
+    "Tipagem e inferência em Dart",
+    [
+        "A) Que o Dart é inteiramente fracamente tipado como JavaScript.",
+        "B) Que o compilador infere automaticamente o tipo da variável no momento da atribuição inicial, mantendo a segurança estática de tipos.",
+        "C) Que os tipos de dados mudam dinamicamente durante a execução do programa.",
+        "D) Que variáveis declaradas com var não podem receber novos valores."
+    ],
+    "B",
+    "Embora o Dart seja fortemente tipado, ele possui inferência de tipos robusta, permitindo usar var sem perder a checagem estática de tipos realizada pelo compilador.",
+    "Uma vez inferido o tipo, você não pode atribuir um valor de outro tipo àquela variável."
+);
+
+addQuestion(
+    "Dart/Flutter", "Difícil",
+    "O que é o 'BuildContext' em Flutter e qual é a sua principal responsabilidade na árvore de widgets?",
+    "BuildContext",
+    [
+        "A) Um gerenciador de banco de dados local SQLite otimizado para mobile.",
+        "B) Um objeto que representa o local de um widget na árvore de widgets, permitindo localizar outros widgets ancestrais ou acessar temas e mídias.",
+        "C) O motor gráfico responsável por compilar o código nativo.",
+        "D) Uma função assíncrona para requisições de rede."
+    ],
+    "B",
+    "O BuildContext é o manipulador da posição do widget na árvore de componentes. É indispensável para operações como Navigator.of(context) ou Theme.of(context).",
+    "Erros comuns de contexto ocorrem quando se tenta usá-lo após assincronia sem checar se o widget ainda está montado."
+);
+
+addQuestion(
+    "Dart/Flutter", "Fácil",
+    "Qual comando executado no terminal é utilizado para criar um novo projeto padrão em Flutter?",
+    "Comando flutter create",
+    [
+        "A) flutter init meu_app",
+        "B) flutter new project",
+        "C) flutter create meu_app",
+        "D) dart build app"
+    ],
     "C",
-    "Como o vetor não está ordenado, pode ser necessário inspecionar cada um dos n elementos (busca linear).",
-    "Busca binária só se aplica a vetores previamente ordenados."
+    "O comando `flutter create <nome_do_projeto>` estrutura toda a árvore de diretórios padrão exigida para um aplicativo Flutter multiplataforma.",
+    "Gera pastas como lib, android, ios, test, entre outras."
 );
 
 addQuestion(
-    "Estruturas de Dados", "Fácil",
-    "Qual estrutura linear é ideal para implementar algoritmos de percurso em largura (BFS) em grafos?",
-    "Estrutura FIFO para controle de visita",
-    ["A) Pilha", "B) Fila", "C) Tabela Hash", "D) Matriz esparsa"],
+    "Dart/Flutter", "Média",
+    "No ciclo de vida de um StatefulWidget, qual método é executado apenas uma única vez quando o objeto State é inserido pela primeira vez na árvore de widgets?",
+    "Método initState",
+    [
+        "A) build()",
+        "B) initState()",
+        "C) dispose()",
+        "D) didUpdateWidget()"
+    ],
     "B",
-    "A Fila (Queue) gerencia a ordem de exploração dos nós vizinhos no algoritmo BFS.",
-    "Busca em profundidade (DFS) utiliza Pilha (ou recursão)."
+    "O método initState() é o ponto ideal para inicializar variáveis de estado, assinar streams ou carregar dados iniciais.",
+    "É obrigatório chamar `super.initState()` no início da implementação."
 );
 
 addQuestion(
-    "Estruturas de Dados", "Difícil",
-    "O que é um Grafo Direcionado (Dígrafo)?",
-    "Arestas com setas direcionais unidirecionais",
-    ["A) Um grafo cujas arestas possuem direção específica de um vértice para outro", "B) Um grafo que não permite ciclos", "C) Uma árvore com múltiplos nós raízes", "D) Uma lista encadeada bidirecional"],
-    "A",
-    "No dígrafo, a aresta (u, v) indica um caminho de u para v, mas não necessariamente o inverso.",
-    "Exemplo clássico: seguidores no Twitter ou rotas de mão única."
-);
-
-addQuestion(
-    "Estruturas de Dados", "Média",
-    "Qual é a principal vantagem de uma Lista Duplamente Encadeada sobre a Lista Simplesmente Encadeada?",
-    "Ponteiros next e prev",
-    ["A) Ocupa menos memória RAM", "B) Permite percorrer a lista tanto para frente quanto para trás de forma eficiente", "C) Dispensa o uso de ponteiros", "D) Ordena os elementos automaticamente"],
+    "Dart/Flutter", "Difícil",
+    "O que acontece no ciclo de vida de um StatefulWidget quando ele é permanentemente removido da árvore de widgets?",
+    "Método dispose",
+    [
+        "A) O método initState é chamado novamente para limpeza.",
+        "B) O método dispose() é acionado, permitindo liberar recursos como controllers, animações e listeners para evitar vazamentos de memória.",
+        "C) A máquina virtual Dart encerra o aplicativo imediatamente.",
+        "D) O garbage collector remove a tela sem avisar o widget."
+    ],
     "B",
-    "Cada nó possui um ponteiro para o próximo e para o anterior, facilitando operações de remoção e navegação reversa.",
-    "O custo é um leve acréscimo no consumo de memória para o segundo ponteiro."
+    "O método dispose() serve estritamente para limpeza de recursos pesados. Sempre chame `super.dispose()` ao final.",
+    "Esquecer de dar dispose em TextEditingController ou StreamSubscription causa memory leaks."
 );
 
 addQuestion(
-    "Estruturas de Dados", "Difícil",
-    "Em uma Heap Binária Mínima (Min-Heap), onde se encontra sempre o menor elemento da estrutura?",
-    "Árvore parcialmente ordenada",
-    ["A) Na raiz da árvore", "B) Em uma das folhas da última camada", "C) No último nó inserido", "D) Distribuído aleatoriamente"],
+    "Dart/Flutter", "Fácil",
+    "Qual estrutura de controle condicional em Dart permite lidar de forma elegante e concisa com múltiplos padrões e tipos (Pattern Matching), introduzida nas versões recentes da linguagem?",
+    "Pattern Matching moderno",
+    [
+        "A) O comando switch-case tradicional aprimorado com padrões e expressões",
+        "B) Apenas if-else aninhados",
+        "C) O operador ternário triplo",
+        "D) A instrução goto"
+    ],
     "A",
-    "Na Min-Heap, o elemento pai é sempre menor ou igual aos seus filhos, garantindo que a raiz guarde o menor valor global.",
-    "Na Max-Heap, a raiz guarda o maior valor."
+    "O Dart moderno introduziu suporte completo a patterns e destructuring em switches, permitindo desestruturar objetos e listas diretamente nas condições.",
+    "Torna o código muito mais expressivo e limpo."
 );
+
+addQuestion(
+    "Dart/Flutter", "Média",
+    "Qual é a utilidade do operador 'as' em Dart?",
+    "Cast de tipos com 'as'",
+    [
+        "A) Atribuir um valor padrão caso a variável seja nula.",
+        "B) Realizar a coerção (cast) de tipo de um objeto para uma classe específica da hierarquia.",
+        "C) Declarar uma variável assíncrona.",
+        "D) Importar um pacote externo com um prefixo."
+    ],
+    "B",
+    "O operador `as` faz um cast explícito de tipo. Se o objeto não for do tipo especificado, uma exceção do tipo TypeError é lançada.",
+    "Prefira usar o operador `is` para checagens seguras antes de realizar o cast."
+);
+
+addQuestion(
+    "Dart/Flutter", "Difícil",
+    "No gerenciamento de estado assíncrono em telas do Flutter, qual widget escuta um Stream ou Future e reconstrói automaticamente a interface com base no estado mais recente da operação?",
+    "FutureBuilder e StreamBuilder",
+    [
+        "A) StateObserver",
+        "B) FutureBuilder / StreamBuilder",
+        "C) ValueNotifierWidget",
+        "D) AsyncRenderer"
+    ],
+    "B",
+    "Os widgets FutureBuilder e StreamBuilder gerenciam conexões assíncronas declarativamente, facilitando exibir indicadores de progresso (loading) ou dados retornados.",
+    "Eliminam a necessidade de escrever lógica manual de setState para requisições simples."
+);
+
+addQuestion(
+    "Dart/Flutter", "Fácil",
+    "Qual widget do Flutter é utilizado para alinhar seu filho e dimensioná-lo de acordo com uma proporção (aspect ratio) específica?",
+    "Aspectadio",
+    [
+        "A) SizedBox",
+        "B) AspectRatio",
+        "C) Expanded",
+        "D) Padding"
+    ],
+    "B",
+    "O AspectRatio tenta ajustar o widget filho para uma proporção largura/altura predeterminada.",
+    "Muito útil em players de vídeo ou exibição de imagens padronizadas."
+);
+
+addQuestion(
+    "Dart/Flutter", "Média",
+    "Qual é a diferença de comportamento entre Expanded e Flexible dentro de um widget flexível como Row ou Column?",
+    "Expanded vs Flexible",
+    [
+        "A) Expanded força o filho a preencher todo o espaço disponível restante no eixo principal; Flexible permite que o filho ocupe até o espaço máximo, mas pode ser menor.",
+        "B) Expanded só funciona em Column, enquanto Flexible só funciona em Row.",
+        "C) Flexible é obsoleto e foi substituído inteiramente por Expanded.",
+        "D) Não há diferença técnica de layout."
+    ],
+    "A",
+    "O Expanded impõe flexFittight (obrigando o filho a ocupar o espaço), enquanto o Flexible usa flexFitloose (permitindo que o filho decida seu tamanho desde que caiba no limite).",
+    "Conhecer essa sutis diferença evita erros de layout flex overflow."
+);
+
+addQuestion(
+    "Dart/Flutter", "Difícil",
+    "O que são extension methods (métodos de extensão) em Dart?",
+    "Extension methods",
+    [
+        "A) Uma forma de herdar classes fechadas sem usar o modificador extends.",
+        "B) Um recurso que permite adicionar novas funcionalidades (métodos ou getters) a bibliotecas ou classes existentes sem modificar seu código-fonte original.",
+        "C) Plugins nativos para comunicação via canal de plataforma (MethodChannel).",
+        "D) Atalhos de compilação para arquivos YAML."
+    ],
+    "B",
+    "Extension methods permitem estender classes de terceiros ou do próprio Dart (como adicionar métodos a String ou int) de forma limpa e segura.",
+    "Declarados com a palavra-chave `extension Nome on Tipo { ... }`."
+);
+
+addQuestion(
+    "Dart/Flutter", "Fácil",
+    "Como se define uma função anônima (closure / lambda) em Dart que recebe um parâmetro inteiro x e retorna o seu dobro?",
+    "Funções anônimas em Dart",
+    [
+        "A) function(int x) { return x * 2; }",
+        "B) (int x) => x * 2;",
+        "C) lambda x: x * 2",
+        "D) def calc(x) -> x * 2"
+    ],
+    "B",
+    "Dart suporta arrow syntax (`=>`) para funções de expressão única, sendo amplamente usada em lambdas e callbacks.",
+    "Equivalente a uma closure tradicional com corpo `{ return ... }`."
+);
+
+addQuestion(
+    "Dart/Flutter", "Média",
+    "Qual é a utilidade do construtor nomeado `Named Constructors` em classes Dart?",
+    "Construtores nomeados",
+    [
+        "A) Permitir criar múltiplos construtores com propósitos distintos em uma mesma classe, identificados por um nome específico.",
+        "B) Impedir que a classe seja instanciada fora do pacote.",
+        "C) Substituir obrigatoriamente o construtor padrão.",
+        "D) Criar métodos estáticos de acesso global."
+    ],
+    "A",
+    "Dart não suporta sobrecarga de construtores por assinatura tradicional, por isso utiliza construtores nomeados como `Classe.nome()`.",
+    "Exemplo clássico no Flutter: `DateTime.utc()` ou `Container.from BoxDecoration()`."
+);
+
+addQuestion(
+    "Dart/Flutter", "Difícil",
+    "O que são os Mixins em Dart e qual palavra-chave é utilizada para aplicá-los em uma classe?",
+    "Mixins em Dart",
+    [
+        "A) Mecanismo de herança múltipla de classes tradicionais (extends múltiplo).",
+        "B) Uma forma de reutilizar código de uma classe em múltiplas hierarquias de classes diferentes sem usar herança linear, utilizando a palavra-chave `with`.",
+        "C) Interfaces puras focadas em requisições de rede.",
+        "D) Funções assíncronas executadas em background."
+    ],
+    "B",
+    "Mixins permitem injetar comportamentos em classes de forma modular. São declarados com a palavra `mixin` e aplicados com `with`.",
+    "Evitam os problemas clássicos associados à herança múltipla estrita."
+);
+
+addQuestion(
+    "Dart/Flutter", "Fácil",
+    "Qual comando do Flutter CLI é utilizado para verificar o ambiente de desenvolvimento e identificar dependências ausentes ou problemas de configuração?",
+    "Comando flutter doctor",
+    [
+        "A) flutter check",
+        "B) flutter verify",
+        "C) flutter doctor",
+        "D) dart analyze"
+    ],
+    "C",
+    "O `flutter doctor` faz um diagnóstico completo da máquina, checando SDKs, Android Studio, Xcode, dispositivos conectados e licenças.",
+    "Sempre o primeiro comando a rodar quando há falhas de build."
+);
+
+addQuestion(
+    "Dart/Flutter", "Média",
+    "O que é o pub.dev no ecossistema Flutter e Dart?",
+    "Repositório pub.dev",
+    [
+        "A) Um ambiente oficial de testes em nuvem para aplicativos iOS.",
+        "B) O repositório oficial de pacotes e bibliotecas de terceiros para Dart e Flutter.",
+        "C) O compilador oficial executado na web.",
+        "D) Uma ferramenta de design gráfico de interfaces."
+    ],
+    "B",
+    "O pub.dev abriga milhares de pacotes open-source reutilizáveis que facilitam desde requisições HTTP até gerenciamento de estado.",
+    "Gerenciado diretamente através do arquivo pubspec.yaml."
+);
+
+addQuestion(
+    "Dart/Flutter", "Difícil",
+    "O que é o conceito de 'Tree Shaking' aplicado pelo compilador do Flutter durante a geração do build final de produção?",
+    "Tree Shaking",
+    [
+        "A) Otimização visual que reorganiza a árvore de widgets em ordem alfabética.",
+        "B) Remoção automática de código não utilizado (dead code) e classes/funções órfãs do pacote final para reduzir drasticamente o tamanho do binário.",
+        "C) Processo de criptografia de arquivos assets.",
+        "D) Compactação de imagens PNG para WebP."
+    ],
+    "B",
+    "O tree shaking analisa estaticamente o código e elimina tudo o que não é chamado ou referenciado na aplicação compilada.",
+    "Garante builds de produção altamente otimizados e leves."
+);
+
+addQuestion(
+    "Dart/Flutter", "Fácil",
+    "Qual widget em Flutter é essencial para posicionar outros widgets de forma livre na tela, permitindo sobreposição (camadas z-index)?",
+    "Widget Stack",
+    [
+        "A) Column",
+        "B) Row",
+        "C) Stack",
+        "D) ListView"
+    ],
+    "C",
+    "O Stack permite sobrepor filhos uns sobre os outros, geralmente combinado com o widget Positioned para controle exato de coordenadas.",
+    "Ideal para criar efeitos como badges de notificação sobre ícones ou telas de splash."
+);
+
+addQuestion(
+    "Dart/Flutter", "Média",
+    "Qual é a utilidade do operador de coerção restrita contra nulos '!' (postfix error operator / bang operator) em Dart?",
+    "Operador bang (!)",
+    [
+        "A) Nega um valor booleano (inversão lógica).",
+        "B) Afirma ao compilador que uma expressão anulável (nullable) não é nula naquele ponto exato, lançando uma exceção caso seja.",
+        "C) Converte uma string para inteiro.",
+        "D) Interrompe a execução de um loop."
+    ],
+    "B",
+    "O operador `!` diz ao compilador de null-safety para confiar em você. Se a variável for nula em tempo de execução, um NullThrownError é lançado.",
+    "Deve ser usado com cautela extrema para evitar crashes inesperados."
+);
+
+addQuestion(
+    "Dart/Flutter", "Difícil",
+    "Como o Flutter lida com a comunicação nativa (interoperabilidade) com códigos específicos de plataforma (como Kotlin/Java no Android e Swift/Objective-C no iOS)?",
+    "Platform Channels",
+    [
+        "A) Através de compilação cruzada direta via WebAssembly.",
+        "B) Utilizando Platform Channels (MethodChannel), que enviam mensagens assíncronas serializadas entre a thread Dart e o código nativo.",
+        "C) O Flutter não permite acessar APIs nativas do sistema operacional.",
+        "D) Através de arquivos de configuração em formato XML."
+    ],
+    "B",
+    "Os MethodChannels permitem invocar métodos nativos do sistema operacional a partir do Dart e vice-versa usando mensagens estruturadas.",
+    "Fundamental para acessar sensores de hardware específicos não cobertos pelo framework."
+);
+
+addQuestion(
+    "Dart/Flutter", "Fácil",
+    "Qual é o comportamento padrão do widget Scaffold em aplicativos Flutter?",
+    "Estrutura básica Scaffold",
+    [
+        "A) Fornece uma estrutura visual padrão de design (Material Design) que inclui suporte para AppBar, Drawer, BottomNavigationBar e FloatingActionButton.",
+        "B) Serve estritamente para gerenciar requisições de banco de dados local.",
+        "C) É um componente puramente lógico sem representação gráfica.",
+        "D) Gerencia rotas de navegação avançadas."
+    ],
+    "A",
+    "O Scaffold é o esqueleto visual básico recomendado para estruturar telas seguindo as diretrizes do Material Design.",
+    "Facilita enormemente a montagem de layouts comuns em aplicativos móveis."
+);
+
+addQuestion(
+    "Dart/Flutter", "Média",
+    "O que significa a compilação AOT (Ahead-Of-Time) utilizada pelo Dart para builds de produção em dispositivos móveis?",
+    "Compilação AOT",
+    [
+        "A) O código é traduzido para código de máquina nativo antes da execução, garantindo inicialização rápida e alta performance.",
+        "B) O código é interpretado linha por linha em tempo de execução.",
+        "C) O código roda exclusivamente dentro de uma máquina virtual baseada em navegador.",
+        "D) A compilação ocorre apenas quando o usuário abre o aplicativo pela primeira vez no celular."
+    ],
+    "A",
+    "A compilação AOT traduz o código Dart diretamente para instruções de máquina nativas antes da distribuição, otimizando performance.",
+    "Diferente do modo JIT, usado no modo Debug para permitir Hot Reload."
+);
+
+addQuestion(
+    "Dart/Flutter", "Difícil",
+    "O que é o Hot Reload no Flutter e por que ele é diferente do Hot Restart?",
+    "Hot Reload vs Hot Restart",
+    [
+        "A) Hot Reload reinicia o aplicativo inteiro do zero; Hot Restart apenas limpa o cache.",
+        "B) Hot Reload injeta arquivos de código Dart atualizados na máquina virtual em execução sem perder o estado atual da tela; Hot Restart reinicia o estado do app do zero.",
+        "C) Hot Reload é exclusivo para plataformas web; Hot Restart é exclusivo para dispositivos físicos.",
+        "D) Não há diferença técnica entre ambos."
+    ],
+    "B",
+    "O Hot Reload preserva o estado da aplicação enquanto atualiza a árvore de widgets, permitindo ajustes rápidos de UI em segundos.",
+    "O Hot Restart reinicia todo o estado global da aplicação."
+);
+
+addQuestion(
+    "Dart/Flutter", "Fácil",
+    "Qual classe do Flutter gerencia a pilha de navegação (Navigator), permitindo empurrar (push) e desempurrar (pop) telas?",
+    "Navegação com Navigator",
+    [
+        "A) RouterManager",
+        "B) Navigator",
+        "C) ScreenController",
+        "D) RouteHandler"
+    ],
+    "B",
+    "O Navigator gerencia rotas como uma pilha de páginas (stack of pages), onde `Navigator.push` adiciona uma tela e `Navigator.pop` a remove.",
+    "Abordagem clássica de navegação imperativa em Flutter."
+);
+
+addQuestion(
+    "Dart/Flutter", "Média",
+    "O que são 'Generics' em Dart e qual é a principal vantagem de utilizá-los?",
+    "Generics em Dart",
+    [
+        "A) Funções matemáticas avançadas para tratamento de números decimais.",
+        "B) Um mecanismo de reutilização de código que permite criar classes, interfaces e métodos parametrizados por tipo, garantindo segurança estática sem perder flexibilidade.",
+        "C) Atalhos para gerar código boilerplate automaticamente.",
+        "D) Um sistema de controle de versão integrado."
+    ],
+    "B",
+    "Generics (como `List<T>`) evitam casts explícitos e garantem checagem de tipos em tempo de compilação, prevenindo erros de tipo em coleções.",
+    "Símbolos como `<T>` indicam parâmetros de tipo genérico."
+);
+
+addQuestion(
+    "Dart/Flutter", "Difícil",
+    "No contexto de gerenciamento de estado reativo avançado, o que caracteriza bibliotecas como Provider, Bloc/Cubit ou Riverpod?",
+    "Gerenciamento de estado",
+    [
+        "A) Substituem inteiramente a necessidade de escrever código em linguagem Dart.",
+        "B) Fornecem arquiteturas padronizadas para separar a lógica de negócios da interface do usuário e notificar widgets afetados para reconstrução seletiva.",
+        "C) Conectam o aplicativo diretamente a servidores de hospedagem web.",
+        "D) Compilam o aplicativo para código nativo de desktop."
+    ],
+    "B",
+    "Essas ferramentas ajudam a organizar a aplicação desacoplando o estado dos widgets visuais, facilitando testes e manutenção em projetos grandes.",
+    "A escolha da ferramenta depende da complexidade e preferência da equipe."
+);
+
+addQuestion(
+    "Dart/Flutter", "Fácil",
+    "Qual widget de espaçamento simples é comumente utilizado em Rows ou Columns para adicionar um espaço fixo entre os elementos?",
+    "Widget SizedBox",
+    [
+        "A) Spacer",
+        "B) SizedBox",
+        "C) EmptyBox",
+        "D) PaddingBlock"
+    ],
+    "B",
+    "Um `SizedBox(width: 10)` ou `SizedBox(height: 10)` é a forma mais leve e idiomática de impor dimensões fixas ou espaçamentos em layouts lineares.",
+    "Muito mais performático que aninhar múltiplos Padding desnecessários."
+);
+
+addQuestion(
+    "Dart/Flutter", "Média",
+    "O que significa a palavra-chave async e await em funções assíncronas escritas em Dart?",
+    "Async e Await",
+    [
+        "A) Executam o código de forma síncrona bloqueando a thread principal.",
+        "B) Tornam a manipulação de operações assíncronas (como requisições de rede) legível e linear, pausando a execução da função até que o Future seja resolvido sem travar a UI.",
+        "C) Criam um novo processo isolado de hardware (Isolate).",
+        "D) Forçam o garbage collector a limpar a memória imediatamente."
+    ],
+    "B",
+    "O uso de `async/await` açúcar sintático (syntactic sugar) sobre Futures, permitindo escrever código assíncrono com aparência síncrona e limpa.",
+    "Toda função `async` retorna obrigatoriamente um Future."
+);
+
+addQuestion(
+    "Dart/Flutter", "Difícil",
+    "Qual é o comportamento da palavra-chave 'rethrow' quando utilizada dentro de um bloco catch no tratamento de exceções em Dart?",
+    "Comando rethrow",
+    [
+        "A) Interrompe a execução do aplicativo e fecha a janela.",
+        "B) Relança exatamente a mesma exceção capturada, preservando o stack trace original para que possa ser tratada em níveis superiores da aplicação.",
+        "C) Substitui a exceção atual por um erro genérico.",
+        "D) Converte a exceção em uma string legível."
+    ],
+    "B",
+    "O `rethrow` propaga a exceção original adiante sem perder a pilha de rastreamento (stack trace), ao contrário de fazer `throw e`, que reiniciaria o stack trace.",
+    "Essencial em camadas de repositório ou tratamento centralizado de erros."
+);
+
 /* =====================================================
-   BANCO DE DADOS (CONCEITOS, NOSQL, ARQUITETURA)
+   BLOCO 6 (CORRIGIDO): BANCO DE DADOS (CONCEITOS, NOSQL, ARQUITETURA) - 40 QUESTÕES
 ===================================================== */
 
-const bancoDadosQuest = [
-    {
-        q: "O que preconiza o Teorema de CAP em sistemas distribuídos de bancos de dados?",
-        c: "Teorema de CAP",
-        o: [
-            "A) Um sistema distribuído pode garantir simultaneamente e sem restrições a Consistência (Consistency), a Disponibilidade (Availability) e a Tolerância a Particionamento de Rede (Partition Tolerance).",
-            "B) Em caso de uma falha de rede (particionamento), um sistema distribuído pode escolher garantir Consistência ou Disponibilidade, mas nunca ambas simultaneamente.",
-            "C) Garante criptografia absoluta para dados em repouso e em trânsito.",
-            "D) Define o limite máximo de conexões simultâneas que um banco NoSQL suporta."
-        ],
-        a: "B",
-        e: "O Teorema de CAP (Brewer) estabelece que redes distribuídas estão sujeitas a falhas de comunicação (partições). Portanto, a escolha em cenários de falha resume-se a CP (consistência ou parada) ou AP (disponibilidade com dados eventualmente consistentes).",
-        t: "Bancos relacionais tradicionais tendem a priorizar CP, enquanto muitos NoSQL focam em AP."
-    },
-    {
-        q: "Qual é a principal diferença conceitual entre bancos de dados relacionais (SQL) e não relacionais (NoSQL)?",
-        c: "Relacional vs NoSQL",
-        o: [
-            "A) Bancos NoSQL não utilizam nenhum tipo de estrutura de dados e armazenam tudo em arquivos comprimidos.",
-            "B) Bancos relacionais estruturam dados em tabelas rígidas com esquemas fixos e fortes garantias ACID; bancos NoSQL oferecem alta escalabilidade horizontal e esquemas flexíveis (documentos, chave-valor, colunas ou grafos), priorizando performance e flexibilidade.",
-            "C) Bancos NoSQL são totalmente incompatíveis com arquiteturas de microsserviços.",
-            "D) Bancos relacionais rodam apenas em servidores Linux e NoSQL apenas em Windows."
-        ],
-        a: "B",
-        e: "O NoSQL surgiu para resolver problemas de grande volume e alta velocidade de dados (Big Data) onde a escalabilidade horizontal é mais crítica do que as junções relacionais complexas.",
-        t: "A escolha depende diretamente do domínio do problema e dos requisitos de consistência dos dados."
-    },
-    {
-        q: "O que caracteriza o modelo de Consistência Eventual (Eventual Consistency) comumente adotado em bancos NoSQL?",
-        c: "Consistência Eventual",
-        o: [
-            "A) Os dados nunca são salvos permanentemente no disco rígido.",
-            "B) Se nenhuma nova atualização for feita em um dado item, todas as réplicas eventualmente retornarão o mesmo valor após um curto período de propagação na rede.",
-            "C) As transações exigem bloqueio síncrono absoluto em todas as máquinas do cluster.",
-            "D) O banco de dados apaga registros antigos automaticamente a cada meia-noite."
-        ],
-        a: "B",
-        e: "A consistência eventual prioriza a alta disponibilidade e performance de gravação (modelo AP do CAP), aceitando que leituras imediatas após uma escrita possam retornar dados desatualizados por instantes.",
-        t: "Comum em sistemas de redes sociais, carrinhos de compras e contadores de visualizações."
-    },
-    {
-        q: "Para que serve o processo de Normalização de Bancos de Dados (até a 3ª Forma Normal)?",
-        c: "Normalização",
-        o: [
-            "A) Para duplicar dados intencionalmente e acelerar consultas complexas de leitura.",
-            "B) Para organizar as tabelas e colunas de forma a reduzir a redundância de dados e eliminar anomalias de inserção, atualização e exclusão, garantindo a integridade estrutural.",
-            "C) Para converter arquivos de texto em planilhas Excel formatadas.",
-            "D) Para criptografar senhas de usuários com algoritmos de hash."
-        ],
-        a: "B",
-        e: "A normalização divide dados repetidos em tabelas relacionadas através de chaves estrangeiras, otimizando o armazenamento e evitando inconsistências lógicas.",
-        t: "Em contrapartida, excesso de normalização pode exigir muitos JOINs, motivando a desnormalização em cenários de alta leitura."
-    },
-    {
-        q: "Qual é a principal utilidade de um banco de dados em memória do tipo Chave-Valor (como Redis) em uma arquitetura de software moderna?",
-        c: "Bancos Chave-Valor (Redis)",
-        o: [
-            "A) Armazenar logs históricos e backups em fitas magnéticas de longo prazo.",
-            "B) Atuar como cache de alta performance, gerenciamento de sessões, filas de mensagens rápidas e contadores em tempo real, devido ao acesso quase instantâneo na RAM.",
-            "C) Executar relatórios gerenciais complexos em SQL com milhões de linhas cruzadas.",
-            "D) Substituir totalmente o armazenamento persistente em disco em sistemas corporativos críticos."
-        ],
-        a: "B",
-        e: "O Redis armazena dados diretamente na memória RAM, oferecendo tempos de resposta na ordem de microssegundos, o que alivia a carga de bancos relacionais em consultas frequentes.",
-        t: "Pode ser configurado com persistência em disco (RDB/AOF) para evitar perda total de dados em reinicializações."
-    },
-    {
-        q: "O que diferencia o Sharding (Fragmentação) da Replicação em bancos de dados distribuídos?",
-        c: "Sharding vs Replicação",
-        o: [
-            "A) Sharding duplica todos os dados em múltiplos servidores para redundância; replicação divide os dados particionando-os entre diferentes nós.",
-            "B) A replicação copia e sincroniza dados em múltiplos nós para garantir alta disponibilidade e leitura escalável; o sharding divide o banco de dados em partes menores (shards) distribuídas horizontalmente para suportar volumes massivos de escrita e armazenamento.",
-            "C) Não há diferença técnica; ambos são sinônimos de backups em nuvem.",
-            "D) Sharding é exclusivo de bancos relacionais e replicação de NoSQL."
-        ],
-        a: "B",
-        e: "Enquanto a replicação resolve problemas de disponibilidade e performance de leitura (nós Master-Slave), o sharding resolve problemas de limite físico de armazenamento e gargalos de escrita em bases gigantescas.",
-        t: "O roteamento de chaves de sharding exige planejamento cuidadoso para evitar desbalanceamento (hot spots)."
-    },
-    {
-        q: "O que modela primariamente um banco de dados orientado a Grafos (Graph Database, como Neo4j)?",
-        c: "Bancos de Grafos",
-        o: [
-            "A) Tabelas relacionais estritas com restrições de chaves primárias numéricas.",
-            "B) Dados altamente conectados compostos por Nós (Entidades), Arestas (Relacionamentos) e Propriedades, ideal para redes sociais, motores de recomendação e detecção de fraudes.",
-            "C) Arquivos binários planos sem estrutura relacional.",
-            "D) Séries temporais de métricas de CPU e temperatura."
-        ],
-        a: "B",
-        e: "Bancos de grafos calculam relacionamentos complexos de múltiplos graus de forma extremamente eficiente, sem a necessidade de operações custosas de JOIN em grandes tabelas relacionais.",
-        t: "Utilizam linguagens de consulta específicas, como o Cypher."
-    },
-    {
-        q: "O que é o modelo BASE em bancos de dados NoSQL distribuídos, em contraponto ao modelo ACID?",
-        c: "Modelo BASE",
-        o: [
-            "A) Um protocolo rígido de segurança bancária para senhas.",
-            "B) Um acrônimo para Basic Availability (Disponibilidade Básica), Soft-state (Estado Flexível) e Eventual consistency (Consistência Eventual), priorizando disponibilidade e escalabilidade sobre consistência imediata.",
-            "C) Um método para compactar tabelas SQL em formato binário.",
-            "D) Um padrão de arquitetura frontend para aplicações React."
-        ],
-        a: "B",
-        e: "Enquanto o ACID busca rigidez transacional imediata, o modelo BASE aceita que o sistema flutue temporariamente em seu estado até atingir a consistência completa de forma assíncrona.",
-        t: "Reflete perfeitamente a filosofia de design dos sistemas NoSQL modernos orientados a microsserviços."
-    },
-    {
-        q: "Em que consiste a técnica de 'Desnormalização' em bancos de dados?",
-        c: "Desnormalização",
-        o: [
-            "A) Corrigir erros de sintaxe em comandos SQL corrompidos.",
-            "B) Introduzir intencionalmente redundância de dados (como duplicar colunas ou tabelas) para eliminar a necessidade de JOINs complexos e acelerar drasticamente o tempo de leitura em consultas pesadas.",
-            "C) Apagar todas as chaves primárias de um banco relacional.",
-            "D) Converter um banco NoSQL em tabelas planas do Excel."
-        ],
-        a: "B",
-        e: "A desnormalização é um compromisso de design: sacrifica-se a pureza estrutural e a facilidade de escrita para obter ganhos expressivos de performance de leitura em ambientes de alta escala (como relatórios e dashboards).",
-        t: "Exige que a aplicação gerencie a consistência dos dados duplicados via código ou eventos."
-    },
-    {
-        q: "Qual é a função de um banco de dados de Séries Temporais (Time-Series Database, como InfluxDB ou TimescaleDB)?",
-        c: "Séries Temporais",
-        o: [
-            "A) Armazenar calendários de compromissos pessoais e agendas corporativas.",
-            "B) Otimizar a ingestão, armazenamento massivo e consulta de dados indexados por carimbos de data/hora (timestamps), como métricas de IoT, logs de servidores e cotações financeiras em tempo real.",
-            "C) Gerenciar versões de código fonte em repositórios Git.",
-            "D) Executar animações gráficas 3D em navegadores web."
-        ],
-        a: "B",
-        e: "Dados de séries temporais chegam em alto volume e ordem cronológica estrita. Bancos especializados usam compressão agressiva de colunas por tempo e políticas automáticas de retenção (retention policies).",
-        t: "Essenciais para monitoramento de infraestrutura e observabilidade moderna."
-    }
-];
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que preconiza o Teorema de CAP em sistemas distribuídos de bancos de dados?",
+    "Teorema de CAP",
+    [
+        "A) Um sistema distribuído pode garantir simultaneamente e sem restrições a Consistência (Consistency), a Disponibilidade (Availability) e a Tolerância a Particionamento de Rede (Partition Tolerance).",
+        "B) Em caso de uma falha de rede (particionamento), um sistema distribuído pode escolher garantir Consistência ou Disponibilidade, mas nunca ambas simultaneamente.",
+        "C) Garante criptografia absoluta para dados em repouso e em trânsito.",
+        "D) Define o limite máximo de conexões simultâneas que um banco NoSQL suporta."
+    ],
+    "B",
+    "O Teorema de CAP (Brewer) estabelece que redes distribuídas estão sujeitas a falhas de comunicação (partições). Portanto, a escolha em cenários de falha resume-se a CP (consistência ou parada) ou AP (disponibilidade com dados eventualmente consistentes).",
+    "Bancos relacionais tradicionais tendem a priorizar CP, enquanto muitos NoSQL focam em AP."
+);
 
-bancoDadosQuest.forEach(x => {
-    addQuestion("Banco de Dados", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
+addQuestion(
+    "Banco de Dados", "Média",
+    "Qual é a principal diferença conceitual entre bancos de dados relacionais (SQL) e não relacionais (NoSQL)?",
+    "Relacional vs NoSQL",
+    [
+        "A) Bancos NoSQL não utilizam nenhum tipo de estrutura de dados e armazenam tudo em arquivos comprimidos.",
+        "B) Bancos relacionais estruturam dados em tabelas rígidas com esquemas fixos e fortes garantias ACID; bancos NoSQL oferecem alta escalabilidade horizontal e esquemas flexíveis (documentos, chave-valor, colunas ou grafos), priorizando performance e flexibilidade.",
+        "C) Bancos NoSQL são totalmente incompatíveis com arquiteturas de microsserviços.",
+        "D) Bancos relacionais rodam apenas em servidores Linux e NoSQL apenas em Windows."
+    ],
+    "B",
+    "O NoSQL surgiu para resolver problemas de grande volume e alta velocidade de dados (Big Data) onde a escalabilidade horizontal é mais crítica do que as junções relacionais complexas.",
+    "A escolha depende diretamente do domínio do problema e dos requisitos de consistência dos dados."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que caracteriza o modelo de Consistência Eventual (Eventual Consistency) comumente adotado em bancos NoSQL?",
+    "Consistência Eventual",
+    [
+        "A) Os dados nunca são salvos permanentemente no disco rígido.",
+        "B) Se nenhuma nova atualização for feita em um dado item, todas as réplicas eventualmente retornarão o mesmo valor após um curto período de propagação na rede.",
+        "C) As transações exigem bloqueio síncrono absoluto em todas as máquinas do cluster.",
+        "D) O banco de dados apaga registros antigos automaticamente a cada meia-noite."
+    ],
+    "B",
+    "A consistência eventual prioriza a alta disponibilidade e performance de gravação (modelo AP do CAP), aceitando que leituras imediatas após uma escrita possam retornar dados desatualizados por instantes.",
+    "Comum em sistemas de redes sociais, carrinhos de compras e contadores de visualizações."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "Para que serve o processo de Normalização de Bancos de Dados (até a 3ª Forma Normal)?",
+    "Normalização",
+    [
+        "A) Para duplicar dados intencionalmente e acelerar consultas complexas de leitura.",
+        "B) Para organizar as tabelas e colunas de forma a reduzir a redundância de dados e eliminar anomalias de inserção, atualização e exclusão, garantindo a integridade estrutural.",
+        "C) Para converter arquivos de texto em planilhas Excel formatadas.",
+        "D) Para criptografar senhas de usuários com algoritmos de hash."
+    ],
+    "B",
+    "A normalização divide dados repetidos em tabelas relacionadas através de chaves estrangeiras, otimizando o armazenamento e evitando inconsistências lógicas.",
+    "Em contrapartida, excesso de normalização pode exigir muitos JOINs, motivando a desnormalização em cenários de alta leitura."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "Qual é a principal utilidade de um banco de dados em memória do tipo Chave-Valor (como Redis) em uma arquitetura de software moderna?",
+    "Bancos Chave-Valor (Redis)",
+    [
+        "A) Armazenar logs históricos e backups em fitas magnéticas de longo prazo.",
+        "B) Atuar como cache de alta performance, gerenciamento de sessões, filas de mensagens rápidas e contadores em tempo real, devido ao acesso quase instantâneo na RAM.",
+        "C) Executar relatórios gerenciais complexos em SQL com milhões de linhas cruzadas.",
+        "D) Substituir totalmente o armazenamento persistente em disco em sistemas corporativos críticos."
+    ],
+    "B",
+    "O Redis armazena dados diretamente na memória RAM, oferecendo tempos de resposta na ordem de microssegundos, o que alivia a carga de bancos relacionais em consultas frequentes.",
+    "Pode ser configurado com persistência em disco (RDB/AOF) para evitar perda total de dados em reinicializações."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que diferencia o Sharding (Fragmentação) da Replicação em bancos de dados distribuídos?",
+    "Sharding vs Replicação",
+    [
+        "A) Sharding duplica todos os dados em múltiplos servidores para redundância; replicação divide os dados particionando-os entre diferentes nós.",
+        "B) A replicação copia e sincroniza dados em múltiplos nós para garantir alta disponibilidade e leitura escalável; o sharding divide o banco de dados em partes menores (shards) distribuídas horizontalmente para suportar volumes massivos de escrita e armazenamento.",
+        "C) Não há diferença técnica; ambos são sinônimos de backups em nuvem.",
+        "D) Sharding é exclusivo de bancos relacionais e replicação de NoSQL."
+    ],
+    "B",
+    "Enquanto a replicação resolve problemas de disponibilidade e performance de leitura (nós Master-Slave), o sharding resolve problemas de limite físico de armazenamento e gargalos de escrita em bases gigantescas.",
+    "O roteamento de chaves de sharding exige planejamento cuidadoso para evitar desbalanceamento (hot spots)."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que modela primariamente um banco de dados orientado a Grafos (Graph Database, como Neo4j)?",
+    "Bancos de Grafos",
+    [
+        "A) Tabelas relacionais estritas com restrições de chaves primárias numéricas.",
+        "B) Dados altamente conectados compostos por Nós (Entidades), Arestas (Relacionamentos) e Propriedades, ideal para redes sociais, motores de recomendação e detecção de fraudes.",
+        "C) Arquivos binários planos sem estrutura relacional.",
+        "D) Séries temporais de métricas de CPU e temperatura."
+    ],
+    "B",
+    "Bancos de grafos calculam relacionamentos complexos de múltiplos graus de forma extremamente eficiente, sem a necessidade de operações custosas de JOIN em grandes tabelas relacionais.",
+    "Utilizam linguagens de consulta específicas, como o Cypher."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que é o modelo BASE em bancos de dados NoSQL distribuídos, em contraponto ao modelo ACID?",
+    "Modelo BASE",
+    [
+        "A) Um protocolo rígido de segurança bancária para senhas.",
+        "B) Um acrônimo para Basic Availability (Disponibilidade Básica), Soft-state (Estado Flexível) e Eventual consistency (Consistência Eventual), priorizando disponibilidade e escalabilidade sobre consistência imediata.",
+        "C) Um método para compactar tabelas SQL em formato binário.",
+        "D) Um padrão de arquitetura frontend para aplicações React."
+    ],
+    "B",
+    "Enquanto o ACID busca rigidez transacional imediata, o modelo BASE aceita que o sistema flutue temporariamente em seu estado até atingir a consistência completa de forma assíncrona.",
+    "Reflete perfeitamente a filosofia de design dos sistemas NoSQL modernos orientados a microsserviços."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "Em que consiste a técnica de 'Desnormalização' em bancos de dados?",
+    "Desnormalização",
+    [
+        "A) Corrigir erros de sintaxe em comandos SQL corrompidos.",
+        "B) Introduzir intencionalmente redundância de dados (como duplicar colunas ou tabelas) para eliminar a necessidade de JOINs complexos e acelerar drasticamente o tempo de leitura em consultas pesadas.",
+        "C) Apagar todas as chaves primárias de um banco relacional.",
+        "D) Converter um banco NoSQL em tabelas planas do Excel."
+    ],
+    "B",
+    "A desnormalização é um compromisso de design: sacrifica-se a pureza estrutural e a facilidade de escrita para obter ganhos expressivos de performance de leitura em ambientes de alta escala (como relatórios e dashboards).",
+    "Exige que a aplicação gerencie a consistência dos dados duplicados via código ou eventos."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "Qual é a função de um banco de dados de Séries Temporais (Time-Series Database, como InfluxDB ou TimescaleDB)?",
+    "Séries Temporais",
+    [
+        "A) Armazenar calendários de compromissos pessoais e agendas corporativas.",
+        "B) Otimizar a ingestão, armazenamento massivo e consulta de dados indexados por carimbos de data/hora (timestamps), como métricas de IoT, logs de servidores e cotações financeiras em tempo real.",
+        "C) Gerenciar versões de código fonte em repositórios Git.",
+        "D) Executar animações gráficas 3D em navegadores web."
+    ],
+    "B",
+    "Dados de séries temporais chegam em alto volume e ordem cronológica estrita. Bancos especializados usam compressão agressiva de colunas por tempo e políticas automáticas de retenção (retention policies).",
+    "Essenciais para monitoramento de infraestrutura e observabilidade moderna."
+);
+
+addQuestion(
+    "Banco de Dados", "Difícil",
+    "O que garantem as propriedades ACID em transações de bancos de dados relacionais?",
+    "Propriedades ACID",
+    [
+        "A) Atomicidade, Consistência, Isolamento e Durabilidade: garantem que operações transacionais complexas sejam executadas de forma confiável e íntegra.",
+        "B) Agilidade, Conectividade, Indexação e Distribuição em nuvem.",
+        "C) Apenas a velocidade de leitura em consultas sem índices.",
+        "D) Criptografia avançada em repouso."
+    ],
+    "A",
+    "A Atomicidade assegura que tudo ou nada seja executado; o Isolamento impede interferências entre transações concorrentes; a Durabilidade garante que dados confirmados não se percam em falhas.",
+    "Fundilaria de bancos relacionais tradicionais (OLTP)."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que é um Índice (Index) em um banco de dados e qual é o seu principal objetivo?",
+    "Índices em Bancos de Dados",
+    [
+        "A) Um arquivo de backup incremental gerado automaticamente a cada hora.",
+        "B) Uma estrutura de dados auxiliar (geralmente em árvore B-Tree) que melhora a velocidade de recuperação de registros em uma tabela, ao custo de espaço extra em disco e leve lentidão nas escritas.",
+        "C) Uma chave estrangeira que conecta tabelas diferentes.",
+        "D) Um comando para apagar dados duplicados."
+    ],
+    "B",
+    "Sem índices, o banco de dados precisaria fazer uma varredura completa na tabela (Full Table Scan) para encontrar registros, o que degrada a performance com grandes volumes de dados.",
+    "Devem ser criados estrategicamente nas colunas mais buscadas ou usadas em JOINs."
+);
+
+addQuestion(
+    "Banco de Dados", "Difícil",
+    "O que caracteriza o nível de isolamento 'Serializable' em transações concorrentes?",
+    "Níveis de Isolamento",
+    [
+        "A) Permite leituras sujas e fantasmas para priorizar desempenho máximo.",
+        "B) O nível mais rigoroso de isolamento, que garante que transações concorrentes executadas simultaneamente produzam exatamente o mesmo resultado que teriam se fossem executadas uma após a outra em série.",
+        "C) Bloqueia o banco de dados inteiro por 24 horas a cada comando.",
+        "D) É o padrão adotado por todos os bancos NoSQL em modo distribuído."
+    ],
+    "B",
+    "Evita anomalias como leitura suja, leitura não repetitiva e dados fantasmas, embora traga forte impacto de contenção de locks e concorrência.",
+    "Essencial para aplicações financeiras estritas."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que é um banco de dados orientado a Documentos (Document Store, como MongoDB)?",
+    "Bancos Orientados a Documentos",
+    [
+        "A) Um software para gerenciar arquivos PDF e planilhas do Word.",
+        "B) Um banco NoSQL que armazena dados em estruturas semiestruturadas flexíveis, como JSON ou BSON, onde cada documento encapsula os dados e seus metadados sem necessidade de esquemas rígidos.",
+        "C) Um banco relacional restrito a tabelas normalizadas.",
+        "D) Um repositório de código fonte baseado em texto plano."
+    ],
+    "B",
+    "Document Stores permitem que campos variem entre registros de uma mesma coleção, facilitando a modelagem de dados que mudam com frequência.",
+    "Permitem índices em subdocumentos e arrays."
+);
+
+addQuestion(
+    "Banco de Dados", "Difícil",
+    "O que é o fenômeno conhecido como 'Leitura Fantasma' (Phantom Read) em bancos relacionais?",
+    "Leitura Fantasma",
+    [
+        "A) Quando o usuário lê dados de uma tabela que foi completamente apagada.",
+        "B) Quando uma transação executa duas vezes a mesma consulta com intervalo de tempo e, no segundo resultado, percebe que novas linhas foram inseridas por outra transação concorrente que fez commit.",
+        "C) Um erro de hardware no disco rígido do servidor SQL.",
+        "D) A leitura de senhas criptografadas em texto plano."
+    ],
+    "B",
+    "Diferente da leitura não repetitiva (onde linhas existentes mudam), a leitura fantasma envolve o surgimento ou desaparecimento de linhas inteiras que satisfazem um critério de busca.",
+    "Prevenido com níveis de isolamento mais altos ou travamentos de intervalo (Next-Key Locks)."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "Qual é a utilidade do comando 'EXPLAIN' (ou 'EXPLAIN PLAN') em bancos de dados relacionais?",
+    "Otimização de Consultas (EXPLAIN)",
+    [
+        "A) Traduzir consultas SQL para a linguagem Python.",
+        "B) Exibir o plano de execução gerado pelo otimizador do banco de dados para uma query, mostrando se índices estão sendo usados e como as tabelas estão sendo varridas.",
+        "C) Excluir registros antigos para liberar espaço em disco.",
+        "D) Criar automaticamente novas chaves primárias."
+    ],
+    "B",
+    "O EXPLAIN é a ferramenta número um do desenvolvedor e DBA para diagnosticar consultas lentas e identificar gargalos de performance.",
+    "Permite ajustar índices e reescrever queries ineficientes."
+);
+
+addQuestion(
+    "Banco de Dados", "Fácil",
+    "O que representa a chave primária (Primary Key) em uma tabela de banco de dados relacional?",
+    "Chave Primária",
+    [
+        "A) A senha de acesso administrativo do servidor.",
+        "B) Um identificador único para cada registro (linha) em uma tabela, que não pode ser nulo e não pode se repetir.",
+        "C) O arquivo de configuração principal do SGBD.",
+        "D) O endereço IP da máquina cliente."
+    ],
+    "B",
+    "A chave primária garante a integridade de entidade, permitindo referenciar linhas específicas com precisão através de chaves estrangeiras.",
+    "Pode ser composta por uma única coluna ou por múltiplas colunas (chave composta)."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que caracteriza um banco de dados Colunar (Column-Oriented Database, como Apache Cassandra ou Google Bigtable)?",
+    "Bancos Colunares",
+    [
+        "A) Armazenam dados em linhas contínuas na memória RAM, ideais para sistemas de e-commerce transacionais.",
+        "B) Armazenam dados organizados por colunas em vez de linhas, permitindo altíssima performance em agregações massivas e compressão extrema de dados em análises (OLAP).",
+        "C) Impedem o uso de chaves primárias compostas.",
+        "D) São incompatíveis com distribuições em cluster."
+    ],
+    "B",
+    "Enquanto bancos relacionais tradicionais são orientados a linhas (ótimos para transações OLTP unitárias), bancos colunares brilham em consultas analíticas que leem apenas subconjuntos de colunas de bilhões de registros.",
+    "Amplamente usados em Data Warehouses e Big Data."
+);
+
+addQuestion(
+    "Banco de Dados", "Difícil",
+    "O que significa o conceito de Deadlock (Impasse) em sistemas de banco de dados?",
+    "Deadlock",
+    [
+        "A) A falha permanente do disco rígido principal do servidor.",
+        "B) Uma situação em que duas ou mais transações ficam permanentemente bloqueadas, cada uma aguardando a liberação de um recurso (lock) que está retido pela outra.",
+        "C) O encerramento abrupto de uma conexão de rede por timeout.",
+        "D) A corrupção de índices gerada por picos de energia."
+    ],
+    "B",
+    "Para resolver deadlocks, o SGBD detecta o impasse automaticamente e aborta (rollback) uma das transações envolvidas, liberando seus recursos.",
+    "Aplicativos bem projetados devem tratar erros de deadlock realizando novas tentativas automáticas (retries)."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que é uma View (Visão) em bancos de dados relacionais?",
+    "Views em Banco de Dados",
+    [
+        "A) Uma cópia física estática da tabela armazenada em arquivo separado.",
+        "B) Uma consulta (query) SQL armazenada no banco de dados que é tratada como uma tabela virtual, cujos dados são dinamicamente calculados ou recuperados no momento do acesso.",
+        "C) A interface gráfica web usada para administrar o servidor PostgreSQL.",
+        "D) Um log de auditoria de acessos de usuários."
+    ],
+    "B",
+    "Views ajudam a simplificar consultas complexas reutilizáveis e podem atuar como camada de segurança, ocultando colunas sensíveis (como senhas) dos usuários finais.",
+    "Existem também as Materialized Views, que persistem os dados em disco para acelerar leituras."
+);
+
+addQuestion(
+    "Banco de Dados", "Fácil",
+    "Qual é a função da instrução 'JOIN' em SQL?",
+    "Instrução JOIN",
+    [
+        "A) Apagar tabelas vazias do banco de dados.",
+        "B) Combinar registros de duas ou mais tabelas com base em uma condição lógica relacionada entre suas colunas (geralmente chave primária e estrangeira).",
+        "C) Inserir novos registros em lote.",
+        "D) Alterar o tipo de dado de uma coluna."
+    ],
+    "B",
+    "Os tipos mais comuns de JOIN incluem INNER JOIN, LEFT JOIN, RIGHT JOIN e FULL OUTER JOIN.",
+    "Fundilaria fundamental para resgatar dados relacionalmente normalizados."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que são Gatilhos (Triggers) em bancos de dados?",
+    "Triggers",
+    [
+        "A) Mensagens de erro enviadas por e-mail ao administrador.",
+        "B) Procedimentos armazenados (stored procedures) executados automaticamente pelo SGBD em resposta a determinados eventos de modificação de dados (INSERT, UPDATE, DELETE) em uma tabela.",
+        "C) Rotinas de backup executadas manualmente aos finais de semana.",
+        "D) Ferramentas de compactação de logs."
+    ],
+    "B",
+    "Triggers são úteis para auditoria, validações complexas e manutenção de integridade derivada, embora possam dificultar o rastreamento da lógica de negócios se usados em excesso.",
+    "Devem ser empregados com parcimônia para evitar impactos de performance ocultos."
+);
+
+addQuestion(
+    "Banco de Dados", "Difícil",
+    "O que é um Índice Composto (Composite Index) e qual regra deve ser observada ao criá-lo?",
+    "Índice Composto",
+    [
+        "A) Um índice que abrange múltiplas colunas; a ordem das colunas na definição do índice importa enormemente, pois o SGBD só consegue aproveitá-lo eficientemente se a consulta filtrar pela coluna mais à esquerda (prefixo mais à esquerda).",
+        "B) Um índice criado automaticamente para chaves estrangeiras sem restrições.",
+        "C) Um índice exclusivo para bancos de dados NoSQL chave-valor.",
+        "D) Um backup compactado de tabelas correlacionadas."
+    ],
+    "A",
+    "Se você criar um índice composto em (coluna_a, coluna_b), consultas que filtram apenas por coluna_b não conseguirão usar o índice de forma ideal.",
+    "Conceito crucial para tuning de performance em grandes bases."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que diferencia os comandos 'TRUNCATE' e 'DELETE' em SQL?",
+    "TRUNCATE vs DELETE",
+    [
+        "A) TRUNCATE é uma operação de DDL que remove todos os registros de uma tabela rapidamente sem disparar triggers de linha e reiniciando contadores de auto-incremento; DELETE é uma operação de DML linha a linha que permite cláusula WHERE e dispara triggers.",
+        "B) Não há diferença; ambos removem dados da mesma exata forma.",
+        "C) DELETE apaga a estrutura da tabela e TRUNCATE apenas as colunas nulas.",
+        "D) TRUNCATE requer transações explícitas e DELETE não."
+    ],
+    "A",
+    "O TRUNCATE é muito mais rápido em grandes tabelas porque desaloca as páginas de dados de uma vez, mas não pode ser desfeito facilmente se executado sem transação (dependendo do SGBD).",
+    "O DELETE gera logs de desfazer (undo logs) para cada linha removida."
+);
+
+addQuestion(
+    "Banco de Dados", "Fácil",
+    "O que é uma Chave Estrangeira (Foreign Key)?",
+    "Chave Estrangeira",
+    [
+        "A) Uma senha de criptografia gerada por sistemas externos.",
+        "B) Uma coluna ou conjunto de colunas em uma tabela cujos valores correspondem à chave primária de outra tabela, estabelecendo um vínculo relacional entre elas.",
+        "C) Um índice temporário criado na memória RAM.",
+        "D) O identificador de backup em nuvem."
+    ],
+    "B",
+    "As chaves estrangeiras garantem a integridade referencial, impedindo que o banco de dados armazene registros órfãos que apontem para entidades inexistentes.",
+    "Podem ter regras de exclusão em cascata (ON DELETE CASCADE)."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que é um ORM (Object-Relational Mapping)?",
+    "ORM",
+    [
+        "A) Um protocolo de rede para comunicação entre microsserviços.",
+        "B) Uma técnica de programação que conecta o paradigma de orientação a objetos (classes e objetos) aos bancos de dados relacionais (tabelas e registros), permitindo manipular dados via código orientado a objetos.",
+        "C) Um banco de dados NoSQL orientado a memória.",
+        "D) Uma ferramenta de design gráfico para diagramas entidade-relacionamento."
+    ],
+    "B",
+    "Exemplos populares de ORM incluem Hibernate/JPA (Java), Entity Framework (.NET), Sequelize/Prisma (Node.js) e SQLAlchemy (Python).",
+    "Facilita o desenvolvimento, mas exige cuidado com consultas ineficientes geradas automaticamente (como o problema N+1)."
+);
+
+addQuestion(
+    "Banco de Dados", "Difícil",
+    "O que consiste o problema 'N+1 Selects' comum ao utilizar ORMs?",
+    "Problema N+1 Selects",
+    [
+        "A) Quando o banco de dados falha ao tentar executar mais de 1 conexões simultâneas.",
+        "B) Um problema de performance onde o ORM executa 1 consulta inicial para buscar uma lista de N registros, e em seguida executa N consultas adicionais separadas para buscar os dados relacionados de cada um deles.",
+        "C) Um erro de compilação em consultas SQL nativas.",
+        "D) A duplicação acidental de chaves primárias."
+    ],
+    "B",
+    "Isso gera uma enxurrada desnecessária de requisições ao banco de dados, degradando severamente a performance.",
+    "É resolvido utilizando técnicas de carregamento ansioso (Eager Loading ou JOIN FETCH)."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que caracteriza o modelo de armazenamento em Banco de Dados Orientado a Colunas (Wide-Column Store, como Apache Cassandra)?",
+    "Wide-Column Store",
+    [
+        "A) Tabelas rígidas com junções complexas obrigatórias.",
+        "B) Armazenamento baseado em famílias de colunas onde as linhas podem ter conjuntos de colunas completamente diferentes entre si, otimizado para gravações massivas distribuídas.",
+        "C) Arquivos de texto plano sem indexação.",
+        "D) Exclusividade para ambientes embarcados IoT."
+    ],
+    "B",
+    "Diferente de bancos relacionais, o modelo de colunas largas prioriza consultas baseadas na chave de partição e alta taxa de escrita (Write-heavy).",
+    "Altamente escalável horizontalmente."
+);
+
+addQuestion(
+    "Banco de Dados", "Difícil",
+    "O que é a técnica de Indexação Bitmap e em qual cenário ela é altamente recomendada?",
+    "Índice Bitmap",
+    [
+        "A) Um índice que converte imagens em tabelas relacionais.",
+        "B) Uma estrutura de índice que utiliza matrizes de bits para representar a presença de valores em colunas, altamente eficiente em colunas com baixa cardinalidade (poucos valores distintos, como gênero ou estado civil) em consultas analíticas complexas.",
+        "C) Um método de criptografia para dados binários.",
+        "D) Um índice exclusivo para bancos NoSQL de documentos."
+    ],
+    "B",
+    "Enquanto B-Trees são excelentes para alta cardinalidade (muitos valores únicos), Bitmaps brilham combinando múltiplos filtros booleanos em Data Warehouses.",
+    "Pouco eficientes em ambientes com grande volume de atualizações simultâneas (OLTP)."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que é um Data Warehouse em arquitetura de dados?",
+    "Data Warehouse",
+    [
+        "A) O servidor físico onde ficam armazenados os cabos de rede da empresa.",
+        "B) Um sistema de banco de dados centralizado projetado especificamente para consultas analíticas (OLAP), consolidação, relatórios e inteligência de negócios a partir de múltiplas fontes de dados corporativos.",
+        "C) Um cache em memória RAM para sessões de usuários web.",
+        "D) Um repositório versionado de código fonte."
+    ],
+    "B",
+    "Diferente dos bancos operacionais (OLTP) focados em transações rápidas do dia a dia, o Data Warehouse armazena dados históricos desnormalizados para suporte à tomada de decisão.",
+    "Exemplos modernos incluem Snowflake, Google BigQuery e Amazon Redshift."
+);
+
+addQuestion(
+    "Banco de Dados", "Fácil",
+    "Qual é a função da cláusula 'GROUP BY' em comandos SQL?",
+    "Cláusula GROUP BY",
+    [
+        "A) Agrupar tabelas diferentes em um único arquivo compactado.",
+        "B) Agrupar linhas que possuem valores idênticos nas colunas especificadas em conjuntos resumidos, permitindo a aplicação de funções de agregação (como SUM, AVG, COUNT).",
+        "C) Ordenar os resultados da consulta em ordem alfabética.",
+        "D) Filtrar registros antes de realizar qualquer junção."
+    ],
+    "B",
+    "É sempre usada em conjunto com funções estatísticas para extrair métricas agrupadas por categorias.",
+    "O filtro pós-agrupamento é feito com a cláusula HAVING."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que é a desnormalização controlada em sistemas de alta performance?",
+    "Desnormalização Controlada",
+    [
+        "A) Apagar colunas aleatórias para economizar memória.",
+        "B) A prática deliberada de adicionar redundância estrutural (como armazenar valores calculados ou duplicar dados) para evitar JOINs custosos e atingir tempos de resposta em tempo real.",
+        "C) Ignorar regras de chave primária em bancos relacionais.",
+        "D) Converter arquivos JSON em planilhas CSV."
+    ],
+    "B",
+    "Embora aumente o risco de anomalias de atualização se não for bem gerenciada, é indispensável em sistemas de altíssimo tráfego.",
+    "Exige que a aplicação mantenha a sincronia dos dados redundantes."
+);
+
+addQuestion(
+    "Banco de Dados", "Difícil",
+    "O que é o conceito de 'Write-Ahead Logging' (WAL) em SGBDs?",
+    "Write-Ahead Logging (WAL)",
+    [
+        "A) Um método de escrever logs de acesso de usuários em arquivos de texto.",
+        "B) Uma técnica de durabilidade e recuperação onde todas as modificações de dados são gravadas em um arquivo de log sequencial no disco *antes* de serem aplicadas às páginas de dados principais.",
+        "C) Um algoritmo para encriptar senhas em trânsito.",
+        "D) Uma ferramenta de versionamento de código integrada ao SGBD."
+    ],
+    "B",
+    "O WAL garante que, em caso de queda abrupta de energia ou falha no servidor, o banco de dados consiga recuperar o estado consistente aplicando ou desfazendo transações pendentes durante o processo de crash recovery.",
+    "Fundamental para garantir a propriedade de Durabilidade do ACID."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que significa a propriedade de Atomicidade em transações ACID?",
+    "Atomicidade (ACID)",
+    [
+        "A) Que os dados devem ser armazenados em átomos criptografados.",
+        "B) Que todas as operações de uma transação são tratadas como uma única unidade indivisível: ou todas são executadas com sucesso e confirmadas (commit), ou todas são revertidas (rollback) em caso de falha.",
+        "C) Que o banco de dados roda em uma única thread de processador.",
+        "D) Que os registros nunca podem ser apagados."
+    ],
+    "B",
+    "Evita que o banco de dados fique em estados intermediários inconsistentes (por exemplo, debitar de uma conta bancária sem creditar na outra).",
+    "Base da confiabilidade transacional."
+);
+
+addQuestion(
+    "Banco de Dados", "Fácil",
+    "Qual comando SQL é utilizado para inserir novos registros em uma tabela?",
+    "Comando INSERT",
+    [
+        "A) ADD INTO",
+        "B) INSERT INTO",
+        "C) CREATE RECORD",
+        "D) UPDATE TABLE"
+    ],
+    "B",
+    "O comando `INSERT INTO nome_tabela (colunas) VALUES (valores);` é o padrão fundamental de DML para popular bases relacionais.",
+    "Pode inserir uma única linha ou múltiplas linhas em uma única execução."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que são Stored Procedures (Procedimentos Armazenados)?",
+    "Stored Procedures",
+    [
+        "A) Rotinas de salvamento automático de arquivos na nuvem.",
+        "B) Sub-rotinas ou blocos de código SQL compilados e armazenados diretamente no servidor de banco de dados, que podem ser executados por aplicações clientes.",
+        "C) Arquivos de configuração de hardware do servidor.",
+        "D) Códigos de criptografia de senhas."
+    ],
+    "B",
+    "Stored procedures ajudam a centralizar a lógica de negócios no banco de dados, reduzir o tráfego de rede e reforçar a segurança.",
+    "Em contrapartida, podem dificultar o controle de versionamento de código e testes automatizados se usados em excesso."
+);
+
+addQuestion(
+    "Banco de Dados", "Difícil",
+    "O que é o Teorema PACELC para sistemas distribuídos?",
+    "Teorema PACELC",
+    [
+        "A) Uma extensão do Teorema CAP que estipula que, se houver uma Partição (P), um sistema deve escolher entre Disponibilidade (A) ou Consistência (C); caso contrário (E), quando o sistema estiver rodando normalmente sem partições, ele deve escolher entre Latência (L) ou Consistência (C).",
+        "B) Um protocolo de segurança para redes sem fio.",
+        "C) Um método para calcular o desempenho de servidores NoSQL.",
+        "D) Uma regra de normalização de bancos NoSQL."
+    ],
+    "A",
+    "O CAP cobre apenas o comportamento durante falhas de rede (partições); o PACELC complementa a análise explicando o compromisso de design (Trade-off) entre Latência e Consistência mesmo quando a rede está funcionando perfeitamente.",
+    "Muitos sistemas NoSQL escolhem AP/EL (Disponibilidade em partição, Latência menor em operação normal)."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que é um banco de dados poliglota (Polyglot Persistence)?",
+    "Polyglot Persistence",
+    [
+        "A) Um banco de dados que suporta apenas a língua inglesa e espanhola.",
+        "B) O padrão de arquitetura moderna onde uma aplicação utiliza diferentes tipos de bancos de dados (relacionais, NoSQL de documentos, grafos, chave-valor) combinados, escolhendo a ferramenta ideal para cada subdomínio específico.",
+        "C) Um banco que armazena dados em múltiplos servidores geograficamente isolados.",
+        "D) Uma linguagem de programação para consultas SQL universais."
+    ],
+    "B",
+    "Reconhece que 'uma única tecnologia de banco de dados não serve para resolver todos os problemas de forma ideal'.",
+    "Exemplo: usar PostgreSQL para dados transacionais críticos, Redis para cache e Neo4j para recomendações."
+);
+
+addQuestion(
+    "Banco de Dados", "Fácil",
+    "Qual comando SQL é utilizado para alterar a estrutura de uma tabela existente (como adicionar uma nova coluna)?",
+    "Comando ALTER TABLE",
+    [
+        "A) MODIFY TABLE",
+        "B) ALTER TABLE",
+        "C) UPDATE STRUCTURE",
+        "D) CHANGE COLUMN"
+    ],
+    "B",
+    "O comando `ALTER TABLE` faz parte da DDL (Data Definition Language) e permite modificar colunas, restrições e índices sem precisar recriar a tabela do zero.",
+    "Deve ser usado com cuidado em tabelas de grande porte em produção."
+);
+
+addQuestion(
+    "Banco de Dados", "Média",
+    "O que significa a propriedade de Isolamento (Isolation) em transações ACID?",
+    "Isolamento (ACID)",
+    [
+        "A) Que o banco de dados deve ser mantido em uma sala isolada fisicamente.",
+        "B) Que a execução simultânea de múltiplas transações deve resultar em um estado do sistema equivalente ao de sua execução sequencial, impedindo que transações concorrentes vejam dados intermediários não confirmados.",
+        "C) Que o servidor não pode se conectar à internet.",
+        "D) Que cada tabela deve ficar em um disco rígido separado."
+    ],
+    "B",
+    "O nível de isolamento garante que o trabalho de uma transação não seja interferido por outras ocorrendo ao mesmo tempo.",
+    "Equilibra consistência e concorrência através de travas (locks) ou controle de versão multiversão (MVCC)."
+);
+
+addQuestion(
+    "Banco de Dados", "Difícil",
+    "O que é o mecanismo MVCC (Multi-Version Concurrency Control) em SGBDs?",
+    "MVCC",
+    [
+        "A) Um antivírus para bancos de dados relacionais.",
+        "B) Um controle de concorrência onde o banco de dados mantém múltiplas versões físicas dos mesmos dados, permitindo que leitores não bloqueiem escritores e escritores não bloqueiem leitores.",
+        "C) Um protocolo de replicação em nuvem multirregião.",
+        "D) Uma ferramenta de backup em fita magnética."
+    ],
+    "B",
+    "O MVCC é o padrão adotado por modernos SGBDs relacionais (como PostgreSQL e MySQL/InnoDB) para garantir alta concorrência e escalabilidade de leitura sem travar tabelas inteiras.",
+    "Exige processos de limpeza em segundo plano (como VACUUM no Postgres) para remover versões antigas obsoletas."
+);
+
 /* =====================================================
    SQL (STRUCTURED QUERY LANGUAGE)
 ===================================================== */
@@ -3617,145 +4567,3 @@ criptografia.forEach(x => {
     addQuestion("Criptografia e Certificação Digital", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
 });
 
-/* =====================================================
-   DART E FLUTTER
-===================================================== */
-
-const dartFlutter = [
-    {
-        q: "No ecossistema Dart e Flutter, qual é a principal diferença entre os tipos de widgets 'StatelessWidget' e 'StatefulWidget'?",
-        c: "",
-        o: [
-            "A) O StatelessWidget mantém estado interno mutável, enquanto o StatefulWidget é imutável após renderizado.",
-            "B) O StatelessWidget é imutável e não mantém estado interno mutável ao longo do ciclo de vida, enquanto o StatefulWidget pode gerenciar e alterar estado interno.",
-            "C) O StatefulWidget executa exclusivamente em servidores web, enquanto o StatelessWidget é exclusivo para aplicativos móveis nativos.",
-            "D) Não há diferença arquitetural; ambos utilizam o mesmo gerenciador de estado nativo do Dart."
-        ],
-        a: "B",
-        e: "Widgets sem estado (Stateless) dependem apenas de suas configurações iniciais, enquanto widgets com estado (Stateful) possuem um objeto State associado que pode sofrer alterações e redesenhar a tela (setState).",
-        t: "Sempre dê preferência a StatelessWidget quando o componente for estático para otimizar a performance."
-    },
-    {
-        q: "Qual modificador de palavra-chave na linguagem Dart é utilizado para declarar variáveis que podem ser calculadas em tempo de execução, mas cujo valor é atribuído uma única vez e permanece imutável após a inicialização?",
-        c: "final vs const",
-        o: [
-            "A) var",
-            "B) dynamic",
-            "C) final",
-            "D) static"
-        ],
-        a: "C",
-        e: "A palavra-chave `final` define uma variável que só pode ser configurada uma vez. Já o `const` define uma constante estática avaliada obrigatoriamente em tempo de compilação.",
-        t: "Cuidado para não confundir: `const` é mais restrito que `final` por exigir valor conhecido antes mesmo de rodar o aplicativo."
-    },
-    {
-        q: "No Flutter, qual é o papel fundamental do motor gráfico de renderização (como o Impeller ou o antigo Skia) na arquitetura do framework?",
-        c: "",
-        o: [
-            "A) Traduzir diretamente o código Dart para componentes nativos específicos de UI (como botões nativos do Android e iOS).",
-            "B) Desenhar os pixels diretamente na tela utilizando gráficos acelerados por hardware, ignorando a árvore de widgets nativa do sistema operacional.",
-            "C) Gerenciar exclusivamente as requisições de rede HTTP e a persistência local via SQLite.",
-            "D) Executar a máquina virtual Dart em segundo plano em um thread separado de I/O."
-        ],
-        a: "B",
-        e: "O Flutter utiliza uma abordagem de renderização própria (cross-platform non-native components), desenhando os elementos usando seu próprio motor gráfico, o que garante alta performance e consistência visual entre diferentes plataformas.",
-        t: "Isso explica por que um botão no Flutter se parece exatamente igual no iOS e no Android por padrão."
-    },
-    {
-        q: "Qual método é obrigatório em qualquer classe que herda de StatelessWidget ou StatefulWidget em Flutter?",
-        c: "",
-        o: [
-            "A) initState()",
-            "B) render()",
-            "C) build()",
-            "D) create()"
-        ],
-        a: "C",
-        e: "O método build(BuildContext context) é obrigatório e descreve a parte da interface do usuário representada por este widget.",
-        t: "O método build é chamado sempre que o widget precisa ser renderizado novamente."
-    },
-    {
-        q: "O que o operador de segurança contra nulos (null-safety) '??' faz em Dart?",
-        c: "",
-        o: [
-            "A) Lança uma exceção se a variável for nula.",
-            "B) Retorna o operando à esquerda se ele não for nulo; caso contrário, retorna o operando à direita.",
-            "C) Força o compilador a ignorar erros de nulidade.",
-            "D) Converte um tipo inteiro para string de forma segura."
-        ],
-        a: "B",
-        e: "O operador de coalescência nula (??) retorna a expressão à esquerda se ela não for nula; se for, avalia e retorna a expressão à direita.",
-        t: "É ideal para definir valores padrão de forma concisa."
-    },
-    {
-        q: "Qual componente do Flutter é mais indicado para criar uma lista longa e dinâmica de itens de forma eficiente, carregando apenas os elementos visíveis na tela sob demanda?",
-        c: "",
-        o: [
-            "A) Column",
-            "B) ListView",
-            "C) ListView.builder",
-            "D) Stack"
-        ],
-        a: "C",
-        e: "O ListView.builder constrói os itens sob demanda, conforme eles entram na área visível da tela, otimizando o uso de memória em listas extensas.",
-        t: "Nunca utilize Column para listas grandes com muitos elementos para evitar problemas de desempenho."
-    },
-    {
-        q: "O que são Isolate em Dart?",
-        c: "",
-        o: [
-            "A) Componentes visuais isolados que não afetam o layout principal.",
-            "B) Threads independentes que possuem sua própria memória heap, permitindo processamento concorrente sem bloquear a thread principal (UI thread).",
-            "C) Funções assíncronas baseadas em Future e async/await.",
-            "D) Bibliotecas de terceiros para gerenciar requisições HTTP seguras."
-        ],
-        a: "B",
-        e: "Em Dart, o código roda na thread principal (event loop). Para tarefas pesadas de CPU, usam-se Isolates, que rodam em paralelo com memórias separadas.",
-        t: "Isolates ajudam a manter a interface fluida mesmo durante cálculos complexos."
-    },
-    {
-        q: "Como é chamada a linguagem de programação principal utilizada para desenvolver aplicativos em Flutter?",
-        c: "",
-        o: [
-            "A) JavaScript",
-            "B) TypeScript",
-            "C) Kotlin",
-            "D) Dart"
-        ],
-        a: "D",
-        e: "Flutter utiliza a linguagem Dart, desenvolvida pelo Google, que suporta compilação JIT (Just-In-Time) para desenvolvimento rápido e AOT (Ahead-Of-Time) para produção.",
-        t: "Dart possui tipagem forte e suporta orientação a objetos."
-    },
-    {
-        q: "Qual é a utilidade do arquivo pubspec.yaml em um projeto Flutter?",
-        c: "",
-        o: [
-            "A) Configurar as regras de estilização CSS do aplicativo.",
-            "B) Gerenciar dependências do projeto, fontes, ativos (imagens) e metadados gerais.",
-            "C) Compilar o código nativo para iOS e Android simultaneamente.",
-            "D) Executar os testes unitários automatizados."
-        ],
-        a: "B",
-        e: "O arquivo pubspec.yaml é o manifesto do projeto, onde declaramos pacotes externos, fontes locais e assets de imagens.",
-        t: "Qualquer alteração de dependência exige a execução do comando pub get."
-    },
-    {
-        q: "No contexto de programação assíncrona em Dart, qual é a diferença essencial entre um Future e um Stream?",
-        c: "",
-        o: [
-            "A) Future lida com um único valor assíncrono futuro, enquanto Stream lida com uma sequência de eventos ou múltiplos valores ao longo do tempo.",
-            "B) Future roda em uma thread separada, enquanto Stream roda na thread principal.",
-            "C) Stream é síncrono e Future é assíncrono.",
-            "D) Não há diferença prática; ambos são sinônimos para Promises."
-        ],
-        a: "A",
-        e: "Um Future representa a computação de um único valor que estará disponível no futuro. Um Stream é como uma tubulação de dados que pode emitir múltiplos eventos ao longo do tempo.",
-        t: "Streams são amplamente utilizados para manipulação de dados em tempo real."
-    }
-];
-
-dartFlutter.forEach(x => {
-    addQuestion("Dart e Flutter", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
-
-console.log("Total de questões:", questions.length);
