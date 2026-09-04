@@ -198,51 +198,6 @@ addQuestion(
 );
 
 
-addQuestion(
-    "Lógica de Programação", "Difícil",
-    "Qual será o valor final impresso para a variável 'res' ao término do algoritmo abaixo?",
-    "int res = 1;\nfor(int i = 1; i <= 5; i++){\n    if(i % 2 == 0){\n        res += i;\n    } else {\n        res -= 1;\n    }\n}\nSystem.out.println(res);",
-    ["A) 4", "B) 7", "C) 6", "D) 5"],
-    "C",
-    "Passo a passo:\n- i=1 (ímpar): res = 1 - 1 = 0\n- i=2 (par): res = 0 + 2 = 2\n- i=3 (ímpar): res = 2 - 1 = 1\n- i=4 (par): res = 1 + 4 = 5\n- i=5 (ímpar): res = 5 - 1 = 4.",
-    "Rastreie com atenção os operadores de atribuição acumulativa (+= e -=)."
-);
-
-addQuestion(
-    "Lógica de Programação", "Média",
-    "Qual é o comportamento do algoritmo abaixo ao receber n = 5?",
-    "int calc(int n){\n    if(n == 0) return 1;\n    return n * calc(n - 1);\n}",
-    ["A) Retorna 5", "B) Retorna 120", "C) Retorna 25", "D) Entra em loop infinito"],
-    "B",
-    "O algoritmo calcula o fatorial de n. Para n=5, o resultado é 5 * 4 * 3 * 2 * 1 = 120.",
-    "Caso base (n=0 retorna 1) interrompe a recursão com segurança."
-);
-
-addQuestion(
-    "Lógica de Programação", "Fácil",
-    "Em lógica booleana, qual é o resultado da expressão: `(true AND false) OR (true AND true)`?",
-    "boolean v = (true && false) || (true && true);",
-    ["A) true", "B) false", "C) null", "D) undefined"],
-    "A",
-    "(true && false) resulta em false. (true && true) resulta em true. Logo, false || true resulta em true.",
-    "Avalie primeiro os parênteses internos antes do operador OR (||)."
-);
-
-addQuestion(
-    "Lógica de Programação", "Difícil",
-    "Qual será o valor impresso após a execução do trecho de código com matrizes?",
-    "int[][] m = {{1, 2}, {3, 4}};\nint s = 0;\nfor(int i=0; i<2; i++){\n    s += m[i][i];\n}\nSystem.out.println(s);",
-    ["A) 4", "B) 5", "C) 10", "D) 3"],
-    "B",
-    "O código soma os elementos da diagonal principal da matriz (m[0][0] + m[1][1]), ou seja, 1 + 4 = 5.",
-    "m[i][i] acessa exatamente a diagonal principal em matrizes quadradas."
-);
-
-// Adicione mais questões abaixo usando o mesmo formato...
-
-console.log("Total de questões cadastradas:", questions.length);
-
-
 /* =====================================================
    PROGRAMAÇÃO ORIENTADA A OBJETOS (POO)
 ===================================================== */
