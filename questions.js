@@ -9767,143 +9767,645 @@ addQuestion(
 );
 
 /* =====================================================
-   CRIPTOGRAFIA E CERTIFICAÇÃO DIGITAL
+    CRIPTOGRAFIA E CERTIFICAÇÃO DIGITAL - 40 QUESTÕES
 ===================================================== */
 
-const criptografia = [
-    {
-        q: "Qual é a principal diferença conceitual entre a criptografia simétrica e a criptografia assimétrica?",
-        c: "Simétrica vs Assimétrica",
-        o: [
-            "A) A criptografia simétrica utiliza chaves diferentes para cifrar e decifrar, enquanto a assimétrica utiliza a mesma chave.",
-            "B) A criptografia simétrica utiliza uma única chave compartilhada para cifrar e decifrar, enquanto a assimétrica utiliza um par de chaves (pública e privada).",
-            "C) A criptografia simétrica é exclusiva para ambientes web via HTTPS, e a assimétrica é apenas para arquivos locais.",
-            "D) Não há diferença de segurança; a criptografia assimétrica é apenas uma versão mais antiga da simétrica."
-        ],
-        a: "B",
-        e: "Na criptografia simétrica, a mesma chave secreta faz todo o trabalho, exigindo um canal seguro de troca. Na assimétrica, o que a chave pública criptografa, apenas a chave privada correspondente descodifica.",
-        t: "Algoritmos simétricos (como AES) são muito mais rápidos que os assimétricos (como RSA)."
-    },
-    {
-        q: "No contexto da Segurança da Informação, o que garante a propriedade de 'Não-Repúdio' (ou Irretratabilidade)?",
-        c: "",
-        o: [
-            "A) O uso exclusiva de senhas fortes com troca obrigatória a cada 30 dias.",
-            "B) A capacidade de impedir que um usuário negue a autoria de uma mensagem ou transação que ele realizou.",
-            "C) A criptografia de dados em trânsito utilizando protocolos de rede como o TLS 1.3.",
-            "D) O armazenamento de senhas utilizando funções de hash unidirecionais com salt."
-        ],
-        a: "B",
-        e: "O não-repúdio assegura que o emissor de uma mensagem não possa negar posteriormente tê-la enviado, o que é comumente alcançado com o uso de assinaturas digitais baseadas em criptografia assimétrica.",
-        t: "Fundamental em transações bancárias e documentos legais digitais."
-    },
-    {
-        q: "O que é uma função de Hash criptográfico (como SHA-256) e qual é uma de suas propriedades fundamentais?",
-        c: "Funções Hash",
-        o: [
-            "A) Uma função reversível que compacta e descompacta arquivos grandes para otimizar espaço em disco.",
-            "B) Um algoritmo matemático que converte uma entrada de tamanho arbitrário em uma string de tamanho fixo, sendo unidirecional (impossível de reverter para obter o dado original).",
-            "C) Um sistema de chaves gêmeas onde a chave pública descobre o texto original gerado pelo hash.",
-            "D) Um protocolo de troca de chaves simétricas inseguras em redes públicas."
-        ],
-        a: "B",
-        e: "O hash gera uma 'impressão digital' única do arquivo ou texto. Ele é unidirecional (one-way) e resistente a colisões (difícil encontrar duas entradas que gerem o mesmo hash).",
-        t: "Funções hash são amplamente utilizadas na verificação de integridade de dados e armazenamento seguro de senhas."
-    },
-    {
-        q: "Qual é a principal função de uma Autoridade Certificadora (AC) dentro de uma Infraestrutura de Chaves Públicas (ICP)?",
-        c: "ICP-Brasil e Certificação",
-        o: [
-            "A) Bloquear ataques de negação de serviço (DDoS) em servidores de aplicações web.",
-            "B) Emitir, suspender, revogar e gerenciar certificados digitais, atrelando uma chave pública à identidade de um usuário ou instituição.",
-            "C) Armazenar cópias de segurança (backup) de todas as senhas dos usuários para recuperação em caso de perda.",
-            "D) Executar varreduras de vulnerabilidades em códigos-fonte antes do deploy em produção."
-        ],
-        a: "B",
-        e: "A Autoridade Certificadora atua como uma terceira parte confiável que valida a identidade do titular e emite o certificado digital assinado com sua própria chave privada.",
-        t: "O certificado digital funciona como o 'RG' eletrônico de pessoas físicas ou jurídicas."
-    },
-    {
-        q: "Como funciona o processo de criação de uma Assinatura Digital?",
-        c: "Assinatura Digital",
-        o: [
-            "A) O documento é cifrado integralmente utilizando a chave pública do destinatário.",
-            "B) O resumo (hash) do documento é gerado e criptografado utilizando a chave privada do remetente.",
-            "C) A senha do usuário é anexada ao final do arquivo em formato de texto plano protegido por permissões do sistema.",
-            "D) Utiliza-se exclusivamente criptografia simétrica para mascarar o cabeçalho do arquivo."
-        ],
-        a: "B",
-        e: "Para assinar, calcula-se o hash do documento e criptografa-se esse hash com a chave privada de quem assina. Qualquer pessoa pode usar a chave pública do remetente para decifrar o hash e conferir a integridade e autoria.",
-        t: "A assinatura digital garante integridade, autenticidade e não-repúdio."
-    },
-    {
-        q: "O que significa dizer que um certificado digital foi revogado e onde essa informação é consultada?",
-        c: "Revogação de Certificados",
-        o: [
-            "A) Significa que a senha expirou e deve ser trocada no painel da AC. É consultada no arquivo hosts do sistema.",
-            "B) Significa que o certificado perdeu a validade antes do prazo devido a comprometimento de chave ou mudança de dados, sendo consultado via LCR (Lista de Certificados Revogados ou CRL) ou protocolo OCSP.",
-            "C) Significa que o site utilizava protocolo HTTP e migrou para HTTPS.",
-            "D) Significa que o algoritmo AES foi substituído por uma chave simétrica menor."
-        ],
-        a: "B",
-        e: "A revogação invalida o certificado antes da data de expiração oficial. Sistemas checam listas de revogação (CRL) ou consultam o status em tempo real via protocolo OCSP (Online Certificate Status Protocol).",
-        t: "Verificar a revogação é uma etapa crucial na validação de conexões SSL/TLS seguras."
-    },
-    {
-        q: "Qual é o objetivo do protocolo TLS (Transport Layer Security) — sucessor espiritual do SSL — em uma aplicação web?",
-        c: "TLS / HTTPS",
-        o: [
-            "A) Otimizar o tempo de carregamento de páginas HTML através da compressão de imagens e scripts.",
-            "B) Proporcionar segurança de comunicação fim-a-fim na internet através de criptografia, autenticação de servidor e garantia de integridade.",
-            "C) Substituir os bancos de dados relacionais por estruturas baseadas em blocos criptografados.",
-            "D) Controlar o acesso de usuários por meio de perfis de permissão baseados em papéis (RBAC)."
-        ],
-        a: "B",
-        e: "O TLS opera na camada de transporte (ou logo acima dela), criando um túnel seguro (HTTPS) onde os dados trocados entre o navegador e o servidor ficam protegidos contra interceptação e adulteração.",
-        t: "O estabelecimento dessa conexão segura ocorre inicialmente através do chamado 'Handshake TLS'."
-    },
-    {
-        q: "O que caracteriza um ataque do tipo 'Man-in-the-Middle' (MitM) em redes de computadores?",
-        c: "Ameaças e Ataques",
-        o: [
-            "A) Um invasor sobrecarrega o servidor web com milhões de requisições falsas simultâneas.",
-            "B) Um atacante intercepta secretamente e possivelmente altera a comunicação entre duas partes que acreditam estar se comunicando diretamente entre si.",
-            "C) O roubo físico de discos rígidos em um data center para extração de arquivos em cache.",
-            "D) A instalação de vírus de macro em planilhas eletrônicas compartilhadas na rede interna."
-        ],
-        a: "B",
-        e: "No ataque MitM, o intermediário mal-intencionado fica no meio da rota dos pacotes de dados, podendo escutar ou modificar o conteúdo sem que os usuários percebam, o que é mitigado pelo uso de certificados digitais válidos e HSTS.",
-        t: "Redes Wi-Fi públicas desprotegidas são cenários comuns para esse tipo de tentativa de invasão."
-    },
-    {
-        q: "No contexto de criptografia simétrica, qual é a finalidade do 'Salt' (um dado aleatório) quando adicionado ao processo de hash de senhas?",
-        c: "Armazenamento de Senhas",
-        o: [
-            "A) Aumentar o tamanho do arquivo de texto plano para dificultar ataques de força bruta.",
-            "B) Garantir que duas pessoas que utilizem a mesma senha gerem hashes finais completamente diferentes, neutralizando ataques baseados em tabelas prontas (Rainbow Tables).",
-            "C) Permitir que a senha seja recuperada facilmente pelo administrador do sistema em caso de esquecimento.",
-            "D) Criptografar a conexão de rede durante o envio da senha para o servidor backend."
-        ],
-        a: "B",
-        e: "O Salt adiciona uma sequência de caracteres aleatórios única a cada senha antes de aplicar a função hash. Assim, senhas iguais geram hashes totalmente distintos nas tabelas do banco de dados.",
-        t: "O uso de Salt em conjunto com funções lentas como Argon2 ou Bcrypt é padrão ouro para segurança de senhas."
-    },
-    {
-        q: "Qual dos seguintes algoritmos é amplamente reconhecido e utilizado como padrão global para criptografia simétrica de blocos?",
-        c: "Algoritmos Criptográficos",
-        o: [
-            "A) RSA",
-            "B) Diffie-Hellman",
-            "C) AES (Advanced Encryption Standard)",
-            "D) MD5"
-        ],
-        a: "C",
-        e: "O AES (Advanced Encryption Standard) é o algoritmo de criptografia simétrica padrão da indústria e do governo norte-americano, operando em blocos de 128 bits com chaves de 128, 192 ou 256 bits.",
-        t: "O MD5 é uma função hash antiga e insegura, enquanto o RSA é um algoritmo assimétrico."
-    }
-];
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual é a principal principal diferença conceitual entre a criptografia simétrica e a criptografia assimétrica?", 
+    "Simétrica vs Assimétrica", 
+    [
+        "A) A criptografia simétrica utiliza chaves diferentes para cifrar e decifrar, enquanto a assimétrica utiliza a mesma chave.",
+        "B) A criptografia simétrica utiliza uma única chave compartilhada para cifrar e decifrar, enquanto a assimétrica utiliza um par de chaves (pública e privada).",
+        "C) A criptografia simétrica é exclusiva para ambientes web via HTTPS, e a assimétrica é apenas para arquivos locais.",
+        "D) Não há diferença de segurança; a criptografia assimétrica é apenas uma versão mais antiga da simétrica."
+    ], 
+    "B", 
+    "Na criptografia simétrica, a mesma chave secreta faz todo o trabalho, exigindo um canal seguro de troca. Na assimétrica, o que a chave pública criptografa, apenas a chave privada correspondente descodifica.", 
+    "Algoritmos simétricos (como AES) são muito mais rápidos que os assimétricos (como RSA)."
+);
 
-criptografia.forEach(x => {
-    addQuestion("Criptografia e Certificação Digital", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "No contexto da Segurança da Informação, o que garante a propriedade de 'Não-Repúdio' (ou Irretratabilidade)?", 
+    "Propriedades de Segurança", 
+    [
+        "A) O uso exclusivo de senhas fortes com troca obrigatória a cada 30 dias.",
+        "B) A capacidade de impedir que um usuário negue a autoria de uma mensagem ou transação que ele realizou.",
+        "C) A criptografia de dados em trânsito utilizando protocolos de rede como o TLS 1.3.",
+        "D) O armazenamento de senhas utilizando funções de hash unidirecionais com salt."
+    ], 
+    "B", 
+    "O não-repúdio assegura que o emissor de uma mensagem não possa negar posteriormente tê-la enviado, o que é comumente alcançado com o uso de assinaturas digitais baseadas em criptografia assimétrica.", 
+    "Fundamental em transações bancárias e documentos legais digitais."
+);
 
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que é uma função de Hash criptográfico (como SHA-256) e qual é uma de suas propriedades fundamentais?", 
+    "Funções Hash", 
+    [
+        "A) Uma função reversível que compacta e descompacta arquivos grandes para otimizar espaço em disco.",
+        "B) Um algoritmo matemático que converte uma entrada de tamanho arbitrário em uma string de tamanho fixo, sendo unidirecional (impossível de reverter para obter o dado original).",
+        "C) Um sistema de chaves gêmeas onde a chave pública descobre o texto original gerado pelo hash.",
+        "D) Um protocolo de troca de chaves simétricas inseguras em redes públicas."
+    ], 
+    "B", 
+    "O hash gera uma 'impressão digital' única do arquivo ou texto. Ele é unidirecional (one-way) e resistente a colisões (difícil encontrar duas entradas que gerem o mesmo hash).", 
+    "Funções hash são amplamente utilizadas na verificação de integridade de dados e armazenamento seguro de senhas."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual é a principal função de uma Autoridade Certificadora (AC) dentro de uma Infraestrutura de Chaves Públicas (ICP)?", 
+    "ICP-Brasil e Certificação", 
+    [
+        "A) Bloquear ataques de negação de serviço (DDoS) em servidores de aplicações web.",
+        "B) Emitir, suspender, revogar e gerenciar certificados digitais, atrelando uma chave pública à identidade de um usuário ou instituição.",
+        "C) Armazenar cópias de segurança (backup) de todas as senhas dos usuários para recuperação em caso de perda.",
+        "D) Executar varreduras de vulnerabilidades em códigos-fonte antes do deploy em produção."
+    ], 
+    "B", 
+    "A Autoridade Certificadora atua como uma terceira parte confiável que valida a identidade do titular e emite o certificado digital assinado com sua própria chave privada.", 
+    "O certificado digital funciona como o 'RG' eletrônico de pessoas físicas ou jurídicas."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Como funciona o processo de criação de uma Assinatura Digital?", 
+    "Assinatura Digital", 
+    [
+        "A) O documento é cifrado integralmente utilizando a chave pública do destinatário.",
+        "B) O resumo (hash) do documento é gerado e criptografado utilizando a chave privada do remetente.",
+        "C) A senha do usuário é anexada ao final do arquivo em formato de texto plano protegido por permissões do sistema.",
+        "D) Utiliza-se exclusivamente criptografia simétrica para mascarar o cabeçalho do arquivo."
+    ], 
+    "B", 
+    "Para assinar, calcula-se o hash do documento e criptografa-se esse hash com a chave privada de quem assina. Qualquer pessoa pode usar a chave pública do remetente para decifrar o hash e conferir a integridade e autoria.", 
+    "A assinatura digital garante integridade, autenticidade e não-repúdio."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que significa dizer que um certificado digital foi revogado e onde essa informação é consultada?", 
+    "Revogação de Certificados", 
+    [
+        "A) Significa que a senha expirou e deve ser trocada no painel da AC. É consultada no arquivo hosts do sistema.",
+        "B) Significa que o certificado perdeu a validade antes do prazo devido a comprometimento de chave ou mudança de dados, sendo consultado via LCR (Lista de Certificados Revogados ou CRL) ou protocolo OCSP.",
+        "C) Significa que o site utilizava protocolo HTTP e migrou para HTTPS.",
+        "D) Significa que o algoritmo AES foi substituído por uma chave simétrica menor."
+    ], 
+    "B", 
+    "A revogação invalida o certificado antes da data de expiração oficial. Sistemas checam listas de revogação (CRL) ou consultam o status em tempo real via protocolo OCSP (Online Certificate Status Protocol).", 
+    "Verificar a revogação é uma etapa crucial na validação de conexões SSL/TLS seguras."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual é o objetivo do protocolo TLS (Transport Layer Security) — sucessor espiritual do SSL — em uma aplicação web?", 
+    "TLS / HTTPS", 
+    [
+        "A) Otimizar o tempo de carregamento de páginas HTML através da compressão de imagens e scripts.",
+        "B) Proporcionar segurança de comunicação fim-a-fim na internet através de criptografia, autenticação de servidor e garantia de integridade.",
+        "C) Substituir os bancos de dados relacionais por estruturas baseadas em blocos criptografados.",
+        "D) Controlar o acesso de usuários por meio de perfis de permissão baseados em papéis (RBAC)."
+    ], 
+    "B", 
+    "O TLS opera na camada de transporte (ou logo acima dela), criando um túnel seguro (HTTPS) onde os dados trocados entre o navegador e o servidor ficam protegidos contra interceptação e adulteração.", 
+    "O estabelecimento dessa conexão segura ocorre inicialmente através do chamado 'Handshake TLS'."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que caracteriza um ataque do tipo 'Man-in-the-Middle' (MitM) em redes de computadores?", 
+    "Ameaças e Ataques", 
+    [
+        "A) Um invasor sobrecarrega o servidor web com milhões de requisições falsas simultâneas.",
+        "B) Um atacante intercepta secretamente e possivelmente altera a comunicação entre duas partes que acreditam estar se comunicando diretamente entre si.",
+        "C) O roubo físico de discos rígidos em um data center para extração de arquivos em cache.",
+        "D) A instalação de vírus de macro em planilhas eletrônicas compartilhadas na rede interna."
+    ], 
+    "B", 
+    "No ataque MitM, o intermediário mal-intencionado fica no meio da rota dos pacotes de dados, podendo escutar ou modificar o conteúdo sem que os usuários percebam, o que é mitigado pelo uso de certificados digitais válidos e HSTS.", 
+    "Redes Wi-Fi públicas desprotegidas são cenários comuns para esse tipo de tentativa de invasão."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "No contexto de criptografia simétrica, qual é a finalidade do 'Salt' (um dado aleatório) quando adicionado ao processo de hash de senhas?", 
+    "Armazenamento de Senhas", 
+    [
+        "A) Aumentar o tamanho do arquivo de texto plano para dificultar ataques de força bruta.",
+        "B) Garantir que duas pessoas que utilizem a mesma senha gerem hashes finais completamente diferentes, neutralizando ataques baseados em tabelas prontas (Rainbow Tables).",
+        "C) Permitir que a senha seja recuperada facilmente pelo administrador do sistema em caso de esquecimento.",
+        "D) Criptografar a conexão de rede durante o envio da senha para o servidor backend."
+    ], 
+    "B", 
+    "O Salt adiciona uma sequência de caracteres aleatórios única a cada senha antes de aplicar a função hash. Assim, senhas iguais geram hashes totalmente distintos nas tabelas do banco de dados.", 
+    "O uso de Salt em conjunto com funções lentas como Argon2 ou Bcrypt é padrão ouro para segurança de senhas."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual dos seguintes algoritmos é amplamente reconhecido e utilizado como padrão global para criptografia simétrica de blocos?", 
+    "Algoritmos Criptográficos", 
+    [
+        "A) RSA",
+        "B) Diffie-Hellman",
+        "C) AES (Advanced Encryption Standard)",
+        "D) MD5"
+    ], 
+    "C", 
+    "O AES (Advanced Encryption Standard) é o algoritmo de criptografia simétrica padrão da indústria e do governo norte-americano, operando em blocos de 128 bits com chaves de 128, 192 ou 256 bits.", 
+    "O MD5 é uma função hash antiga e insegura, enquanto o RSA é um algoritmo assimétrico."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que é a Autoridade de Registro (AR) em uma Infraestrutura de Chaves Públicas (ICP)?", 
+    "ICP e Estrutura", 
+    [
+        "A) Um servidor de log que armazena os erros de acesso aos sites certificados.",
+        "B) Uma entidade vinculada a uma Autoridade Certificadora responsável por receber, identificar e validar presencialmente ou por videoconferência a documentação dos solicitantes de certificados.",
+        "C) O órgão governamental que define as leis de proteção de dados no Brasil (LGPD).",
+        "D) Um banco de dados que armazena as chaves privadas de todos os cidadãos."
+    ], 
+    "B", 
+    "A AR atua como o ponto de atendimento direto ao cliente, coletando documentos e validando a identidade antes de repassar a solicitação para a AC emitir o certificado digital.", 
+    "Garante que o certificado seja emitido estritamente para o titular legítimo."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual é a principal limitação prática do uso de algoritmos de criptografia assimétrica (como o RSA) para cifrar grandes volumes de dados?", 
+    "Limitações da Assimétrica", 
+    [
+        "A) A impossibilidade de gerar chaves maiores que 128 bits.",
+        "B) O alto custo computacional e lentidão de processamento quando comparados à criptografia simétrica.",
+        "C) A vulnerabilidade inerente a redes sem fio locais.",
+        "D) A exigência de que as chaves públicas sejam mantidas em absoluto segredo."
+    ], 
+    "B", 
+    "Operações matemáticas com números primos grandes na assimétrica exigem muita CPU. Por isso, na prática (como no HTTPS), usa-se assimétrica apenas para trocar uma chave simétrica temporária, e o restante da sessão usa criptografia simétrica (AES).", 
+    "Essa abordagem combina segurança na troca com alta velocidade de transmissão."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que significa o termo 'Colisão' em funções de hash criptográficas?", 
+    "Segurança de Hash", 
+    [
+        "A) Duas mensagens de texto diferentes que geram exatamente o mesmo valor de hash de saída.",
+        "B) Um erro de hardware onde dois servidores tentam gravar no mesmo setor de disco.",
+        "C) O momento em que a chave pública e a chave privada coincidem por falha matemática.",
+        "D) Quando duas Autoridades Certificadoras emitem certificados com a mesma data de expiração."
+    ], 
+    "A", 
+    "Encontrar colisões em funções hash (como ocorreu historicamente com o MD5 e o SHA-1) compromete a integridade dos dados, pois um invasor poderia substituir um arquivo legítimo por outro malicioso gerando o mesmo hash.", 
+    "Funções modernas como SHA-256 são projetadas para resistir fortemente a ataques de colisão."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que é a Cadeia de Certificados (Certificate Chain) em uma conexão SSL/TLS?", 
+    "Cadeia de Certificados", 
+    [
+        "A) Uma lista de senhas mestras compartilhadas entre os servidores web.",
+        "B) Uma hierarquia de confiança que liga o certificado final do site (Leaf) a uma Autoridade Certificadora Intermediária e, por fim, a uma Autoridade Certificadora Raiz (Root CA) confiável pelo sistema operacional ou navegador.",
+        "C) Um mecanismo de backup físico de chaves privadas em cartões inteligentes.",
+        "D) O histórico de todas as revogações ocorridas em um domínio web."
+    ], 
+    "B", 
+    "O navegador valida a segurança do site verificando se cada elo da cadeia assina o certificado imediatamente inferior, até chegar a uma raiz pré-instalada e confiável no dispositivo do usuário.", 
+    "A ausência de um certificado intermediário na configuração do servidor causa erros de SSL no navegador."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual é a principal função do algoritmo de Diffie-Hellman na segurança de redes?", 
+    "Troca de Chaves", 
+    [
+        "A) Assinar digitalmente contratos eletrônicos com validade jurídica.",
+        "B) Permitir que duas partes estabeleçam um segredo compartilhado (chave simétrica) através de um canal de comunicação totalmente inseguro e público, sem que a chave seja transmitida.",
+        "C) Criptografar discos rígidos inteiros com proteção contra remoção física.",
+        "D) Comprimir dados binários para transmissão rápida em fibra óptica."
+    ], 
+    "B", 
+    "O Diffie-Hellman é um protocolo revolucionário de troca de chaves baseado em aritmética modular, sendo a base para estabelecer sessões criptografadas seguras na internet.", 
+    "Ele resolve o problema clássico de como compartilhar segredos em ambientes abertos."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "No padrão de certificados digitais X.509, o que contém o campo 'Assunto' (Subject) do certificado?", 
+    "Padrão X.509", 
+    [
+        "A) A chave privada secreta do proprietário do certificado.",
+        "B) As informações de identidade da entidade à qual o certificado foi emitido (como nome, CNPJ/CPF, país, e-mail e organização).",
+        "C) A lista de algoritmos que a Autoridade Certificadora proibiu de usar.",
+        "D) O valor do hash gerado pelo servidor no momento do boot."
+    ], 
+    "B", 
+    "O campo Subject identifica claramente a quem pertence a chave pública contida no certificado, permitindo que o usuário saiba com quem está se comunicando.", 
+    "O padrão X.509 define a estrutura estruturada desses metadados."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que diferencia um Certificado Digital do tipo A1 de um do tipo A3 no padrão ICP-Brasil?", 
+    "Tipos de Certificados A1 vs A3", 
+    [
+        "A) O tipo A1 é para pessoas físicas e o tipo A3 é exclusivo para órgãos governamentais.",
+        "B) O tipo A1 é armazenado em arquivo de software no computador com validade de 1 ano, enquanto o tipo A3 é armazenado em hardware dedicado (token USB ou cartão inteligente) com validade de até 5 anos.",
+        "C) O tipo A1 utiliza criptografia simétrica e o tipo A3 utiliza criptografia quântica.",
+        "D) Não há diferenças práticas; tratam-se apenas de nomenclaturas comerciais de empresas diferentes."
+    ], 
+    "B", 
+    "A escolha entre A1 (praticidade de instalação em múltiplos sistemas) e A3 (maior segurança física por exigir presença do token e senha PIN) depende da necessidade corporativa.", 
+    "Ambos possuem a mesma validade jurídica perante a ICP-Brasil."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que é o conceito de 'Forward Secrecy' (Sigilo Direfeito Perfeito) em protocolos como o TLS?", 
+    "Forward Secrecy", 
+    [
+        "A) A garantia de que a chave privada da Autoridade Certificadora nunca expira.",
+        "B) A propriedade que assegura que a interceptação de chaves de sessão passadas não será comprometida caso a chave privada de longo prazo do servidor venha a ser vazada no futuro.",
+        "C) O bloqueio automático de IPs suspeitos de ataques de força bruta.",
+        "D) A criptografia automática de logs de auditoria em servidores de nuvem."
+    ], 
+    "B", 
+    "Com Forward Secrecy, cada sessão de navegação gera chaves efêmeras únicas e descartáveis. Mesmo que um invasor grave todo o tráfego de hoje e roube a chave do servidor amanhã, ele não conseguirá descriptografar as conversas passadas.", 
+    "É um pilar fundamental da privacidade moderna na web."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que significa a sigla 'HSM' (Hardware Security Module) no contexto de segurança e certificação?", 
+    "HSM", 
+    [
+        "A) High Security Memory, um tipo de memória RAM ultrarrápida resistente a vírus.",
+        "B) Hardware Security Module, um dispositivo físico especializado e altamente blindado projetado para gerar, proteger e gerenciar chaves criptográficas e executar operações de assinatura com segurança máxima.",
+        "C) Hash Secure Method, o protocolo padrão para validação de senhas em bancos de dados.",
+        "D) Host System Monitor, um software antivírus para servidores Linux."
+    ], 
+    "B", 
+    "Os HSMs são utilizados por Autoridades Certificadoras, bancos e grandes corporações para impedir que chaves privadas mestras sejam extraídas fisicamente ou acessadas por softwares maliciosos.", 
+    "Possuem certificações rígidas contra violações físicas (tamper-proof)."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual é o papel do protocolo OCSP (Online Certificate Status Protocol) em relação às listas de revogação tradicionais (CRL)?", 
+    "OCSP vs CRL", 
+    [
+        "A) Substituir a criptografia assimétrica por assinaturas baseadas em blocos.",
+        "B) Permitir a consulta em tempo real e de forma pontual sobre a validade de um certificado digital específico, evitando a necessidade de baixar listas de revogação inteiras (CRL) que podem ser muito grandes.",
+        "C) Comprimir o tamanho do certificado digital para acelerar o carregamento de páginas web.",
+        "D) Criptografar o tráfego de e-mails corporativos baseados em PGP."
+    ], 
+    "B", 
+    "Enquanto a CRL obriga o cliente a baixar um arquivo com todos os certificados revogados do sistema, o OCSP responde de forma direta e rápida 'Sim/Não' para o certificado consultado no momento.", 
+    "Muitos servidores hoje implementam o recurso de 'OCSP Stapling' para otimizar ainda mais essa checagem."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que é um ataque de 'Força Bruta' direcionado a sistemas de criptografia ou senhas?", 
+    "Ataques Criptográficos", 
+    [
+        "A) A exploração de falhas lógicas no código fonte de uma aplicação web.",
+        "B) A tentativa sistemática de testar todas as combinações possíveis de chaves ou senhas até encontrar a correta.",
+        "C) O envio de vírus através de pen drives infectados para engenharia social.",
+        "D) A alteração física de cabos de rede para escuta clandestina."
+    ], 
+    "B", 
+    "A força bruta depende puramente do poder computacional. Chaves longas e algoritmos modernos tornam esse tipo de ataque impraticável pelo tempo necessário para quebrar o código.", 
+    "Políticas de bloqueio após tentativas falhas e uso de senhas complexas mitigam esse risco."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual é a função do algoritmo RSA no ecossistema de segurança digital?", 
+    "Algoritmo RSA", 
+    [
+        "A) Compactar arquivos de texto para economizar espaço de armazenamento.",
+        "B) Criptografar fluxos contínuos de dados em redes Wi-Fi domésticas.",
+        "C) Realizar criptografia assimétrica e assinaturas digitais com base na dificuldade matemática da fatoração de grandes números primos.",
+        "D) Gerar números aleatórios para uso em funções hash."
+    ], 
+    "C", 
+    "Criado por Rivest, Shamir e Adleman, o RSA é um dos primeiros e mais famosos algoritmos de chave pública, amplamente utilizado para assinaturas e troca segura de chaves.", 
+    "Exige tamanhos de chave maiores (ex: 2048 ou 4096 bits) para garantir segurança atual."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que caracteriza uma Cifra de Substituição Simples histórica (como a Cifra de César)?", 
+    "Criptografia Clássica", 
+    [
+        "A) O uso de chaves públicas de 256 bits geradas por computador quântico.",
+        "B) O deslocamento ou substituição fixa de letras do alfabeto por outras, sendo extremamente vulnerável à análise de frequência de caracteres.",
+        "C) A divisão do texto em blocos simétricos validados por função hash.",
+        "D) A impossibilidade matemática de decodificação sem a chave privada."
+    ], 
+    "B", 
+    "Na Cifra de César, cada letra é trocada por outra situada um número fixo de posições à frente no alfabeto. Como a frequência das letras na língua escrita é constante, é fácil quebrá-la por estatística.", 
+    "Curiosidade histórica que ilustra a evolução para a criptografia moderna."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que significa a propriedade de 'Confidencialidade' na Tríade da Segurança da Informação (CIA)?", 
+    "Tríade CIA", 
+    [
+        "A) Garantir que os dados não foram alterados ou corrompidos por terceiros.",
+        "B) Assegurar que a informação seja acessível apenas a pessoas, entidades ou sistemas autorizados, impedindo o acesso não autorizado.",
+        "C) Garantir que os sistemas estejam sempre disponíveis para os usuários legítimos.",
+        "D) Proibir o uso de assinaturas digitais em documentos corporativos."
+    ], 
+    "B", 
+    "A confidencialidade é alcançada primordialmente através do uso de mecanismos de **criptografia**, assegurando que mesmo que os dados sejam interceptados, não possam ser lidos sem a chave correta.", 
+    "Complementa a Integridade e a Disponibilidade na tríade básica da segurança."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que é uma 'Chave Efêmera' (Ephemeral Key) em sessões de segurança de rede?", 
+    "Chaves Efêmeras", 
+    [
+        "A) Uma chave que fica gravada permanentemente no hardware do roteador.",
+        "B) Uma chave criptográfica gerada especificamente para uma única sessão de comunicação e descartada logo em seguida, garantindo maior segurança.",
+        "C) Uma senha de acesso temporário enviada por SMS para autenticação em dois fatores (2FA).",
+        "D) Um certificado digital emitido por apenas 24 horas."
+    ], 
+    "B", 
+    "O uso de chaves efêmeras (como no DHE ou ECDHE) impede que o comprometimento de longo prazo de uma chave principal afete sessões anteriores, sendo a base do conceito de Forward Secrecy.", 
+    "Reduz drasticamente a janela de vulnerabilidade em caso de ataques."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual é o objetivo principal de um ataque de 'Adivinhação de Senha baseada em Dicionário'?", 
+    "Ataques de Dicionário", 
+    [
+        "A) Descobrir senhas testando palavras comuns, termos do cotidiano e combinações frequentes contidas em listas pré-definidas, em vez de testar todas as combinações possíveis.",
+        "B) Injetar comandos maliciosos em campos de formulários web.",
+        "C) Roubar certificados digitais armazenados em pen drives A3.",
+        "D) Modificar a estrutura de tabelas relacionais em bancos de dados."
+    ], 
+    "A", 
+    "Como muitas pessoas escolhem senhas fáceis (como '123456', 'senha', 'password'), os ataques de dicionário são muito mais rápidos que a força bruta pura.", 
+    "Políticas de senha forte e restrição de tentativas bloqueiam essa prática."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que é o PGP (Pretty Good Privacy) criado por Phil Zimmermann?", 
+    "PGP e GPG", 
+    [
+        "A) Um protocolo de camada de enlace para redes locais sem fio.",
+        "B) Um programa de criptografia amplamente utilizado para assinar, criptografar e descriptografar dados, como e-mails e arquivos, baseado em criptografia híbrida.",
+        "C) Um padrão governamental brasileiro para emissão de notas fiscal eletrônicas.",
+        "D) Um sistema de controle de versão concorrente do Git."
+    ], 
+    "B", 
+    "O PGP utiliza um modelo de 'Teia de Confiança' (Web of Trust) descentralizado, onde os próprios usuários assinam chaves uns dos outros para validar identidades, diferindo das Autoridades Certificadoras tradicionais.", 
+    "O GnuPG (GPG) é a implementação livre e aberta padrão hoje em dia."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que é a Criptografia Híbrida e por que ela é o padrão na internet moderna?", 
+    "Criptografia Híbrida", 
+    [
+        "A) A combinação de senhas numéricas com biometria facial.",
+        "B) O uso simultâneo de criptografia assimétrica (para trocar de forma segura a chave simétrica no início) e criptografia simétrica (para trafegar o restante dos dados com alta velocidade).",
+        "C) A mistura de redes locais corporativas com servidores em nuvem pública.",
+        "D) O armazenamento simultâneo de certificados A1 e A3 no mesmo token."
+    ], 
+    "B", 
+    "A criptografia híbrida une o melhor dos dois mundos: a conveniência e segurança na troca inicial da assimétrica com a velocidade de processamento da simétrica.", 
+    "É exatamente esse mecanismo que o HTTPS/TLS utiliza em todas as conexões web."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "No contexto de segurança, o que significa um ataque de 'Rainbow Table' (Tabelas Arco-Íris)?", 
+    "Rainbow Tables", 
+    [
+        "A) Um ataque visual de engenharia social voltado para cores de interface.",
+        "B) Uma técnica de ataque baseada em tabelas pré-computadas de hashes de senhas comuns, permitindo reverter rapidamente hashes sem Salt para descobrir o texto original.",
+        "C) Uma ferramenta de testes de invasão para redes sem fio criptografadas com WPA3.",
+        "D) Um método para burlar certificados SSL autoassinados em navegadores."
+    ], 
+    "B", 
+    "As Rainbow Tables economizam tempo de processamento ao consultar resultados de hashes já calculados previamente para milhões de palavras.", 
+    "O uso obrigatório de **Salt** inutiliza as Rainbow Tables, pois o hash armazenado torna-se único para cada usuário."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que valida o atributo de 'Integridade' em um sistema de segurança da informação?", 
+    "Integridade", 
+    [
+        "A) Que os dados só podem ser lidos por pessoas com chave privada.",
+        "B) Que a informação não foi modificada, adulterada, corrompida ou destruída de forma não autorizada durante o armazenamento ou transmissão.",
+        "C) Que o sistema possui redundância geográfica em caso de queda de energia.",
+        "D) Que o usuário efetuou login utilizando autenticação em dois fatores."
+    ], 
+    "B", 
+    "A integridade é comumente garantida através de funções de hash e assinaturas digitais, permitindo detectar imediatamente qualquer alteração indevida nos dados.", 
+    "Se um único caractere do arquivo for alterado, o hash resultante muda completamente."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que é um Certificado Autoassinado (Self-Signed Certificate)?", 
+    "Certificados Autoassinados", 
+    [
+        "A) Um certificado emitido por uma Autoridade Certificadora governamental oficial.",
+        "B) Um certificado cuja chave pública é assinada pela sua própria chave privada correspondente, sem passar por uma Autoridade Certificadora confiável externa.",
+        "C) Um documento assinado digitalmente pelo próprio usuário utilizando seu token A3.",
+        "D) Um certificado que não possui validade temporal definida."
+    ], 
+    "B", 
+    "Certificados autoassinados são úteis para ambientes de desenvolvimento, testes locais ou redes internas fechadas, mas geram avisos de segurança nos navegadores públicos porque não há uma AC confiável na raiz para atestar a identidade.", 
+    "Falta-lhes a validação por uma terceira parte confiável."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual é a função do algoritmo SHA-256 no protocolo de criptografia e integridade?", 
+    "SHA-256", 
+    [
+        "A) Criptografar grandes arquivos de vídeo para transmissão rápida em streaming.",
+        "B) Gerar um resumo criptográfico (hash) de tamanho fixo de 256 bits a partir de qualquer dado de entrada, sendo altamente sensível a qualquer mínima alteração.",
+        "C) Atuar como chave simétrica principal para conexões HTTP em texto plano.",
+        "D) Validar a identidade física do usuário em cartórios digitais."
+    ], 
+    "B", 
+    "O SHA-256 faz parte da família SHA-2 e é amplamente utilizado em assinaturas digitais, tecnologia Blockchain (como no Bitcoin) e verificação de arquivos baixados na internet.", 
+    "É considerado seguro e amplamente adotado globalmente."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que caracteriza uma Criptografia de Chave Simétrica baseada em 'Fluxo' (Stream Cipher)?", 
+    "Cifras de Fluxo", 
+    [
+        "A) O algoritmo criptografa blocos fixos de 128 ou 256 bits de uma só vez.",
+        "B) O algoritmo cifra os dados bit a bit ou byte a byte (geralmente usando uma operação XOR com uma sequência gerada por pseudo-aleatoriedade), sendo ideal para dados em tempo real.",
+        "C) O algoritmo exige chaves assimétricas trocadas via Diffie-Hellman.",
+        "D) O algoritmo substitui o texto por matrizes matemáticas complexas."
+    ], 
+    "B", 
+    "Diferente das cifras de bloco (como o AES), as cifras de fluxo (como o RC4 ou ChaCha20) processam fluxos contínuos de dados com baixa latência.", 
+    "Muito utilizadas em transmissões de áudio e vídeo em tempo real."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que significa a sigla 'CRL' (Certificate Revocation List) em infraestruturas de chave pública?", 
+    "CRL", 
+    [
+        "A) Control Request Line, o comando de conexão inicial do TLS.",
+        "B) Certificate Revocation List, uma lista digital assinada por uma Autoridade Certificadora que contém os números seriais de todos os certificados que foram revogados antes de sua expiração.",
+        "C) Common Root License, a licença padrão de uso de chaves públicas.",
+        "D) Client Relay Log, o arquivo de auditoria de acessos web."
+    ], 
+    "B", 
+    "Sistemas de segurança consultam periodicamente a CRL para garantir que não estão confiando em certificados cuja chave privada tenha sido comprometida.", 
+    "Tem sido gradualmente complementada ou substituída pelo protocolo OCSP em tempo real."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que é um ataque de 'Análise de Frequência' aplicado à criptografia clássica?", 
+    "Análise de Frequência", 
+    [
+        "A) Medir a quantidade de energia elétrica consumida pelo processador durante a cifragem.",
+        "B) Estudar a frequência estatística com que certas letras ou palavras aparecem em um texto cifrado para compará-las com a língua natural e deduzir a chave de substituição.",
+        "C) Analisar a taxa de pacotes por segundo em um ataque de negação de serviço.",
+        "D) Verificar a validade dos certificados digitais em horários de pico."
+    ], 
+    "B", 
+    "Como em qualquer idioma algumas letras aparecem muito mais que outras (ex: 'A' e 'E' em português), cifras baseadas em simples substituição de letras tornam-se vulneráveis a esse tipo de estudo estatístico.", 
+    "Criptografias modernas eliminam essa vulnerabilidade."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual é a finalidade principal do protocolo HSTS (HTTP Strict Transport Security) em servidores web?", 
+    "HSTS", 
+    [
+        "A) Comprimir arquivos estáticos para acelerar o carregamento via CDN.",
+        "B) Instruir o navegador do usuário a se comunicar com o site exclusivamente através de conexões HTTPS seguras, prevenindo ataques de downgrade e interceptação inicial.",
+        "C) Substituir a necessidade de certificados digitais emitidos por Autoridades Certificadoras.",
+        "D) Gerenciar o banco de dados de senhas com uso de Salt."
+    ], 
+    "B", 
+    "O HSTS evita que um usuário seja redirecionado por engano ou ataque para uma versão HTTP vulnerável do site, forçando o canal criptografado por padrão.", 
+    "Um mecanismo essencial para blindagem de aplicações web modernas."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que é uma 'Assinatura Cega' (Blind Signature) no contexto de criptografia?", 
+    "Assinatura Cega", 
+    [
+        "A) Uma assinatura digital feita por pessoas com deficiência visual.",
+        "B) Uma forma de assinatura digital onde o conteúdo da mensagem é ocultado (mascarado) antes de ser assinado pelo emissor, garantindo o anonimato de quem envia (comum em sistemas de pagamento digital e e-voting).",
+        "C) Uma assinatura feita utilizando criptografia simétrica sem chave pública.",
+        "D) Um certificado digital cuja chave privada foi perdida."
+    ], 
+    "B", 
+    "Criada por David Chaum, a assinatura cega permite que uma autoridade assine um documento sem saber exatamente o que está contido nele, preservando a privacidade e evitando o rastreamento do usuário.", 
+    "Conceito avançado aplicado em criptografia focada em privacidade."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "O que significa a expressão 'Cifra de Bloco' (Block Cipher)?", 
+    "Cifras de Bloco", 
+    [
+        "A) Um sistema que bloqueia o acesso ao computador após três erros de senha.",
+        "B) Um método de criptografia simétrica que opera em blocos de dados de tamanho fixo (ex: 64 ou 128 bits), transformando o bloco através de várias rodadas de substituição e permutação.",
+        "C) Um arquivo compactado protegido por senha mestra.",
+        "D) Um formato de certificado digital usado exclusivamente em redes corporativas."
+    ], 
+    "B", 
+    "O AES e o DES são exemplos clássicos de cifras de bloco. Como operam em blocos fixos, utilizam modos de operação (como CBC, GCM) para cifrar mensagens maiores que o tamanho do bloco.", 
+    "Garantem alta segurança e difusão de bits."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Por que o algoritmo MD5 (Message Digest 5) deixou de ser recomendado para fins de segurança criptográfica?", 
+    "Insegurança do MD5", 
+    [
+        "A) Porque ele consome muita memória RAM dos servidores modernos.",
+        "B) Devido à descoberta de vulnerabilidades graves que facilitam a geração rápida de colisões (duas entradas diferentes gerando o mesmo hash), comprometendo a integridade.",
+        "C) Porque ele exige chaves simétricas de 4096 bits.",
+        "D) Porque ele não é compatível com o sistema operacional Windows."
+    ], 
+    "B", 
+    "Hoje o MD5 é considerado totalmente quebrado para uso em segurança e assinaturas digitais, embora ainda possa ser encontrado em checagens simples e não sensíveis de integridade de arquivos.", 
+    "Deve-se utilizar sempre SHA-256 ou superiores."
+);
+
+addQuestion(
+    "Criptografia e Certificação Digital", 
+    "Média", 
+    "Qual é o papel da Autoridade Raiz (Root CA) em uma Infraestrutura de Chaves Públicas?", 
+    "Autoridade Raiz", 
+    [
+        "A) Armazenar cópias físicas de todas as senhas de usuários da internet.",
+        "B) Estar no topo da cadeia de confiança, sendo uma entidade cujos certificados vêm pré-instalados e confiáveis por padrão nos sistemas operacionais e navegadores.",
+        "C) Bloquear ataques cibernéticos em tempo real na camada de rede.",
+        "D) Emitir certificados de tipo A1 exclusivamente para empresas públicas."
+    ], 
+    "B", 
+    "A Root CA possui altíssimo nível de segurança e isolamento. Se uma Autoridade Raiz for comprometida, toda a segurança da cadeia baseada nela na internet global entra em risco.", 
+    "Por isso, o uso de chaves raiz é extremamente restrito e auditado."
+);
