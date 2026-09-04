@@ -5357,6 +5357,21 @@ addQuestion(
     "O fato de requisições `GET` no REST serem seguras e idempotentes permite que a infraestrutura da internet faça cache agressivo das respostas, otimizando drasticamente a performance.",
     "Isso torna o REST incomparavelmente superior para distribuição de conteúdo web global."
 );
+addQuestion(
+    "REST e SOAP",
+    "Média",
+    "Qual é a função do cabeçalho HTTP `Location` em uma resposta RESTful associada à criação de um recurso?",
+    "Cabeçalhos HTTP",
+    [
+        "A) Indicar a coordenada geográfica física do servidor que processou a requisição.",
+        "B) Fornecer a URL exata onde o recém-criado recurso pode ser acessado e recuperado pelo cliente.",
+        "C) Redirecionar o usuário obrigatoriamente para a página inicial do Google.",
+        "D) Apagar o cache local do navegador."
+    ],
+    "B",
+    "Em conjunto com o código 201 Created, o cabeçalho Location informa ao cliente o caminho exato (URI) do novo recurso gerado.",
+    "Facilita a navegabilidade imediata após operações de escrita (POST)."
+);
 
 /* =====================================================
     Bloco: 11 UML (LINGUAGEM DE MODELAGEM UNIFICADA) - Bloco 01
