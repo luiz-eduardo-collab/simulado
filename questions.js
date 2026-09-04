@@ -6658,6 +6658,7 @@ addQuestion(
     "A", 
     "Criado por Simon Brown, o modelo C4 resolve o problema de diagramas confusos ou desatualizados, permitindo dar 'zoom' desde a visão macro do sistema (contexto) até os detalhes internos de componentes.", 
     "Facilita enormemente a comunicação técnica na equipe."
+   );
 
 /* =====================================================
     Bloco 13: DESIGN PATTERNS (40 QUESTÕES COMPLETAS)
