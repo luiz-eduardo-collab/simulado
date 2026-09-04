@@ -4712,7 +4712,7 @@ addQuestion(
 );
 
 /* =====================================================
-   REST E SOAP (ARQUITETURAS DE APIS E SERVIÇOS WEB)
+   Bloco 10: REST E SOAP (ARQUITETURAS DE APIS E SERVIÇOS WEB)
 ===================================================== */
 
 addQuestion(
@@ -5340,7 +5340,7 @@ addQuestion(
 );
 
 /* =====================================================
-    UML (LINGUAGEM DE MODELAGEM UNIFICADA) - Bloco 01
+    Bloco: 11 UML (LINGUAGEM DE MODELAGEM UNIFICADA) - Bloco 01
 ===================================================== */
 
 addQuestion(
@@ -5985,7 +5985,7 @@ addQuestion(
 
 
 /* =====================================================
-    ARQUITETURA DE SOFTWARE - 40 QUESTÕES
+   Bloco 12: ARQUITETURA DE SOFTWARE - 40 QUESTÕES
 ===================================================== */
 
 addQuestion(
@@ -6660,7 +6660,7 @@ addQuestion(
     "Facilita enormemente a comunicação técnica na equipe."
 
 /* =====================================================
-    DESIGN PATTERNS (40 QUESTÕES COMPLETAS)
+    Bloco 13: DESIGN PATTERNS (40 QUESTÕES COMPLETAS)
 ===================================================== */
 
 addQuestion(
@@ -7304,7 +7304,7 @@ addQuestion(
 );
 
 /* =====================================================
-    DOMAIN-DRIVEN DESIGN (DDD) - 40 QUESTÕES COMPLETAS
+   Bloco 14: DOMAIN-DRIVEN DESIGN (DDD) - 40 QUESTÕES COMPLETAS
 ===================================================== */
 
 addQuestion(
@@ -7915,7 +7915,7 @@ addQuestion(
     "O código é apenas o reflexo do modelo mental validado do negócio."
 );
 /* =====================================================
-    SCRUM E EXTREME PROGRAMMING (XP) - 40 QUESTÕES COMPLETAS
+   Bloco 15: SCRUM E EXTREME PROGRAMMING (XP) - 40 QUESTÕES COMPLETAS
 ===================================================== */
 
 addQuestion(
@@ -8543,7 +8543,7 @@ addQuestion(
 );
 
 /* =====================================================
-    TESTES DE SOFTWARE - 40 QUESTÕES COMPLETAS
+    Blcoo 16: TESTES DE SOFTWARE - 40 QUESTÕES COMPLETAS
 ===================================================== */
 
 addQuestion(
@@ -9155,7 +9155,7 @@ addQuestion(
 );
 
 /* =====================================================
-    GIT E CONTROLE DE VERSÃO - 40 QUESTÕES COMPLETAS
+    Bloco 17: GIT E CONTROLE DE VERSÃO - 40 QUESTÕES COMPLETAS
 ===================================================== */
 
 addQuestion(
@@ -9767,7 +9767,7 @@ addQuestion(
 );
 
 /* =====================================================
-    CRIPTOGRAFIA E CERTIFICAÇÃO DIGITAL - 40 QUESTÕES
+    Bloco 18: CRIPTOGRAFIA E CERTIFICAÇÃO DIGITAL - 40 QUESTÕES
 ===================================================== */
 
 addQuestion(
