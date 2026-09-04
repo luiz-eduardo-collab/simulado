@@ -9153,146 +9153,619 @@ addQuestion(
     "Sem uma suíte de testes automatizados robusta, entregas contínuas em ambientes complexos de microsserviços tornam-se caóticas e propensas a falhas catastróficas em produção.", 
     "Automação e DevOps caminham lado a lado."
 );
+
 /* =====================================================
-   GIT E CONTROLE DE VERSÃO
+    GIT E CONTROLE DE VERSÃO - 40 QUESTÕES COMPLETAS
 ===================================================== */
 
-const gitQuest = [
-    {
-        q: "Qual é a principal diferença entre os comandos 'git pull' e 'git fetch' em um fluxo de trabalho com Git?",
-        c: "Fetch vs Pull",
-        o: [
-            "A) O 'git fetch' atualiza imediatamente os arquivos da árvore de trabalho (working directory), enquanto o 'git pull' apenas baixa o histórico.",
-            "B) O 'git fetch' baixa as alterações do repositório remoto sem aplicá-las automaticamente no seu branch atual, enquanto o 'git pull' baixa e faz o merge (mesclagem) automático na sequência.",
-            "C) O 'git pull' é exclusivo para servidores locais e o 'git fetch' é usado apenas no GitHub.",
-            "D) Não há diferença funcional; ambos executam exatamente a mesma rotina de sincronização."
-        ],
-        a: "B",
-        e: "O `git fetch` busca as novidades do remoto atualizando as referências locais (como `origin/main`), permitindo que você inspecione o código antes de integrar. O `git pull` faz o `fetch` seguidos de um `merge` imediato.",
-        t: "Utilizar `git fetch` costuma ser mais seguro para revisar o que mudou antes de juntar no seu código atual."
-    },
-    {
-        q: "No Git, para que serve o comando 'git stash'?",
-        c: "Git Stash",
-        o: [
-            "A) Para apagar permanentemente o histórico de commits corrompidos.",
-            "B) Para guardar temporariamente as alterações não commitadas (modificações em arquivos rastreados) em um estoque, limpando a sua área de trabalho sem perder o progresso.",
-            "C) Para criar um novo branch isolado direto na nuvem do GitHub.",
-            "D) Para enviar o código diretamente para o servidor de produção em ambiente de homologação."
-        ],
-        a: "B",
-        e: "O `git stash` é ideal quando você está no meio de uma alteração, precisa mudar de branch urgentemente para corrigir um bug, mas ainda não quer fazer um commit definitivo.",
-        t: "Você pode recuperar o que guardou usando o comando `git stash pop`."
-    },
-    {
-        q: "O que acontece quando executamos o comando 'git reset --soft HEAD~1'?",
-        c: "Git Reset",
-        o: [
-            "A) Desfaz o último commit, mas mantém todas as alterações dos arquivos preservadas na área de staged (prontas para novo commit).",
-            "B) Apaga permanentemente o último commit e descarta todas as alterações feitas no código de forma irreversível.",
-            "C) Remove o repositório local do computador e desconecta do GitHub.",
-            "D) Converte o branch atual em um arquivo compactado zip."
-        ],
-        a: "A",
-        e: "O modificador `--soft` volta o ponteiro do HEAD em um commit, mantendo intactas as modificações no `staging area`. O `--mixed` (padrão) mantém as alterações no working directory, e o `--hard` apaga tudo.",
-        t: "Use `--hard` com muito cuidado, pois ele descarta o trabalho não salvo."
-    },
-    {
-        q: "Qual é a utilidade e o comportamento padrão do arquivo '.gitignore' em um projeto versionado?",
-        c: ".gitignore",
-        o: [
-            "A) Listar os colaboradores autorizados a realizar push no repositório remoto.",
-            "B) Definir padrões de arquivos e pastas que o Git deve ignorar e não rastrear (como dependências pesadas, arquivos de configuração local e caches).",
-            "C) Automatizar os testes unitários toda vez que um commit for realizado.",
-            "D) Armazenar senhas de acesso criptografadas para conexão com o banco de dados."
-        ],
-        a: "B",
-        e: "O `.gitignore` impede que arquivos gerados automaticamente, credenciais sensíveis ou pastas de pacotes (`node_modules`, `build`, etc.) sejam enviados por engano para o versionamento.",
-        t: "Arquivos que já estão sendo rastreados pelo Git continuam sendo monitorados mesmo se você adicioná-los depois ao `.gitignore`, exigindo remoção prévia com `git rm --cached`."
-    },
-    {
-        q: "Qual é a diferença fundamental entre os comandos 'git merge' e 'git rebase' ao integrar alterações de um branch em outro?",
-        c: "Merge vs Rebase",
-        o: [
-            "A) O 'merge' cria um commit de junção preservando o histórico real de ramificação, enquanto o 'rebase' reescreve o histórico aplicando os commits em sequência linear.",
-            "B) O 'rebase' é mais rápido porque deleta os branches antigos, enquanto o 'merge' é proibido em equipes ágeis.",
-            "C) O 'merge' altera o código remoto e o 'rebase' altera apenas o repositório local.",
-            "D) Não há diferença matemática; ambos geram exatos mesmos hashes de commit."
-        ],
-        a: "A",
-        e: "O `merge` preserva o contexto histórico criando um nó de união (merge commit). O `rebase` move a base da sua branch para o topo da branch de destino, gerando uma linha do tempo limpa e linear.",
-        t: "Evite usar `rebase` em branches públicos/compartilhados para não confundir o histórico de outros desenvolvedores."
-    },
-    {
-        q: "No fluxo de trabalho do Git, o que caracteriza a área chamada 'Staging Area' (ou Index)?",
-        c: "Áreas do Git",
-        o: [
-            "A) O servidor remoto hospedado na nuvem (GitHub ou GitLab).",
-            "B) Uma área intermediária onde você seleciona e prepara quais arquivos modificados serão incluídos no próximo commit.",
-            "C) O diretório físico oculto `.git` onde ficam os logs de configuração.",
-            "D) Um ambiente de homologação onde o site roda em produção."
-        ],
-        a: "B",
-        e: "Antes de salvar as mudanças com `git commit`, você usa o `git add` para mover os arquivos da working tree para a Staging Area, selecionando exatamente o que compõe a sua entrega.",
-        t: "Isso permite commitar partes específicas de arquivos modificados através do modo interativo (`git add -p`)."
-    },
-    {
-        q: "O que o comando 'git checkout -b novo-branch' (ou 'git switch -c') realiza na prática?",
-        c: "Branches",
-        o: [
-            "A) Deleta permanentemente o branch atual e todos os seus arquivos.",
-            "B) Cria um novo branch e muda imediatamente o contexto de trabalho para ele em um único comando.",
-            "C) Sincroniza o branch local com a última versão estável da nuvem.",
-            "D) Cria uma tag de versão para release de software."
-        ],
-        a: "B",
-        e: "Esse comando combina a criação de uma nova ramificação (`branch`) com a troca instantânea para ela, economizando o uso de dois comandos separados (`git branch` + `git checkout`).",
-        t: "Nas versões mais recentes do Git, o comando moderno recomendado para troca é `git switch`."
-    },
-    {
-        q: "O que ocorre quando o Git aponta um conflito de merge (merge conflict)?",
-        c: "Conflitos",
-        o: [
-            "A) O repositório é corrompido e precisa ser baixado novamente do zero.",
-            "B) O Git encontrou alterações concorrentes na mesma linha de código em branches diferentes e pausa a mesclagem para que o desenvolvedor decida manualmente qual código manter.",
-            "C) O sistema operacional bloqueia o acesso aos arquivos por falta de permissão de administrador.",
-            "D) O GitHub rejeita o projeto por violação de boas práticas de código limpo."
-        ],
-        a: "B",
-        e: "O Git insere marcadores visuais (`<<<<<<<`, `=======`, `>>>>>>>`) no arquivo conflitante. Cabe ao programador editar o código para resolver o impasse, salvar o arquivo, dar `git add` e concluir o commit.",
-        t: "Editores modernos como o VS Code possuem ferramentas visuais excelentes para resolução de conflitos de merge."
-    },
-    {
-        q: "Para que serve o comando 'git log --oneline --graph'?",
-        c: "Git Log",
-        o: [
-            "A) Para gerar um gráfico de consumo de memória RAM do processo do Git.",
-            "B) Para exibir o histórico de commits de forma resumida (uma linha por commit) acompanhado de uma representação gráfica em árvore das ramificações.",
-            "C) Para criar um diagrama UML da arquitetura do software baseado nos commits.",
-            "D) Para medir a produtividade e quantidade de linhas escritas por cada desenvolvedor."
-        ],
-        a: "B",
-        e: "Essa combinação de parâmetros do `git log` é excelente para visualizar rapidamente o fluxo de merges, ramificações e o histórico linear de forma limpa e direta no terminal.",
-        t: "Muitos desenvolvedores criam um alias (atalho) no terminal para esse comando devido à sua alta utilidade."
-    },
-    {
-        q: "O que é um 'Git Hook' e onde ele é executado?",
-        c: "Git Hooks",
-        o: [
-            "A) Uma ferramenta gráfica oficial para conectar o repositório local ao GitHub Desktop.",
-            "B) Um script personalizado que o Git executa automaticamente antes ou depois de eventos específicos, como commits, pushes ou merges.",
-            "C) Um tipo de chave criptográfica utilizada para autenticação SSH no servidor remoto.",
-            "D) Um plugin de extensão para debug de erros de sintaxe em JavaScript."
-        ],
-        a: "B",
-        e: "Os hooks ficam na pasta oculta `.git/hooks` e são muito usados para rodar linters (como ESLint), formatadores de código ou testes automatizados antes de permitir um commit (`pre-commit`).",
-        t: "Eles ajudam a garantir a qualidade do código antes mesmo que ele seja enviado para o repositório compartilhado."
-    }
-];
+addQuestion(
+    "Git", 
+    "Média", 
+    "Qual é a principal diferença entre os comandos 'git pull' e 'git fetch' em um fluxo de trabalho com Git?", 
+    "Fetch vs Pull", 
+    [
+        "A) O 'git fetch' atualiza imediatamente os arquivos da árvore de trabalho (working directory), enquanto o 'git pull' apenas baixa o histórico.",
+        "B) O 'git fetch' baixa as alterações do repositório remoto sem aplicá-las automaticamente no seu branch atual, enquanto o 'git pull' baixa e faz o merge (mesclagem) automático na sequência.",
+        "C) O 'git pull' é exclusivo para servidores locais e o 'git fetch' é usado apenas no GitHub.",
+        "D) Não há diferença funcional; ambos executam exatamente a mesma rotina de sincronização."
+    ], 
+    "B", 
+    "O `git fetch` busca as novidades do remoto atualizando as referências locais (como `origin/main`), permitindo que você inspecione o código antes de integrar. O `git pull` faz o `fetch` seguidos de um `merge` imediato.", 
+    "Utilizar `git fetch` costuma ser mais seguro para revisar o que mudou antes de juntar no seu código atual."
+);
 
-gitQuest.forEach(x => {
-    addQuestion("Git", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
+addQuestion(
+    "Git", 
+    "Média", 
+    "No Git, para que serve o comando 'git stash'?", 
+    "Git Stash", 
+    [
+        "A) Para apagar permanentemente o histórico de commits corrompidos.",
+        "B) Para guardar temporariamente as alterações não commitadas (modificações em arquivos rastreados) em um estoque, limpando a sua área de trabalho sem perder o progresso.",
+        "C) Para criar um novo branch isolado direto na nuvem do GitHub.",
+        "D) Para enviar o código diretamente para o servidor de produção em ambiente de homologação."
+    ], 
+    "B", 
+    "O `git stash` é ideal quando você está no meio de uma alteração, precisa mudar de branch urgentemente para corrigir um bug, mas ainda não quer fazer um commit definitivo.", 
+    "Você pode recuperar o que guardou usando o comando `git stash pop`."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que acontece quando executamos o comando 'git reset --soft HEAD~1'?", 
+    "Git Reset", 
+    [
+        "A) Desfaz o último commit, mas mantém todas as alterações dos arquivos preservadas na área de staged (prontas para novo commit).",
+        "B) Apaga permanentemente o último commit e descarta todas as alterações feitas no código de forma irreversível.",
+        "C) Remove o repositório local do computador e desconecta do GitHub.",
+        "D) Converte o branch atual em um arquivo compactado zip."
+    ], 
+    "A", 
+    "O modificador `--soft` volta o ponteiro do HEAD em um commit, mantendo intactas as modificações no `staging area`. O `--mixed` (padrão) mantém as alterações no working directory, e o `--hard` apaga tudo.", 
+    "Use `--hard` com muito cuidado, pois ele descarta o trabalho não salvo."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "Qual é a utilidade e o comportamento padrão do arquivo '.gitignore' em um projeto versionado?", 
+    ".gitignore", 
+    [
+        "A) Listar os colaboradores autorizados a realizar push no repositório remoto.",
+        "B) Definir padrões de arquivos e pastas que o Git deve ignorar e não rastrear (como dependências pesadas, arquivos de configuração local e caches).",
+        "C) Automatizar os testes unitários toda vez que um commit for realizado.",
+        "D) Armazenar senhas de acesso criptografadas para conexão com o banco de dados."
+    ], 
+    "B", 
+    "O `.gitignore` impede que arquivos gerados automaticamente, credenciais sensíveis ou pastas de pacotes (`node_modules`, `build`, etc.) sejam enviados por engano para o versionamento.", 
+    "Arquivos que já estão sendo rastreados pelo Git continuam sendo monitorados mesmo se você adicioná-los depois ao `.gitignore`, exigindo remoção prévia com `git rm --cached`."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "Qual é a diferença fundamental entre os comandos 'git merge' e 'git rebase' ao integrar alterações de um branch em outro?", 
+    "Merge vs Rebase", 
+    [
+        "A) O 'merge' cria um commit de junção preservando o histórico real de ramificação, enquanto o 'rebase' reescreve o histórico aplicando os commits em sequência linear.",
+        "B) O 'rebase' é mais rápido porque deleta os branches antigos, enquanto o 'merge' é proibido em equipes ágeis.",
+        "C) O 'merge' altera o código remoto e o 'rebase' altera apenas o repositório local.",
+        "D) Não há diferença matemática; ambos geram exatos mesmos hashes de commit."
+    ], 
+    "A", 
+    "O `merge` preserva o contexto histórico criando um nó de união (merge commit). O `rebase` move a base da sua branch para o topo da branch de destino, gerando uma linha do tempo limpa e linear.", 
+    "Evite usar `rebase` em branches públicos/compartilhados para não confundir o histórico de outros desenvolvedores."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "No fluxo de trabalho do Git, o que caracteriza a área chamada 'Staging Area' (ou Index)?", 
+    "Áreas do Git", 
+    [
+        "A) O servidor remoto hospedado na nuvem (GitHub ou GitLab).",
+        "B) Uma área intermediária onde você seleciona e prepara quais arquivos modificados serão incluídos no próximo commit.",
+        "C) O diretório físico oculto `.git` onde ficam os logs de configuração.",
+        "D) Um ambiente de homologação onde o site roda em produção."
+    ], 
+    "B", 
+    "Antes de salvar as mudanças com `git commit`, você usa o `git add` para mover os arquivos da working tree para a Staging Area, selecionando exatamente o que compõe a sua entrega.", 
+    "Isso permite commitar partes específicas de arquivos modificados através do modo interativo (`git add -p`)."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git checkout -b novo-branch' (ou 'git switch -c') realiza na prática?", 
+    "Branches", 
+    [
+        "A) Deleta permanentemente o branch atual e todos os seus arquivos.",
+        "B) Cria um novo branch e muda imediatamente o contexto de trabalho para ele em um único comando.",
+        "C) Sincroniza o branch local com a última versão estável da nuvem.",
+        "D) Cria uma tag de versão para release de software."
+    ], 
+    "B", 
+    "Esse comando combina a criação de uma nova ramificação (`branch`) com a troca instantânea para ela, economizando o uso de dois comandos separados (`git branch` + `git checkout`).", 
+    "Nas versões mais recentes do Git, o comando moderno recomendado para troca é `git switch`."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que ocorre quando o Git aponta um conflito de merge (merge conflict)?", 
+    "Conflitos", 
+    [
+        "A) O repositório é corrompido e precisa ser baixado novamente do zero.",
+        "B) O Git encontrou alterações concorrentes na mesma linha de código em branches diferentes e pausa a mesclagem para que o desenvolvedor decida manualmente qual código manter.",
+        "C) O sistema operacional bloqueia o acesso aos arquivos por falta de permissão de administrador.",
+        "D) O GitHub rejeita o projeto por violação de boas práticas de código limpo."
+    ], 
+    "B", 
+    "O Git insere marcadores visuais (`<<<<<<<`, `=======`, `>>>>>>>`) no arquivo conflitante. Cabe ao programador editar o código para resolver o impasse, salvar o arquivo, dar `git add` e concluir o commit.", 
+    "Editores modernos como o VS Code possuem ferramentas visuais excelentes para resolução de conflitos de merge."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "Para que serve o comando 'git log --oneline --graph'?", 
+    "Git Log", 
+    [
+        "A) Para gerar um gráfico de consumo de memória RAM do processo do Git.",
+        "B) Para exibir o histórico de commits de forma resumida (uma linha por commit) acompanhado de uma representação gráfica em árvore das ramificações.",
+        "C) Para criar um diagrama UML da arquitetura do software baseado nos commits.",
+        "D) Para medir a produtividade e quantidade de linhas escritas por cada desenvolvedor."
+    ], 
+    "B", 
+    "Essa combinação de parâmetros do `git log` é excelente para visualizar rapidamente o fluxo de merges, ramificações e o histórico linear de forma limpa e direta no terminal.", 
+    "Muitos desenvolvedores criam um alias (atalho) no terminal para esse comando devido à sua alta utilidade."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que é um 'Git Hook' e onde ele é executado?", 
+    "Git Hooks", 
+    [
+        "A) Uma ferramenta gráfica oficial para conectar o repositório local ao GitHub Desktop.",
+        "B) Um script personalizado que o Git executa automaticamente antes ou depois de eventos específicos, como commits, pushes ou merges.",
+        "C) Um tipo de chave criptográfica utilizada para autenticação SSH no servidor remoto.",
+        "D) Um plugin de extensão para debug de erros de sintaxe em JavaScript."
+    ], 
+    "B", 
+    "Os hooks ficam na pasta oculta `.git/hooks` e são muito usados para rodar linters (como ESLint), formatadores de código ou testes automatizados antes de permitir um commit (`pre-commit`).", 
+    "Eles ajudam a garantir a qualidade do código antes mesmo que ele seja enviado para o repositório compartilhado."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "Qual é a função do comando 'git remote add origin <url>'?", 
+    "Repositórios Remotos", 
+    [
+        "A) Excluir definitivamente o repositório remoto do GitHub.",
+        "B) Vincular o repositório Git local a um repositório remoto hospedado em um servidor externo (como GitHub, GitLab ou Bitbucket), nomeando-o de 'origin'.",
+        "C) Criar uma cópia local completa do projeto via clone.",
+        "D) Atualizar a senha de acesso do usuário no terminal."
+    ], 
+    "B", 
+    "Esse comando estabelece o canal de comunicação entre sua máquina e a nuvem, permitindo enviar (`push`) e baixar (`pull`) o código com facilidade.", 
+    "Geralmente executado logo após inicializar um projeto local (`git init`)."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git clone' realiza quando executado?", 
+    "Git Clone", 
+    [
+        "A) Cria uma cópia exata do repositório remoto (incluindo todo o histórico de commits e branches) para o seu computador local.",
+        "B) Apaga o projeto local e substitui por um arquivo de backup.",
+        "C) Duplica o branch atual dentro do mesmo repositório local.",
+        "D) Envia uma cópia de segurança do código para o e-mail do desenvolvedor."
+    ], 
+    "A", 
+    "O `clone` é o ponto de partida padrão para começar a trabalhar em um projeto existente hospedado em uma plataforma remota.", 
+    "Ele já configura automaticamente o remoto padrão chamado `origin`."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que significa o comando 'git commit --amend'?", 
+    "Git Commit Amend", 
+    [
+        "A) Apaga todos os commits da história e reinicia o projeto.",
+        "B) Modifica o último commit realizado, permitindo alterar sua mensagem de commit ou adicionar arquivos esquecidos sem criar um novo nó no histórico.",
+        "C) Cria um commit automático a cada alteração de arquivo.",
+        "D) Divide um commit grande em vários commits menores."
+    ], 
+    "B", 
+    "É extremamente útil para corrigir pequenos erros de digitação na mensagem do último commit ou quando você esqueceu de incluir um arquivo pequeno relacionado à última alteração.", 
+    "Evite usar `--amend` em commits que já foram enviados (`pushed`) para o repositório remoto compartilhado."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "Para que serve o comando 'git tag' em um projeto?", 
+    "Git Tags", 
+    [
+        "A) Para marcar linhas de código com erros de sintaxe.",
+        "B) Para rotular pontos específicos na história do repositório com um identificador legível (como v1.0.0), geralmente usado para marcar versões de lançamento (releases).",
+        "C) Para etiquetar arquivos para exclusão automática.",
+        "D) Para identificar qual desenvolvedor escreveu cada linha de código."
+    ], 
+    "B", 
+    "As tags funcionam como marcadores estáticos e permanentes no tempo, facilitando o download de versões específicas estáveis do software.", 
+    "Podem ser leves ou anotadas (anotadas contêm metadados do autor e data)."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que faz o comando 'git diff' quando executado sem parâmetros adicionais?", 
+    "Git Diff", 
+    [
+        "A) Mostra a diferença entre dois branches remotos diferentes.",
+        "B) Exibe as alterações feitas no working directory que ainda não foram adicionadas à staging area (modificações não indexadas).",
+        "C) Compara o código local com o código em produção.",
+        "D) Apaga as linhas de código duplicadas no projeto."
+    ], 
+    "B", 
+    "O `git diff` faz uma análise linha por linha mostrando exatamente o que foi adicionado (`+`) e o que foi removido (`-`) nos arquivos modificados.", 
+    "Você pode usar `git diff --staged` para ver o que está preparado na staging area."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que significa dizer que o Git é um sistema de controle de versão 'distribuído' (DVCS)?", 
+    "Conceitos do Git", 
+    [
+        "A) Que o código roda distribuído em vários processadores da CPU.",
+        "B) Que cada usuário possui uma cópia completa do repositório localmente, incluindo o histórico de commits completo, permitindo trabalhar offline sem depender de um servidor central contínuo.",
+        "C) Que o código precisa ser dividido em pedaços e enviado para vários servidores diferentes obrigatoriamente.",
+        "D) Que o projeto é gerenciado por inteligência artificial distribuída."
+    ], 
+    "B", 
+    "Diferente de sistemas centralizados antigos (como SVN), no Git cada clone é um repositório completo e independente, o que garante alta resiliência e velocidade.", 
+    "O servidor remoto atua apenas como ponto de sincronização central."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git status' informa ao desenvolvedor?", 
+    "Git Status", 
+    [
+        "A) O status atual da conexão com a internet e ping do GitHub.",
+        "B) O estado atual da árvore de trabalho e da staging area: quais arquivos foram modificados, quais estão prontos para commit (staged) e quais não estão sendo rastreados (untracked).",
+        "C) A quantidade de bugs encontrados pelo linter.",
+        "D) O nível de bateria do notebook do desenvolvedor."
+    ], 
+    "B", 
+    "É o comando mais consultado durante o dia a dia para saber exatamente em qual branch você está e quais arquivos precisam de atenção.", 
+    "Não altera nenhum arquivo, servindo apenas para inspeção."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git rm --cached arquivo.txt' faz?", 
+    "Git Rm", 
+    [
+        "A) Apaga permanentemente o arquivo do disco rígido e do histórico.",
+        "B) Remove o arquivo do rastreamento do Git (staging area), mantendo-o intacto na pasta do computador local.",
+        "C) Limpa o cache de memória RAM do Git.",
+        "D) Move o arquivo para a lixeira do sistema operacional."
+    ], 
+    "B", 
+    "Muito útil quando você adicionou por engano um arquivo que deveria ser ignorado (como um arquivo de configuração local) e quer tirá-lo do controle de versão sem perdê-lo.", 
+    "Em seguida, deve-se adicionar o arquivo ao `.gitignore`."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que faz o comando 'git branch -d nome-do-branch'?", 
+    "Exclusão de Branches", 
+    [
+        "A) Deleta o branch localmente, desde que todas as suas alterações já tenham sido mescladas (merged) em outro branch.",
+        "B) Envia o branch para a lixeira do GitHub de forma permanente.",
+        "C) Renomeia o branch atual para um novo nome.",
+        "D) Desfaz o último commit feito no branch."
+    ], 
+    "A", 
+    "A bandeira `-d` (minúscula) protege contra a perda acidental de trabalho não mesclado. Se você quiser forçar a exclusão mesmo sem merge, usa-se `-D` (maiúscula).", 
+    "Ajuda a manter o repositório limpo após features concluídas."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que é um 'Pull Request' (ou Merge Request) em plataformas como GitHub ou GitLab?", 
+    "Pull Request", 
+    [
+        "A) Um comando de terminal para baixar atualizações do servidor.",
+        "B) Uma solicitação formal para revisar e mesclar as alterações de um branch em outro (geralmente da feature para a main), permitindo code review, discussões e aprovações da equipe.",
+        "C) Um pedido de suporte técnico enviado diretamente para os criadores do Git.",
+        "D) Uma ferramenta de testes de carga para APIs web."
+    ], 
+    "B", 
+    "O Pull Request é o pilar da colaboração moderna em equipe, viabilizando revisão de código por pares, execução de testes automatizados de CI e controle de qualidade antes do merge.", 
+    "Garante que nenhum código suba para produção sem validação."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git blame arquivo.js' permite descobrir?", 
+    "Git Blame", 
+    [
+        "A) Qual desenvolvedor introduziu um erro de sintaxe no código.",
+        "B) Quem modificou cada linha específica de um arquivo e em qual commit isso aconteceu, facilitando a identificação do autor de um trecho de código.",
+        "C) Quais linhas do código possuem vulnerabilidades de segurança.",
+        "D) Quantas linhas de código foram escritas no total pelo time."
+    ], 
+    "B", 
+    "O `git blame` exibe a listagem do arquivo com o hash do commit, o autor e a data lado a lado de cada linha.", 
+    "Útil para entender o contexto histórico de uma implementação ou tirar dúvidas com o colega que escreveu."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git stash pop' realiza?", 
+    "Git Stash Pop", 
+    [
+        "A) Apaga permanentemente todos os stashes salvos no computador.",
+        "B) Aplica as alterações guardadas mais recentemente no stash de volta à árvore de trabalho e remove esse registro do estoque.",
+        "C) Cria um novo branch baseado no último commit remoto.",
+        "D) Reverte o último commit aplicando um patch de correção."
+    ], 
+    "B", 
+    "Diferente do `git stash apply` (que aplica as alterações mas mantém o stash salvo), o `pop` aplica e limpa o estoque simultaneamente.", 
+    "Se houver conflitos durante o pop, o Git avisa para que você os resolva."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que é uma 'Fork' no ecossistema do GitHub?", 
+    "GitHub Forks", 
+    [
+        "A) Uma ferramenta de refatoração de código em árvore.",
+        "B) Uma cópia independente de um repositório alocada na sua própria conta do GitHub, permitindo propor alterações em projetos de terceiros sem ter permissão direta de escrita neles.",
+        "C) Um comando de bifurcação de processos no terminal.",
+        "D) Um tipo de arquivo de configuração para testes unitários."
+    ], 
+    "B", 
+    "O fork é amplamente utilizado no modelo de contribuição Open Source, onde você clica em 'Fork', altera no seu repositório e depois abre um Pull Request para o projeto original.", 
+    "Diferente do clone (que é local), o fork ocorre na nuvem."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "Para que serve o comando 'git remote -v'?", 
+    "Git Remote", 
+    [
+        "A) Para verificar a versão atual instalada do Git no sistema operacional.",
+        "B) Para listar os URLs dos repositórios remotos configurados (fetch e push) associados ao seu projeto local.",
+        "C) Para verificar se há vírus no repositório remoto.",
+        "D) Para validar a chave SSH de conexão."
+    ], 
+    "B", 
+    "É útil para confirmar se o projeto está apontando para os endereços corretos do GitHub ou GitLab antes de executar comandos de sincronização.", 
+    "O `-v` vem de *verbose* (detalhado)."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git log -p' exibe no terminal?", 
+    "Git Log Patch", 
+    [
+        "A) Apenas a lista de nomes dos autores dos commits.",
+        "B) O histórico de commits acompanhado das diferenças detalhadas (patches/diffs) introduzidas em cada commit.",
+        "C) O progresso de download dos arquivos remotos em porcentagem.",
+        "D) A lista de senhas criptografadas do repositório."
+    ], 
+    "B", 
+    "O parâmetro `-p` (ou `--patch`) permite inspecionar não só o que foi escrito na mensagem do commit, mas exatamente o código que mudou em cada alteração da história.", 
+    "Excelente para auditoria fina de código legado."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que acontece quando executamos 'git push origin main'?", 
+    "Git Push", 
+    [
+        "A) Baixa a branch main do repositório remoto para a máquina local.",
+        "B) Envia os commits locais realizados na branch 'main' para o repositório remoto configurado como 'origin'.",
+        "C) Apaga a branch main da nuvem do GitHub.",
+        "D) Cria uma cópia local da branch main."
+    ], 
+    "B", 
+    "Atualiza o servidor remoto com o seu trabalho local, tornando-o acessível para o restante da equipe.", 
+    "Se o remoto estiver adiantado, o Git exigirá um `pull` prévio para evitar sobrescrever dados."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que significa a expressão 'detached HEAD' (HEAD destacada) no Git?", 
+    "Detached HEAD", 
+    [
+        "A) Que o computador perdeu a conexão com a internet.",
+        "B) Que o ponteiro HEAD está apontando diretamente para um hash de commit específico em vez de apontar para o topo de um branch, o que pode fazer com que commits novos fiquem órfãos se não forem salvos em um branch.",
+        "C) Que o repositório foi corrompido e precisa ser reinstalado.",
+        "D) Que o usuário foi banido do repositório remoto."
+    ], 
+    "B", 
+    "Ocorre muito ao fazer checkout direto em tags ou commits antigos (ex: `git checkout v1.0`). Para salvar alterações nesse estado, deve-se criar um branch novo (`git checkout -b novo`).", 
+    "Um conceito importante para evitar perda acidental de trabalho."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git clean -fd' faz na área de trabalho?", 
+    "Git Clean", 
+    [
+        "A) Limpa o histórico de commits antigos do projeto.",
+        "B) Remove arquivos não rastreados (`untracked`) e diretórios inteiros do diretório de trabalho de forma permanente.",
+        "C) Limpa o cache de senhas do Git Credential Manager.",
+        "D) Deleta todos os branches que já foram mesclados."
+    ], 
+    "B", 
+    "O `-f` força a exclusão e o `-d` inclui diretórios não rastreados. Deve ser usado com cautela extrema para não apagar arquivos locais importantes que não estavam no controle de versão.", 
+    "É irreversível."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "Qual é a utilidade do comando 'git stash list'?", 
+    "Git Stash List", 
+    [
+        "A) Listar todos os arquivos ignorados pelo `.gitignore`.",
+        "B) Exibir a lista de todos os stashes (estoques temporários) salvos no repositório local, identificando-os por índices como `stash@{0}`.",
+        "C) Listar os colaboradores do projeto no GitHub.",
+        "D) Mostrar os commits que ainda não foram enviados para o push."
+    ], 
+    "B", 
+    "Permite visualizar múltiplos estoques criados em momentos diferentes, facilitando recuperar um específico usando `git stash apply stash@{1}`.", 
+    "Organiza o gerenciamento de alterações pausadas."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git branch -a' exibe?", 
+    "Git Branch List", 
+    [
+        "A) Apenas os branches locais criados na sua máquina.",
+        "B) Todos os branches disponíveis, tanto os locais quanto os remotos (`remotes/*`).",
+        "C) A árvore genealógica completa de todos os merges do projeto.",
+        "D) A lista de administradores do repositório remoto."
+    ], 
+    "B", 
+    "Útil para saber quais ramificações existem no servidor remoto que ainda não foram baixadas ou criadas localmente.", 
+    "O `-a` vem de *all* (todos)."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git cherry-pick <hash-do-commit>' realiza?", 
+    "Git Cherry-Pick", 
+    [
+        "A) Escolhe aleatoriamente um commit para ser apagado do histórico.",
+        "B) Aplica um commit específico de outro branch diretamente no seu branch atual, permitindo reutilizar correções pontuais sem precisar fazer o merge de todo o branch.",
+        "C) Cria uma tag de versão baseada na cor do commit.",
+        "D) Baixa apenas os arquivos modificados em um commit remoto."
+    ], 
+    "B", 
+    "É uma ferramenta cirúrgica muito útil quando um bug foi corrigido em um branch de homologação e você precisa dessa mesma correção urgentemente na branch principal de produção.", 
+    "Evita trazer alterações indesejadas de outras ramificações."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git config --global user.name \"Seu Nome\"' configura no Git?", 
+    "Git Config", 
+    [
+        "A) A senha de acesso à sua conta do GitHub.",
+        "B) O nome de usuário global que será associado como autoria em todos os commits realizados nos repositórios da sua máquina.",
+        "C) O nome do servidor remoto principal do projeto.",
+        "D) O nome do arquivo de log do terminal."
+    ], 
+    "B", 
+    "Essencial para a identificação correta dos autores no histórico de qualquer projeto Git na máquina.", 
+    "Geralmente configurado logo na primeira instalação do Git junto com o e-mail (`user.email`)."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git fetch --prune' faz?", 
+    "Git Fetch Prune", 
+    [
+        "A) Apaga o repositório local e baixa tudo novamente.",
+        "B) Remove referências locais de branches remotos que já foram deletados no servidor (como no GitHub), limpando o lixo de referências obsoletas.",
+        "C) Corta linhas de código duplicadas no arquivo atual.",
+        "D) Comprime o histórico de commits em um arquivo zip."
+    ], 
+    "B", 
+    "Evita que sua listagem de branches remotos fique poluída com ramificações antigas que já foram excluídas por outros membros da equipe na nuvem.", 
+    "Uma ótima prática de manutenção de repositório."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que significa 'Fast-forward merge' no Git?", 
+    "Fast-forward Merge", 
+    [
+        "A) Um erro de mesclagem que acelera a velocidade do processador.",
+        "B) Um tipo de merge que ocorre quando o branch de destino não teve novos commits desde que o branch atual foi criado; o Git apenas avança o ponteiro para a frente sem criar um commit de junção.",
+        "C) Um comando para acelerar o upload do push no GitHub.",
+        "D) A exclusão automática de arquivos conflitantes."
+    ], 
+    "B", 
+    "Mantém o histórico perfeitamente linear, sem nós extras de união, pois não houve divergência de caminhos na linha do tempo.", 
+    "Pode ser desativado com a flag `--no-ff` se a equipe preferir registrar explicitamente o merge."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que faz o comando 'git branch -m novo-nome' quando executado em um branch?", 
+    "Renomear Branch", 
+    [
+        "A) Deleta o branch atual e cria um novo.",
+        "B) Renomeia o branch atual em que você está posicionado para o novo nome especificado.",
+        "C) Modifica a mensagem do último commit.",
+        "D) Mescla o branch atual com a master."
+    ], 
+    "B", 
+    "Facilita a correção de nomes de branches criados com digitação incorreta ou fora do padrão de nomenclatura da equipe.", 
+    "Se o branch antigo já estiver na nuvem, será necessário atualizar o remoto com um push correspondente."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que é o arquivo 'HEAD' dentro da pasta oculta '.git'?", 
+    "O Ponteiro HEAD", 
+    [
+        "A) O arquivo de log de erros de rede.",
+        "B) Um ponteiro simbólico que indica qual é o branch atual ou commit em que você está posicionado no momento.",
+        "C) O arquivo principal de configuração de segurança SSH.",
+        "D) A lista de commits enviados para o GitHub."
+    ], 
+    "B", 
+    "O HEAD é a âncora fundamental que diz ao Git qual é o estado atual da árvore de trabalho que você está visualizando e editando.", 
+    "Sempre aponta para a ponta do branch ativo, exceto no estado de *detached HEAD*."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "Qual é a utilidade do comando 'git bisect'?", 
+    "Git Bisect", 
+    [
+        "A) Para dividir um arquivo grande em duas partes menores.",
+        "B) Uma ferramenta de busca binária automatizada para encontrar qual commit introduziu um bug específico na base de código, testando commits intermediários de forma inteligente.",
+        "C) Para duplicar o repositório em duas pastas diferentes no computador.",
+        "D) Para calcular a porcentagem de cobertura de testes do projeto."
+    ], 
+    "B", 
+    "Você marca um commit bom (onde o bug não existia) e um commit ruim (onde o bug está presente), e o Git testa o meio da história, perguntando se o bug está lá, até achar o culpado exato com mínimo esforço.", 
+    "Uma ferramenta avançada de depuração de histórico extremamente poderosa."
+);
+
+addQuestion(
+    "Git", 
+    "Média", 
+    "O que o comando 'git push origin --delete nome-do-branch' realiza?", 
+    "Deletar Branch Remoto", 
+    [
+        "A) Deleta o branch apenas na sua máquina local.",
+        "B) Remove e exclui permanentemente o branch especificado do repositório remoto hospedado na nuvem.",
+        "C) Limpa o histórico de commits do branch local.",
+        "D) Apaga o repositório inteiro do GitHub."
+    ], 
+    "B", 
+    "Usado após finalizar uma feature, ter o PR aprovado e mesclado, para manter o servidor remoto livre de ramificações mortas e desnecessárias.", 
+    "Equivale a clicar no botão de deletar branch diretamente na interface do GitHub."
+);
+
 /* =====================================================
    CRIPTOGRAFIA E CERTIFICAÇÃO DIGITAL
 ===================================================== */
