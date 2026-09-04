@@ -6659,56 +6659,649 @@ addQuestion(
     "Criado por Simon Brown, o modelo C4 resolve o problema de diagramas confusos ou desatualizados, permitindo dar 'zoom' desde a visão macro do sistema (contexto) até os detalhes internos de componentes.", 
     "Facilita enormemente a comunicação técnica na equipe."
 
-
 /* =====================================================
-   DESIGN PATTERNS
+    DESIGN PATTERNS (40 QUESTÕES COMPLETAS)
 ===================================================== */
 
-const designPatterns = [
-    {
-        q: "Qual padrão de projeto criacional garante que uma classe tenha apenas uma instância em toda a aplicação e fornece um ponto de acesso global para ela?",
-        c: "",
-        o: [
-            "A) Factory Method",
-            "B) Singleton",
-            "C) Prototype",
-            "D) Builder"
-        ],
-        a: "B",
-        e: "O Singleton restringe a instanciação de uma classe a um único objeto, sendo útil para gerenciar recursos compartilhados como conexões de banco de dados ou configurações globais.",
-        t: "Cuidado com o uso excessivo de Singletons, pois eles introduzem estado global e podem dificultar testes unitários."
-    },
-    {
-        q: "Qual categoria de Design Patterns foca na forma como classes e objetos são compostos para formar estruturas maiores, garantindo flexibilidade e eficiência?",
-        c: "",
-        o: [
-            "A) Criacionais",
-            "B) Estruturais",
-            "C) Comportamentais",
-            "D) Concorrentes"
-        ],
-        a: "B",
-        e: "Os padrões estruturais (como Adapter, Decorator e Facade) explicam como montar objetos e classes em estruturas maiores, mantendo essas estruturas flexíveis.",
-        t: "Exemplos clássicos de estruturais: Adapter, Composite, Proxy."
-    },
-    {
-        q: "Qual padrão comportamental permite que você defina uma família de algoritmos, coloque cada um deles em uma classe separada e faça com que seus objetos sejam intercambiáveis em tempo de execução?",
-        c: "",
-        o: [
-            "A) Strategy",
-            "B) Observer",
-            "C) Command",
-            "D) Template Method"
-        ],
-        a: "A",
-        e: "O padrão Strategy permite alterar o comportamento de um objeto em tempo de execução encapsulando algoritmos intercambiáveis.",
-        t: "Ideal para substituir grandes estruturas condicionais (if/else ou switch/case) baseadas no tipo de comportamento."
-    }
-];
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão de projeto criacional garante que uma classe tenha apenas uma instância em toda a aplicação e fornece um ponto de acesso global para ela?", 
+    "Singleton", 
+    [
+        "A) Factory Method",
+        "B) Singleton",
+        "C) Prototype",
+        "D) Builder"
+    ], 
+    "B", 
+    "O Singleton restringe a instanciação de uma classe a um único objeto, sendo útil para gerenciar recursos compartilhados como conexões de banco de dados ou configurações globais.", 
+    "Cuidado com o uso excessivo de Singletons, pois eles introduzem estado global e podem dificultar testes unitários."
+);
 
-designPatterns.forEach(x => {
-    addQuestion("Design Patterns", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual categoria de Design Patterns foca na forma como classes e objetos são compostos para formar estruturas maiores, garantindo flexibilidade e eficiência?", 
+    "Padrões Estruturais", 
+    [
+        "A) Criacionais",
+        "B) Estruturais",
+        "C) Comportamentais",
+        "D) Concorrentes"
+    ], 
+    "B", 
+    "Os padrões estruturais (como Adapter, Decorator e Facade) explicam como montar objetos e classes em estruturas maiores, mantendo essas estruturas flexíveis.", 
+    "Exemplos clássicos de estruturais: Adapter, Composite, Proxy."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental permite que você defina uma família de algoritmos, coloque cada um deles em uma classe separada e faça com que seus objetos sejam intercambiáveis em tempo de execução?", 
+    "Strategy", 
+    [
+        "A) Strategy",
+        "B) Observer",
+        "C) Command",
+        "D) Template Method"
+    ], 
+    "A", 
+    "O padrão Strategy permite alterar o comportamento de um objeto em tempo de execução encapsulando algoritmos intercambiáveis.", 
+    "Ideal para substituir grandes estruturas condicionais (if/else ou switch/case) baseadas no tipo de comportamento."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão criacional fornece uma interface para criar famílias de objetos relacionados ou dependentes sem especificar suas classes concretas?", 
+    "Abstract Factory", 
+    [
+        "A) Factory Method",
+        "B) Abstract Factory",
+        "C) Builder",
+        "D) Singleton"
+    ], 
+    "B", 
+    "O Abstract Factory permite produzir famílias de produtos compatíveis sem que o código cliente dependa de suas classes concretas.", 
+    "Muito útil quando o sistema precisa ser independente de como seus produtos são criados, compostos e representados."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão de projeto criacional define uma interface para criar um objeto, mas deixa as subclasses decidirem qual classe instanciar, permitindo que a instanciação seja adiada para as subclasses?", 
+    "Factory Method", 
+    [
+        "A) Abstract Factory",
+        "B) Factory Method",
+        "C) Prototype",
+        "D) Singleton"
+    ], 
+    "B", 
+    "O Factory Method resolve o problema de criar objetos sem especificar a classe exata do objeto que será criado, delegando essa responsabilidade para as subclasses.", 
+    "Promove o princípio aberto/fechado (Open/Closed Principle) do SOLID."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão criacional permite construir objetos complexos passo a passo, utilizando o mesmo código de construção para produzir diferentes tipos e representações de um objeto?", 
+    "Builder", 
+    [
+        "A) Builder",
+        "B) Factory Method",
+        "C) Prototype",
+        "D) Adapter"
+    ], 
+    "A", 
+    "O Builder separa a construção de um objeto complexo da sua representação, permitindo a criação de diferentes variações utilizando o mesmo processo.", 
+    "Evita construtores telescópicos com dezenas de parâmetros opcionais."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão criacional permite copiar objetos existentes sem que o código dependa de suas classes, clonando instâncias em tempo de execução?", 
+    "Prototype", 
+    [
+        "A) Prototype",
+        "B) Singleton",
+        "C) Factory Method",
+        "D) Facade"
+    ], 
+    "A", 
+    "O Prototype especifica os tipos de objetos a criar usando uma instância exemplar e cria novos objetos copiando este protótipo.", 
+    "Útil para evitar a criação custosa de objetos via banco de dados ou operações complexas de inicialização."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão estrutural permite que objetos com interfaces incompatíveis colaborem entre si, atuando como um tradutor ou wrapper?", 
+    "Adapter", 
+    [
+        "A) Decorator",
+        "B) Adapter",
+        "C) Facade",
+        "D) Bridge"
+    ], 
+    "B", 
+    "O Adapter converte a interface de uma classe em outra interface esperada pelos clientes, permitindo que classes trabalhem juntas que antes não conseguiam devido a incompatibilidades.", 
+    "Muito comum ao integrar bibliotecas de terceiros ou sistemas legados."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão estrutural desacopla uma abstração de sua implementação, permitindo que ambas possam variar independentemente?", 
+    "Bridge", 
+    [
+        "A) Bridge",
+        "B) Composite",
+        "C) Proxy",
+        "D) Flyweight"
+    ], 
+    "A", 
+    "O padrão Bridge divide uma classe grande ou um conjunto de classes intimamente ligadas em duas hierarquias separadas (abstração e implementação) que podem ser desenvolvidas independentemente.", 
+    "Evita a explosão de subclasses combinatórias."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão estrutural permite que você componha objetos em estruturas de árvores e trabalhe com essas estruturas como se fossem objetos individuais?", 
+    "Composite", 
+    [
+        "A) Composite",
+        "B) Decorator",
+        "C) Flyweight",
+        "D) Proxy"
+    ], 
+    "A", 
+    "O Composite permite que clientes tratem objetos individuais e composições de objetos de maneira uniforme (ex: hierarquias de arquivos e pastas).", 
+    "Baseia-se em recursividade nas chamadas de métodos estruturais."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão estrutural anexa novos comportamentos a objetos colocando-os dentro de objetos wrapper que contêm esses comportamentos?", 
+    "Decorator", 
+    [
+        "A) Adapter",
+        "B) Decorator",
+        "C) Facade",
+        "D) Proxy"
+    ], 
+    "B", 
+    "O Decorator permite adicionar responsabilidades a objetos dinamicamente em tempo de execução, sendo uma alternativa flexível à herança para estender funcionalidades.", 
+    "Muito utilizado em fluxos de I/O (como streams de leitura e escrita)."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão estrutural fornece uma interface simplificada para uma biblioteca, um framework ou um conjunto complexo de classes?", 
+    "Facade", 
+    [
+        "A) Facade",
+        "B) Proxy",
+        "C) Bridge",
+        "D) Adapter"
+    ], 
+    "A", 
+    "O Facade oculta a complexidade de subsistemas internos por trás de uma fachada de alto nível, facilitando o uso por clientes externos.", 
+    "Reduz o acoplamento entre o código cliente e subsistemas complexos."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão estrutural usa compartilhamento para dar suporte a grandes quantidades de objetos de granulação fina de forma eficiente em termos de memória?", 
+    "Flyweight", 
+    [
+        "A) Flyweight",
+        "B) Singleton",
+        "C) Prototype",
+        "D) Composite"
+    ], 
+    "A", 
+    "O Flyweight economiza RAM armazenando o estado compartilhado (intrínseco) no próprio objeto e passando o estado contextual (extrínseco) para os métodos.", 
+    "Comum em editores de texto para renderização eficiente de milhares de caracteres."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão estrutural fornece um substituto ou placeholder para outro objeto, controlando o acesso a ele (ex: controle de acesso, carregamento tardio ou cache)?", 
+    "Proxy", 
+    [
+        "A) Proxy",
+        "B) Decorator",
+        "C) Adapter",
+        "D) Facade"
+    ], 
+    "A", 
+    "O Proxy intercepta chamadas ao objeto real, permitindo executar tarefas antes ou depois do repasse da requisição (ex: Lazy Loading, Smart References, Protection Proxy).", 
+    "Mantém a mesma interface do objeto original."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental define uma dependência um-para-muitos entre objetos para que, quando um objeto mudar de estado, todos os seus dependentes sejam notificados e atualizados automaticamente?", 
+    "Observer", 
+    [
+        "A) Observer",
+        "B) Strategy",
+        "C) State",
+        "D) Mediator"
+    ], 
+    "A", 
+    "O Observer estabelece o mecanismo de publicação-assinatura (pub/sub), desacoplando o sujeito emissor dos observadores interessados nas mudanças.", 
+    "Base fundamental para arquiteturas reativas e interfaces orientadas a eventos."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental permite que um objeto altere seu comportamento quando seu interior muda de estado, parecendo que a classe do objeto mudou?", 
+    "State", 
+    [
+        "A) State",
+        "B) Strategy",
+        "C) Command",
+        "D) Memento"
+    ], 
+    "A", 
+    "O padrão State encapsula comportamentos dependentes de estados em classes separadas e delega as transições para o objeto de estado atual, eliminando grandes estruturas condicionais.", 
+    "Muito próximo estruturalmente do padrão Strategy, mas com foco em transições de ciclo de vida."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental encapsula uma solicitação como um objeto, permitindo parametrizar clientes com diferentes solicitações, enfileirar operações e suportar operações que podem ser desfeitas (undo)?", 
+    "Command", 
+    [
+        "A) Command",
+        "B) Mediator",
+        "C) Chain of Responsibility",
+        "D) Visitor"
+    ], 
+    "A", 
+    "O Command transforma uma operação em um objeto independente contendo todos os dados e dependências necessárias para executá-la mais tarde.", 
+    "Ideal para filas de tarefas, históricos de ações e macros."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental permite que você passe solicitações ao longo duma cadeia de handlers, onde cada handler decide se processa a solicitação ou a passa para o próximo handler da cadeia?", 
+    "Chain of Responsibility", 
+    [
+        "A) Chain of Responsibility",
+        "B) Mediator",
+        "C) Observer",
+        "D) Template Method"
+    ], 
+    "A", 
+    "A Chain of Responsibility desacopla o remetente de um comando do seu receptor, permitindo múltiplos objetos processarem a requisição em sequência.", 
+    "Comum em middlewares de requisições HTTP (como em Express.js ou Spring Security)."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental define o esqueleto de um algoritmo em uma operação, postergando a implementação de alguns passos para as subclasses?", 
+    "Template Method", 
+    [
+        "A) Template Method",
+        "B) Strategy",
+        "C) Factory Method",
+        "D) State"
+    ], 
+    "A", 
+    "O Template Method permite que subclasses reescrevam etapas específicas de um algoritmo sem alterar a estrutura global do fluxo.", 
+    "Utiliza o princípio de inversão de controle (Hollywood Principle: 'Não nos chame, nós chamaremos você')."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental reduz o acoplamento caótico entre classes, restringindo as comunicações diretas entre os objetos e forçando-os a colaborar apenas através de um objeto mediador?", 
+    "Mediator", 
+    [
+        "A) Mediator",
+        "B) Observer",
+        "C) Facade",
+        "D) Command"
+    ], 
+    "A", 
+    "O Mediator centraliza a lógica de comunicação de um grupo de objetos, evitando que eles se conheçam explicitamente e reduza o acoplamento complexo de rede M para M.", 
+    "Comum em sistemas de controle de interface de usuário complexos."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental permite capturar e externalizar o estado interno de um objeto sem violar o encapsulamento, de modo que o objeto possa ser restaurado a esse estado mais tarde?", 
+    "Memento", 
+    [
+        "A) Memento",
+        "B) Prototype",
+        "C) Command",
+        "D) State"
+    ], 
+    "A", 
+    "O Memento armazena cópias de segurança do estado de um objeto de forma desacoplada, permitindo implementar funcionalidades de desfazer/refazer (undo/redo).", 
+    "Respeita o encapsulamento ao não expor diretamente os dados internos do originador."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental permite percorrer elementos de uma coleção (como listas, árvores ou grafos) de maneira sequencial sem expor sua representação interna?", 
+    "Iterator", 
+    [
+        "A) Iterator",
+        "B) Composite",
+        "C) Visitor",
+        "D) Interpreter"
+    ], 
+    "A", 
+    "O Iterator extrai a lógica de travessia de dados para um objeto iterador dedicado, uniformizando o acesso a diferentes estruturas de dados.", 
+    "Presente nativamente na maioria das linguagens modernas (ex: `for...of`, interfaces `Iterator`)."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental permite separar algoritmos dos objetos sobre os quais eles operam, possibilitando adicionar novas operações sem alterar as classes desses objetos?", 
+    "Visitor", 
+    [
+        "A) Visitor",
+        "B) Strategy",
+        "C) Template Method",
+        "D) Command"
+    ], 
+    "A", 
+    "O Visitor utiliza dupla dispatch para injetar novas operações em uma hierarquia de classes estável sem modificar suas estruturas.", 
+    "Comum em compiladores e analisadores sintácticos de árvores de código."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental permite definir uma gramática para uma linguagem e um interpretador para usar essa gramática para avaliar sentenças na linguagem?", 
+    "Interpreter", 
+    [
+        "A) Interpreter",
+        "B) Command",
+        "C) Mediator",
+        "D) Visitor"
+    ], 
+    "A", 
+    "O Interpreter mapeia regras gramaticais em classes de objetos, permitindo avaliar expressões complexas baseadas em árvores de sintaxe.", 
+    "Pouco utilizado no dia a dia, exceto em motores de regras de negócio, parsers ou ferramentas de busca."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual é a principal vantagem de aplicar Design Patterns em projetos de desenvolvimento de software?", 
+    "Fundamentos de Design Patterns", 
+    [
+        "A) Eliminar completamente a necessidade de escrever testes unitários.",
+        "B) Fornecer soluções comprovadas e reutilizáveis para problemas recorrentes de projeto, facilitando um vocabulário compartilhado entre desenvolvedores.",
+        "C) Reduzir a quantidade de linhas de código binário compilado pela metade.",
+        "D) Garantir velocidade máxima de execução em microcontroladores."
+    ], 
+    "B", 
+    "Os padrões de projeto encapsulam décadas de experiência coletiva da engenharia de software orientada a objetos.", 
+    "Originados e popularizados pelo livro clássico da 'Gang of Four' (GoF)."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "No contexto dos princípios SOLID, com quais categorias de Design Patterns o Princípio da Responsabilidade Única (SRP) e o Princípio Aberto/Fechado (OCP) mais se alinham diretamente?", 
+    "SOLID e Design Patterns", 
+    [
+        "A) Com praticamente todos os padrões GoF, pois buscam modularidade, baixo acoplamento e alta coesão.",
+        "B) Apenas com padrões estritamente criacionais baseados em XML.",
+        "C) Apenas com o padrão Singleton.",
+        "D) Não há relação conceitual entre SOLID e padrões de projeto."
+    ], 
+    "A", 
+    "Os padrões de projeto foram concebidos justamente para materializar os princípios SOLID na prática arquitetural.", 
+    "Facilitam a manutenção e a escalabilidade de sistemas de grande porte."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual é a principal diferença conceitual entre os padrões Strategy e State?", 
+    "Strategy vs State", 
+    [
+        "A) O Strategy é um padrão criacional e o State é estrutural.",
+        "B) O Strategy é escolhido pelo cliente de forma consciente para realizar uma tarefa; o State gerencia mudanças internas automáticas de ciclo de vida do objeto sem que o cliente precise gerenciar transições explícitas.",
+        "C) O Strategy só funciona em JavaScript e o State apenas em C++.",
+        "D) Não há diferença; são sinônimos perfeitos."
+    ], 
+    "B", 
+    "Embora estruturalmente parecidos (composição com delegação), suas intenções de negócio e acoplamento de transições diferem significativamente.", 
+    "O State conhece outros estados e comanda transições; o Strategy é independente."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão de projeto criacional pode ser implementado de forma segura em ambientes multithread utilizando técnicas como Double-Checked Locking?", 
+    "Singleton", 
+    [
+        "A) Singleton",
+        "B) Builder",
+        "C) Prototype",
+        "D) Factory Method"
+    ], 
+    "A", 
+    "Em aplicações concorrentes, múltiplos threads podem tentar instanciar o Singleton simultaneamente se a inicialização não for thread-safe.", 
+    "Exige cuidados especiais dependendo da linguagem de programação utilizada (ex: Java, C#, Python)."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "O que caracteriza o uso do padrão Null Object dentro de padrões comportamentais/estruturais?", 
+    "Null Object Pattern", 
+    [
+        "A) Substituir referências nulas (`null`) por um objeto polimórfico que implementa o comportamento padrão neutro (vazio), evitando checagens constantes de `if (x != null)`.",
+        "B) Deletar arquivos corrompidos do disco rígido.",
+        "C) Forçar exceções de ponteiro nulo em tempo de execução.",
+        "D) Desativar o coletor de lixo (Garbage Collector)."
+    ], 
+    "A", 
+    "O Null Object encapsula o comportamento de 'nada' ou 'ausência', simplificando o código cliente ao eliminar condicionais repetitivas de checagem de nulidade.", 
+    "Promove o princípio do polimorfismo limpo."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão estrutural é frequentemente comparado a um 'cartão de crédito virtual' ou 'um substituto seguro' que delega chamadas para um objeto pesado ou remoto?", 
+    "Proxy", 
+    [
+        "A) Proxy",
+        "B) Adapter",
+        "C) Decorator",
+        "D) Bridge"
+    ], 
+    "A", 
+    "O Proxy atua como intermediário transparente, controlando o acesso, otimizando recursos (Lazy Loading) ou adicionando camadas de segurança.", 
+    "Muito utilizado em ORMs para carregamento tardio de relacionamentos (Lazy Loading Proxies)."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão criacional é útil quando a criação de objetos é mais custosa do que clonar instâncias pré-existentes na memória?", 
+    "Prototype", 
+    [
+        "A) Prototype",
+        "B) Singleton",
+        "C) Factory Method",
+        "D) Facade"
+    ], 
+    "A", 
+    "O Prototype permite a criação de novos objetos através da cópia de protótipos já carregados, economizando viagens ao banco de dados ou inicializações complexas.", 
+    "Evita hierarquias complexas de subclasses de fábrica."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental permite desacoplar remetentes e receptores através de mensagens distribuídas em canais ou tópicos de eventos?", 
+    "Observer", 
+    [
+        "A) Observer",
+        "B) Command",
+        "C) Mediator",
+        "D) State"
+    ], 
+    "A", 
+    "O padrão Observer notifica automaticamente múltiplos objetos dependentes sobre qualquer mudança de estado no objeto observado.", 
+    "Base fundamental para arquiteturas reativas baseadas em eventos."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "No contexto de refatoração de código legado, qual categoria de Design Patterns costuma ser mais aplicada para desacoplar sistemas rígidos e interfaces incompatíveis?", 
+    "Padrões Estruturais", 
+    [
+        "A) Estruturais",
+        "B) Criacionais",
+        "C) Concorrentes",
+        "D) Apenas testes unitários"
+    ], 
+    "A", 
+    "Padrões como Adapter, Facade e Bridge são cruciais para adaptar APIs antigas a novos contratos sem reescrever todo o sistema.", 
+    "Facilitam a transição gradual de arquiteturas legadas."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental é ideal para implementar a funcionalidade de 'Desfazer' (Undo) e 'Refazer' (Redo) em editores de texto ou softwares gráficos?", 
+    "Command", 
+    [
+        "A) Command",
+        "B) Strategy",
+        "C) Template Method",
+        "D) Iterator"
+    ], 
+    "A", 
+    "O padrão Command encapsula ações como objetos independentes, permitindo armazená-las em pilhas de histórico para reversão.", 
+    "Pode ser combinado com o padrão Memento para salvar o estado dos dados manipulados."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual é o principal risco associado ao uso inadequado do padrão Singleton em aplicações orientadas a objetos?", 
+    "Singleton", 
+    [
+        "A) Introduzir estado global oculto e forte acoplamento, dificultando a escrita de testes unitários isolados.",
+        "B) Gerar erros de compilação automáticos de sintaxe.",
+        "C) Duplicar instâncias de hardware na placa-mãe.",
+        "D) Aumentar a velocidade de execução da CPU em 500%."
+    ], 
+    "A", 
+    "O estado global dificulta o paralelismo e o isolamento de testes, pois testes diferentes podem interferir nas variáveis compartilhadas do Singleton.", 
+    "Recomenda-se cautela e preferência por Injeção de Dependência sempre que possível."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão estrutural permite adicionar funcionalidades a um objeto individual de forma dinâmica, sem afetar o comportamento de outros objetos da mesma classe?", 
+    "Decorator", 
+    [
+        "A) Decorator",
+        "B) Adapter",
+        "C) Composite",
+        "D) Proxy"
+    ], 
+    "A", 
+    "O Decorator envolve o objeto original em wrappers sucessivos para estender comportamentos em tempo de execução.", 
+    "Evita a explosão combinatorial de subclasses para cada combinação de recursos."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental define passos fixos de um algoritmo na superclasse, permitindo que as subclasses alterem apenas etapas específicas?", 
+    "Template Method", 
+    [
+        "A) Template Method",
+        "B) Strategy",
+        "C) State",
+        "D) Builder"
+    ], 
+    "A", 
+    "O Template Method reutiliza o fluxo principal do algoritmo e delega os detalhes customizáveis para métodos abstratos implementados nas subclasses.", 
+    "Exemplo clássico: algoritmos de salvamento ou processamento de arquivos em etapas (abrir, ler, processar, fechar)."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão estrutural atua como um 'escudo' ou 'controlador de acesso' na frente de um objeto sensível ou remoto?", 
+    "Proxy", 
+    [
+        "A) Proxy",
+        "B) Facade",
+        "C) Adapter",
+        "D) Flyweight"
+    ], 
+    "A", 
+    "O Proxy de Proteção verifica permissões antes de repassar a chamada ao objeto real.", 
+    "Mantém a mesma assinatura de interface do objeto original para total transparência."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Qual padrão comportamental evita que um remetente de solicitação acople-se rigidamente ao seu receptor, permitindo que vários objetos tenham a chance de tratar o pedido em sequência?", 
+    "Chain of Responsibility", 
+    [
+        "A) Chain of Responsibility",
+        "B) Mediator",
+        "C) Observer",
+        "D) Command"
+    ], 
+    "A", 
+    "Os handlers formam uma corrente onde cada elo decide se consome a requisição ou a repassa adiante.", 
+    "Muito utilizado em frameworks web para processamento de middlewares de requisição."
+);
+
+addQuestion(
+    "Design Patterns", 
+    "Média", 
+    "Como os Design Patterns se relacionam com os princípios de orientação a objetos (como encapsulamento, herança e polimorfismo)?", 
+    "Fundamentos de Design Patterns", 
+    [
+        "A) Eles aplicam esses pilares de forma avançada para resolver problemas recorrentes de design com baixo acoplamento e alta coesão.",
+        "B) Eles substituem completamente o uso de polimorfismo por variáveis globais.",
+        "C) Eles funcionam apenas em linguagens não tipadas.",
+        "D) Eles anulam a necessidade de encapsulamento."
+    ], 
+    "A", 
+    "Os padrões são receitas arquiteturais construídas diretamente sobre os fundamentos da orientação a objetos.", 
+    "Promovem código limpo, extensível e de fácil manutenção."
+);
 
 /* =====================================================
    DOMAIN-DRIVEN DESIGN (DDD)
