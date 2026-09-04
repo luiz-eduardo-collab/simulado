@@ -8541,146 +8541,618 @@ addQuestion(
     "Muitas empresas adotam as cerimônias do Scrum superficialmente (chamado de 'ScrumBut'), mas falham em abraçar a cultura ágil subjacente.", 
     "Dominar o Scrum exige resiliência, transparência e melhoria contínua genuína."
 );
+
 /* =====================================================
-   TESTES DE SOFTWARE
+    TESTES DE SOFTWARE - 40 QUESTÕES COMPLETAS
 ===================================================== */
 
-const testesSoftware = [
-    {
-        q: "Qual é a principal diferença conceitual entre testes de caixa preta (black-box) e testes de caixa branca (white-box)?",
-        c: "Caixa Preta vs Caixa Branca",
-        o: [
-            "A) O teste de caixa preta é feito apenas em servidores de produção, enquanto o de caixa branca roda localmente.",
-            "B) O teste de caixa preta valida a funcionalidade externa e os requisitos do sistema sem conhecer o código interno, enquanto o teste de caixa branca examina a estrutura interna, lógica e caminhos do código-fonte.",
-            "C) O teste de caixa preta é totalmente automatizado e o de caixa branca é executado exclusivamente de forma manual.",
-            "D) Não há diferença prática; ambos utilizam os mesmos algoritmos de cobertura de código."
-        ],
-        a: "B",
-        e: "Nos testes de caixa preta (especificação), o testador avalia entradas e saídas baseando-se nos requisitos funcionais. Nos testes de caixa branca (estruturais), o testador conhece o código e escreve casos para cobrir ramificações, loops e linhas de código.",
-        t: "Testes unitários costumam ser de caixa branca, enquanto testes de aceitação e sistema tendem a ser de caixa preta."
-    },
-    {
-        q: "No contexto da pirâmide de testes de software, qual é a principal característica dos testes unitários (Unit Tests)?",
-        c: "Pirâmide de Testes",
-        o: [
-            "A) São testes lentos que validam a integração completa entre o banco de dados e a interface gráfica.",
-            "B) São testes de baixo nível, rápidos e isolados que verificam o comportamento de pequenos blocos de código (como funções ou métodos individuais).",
-            "C) São executados manualmente por usuários finais em ambiente de homologação.",
-            "D) Substituem completamente a necessidade de testes de sistema e de regressão."
-        ],
-        a: "B",
-        e: "Os testes unitários formam a base da pirâmide de testes. Devem ser executados em grande quantidade, rodar em milissegundos e isolar dependências externas utilizando mocks ou stubs.",
-        t: "Uma boa suíte de testes unitários detecta regressões imediatamente após alterações no código."
-    },
-    {
-        q: "O que significa o conceito de 'TDD' (Test-Driven Development) no ciclo de desenvolvimento de software?",
-        c: "TDD",
-        o: [
-            "A) Desenvolver todo o sistema primeiro e escrever os testes automatizados apenas após o deploy em produção.",
-            "B) Uma técnica onde os testes automatizados são escritos antes do código de produção, seguindo o ciclo: falhar (Red), passar (Green) e refatorar (Refactor).",
-            "C) Um método de teste baseado em carga para medir a tolerância a falhas de servidores web.",
-            "D) Documentar os requisitos do cliente utilizando diagramas de casos de uso em UML."
-        ],
-        a: "B",
-        e: "No TDD, o desenvolvedor primeiro escreve um teste que falha para uma funcionalidade desejada, depois escreve o código mínimo necessário para fazer o teste passar, e por fim refatora o código mantendo-o limpo.",
-        t: "O TDD ajuda a projetar códigos mais desacoplados e altamente testáveis desde a concepção."
-    },
-    {
-        q: "Qual é o principal objetivo dos testes de integração em uma aplicação?",
-        c: "Testes de Integração",
-        o: [
-            "A) Garantir que métodos individuais em classes isoladas funcionem sem erros de sintaxe.",
-            "B) Verificar se diferentes módulos, componentes ou serviços do sistema (como a comunicação entre a API e o banco de dados) funcionam corretamente quando combinados.",
-            "C) Validar a experiência visual e o design responsivo em diferentes tamanhos de tela.",
-            "D) Testar o comportamento do aplicativo sob estresse extremo de requisições simultâneas."
-        ],
-        a: "B",
-        e: "Enquanto o teste unitário isola as partes, o teste de integração assegura que a engrenagem conjunta funcione — por exemplo, testando se um repositório consegue persistir dados reais no banco de dados sem quebrar.",
-        t: "Eles identificam falhas de interface ou contratos entre serviços que os testes unitários não conseguem pegar."
-    },
-    {
-        q: "O que avalia o tipo de teste conhecido como 'Teste de Regressão'?",
-        c: "Testes de Regressão",
-        o: [
-            "A) Se o software consegue voltar para uma versão anterior em caso de falha crítica no servidor.",
-            "B) Se novas alterações no código (correções de bugs ou novas features) quebraram funcionalidades que já funcionavam anteriormente.",
-            "C) Se a velocidade de carregamento regrediu após a otimização de imagens.",
-            "D) O nível de satisfação dos usuários antigos em relação aos novos menus do sistema."
-        ],
-        a: "B",
-        e: "O teste de regressão é executado sempre que há uma mudança no código para garantir que o comportamento existente permaneceu intacto. A automação é fundamental para tornar esse processo viável.",
-        t: "Suítes de testes de regressão automatizadas economizam centenas de horas de testes manuais."
-    },
-    {
-        q: "Qual é a finalidade de utilizar 'Mocks' (ou Dublês de Teste) durante a execução de testes unitários?",
-        c: "Mocks e Stubs",
-        o: [
-            "A) Simular o comportamento de componentes ou dependências externas complexas (como APIs de pagamento ou conexões de banco de dados) de forma controlada e rápida.",
-            "B) Gerar senhas criptografadas aleatórias para testes de segurança de intrusão.",
-            "C) Criar cópias de backup automáticas do código-fonte para o GitHub.",
-            "D) Traduzir mensagens de erro do inglês para o português no console."
-        ],
-        a: "A",
-        e: "Mocks permitem isolar a unidade que está sendo testada, simulando respostas e evitando dependências lentas ou instáveis (como requisições reais de rede ou operações pesadas de disco).",
-        t: "O uso excessivo de mocks pode indicar que o código possui forte acoplamento e precisa de refatoração."
-    },
-    {
-        q: "O que mede a métrica de 'Cobertura de Código' (Code Coverage), como a fornecida por ferramentas como JaCoCo ou Istanbul?",
-        c: "Cobertura de Código",
-        o: [
-            "A) A porcentagem exata de bugs corrigidos pela equipe de QA em um sprint.",
-            "B) A proporção de linhas, instruções ou ramificações do código-fonte que foram executadas ao menos uma vez durante a bateria de testes automatizados.",
-            "C) O espaço em disco ocupado pelos arquivos de teste em comparação com o código de produção.",
-            "D) O tempo total de execução da suíte de testes em segundos."
-        ],
-        a: "B",
-        e: "A cobertura de código aponta quais partes do sistema passaram pelos testes. Alta cobertura não garante ausência total de bugs, mas indica quais trechos do código estão desprotegidos contra falhas.",
-        t: "Deve ser tratada como um indicador de qualidade, e não como uma meta absoluta de perfeição."
-    },
-    {
-        q: "Qual é o foco principal dos chamados 'Testes de Aceitação' (Acceptance Testing)?",
-        c: "Testes de Aceitação",
-        o: [
-            "A) Verificar se a lógica matemática de funções matemáticas internas está correta.",
-            "B) Validar se o sistema atende aos requisitos de negócio e se está pronto para ser aceito pelo cliente ou usuário final.",
-            "C) Testar a robustez do servidor contra quedas de energia no data center.",
-            "D) Analisar vulnerabilidades de injeção de SQL no backend."
-        ],
-        a: "B",
-        e: "Os testes de aceitação focam nos critérios de valor de negócio. Muitas vezes são expressos no formato Behavior-Driven Development (BDD) utilizando sintaxe Gherkin (Dado-Quando-Então).",
-        t: "Garantem que o software construído é exatamente o que o cliente pediu e especificou."
-    },
-    {
-        q: "No contexto de testes de software não funcionais, o que avalia um 'Teste de Carga' (Load Testing)?",
-        c: "Testes Não Funcionais",
-        o: [
-            "A) A capacidade do sistema de suportar uma carga esperada de usuários e transações simultâneas, medindo o desempenho sob estresse operacional.",
-            "B) O peso físico dos servidores em racks metálicos dentro de uma sala climatizada.",
-            "C) A quantidade de linhas de código que cada desenvolvedor consegue commitar por dia.",
-            "D) A facilidade de uso e acessibilidade da interface para pessoas com deficiência visual."
-        ],
-        a: "A",
-        e: "O teste de carga simula o tráfego real ou projetado para identificar gargalos de performance, tempos de resposta lentos e limites operacionais antes que o sistema vá para produção.",
-        t: "É um pilar essencial para sistemas corporativos que recebem alta concorrência de acessos."
-    },
-    {
-        q: "O que caracteriza a prática de Integração Contínua (CI) em relação aos testes automatizados?",
-        c: "Integração Contínua",
-        o: [
-            "A) Executar testes manuais de homologação uma vez a cada semestre antes de liberar o sistema.",
-            "B) Automatizar a execução de toda a suíte de testes sempre que novos códigos são enviados (pushed) para o repositório compartilhado, garantindo feedback rápido sobre falhas.",
-            "C) Permitir que o código seja enviado para produção sem passar por validações prévias.",
-            "D) Sincronizar branches locais via git fetch de forma manual."
-        ],
-        a: "B",
-        e: "A Integração Contínua (gerenciada por ferramentas como GitHub Actions, GitLab CI ou Jenkins) roda os testes automaticamente a cada commit, bloqueando a entrada de código que quebre o sistema.",
-        t: "Garante que o repositório principal permaneça sempre em um estado saudável e executável."
-    }
-];
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "Qual é a principal diferença conceitual entre testes de caixa preta (black-box) e testes de caixa branca (white-box)?", 
+    "Caixa Preta vs Caixa Branca", 
+    [
+        "A) O teste de caixa preta é feito apenas em servidores de produção, enquanto o de caixa branca roda localmente.",
+        "B) O teste de caixa preta valida a funcionalidade externa e os requisitos do sistema sem conhecer o código interno, enquanto o teste de caixa branca examina a estrutura interna, lógica e caminhos do código-fonte.",
+        "C) O teste de caixa preta é totalmente automatizado e o de caixa branca é executado exclusivamente de forma manual.",
+        "D) Não há diferença prática; ambos utilizam os mesmos algoritmos de cobertura de código."
+    ], 
+    "B", 
+    "Nos testes de caixa preta (especificação), o testador avalia entradas e saídas baseando-se nos requisitos funcionais. Nos testes de caixa branca (estruturais), o testador conhece o código e escreve casos para cobrir ramificações, loops e linhas de código.", 
+    "Testes unitários costumam ser de caixa branca, enquanto testes de aceitação e sistema tendem a ser de caixa preta."
+);
 
-testesSoftware.forEach(x => {
-    addQuestion("Testes de Software", "Média", x.q, x.c, x.o, x.a, x.e, x.t);
-});
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "No contexto da pirâmide de testes de software, qual é a principal característica dos testes unitários (Unit Tests)?", 
+    "Pirâmide de Testes", 
+    [
+        "A) São testes lentos que validam a integração completa entre o banco de dados e a interface gráfica.",
+        "B) São testes de baixo nível, rápidos e isolados que verificam o comportamento de pequenos blocos de código (como funções ou métodos individuais).",
+        "C) São executados manualmente por usuários finais em ambiente de homologação.",
+        "D) Substituem completamente a necessidade de testes de sistema e de regressão."
+    ], 
+    "B", 
+    "Os testes unitários formam a base da pirâmide de testes. Devem ser executados em grande quantidade, rodar em milissegundos e isolar dependências externas utilizando mocks ou stubs.", 
+    "Uma boa suíte de testes unitários detecta regressões imediatamente após alterações no código."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que significa o conceito de 'TDD' (Test-Driven Development) no ciclo de desenvolvimento de software?", 
+    "TDD", 
+    [
+        "A) Desenvolver todo o sistema primeiro e escrever os testes automatizados apenas após o deploy em produção.",
+        "B) Uma técnica onde os testes automatizados são escritos antes do código de produção, seguindo o ciclo: falhar (Red), passar (Green) e refatorar (Refactor).",
+        "C) Um método de teste baseado em carga para medir a tolerância a falhas de servidores web.",
+        "D) Documentar os requisitos do cliente utilizando diagramas de casos de uso em UML."
+    ], 
+    "B", 
+    "No TDD, o desenvolvedor primeiro escreve um teste que falha para uma funcionalidade desejada, depois escreve o código mínimo necessário para fazer o teste passar, e por fim refatora o código mantendo-o limpo.", 
+    "O TDD ajuda a projetar códigos mais desacoplados e altamente testáveis desde a concepção."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "Qual é o principal objetivo dos testes de integração em uma aplicação?", 
+    "Testes de Integração", 
+    [
+        "A) Garantir que métodos individuais em classes isoladas funcionem sem erros de sintaxe.",
+        "B) Verificar se diferentes módulos, componentes ou serviços do sistema (como a comunicação entre a API e o banco de dados) funcionam corretamente quando combinados.",
+        "C) Validar a experiência visual e o design responsivo em diferentes tamanhos de tela.",
+        "D) Testar o comportamento do aplicativo sob estresse extremo de requisições simultâneas."
+    ], 
+    "B", 
+    "Enquanto o teste unitário isola as partes, o teste de integração assegura que a engrenagem conjunta funcione — por exemplo, testando se um repositório consegue persistir dados reais no banco de dados sem quebrar.", 
+    "Eles identificam falhas de interface ou contratos entre serviços que os testes unitários não conseguem pegar."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que avalia o tipo de teste conhecido como 'Teste de Regressão'?", 
+    "Testes de Regressão", 
+    [
+        "A) Se o software consegue voltar para uma versão anterior em caso de falha crítica no servidor.",
+        "B) Se novas alterações no código (correções de bugs ou novas features) quebraram funcionalidades que já funcionavam anteriormente.",
+        "C) Se a velocidade de carregamento regrediu após a otimização de imagens.",
+        "D) O nível de satisfação dos usuários antigos em relação aos novos menus do sistema."
+    ], 
+    "B", 
+    "O teste de regressão é executado sempre que há uma mudança no código para garantir que o comportamento existente permaneceu intacto. A automação é fundamental para tornar esse processo viável.", 
+    "Suítes de testes de regressão automatizadas economizam centenas de horas de testes manuais."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "Qual é a finalidade de utilizar 'Mocks' (ou Dublês de Teste) durante a execução de testes unitários?", 
+    "Mocks e Stubs", 
+    [
+        "A) Simular o comportamento de componentes ou dependências externas complexas (como APIs de pagamento ou conexões de banco de dados) de forma controlada e rápida.",
+        "B) Gerar senhas criptografadas aleatórias para testes de segurança de intrusão.",
+        "C) Criar cópias de backup automáticas do código-fonte para o GitHub.",
+        "D) Traduzir mensagens de erro do inglês para o português no console."
+    ], 
+    "A", 
+    "Mocks permitem isolar a unidade que está sendo testada, simulando respostas e evitando dependências lentas ou instáveis (como requisições reais de rede ou operações pesadas de disco).", 
+    "O uso excessivo de mocks pode indicar que o código possui forte acoplamento e precisa de refatoração."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que mede a métrica de 'Cobertura de Código' (Code Coverage), como a fornecida por ferramentas como JaCoCo ou Istanbul?", 
+    "Cobertura de Código", 
+    [
+        "A) A porcentagem exata de bugs corrigidos pela equipe de QA em um sprint.",
+        "B) A proporção de linhas, instruções ou ramificações do código-fonte que foram executadas ao menos uma vez durante a bateria de testes automatizados.",
+        "C) O espaço em disco ocupado pelos arquivos de teste em comparação com o código de produção.",
+        "D) O tempo total de execução da suíte de testes em segundos."
+    ], 
+    "B", 
+    "A cobertura de código aponta quais partes do sistema passaram pelos testes. Alta cobertura não garante ausência total de bugs, mas indica quais trechos do código estão desprotegidos contra falhas.", 
+    "Deve ser tratada como um indicador de qualidade, e não como uma meta absoluta de perfeição."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "Qual é o foco principal dos chamados 'Testes de Aceitação' (Acceptance Testing)?", 
+    "Testes de Aceitação", 
+    [
+        "A) Verificar se a lógica matemática de funções matemáticas internas está correta.",
+        "B) Validar se o sistema atende aos requisitos de negócio e se está pronto para ser aceito pelo cliente ou usuário final.",
+        "C) Testar a robustez do servidor contra quedas de energia no data center.",
+        "D) Analisar vulnerabilidades de injeção de SQL no backend."
+    ], 
+    "B", 
+    "Os testes de aceitação focam nos critérios de valor de negócio. Muitas vezes são expressos no formato Behavior-Driven Development (BDD) utilizando sintaxe Gherkin (Dado-Quando-Então).", 
+    "Garantem que o software construído é exatamente o que o cliente pediu e especificou."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "No contexto de testes de software não funcionais, o que avalia um 'Teste de Carga' (Load Testing)?", 
+    "Testes Não Funcionais", 
+    [
+        "A) A capacidade do sistema de suportar uma carga esperada de usuários e transações simultâneas, medindo o desempenho sob estresse operacional.",
+        "B) O peso físico dos servidores em racks metálicos dentro de uma sala climatizada.",
+        "C) A quantidade de linhas de código que cada desenvolvedor consegue commitar por dia.",
+        "D) A facilidade de uso e acessibilidade da interface para pessoas com deficiência visual."
+    ], 
+    "A", 
+    "O teste de carga simula o tráfego real ou projetado para identificar gargalos de performance, tempos de resposta lentos e limites operacionais antes que o sistema vá para produção.", 
+    "É um pilar essencial para sistemas corporativos que recebem alta concorrência de acessos."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que caracteriza a prática de Integração Contínua (CI) em relação aos testes automatizados?", 
+    "Integração Contínua", 
+    [
+        "A) Executar testes manuais de homologação uma vez a cada semestre antes de liberar o sistema.",
+        "B) Automatizar a execução de toda a suíte de testes sempre que novos códigos são enviados (pushed) para o repositório compartilhado, garantindo feedback rápido sobre falhas.",
+        "C) Permitir que o código seja enviado para produção sem passar por validações prévias.",
+        "D) Sincronizar branches locais via git fetch de forma manual."
+    ], 
+    "B", 
+    "A Integração Contínua (gerenciada por ferramentas como GitHub Actions, GitLab CI ou Jenkins) roda os testes automaticamente a cada commit, bloqueando a entrada de código que quebre o sistema.", 
+    "Garante que o repositório principal permaneça sempre em um estado saudável e executável."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que é um 'Teste de Sistema' (System Testing) no ciclo de vida de desenvolvimento de software?", 
+    "Testes de Sistema", 
+    [
+        "A) Testar apenas uma única função matemática isolada no código.",
+        "B) Testar o sistema integrado como um todo para verificar se ele atende aos requisitos especificados, avaliando tanto comportamentos funcionais quanto não funcionais em um ambiente semelhante ao de produção.",
+        "C) O teste executado exclusivamente pelo desenvolvedor em sua máquina local antes do commit.",
+        "D) A verificação dos componentes físicos de hardware do servidor web."
+    ], 
+    "B", 
+    "O teste de sistema é tipicamente executado por uma equipe independente de QA, cobrindo o software completo em uma visão de caixa preta.", 
+    "Valida o produto integrado frente à especificação técnica e de negócios."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que diferencia um 'Stub' de um 'Mock' em testes unitários?", 
+    "Mocks vs Stubs", 
+    [
+        "A) Um Stub fornece respostas pré-programadas para chamadas feitas durante o teste (estado), enquanto um Mock também verifica expectativas de comportamento (ex: se um método foi chamado exatamente X vezes).",
+        "B) O Stub serve para bancos de dados NoSQL e o Mock para bancos relacionais.",
+        "C) O Stub é executado manualmente e o Mock é automatizado.",
+        "D) Não há diferença; são termos estritamente sinônimos na literatura de testes."
+    ], 
+    "A", 
+    "Embora ambos sejam dublês de teste, o Mock foca em verificação de comportamento (comportamento esperado), enquanto o Stub apenas alimenta a unidade com dados controlados.", 
+    "Conceito muito importante em frameworks como Mockito ou Jest."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que avalia o 'Teste de Estresse' (Stress Testing) dentro dos testes de desempenho?", 
+    "Testes de Estresse", 
+    [
+        "A) O nível de estresse emocional da equipe de desenvolvimento sob pressão de entrega.",
+        "B) Submeter o sistema a cargas extremas ou superiores aos limites esperados de projeto para observar como ele lida com falhas, se recupera e qual é o seu ponto de ruptura (breaking point).",
+        "C) Medir a velocidade de digitação dos operadores do sistema.",
+        "D) Verificar se o software funciona corretamente em computadores antigos."
+    ], 
+    "B", 
+    "O teste de estresse ajuda a entender o comportamento do sistema sob condições severas, identificando vazamentos de memória, travamentos ou falhas em cascata.", 
+    "Diferente do teste de carga, que mede o comportamento sob carga nominal esperada."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que é o 'Behavior-Driven Development' (BDD) e qual é o seu principal foco nos testes?", 
+    "BDD", 
+    [
+        "A) Um método focado exclusivamente em otimizar consultas SQL lentas.",
+        "B) Uma extensão do TDD que incentiva a colaboração entre desenvolvedores, QA e negócios, descrevendo o comportamento do software através de especificações legíveis por humanos (Gherkin).",
+        "C) Um padrão de arquitetura para construção de aplicativos móveis.",
+        "D) Um framework para testes de carga em redes corporativas."
+    ], 
+    "B", 
+    "O BDD utiliza cenários baseados em 'Dado / Quando / Então' (Given / When / Then), servindo simultaneamente como documentação viva, especificação executável e teste de aceitação.", 
+    "Aproxima a linguagem de negócio da automação de testes."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que é o 'Smoke Testing' (Teste de Fumaça) no processo de liberação de software?", 
+    "Smoke Testing", 
+    [
+        "A) Verificar se há superaquecimento e fumaça física nos circuitos elétricos do servidor.",
+        "B) Uma bateria rápida e rasa de testes executada logo após um novo build para verificar se as funcionalidades críticas mais importantes funcionam sem travamentos óbvios antes de rodar testes mais profundos.",
+        "C) Um teste de segurança focado em invasões cibernéticas.",
+        "D) O teste de usabilidade feito por fumantes na área de descanso da empresa."
+    ], 
+    "B", 
+    "O nome vem da engenharia elétrica (se liga o aparelho e sai fumaça, ele já está reprovado). No software, se o sistema nem abre a tela de login, o build é rejeitado imediatamente.", 
+    "Economiza tempo precioso ao barrar builds quebrados logo na origem."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que é o 'Sanity Testing' (Teste de Sanidade) e quando ele é aplicado?", 
+    "Sanity Testing", 
+    [
+        "A) Um teste psiquiátrico aplicado para contratar novos testadores de software.",
+        "B) Um teste de verificação rápido e focado realizado após uma correção de bug específica ou alteração menor, para checar se aquela mudança resolveu o problema sem estragar o entorno imediato.",
+        "C) Um teste de carga executado com milhões de usuários simultâneos.",
+        "D) Uma validação de sintaxe feita pelo compilador Java."
+    ], 
+    "B", 
+    "O sanity testing é um subconjunto restrito do teste de regressão, usado quando uma correção rápida foi aplicada e precisamos confirmar se a 'sanidade' do módulo afetado foi mantida.", 
+    "É mais rápido e específico que um teste de regressão completo."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que avalia um 'Teste de Usabilidade' (Usability Testing)?", 
+    "Testes de Usabilidade", 
+    [
+        "A) Se o código fonte está bem estruturado para ser lido por outros programadores.",
+        "B) A facilidade, intuição e eficiência com que os usuários finais conseguem interagir com a interface do software para atingir seus objetivos.",
+        "C) A compatibilidade do banco de dados relacional com drivers ODBC.",
+        "D) O consumo de memória RAM do navegador durante a navegação."
+    ], 
+    "B", 
+    "O teste de usabilidade foca na experiência do usuário (UX), avaliando se o design é claro, se há frustrações na navegação e se o sistema é acessível.", 
+    "Geralmente envolve usuários reais observados por especialistas de UX."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que caracteriza um 'Teste de Segurança' (Security Testing)?", 
+    "Testes de Segurança", 
+    [
+        "A) Verificar se as portas físicas do escritório estão trancadas com cadeado.",
+        "B) Identificar falhas, vulnerabilidades, brechas de injeção de código, problemas de autenticação e riscos de invasão para proteger o sistema contra ameaças maliciosas.",
+        "C) Garantir que todos os funcionários façam backup diário em pen drives.",
+        "D) Testar se o sistema consegue rodar sem conexão com a internet."
+    ], 
+    "B", 
+    "Testes de segurança englobam análises estáticas de código (SAST), dinâmicas (DAST) e testes de penetração (Pentest) para blindar a aplicação contra ataques.", 
+    "Crucial em sistemas que lidam com dados sensíveis e LGPD."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que avalia um 'Teste de Recuperação' (Recovery Testing)?", 
+    "Testes de Recuperação", 
+    [
+        "A) Se o time de desenvolvimento consegue recuperar arquivos apagados da Lixeira do Windows.",
+        "B) A capacidade do sistema de se recuperar de falhas de hardware, quedas de rede, perda de energia ou travamentos abruptos, voltando a operar de forma íntegra e consistente.",
+        "C) A velocidade de recuperação de senhas esquecidas pelos usuários via e-mail.",
+        "D) O tempo necessário para reinstalar o sistema operacional do servidor."
+    ], 
+    "B", 
+    "O teste de recuperação força falhas no sistema para validar se os mecanismos de tolerância a falhas, transações pendentes e logs de auditoria funcionam perfeitamente no restabelecimento.", 
+    "Essencial para alta disponibilidade."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que significa 'Test Coverage' baseado em critérios estruturais como 'Branch Coverage' (Cobertura de Desvios)?", 
+    "Cobertura de Desvios", 
+    [
+        "A) Medir quantas ramificações do controle de versão do Git foram fundidas.",
+        "B) Garantir que cada desvio condicional (como cada ramo `true` e `false` de estruturas `if/else` ou `switch`) tenha sido executado ao menos uma vez pelos testes.",
+        "C) Contar o número de arquivos criados dentro da pasta de testes.",
+        "D) Medir a largura da árvore de diretórios do projeto."
+    ], 
+    "B", 
+    "A cobertura de desvios é mais rigorosa do que a mera cobertura de linhas, pois força o testador a validar os cenários alternativos de tomada de decisão no código.", 
+    "Ajuda a encontrar bugs lógicos ocultos."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que é o princípio da 'Exaustividade Impossível' (Testes não podem ser exaustivos) nos fundamentos de teste?", 
+    "Princípios de Teste", 
+    [
+        "A) Que é proibido testar mais de 10 vezes a mesma funcionalidade.",
+        "B) Que testar tudo (todas as combinações possíveis de entradas e pré-condições) é inviável para sistemas complexos, exigindo que o testador utilize análise de valor limite e partição de equivalência.",
+        "C) Que os testes automatizados devem durar exatamente 24 horas ininterruptas.",
+        "D) Que o software nunca precisará ser testado após o primeiro deploy."
+    ], 
+    "B", 
+    "Como o número de caminhos possíveis é astronômico, os engenheiros de teste priorizam os casos de maior risco e impacto para otimizar o esforço.", 
+    "Um dos princípios fundamentais definidos pelo ISTQB."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que significa a técnica de design de teste chamada 'Partição de Equivalência' (Equivalence Partitioning)?", 
+    "Partição de Equivalência", 
+    [
+        "A) Dividir o banco de dados em partes iguais para balanceamento de carga.",
+        "B) Dividir o domínio de entradas de dados em classes ou partições equivalentes, de modo que se espera que qualquer valor de uma partição se comporte da mesma forma, reduzindo o número de casos de teste necessários.",
+        "C) Distribuir a equipe de testes em grupos de mesma produtividade.",
+        "D) Separar códigos legados de códigos modernos."
+    ], 
+    "B", 
+    "Se um campo aceita idades de 18 a 65 anos, dividimos em partições válidas (ex: 30) e inválidas (ex: 10 ou 70), testando um representante de cada grupo em vez de testar todos os números.", 
+    "Economiza tempo sem perder eficácia analítica."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que é a técnica de teste de 'Análise de Valor Limite' (Boundary Value Analysis - BVA)?", 
+    "Análise de Valor Limite", 
+    [
+        "A) Analisar o limite de orçamento financeiro alocado para o projeto de testes.",
+        "B) Uma técnica complementar à partição de equivalência focada em testar os valores exatos nas fronteiras (limites) das partições, onde é estatisticamente mais provável ocorrerem erros de programação.",
+        "C) Medir o limite de velocidade da conexão de rede do servidor.",
+        "D) Controlar o horário limite de expediente dos testadores."
+    ], 
+    "B", 
+    "Se um campo aceita valores de 1 a 100, testamos os limites: 0, 1, 2, 99, 100 e 101. Erros de operador relacional (`>` vs `>=`) aparecem nessas fronteiras.", 
+    "Uma das técnicas de caixa preta mais poderosas e utilizadas."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que caracteriza a abordagem de 'Testes Exploratórios' (Exploratory Testing)?", 
+    "Testes Exploratórios", 
+    [
+        "A) Explorar a galáxia usando simulações espaciais em software.",
+        "B) Uma abordagem onde o aprendizado simultâneo, o design de testes e a execução ocorrem em conjunto, sem scripts pré-escritos, dependendo da intuição, experiência e criatividade do testador.",
+        "C) Testar aleatoriamente botões da tela sem nenhum critério de qualidade.",
+        "D) Enviar robôs exploradores para buscar bugs em servidores remotos."
+    ], 
+    "B", 
+    "No teste exploratório, o testador investiga o software ativamente como um detetive, adaptando seus testes com base no que descobre a cada passo.", 
+    "Excelente para encontrar bugs complexos que scripts rígidos não cobrem."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que é um 'Bug' ou Defeito de Software?", 
+    "Defeitos de Software", 
+    [
+        "A) Um inseto real que entrou na carcaça do computador e fechou curto-circuito.",
+        "B) Uma discrepância entre o comportamento real observado do software e o comportamento esperado especificado nos requisitos do sistema.",
+        "C) Uma linha de código escrita em linguagem de programação obsoleta.",
+        "D) Um atraso na entrega de relatórios gerenciais."
+    ], 
+    "B", 
+    "O defeito é a manifestação de um erro (falha humana) cometido no código ou na especificação, que causa um comportamento incorreto quando executado.", 
+    "O ciclo padrão envolve: Relatar -> Reproduzir -> Corrigir -> Retestar."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "Qual é a importância da 'Pirâmide de Testes' proposta por Mike Cohn?", 
+    "Pirâmide de Testes", 
+    [
+        "A) Indicar a forma geométrica que os diagramas UML devem ter.",
+        "B) Orientar que a base da estratégia de testes deve ser composta por muitos testes unitários (rápidos e baratos), seguidos por testes de integração intermediários, e poucos testes de ponta a ponta (E2E) no topo (lentos e caros).",
+        "C) Mostrar que testes manuais devem ser o núcleo de qualquer projeto moderno.",
+        "D) Definir a hierarquia de cargos entre desenvolvedores e testadores."
+    ], 
+    "B", 
+    "Inverter a pirâmide (fazer muitos testes E2E e poucos unitários) cria o chamado 'Anti-pattern do Sorvete de Casquinha', resultando em builds lentos, frágeis e caros de manter.", 
+    "Equilibrar os níveis da pirâmide é chave para a agilidade."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que são 'Testes de Ponta a Ponta' (End-to-End / E2E Tests)?", 
+    "Testes E2E", 
+    [
+        "A) Testar apenas o início e o fim de uma linha de código em Java.",
+        "B) Testar o fluxo completo da aplicação simulando o comportamento real do usuário (desde a interface web/mobile, passando por todas as APIs, serviços e banco de dados).",
+        "C) Testar cabos de rede de fibra óptica em grandes data centers.",
+        "D) O teste de unidade isolado feito com mocks."
+    ], 
+    "B", 
+    "Ferramentas como Cypress, Playwright ou Selenium são usadas para testes E2E. Eles validam se o sistema integrado funciona do ponto de vista do usuário final.", 
+    "São mais custosos de manter e mais lentos, por isso ficam no topo da pirâmide."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que significa o princípio da 'Ilacão de Pesticidas' (Pesticide Paradox) nos testes de software?", 
+    "Princípios de Teste", 
+    [
+        "A) Que os computadores precisam de inseticida para afastar pragas virtuais.",
+        "B) Que repetir exatamente os mesmos casos de teste indefinidamente fará com que eles deixem de encontrar novos bugs, assim como os insetos criam imunidade a um pesticida repetido.",
+        "C) Que os testes devem ser aplicados apenas em ambientes agrícolas.",
+        "D) Que o código deve ser limpo com produtos químicos especiais."
+    ], 
+    "B", 
+    "Para superar o paradoxo do pesticida, os casos de teste precisam ser revisados, atualizados e expandidos regularmente, além de incorporar novos cenários exploratórios.", 
+    "Testes estáticos não encontram novos defeitos com o tempo."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que avaliam os 'Testes de Compatibilidade' (Compatibility Testing)?", 
+    "Testes de Compatibilidade", 
+    [
+        "A) Se dois desenvolvedores conseguem trabalhar na mesma mesa sem brigar.",
+        "B) Se o software funciona corretamente em diferentes ambientes de hardware, sistemas operacionais, navegadores web, dispositivos móveis e resoluções de tela.",
+        "C) Se a linguagem de programação é compatível com o sistema operacional MS-DOS.",
+        "D) Se o contrato comercial é aceito pelo departamento jurídico."
+    ], 
+    "B", 
+    "Garante que os usuários tenham a mesma experiência fluida independentemente de estarem usando Chrome, Safari, Windows, iOS ou Android.", 
+    "Essencial para aplicações web e mobile modernas."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que caracteriza a prática de 'Test Automation' (Automação de Testes)?", 
+    "Automação de Testes", 
+    [
+        "A) Substituir completamente os programadores por inteligência artificial.",
+        "B) Utilizar software de automação para executar suítes de teste predefinidas, comparar resultados esperados com reais e gerar relatórios de qualidade sem intervenção humana manual.",
+        "C) Ligar e desligar os servidores automaticamente toda meia-noite.",
+        "D) Enviar e-mails automáticos de cobrança para os clientes."
+    ], 
+    "B", 
+    "A automação é essencial para escalabilidade, permitindo rodar centenas de testes em minutos, viabilizando regressões contínuas e entregas rápidas (CI/CD).", 
+    "Não elimina 100% dos testes manuais, mas absorve as tarefas repetitivas."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que é a 'Fase de Testes Alfa' (Alpha Testing)?", 
+    "Fases de Testes", 
+    [
+        "A) O primeiro teste feito por robôs em laboratório.",
+        "B) Um teste de aceitação realizado por potenciais usuários ou clientes no próprio local de desenvolvimento (dentro da organização criadora), antes do lançamento público.",
+        "C) O teste final executado após o software já estar disponível nas lojas de aplicativos.",
+        "D) O teste de unidade feito pelo estagiário no primeiro dia de trabalho."
+    ], 
+    "B", 
+    "No teste alfa, a equipe de desenvolvimento observa os usuários reais usando o sistema em ambiente controlado para capturar feedbacks imediatos de usabilidade.", 
+    "Antecede o teste beta (que vai para o público externo)."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que caracteriza a 'Fase de Testes Beta' (Beta Testing)?", 
+    "Fases de Testes", 
+    [
+        "A) Testar o software utilizando apenas a letra grega beta.",
+        "B) Liberar o software para um grupo selecionado de usuários externos testarem em seus próprios ambientes reais de uso, fornecendo feedback de bugs e melhorias antes do lançamento geral.",
+        "C) O teste interno feito exclusivamente pelos diretores da empresa.",
+        "D) A fase onde o código é apagado do servidor."
+    ], 
+    "B", 
+    "O teste beta expõe o produto a condições reais e variadas que a empresa não conseguiria simular internamente.", 
+    "Muito comum em sistemas operacionais, jogos e grandes aplicativos comerciais."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que significa 'Shift-Left Testing' (Deslocamento para a Esquerda) na engenharia de qualidade?", 
+    "Shift-Left Testing", 
+    [
+        "A) Mover fisicamente as mesas dos testadores para o lado esquerdo da sala.",
+        "B) A prática de iniciar as atividades de teste e validação o mais cedo possível no ciclo de vida de desenvolvimento (desde a concepção e revisão de requisitos), e não apenas no final.",
+        "C) Atrasar os testes para o último dia antes do deploy.",
+        "D) Clicar sempre no botão esquerdo do mouse durante os testes."
+    ], 
+    "B", 
+    "Quanto mais cedo um defeito é encontrado (ex: na fase de especificação ou design), menor é o custo de sua correção em comparação a encontrá-lo em produção.", 
+    "Um conceito fundamental na cultura DevOps e Quality Assurance moderno."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que avaliam os 'Testes de Mutação' (Mutation Testing)?", 
+    "Testes de Mutação", 
+    [
+        "A) Se o software consegue se mutar em vírus de computador.",
+        "B) Introduzir pequenas alterações propositais (mutações) no código de produção para verificar se a suíte de testes existente é capaz de detectar essas falhas (morrendo no processo).",
+        "C) Mudar o DNA dos programadores para aumentarem a produtividade.",
+        "D) Testar mutações genéticas em softwares de biotecnologia."
+    ], 
+    "B", 
+    "O teste de mutação mede a 'qualidade dos testes'. Se alteramos um operador `+` para `-` no código e nenhum teste falha, significa que nossa suíte de testes é fraca e não cobre aquela regra.", 
+    "É computacionalmente custoso, mas extremamente rigoroso."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que é uma 'Assertion' (Asserção) dentro de um código de teste automatizado?", 
+    "Asserções", 
+    [
+        "A) Uma bronca aplicada pelo gerente ao encontrar um erro.",
+        "B) Uma instrução lógica que valida se uma condição esperada é verdadeira (ex: `assertEquals(esperado, obtido)`), fazendo o teste falhar caso o resultado seja diferente.",
+        "C) Um comando que apaga o banco de dados antes do teste.",
+        "D) Uma mensagem de log impressa no console."
+    ], 
+    "B", 
+    "A asserção é o coração do teste automatizado; sem ela, o código apenas executa operações sem verificar se o resultado está correto.", 
+    "Testes sem asserções úteis são conhecidos como 'testes fantasmas'."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "Qual é o objetivo de manter a 'Independência dos Casos de Teste'?", 
+    "Independência de Testes", 
+    [
+        "A) Fazer com que os testes funcionem sem precisar de energia elétrica.",
+        "B) Garantir que cada caso de teste possa ser executado isoladamente, sem depender do sucesso, ordem ou estado deixado por outro teste executado anteriormente.",
+        "C) Impedir que os testadores conversem entre si na equipe.",
+        "D) Permitir que os testes rodem apenas em computadores desconectados da rede."
+    ], 
+    "B", 
+    "Testes dependentes de ordem geram falsos positivos (flaky tests), onde um teste quebra apenas porque o anterior falhou, dificultando muito o diagnóstico da raiz do problema.", 
+    "Cada teste deve preparar seu próprio cenário (setup) e limpar sua bagunça (teardown)."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "O que são os chamados 'Flaky Tests' (Testes Instáveis)?", 
+    "Flaky Tests", 
+    [
+        "A) Testes que funcionam bem apenas no inverno.",
+        "B) Testes automatizados que ora passam, ora falham intermitentemente sem que nenhuma alteração tenha sido feita no código-fonte, geralmente causados por concorrência, rede instável ou assincronicidade.",
+        "C) Testes que passam em computadores Mac e falham em Windows.",
+        "D) Testes escritos por programadores iniciantes."
+    ], 
+    "B", 
+    "Testes instáveis destroem a confiança da equipe na automação, pois forçam reexecuções manuais desnecessárias.", 
+    "Devem ser investigados e corrigidos ou removidos imediatamente da suíte principal."
+);
+
+addQuestion(
+    "Testes de Software", 
+    "Média", 
+    "Por que a automação de testes é considerada um facilitador indispensável para arquiteturas de microsserviços e DevOps?", 
+    "Testes em DevOps", 
+    [
+        "A) Porque elimina a necessidade de qualquer tipo de documentação técnica.",
+        "B) Porque permite que pipelines de CI/CD validem centenas de serviços independentes de forma rápida e segura a cada deploy, garantindo alta velocidade sem sacrificar a estabilidade.",
+        "C) Porque impede que os microsserviços precisem se comunicar via rede.",
+        "D) Porque reduz o custo de servidores em nuvem a zero."
+    ], 
+    "B", 
+    "Sem uma suíte de testes automatizados robusta, entregas contínuas em ambientes complexos de microsserviços tornam-se caóticas e propensas a falhas catastróficas em produção.", 
+    "Automação e DevOps caminham lado a lado."
+);
 /* =====================================================
    GIT E CONTROLE DE VERSÃO
 ===================================================== */
