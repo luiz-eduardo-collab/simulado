@@ -6645,20 +6645,20 @@ addQuestion(
 );
 
 addQuestion(
-    "Arquitetura de Software", 
-    "Média", 
-    "O que define a abordagem de 'Documentação Arquitetural' através do modelo C4?", 
-    "Documentação Arquitetural", 
+    "Arquitetura de Software",
+    "Média",
+    "O que define a abordagem de 'Documentação Arquitetural' através do modelo C4?",
+    "Documentação Arquitetural",
     [
         "A) Um conjunto de diagramas hierárquicos baseados em Contexto, Contêineres, Componentes e Código para descrever a arquitetura de software de forma clara e estruturada.",
         "B) Um modelo matemático para calcular o custo de servidores em nuvem.",
         "C) Um padrão de quatro colunas para relatórios de testes de carga.",
         "D) Uma metodologia ágil focada em quatro reuniões semanais."
-    ], 
-    "A", 
-    "Criado por Simon Brown, o modelo C4 resolve o problema de diagramas confusos ou desatualizados, permitindo dar 'zoom' desde a visão macro do sistema (contexto) até os detalhes internos de componentes.", 
+    ],
+    "A",
+    "Criado por Simon Brown, o modelo C4 resolve o problema de diagramas confusos ou desatualizados, permitindo dar 'zoom' desde a visão macro do sistema (contexto) até os detalhes internos de componentes.",
     "Facilita enormemente a comunicação técnica na equipe."
-   );
+);
 
 /* =====================================================
     Bloco 13: DESIGN PATTERNS (40 QUESTÕES COMPLETAS)
